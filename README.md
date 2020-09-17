@@ -62,3 +62,59 @@ corner, type the new name of your repo (something goofy\!), and press
 Enter.
 
 <img src="readme_figs/branch.png" width="50%" />
+
+now, navigate back to RStudio. look for the “Git” tab in the top right
+of your screen, and then click the “Pull” (little blue downward-facing
+arrow) button. it might look something like this:
+
+<img src="readme_figs/git_pane.png" width="50%" />
+
+as of now, you’re probably still on the `main` branch. see where it says
+`main` in the top right corner of that screenshot? click the down arrow
+directly to it’s right and select your new branch:
+
+<img src="readme_figs/select_branch.png" width="50%" />
+
+woop woop woop\! almost there\!
+
+now, while reading through this document, you might have noticed a typo.
+(i’m not saying i intentionally placed any–i just make a lot of typos\!)
+there might have also been a step that needed additional clarification
+for you.
+
+find some spot in this README to make a small edit, make the edit in
+`README.Rmd`, and then knit to `README.md`. nice.
+
+now, navigate back to the Git pane, check the boxes beside `README.Rmd`
+and `README.md` (they should be blue now), and press “commit”.
+
+<img src="readme_figs/commit.png" width="50%" />
+
+you should be brought to a new window that looks something like this:
+
+<img src="readme_figs/commit_2.png" width="100%" />
+
+in the top right box, you can see that i’ve written a *commit message*.
+this will let the rest of us know what you’re doing in a commit, and
+also helps to bring our collaboration workflow much closer to the
+documents we’re actually working on.
+
+i dropped the text `#1` into that commit message. GitHub is smart enough
+to know that, when i do that, i’m linking to an issue or pull request.
+(an aside: if i had written `closes #1`, then, when i push that commit,
+the issue will be automatically closed\! slick\!)
+
+eventually, we’ll have issues open about specific documents (or sections
+of documents) we’re working on. it’ll be helpful to know what changes
+are relevant to what sections of what documents.
+
+okay whatever whatever whatever so write your message to note what you
+changed, and make sure to link to issue 1 by writing `(#1)` somewhere in
+your commit message.
+
+now go ahead and press the “Commit” button below your message and then
+press the “Push” button (the green up arrow.) if you go back to GitHub
+and navigate to your new branch, you should see your newest commit\!
+
+okay okay okay last step\! all we need to do now is try to merge our
+changes back in to the `main` branch.
