@@ -118,3 +118,8 @@ and navigate to your new branch, you should see your newest commit\!
 
 okay okay okay last step\! all we need to do now is try to merge our
 changes back in to the `main` branch.
+
+while i’m writing this, i just branched off to a branch called
+`pull-requesting`. i want to merge the changes i’m making now back into
+`main`. i’m going to go ahead and commit and then make a pull request to
+`main`\!
