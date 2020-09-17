@@ -50,7 +50,7 @@ R*](https://happygitwithr.com/).
 
 okokok let’s get to it\!
 
-you’ll first want to close this repo to an rstudio project. [HGwR
+you’ll first want to clone this repo to an rstudio project. [HGwR
 Chapter 15.2](https://happygitwithr.com/new-github-first.html#new-rstudio-project-via-git-clone)
 might be helpful if you haven’t done this before.
 
@@ -68,6 +68,8 @@ of your screen, and then click the “Pull” (little blue downward-facing
 arrow) button. it might look something like this:
 
 <img src="readme_figs/git_pane.png" width="50%" />
+
+#### branching off
 
 as of now, you’re probably still on the `main` branch. see where it says
 `main` in the top right corner of that screenshot? click the down arrow
@@ -119,7 +121,68 @@ and navigate to your new branch, you should see your newest commit\!
 okay okay okay last step\! all we need to do now is try to merge our
 changes back in to the `main` branch.
 
+#### making a PR
+
 while i’m writing this, i just branched off to a branch called
 `pull-requesting`. i want to merge the changes i’m making now back into
-`main`. i’m going to go ahead and commit and then make a pull request to
-`main`\!
+`main`.
+
+so i commit, push, and go to look at GitHub. you might see some sort of
+note along the lines of:
+
+<img src="readme_figs/pr1.png" width="100%" />
+
+if you don’t, that’s fine\! on the top menu, navigate over to “Pull
+requests”. again, you might see the little yellow box. if not, nbd. i
+clicked “New pull request”:
+
+<img src="readme_figs/pr2.png" width="100%" />
+
+this “Comparing changes” window will summarize the changes you made, and
+ask you to choose what gets pull-requested to what (see those `base:`
+and `compare:` boxes in the top left of the below screenshot?)
+
+you’ll want to change the `compare:` box so that they look like
+
+`[base: main] <- [compare: your branch's name]`
+
+<img src="readme_figs/pr3.png" width="100%" />
+
+now, click “Create pull request”\!
+
+<img src="readme_figs/pr4.png" width="100%" />
+
+aaaand once you’ve written a message, click “Create pull request”
+again\!
+
+you’re done\!\!\! woop woop woop\!
+
+#### whaaat now
+
+when i see the email from your PR, i’ll glance at it quickly and then
+merge it to `main`. in practice, we will all have the necessary
+permissions to merge each other’s changes.
+
+that’s all for now. :-)
+
+in the coming weeks, Leila and I will add all of the necessary files
+from the site’s source and we can get to work on them. more on that
+workflow to come\!
+
+some thoughts:
+
+  - as we work on this project, i highly recommend **every time you open
+    up this project in RStudio, pull\!** press the lil feller that is
+    the blue down arrow\! this will help prevent…
+  - merge conflicts. hopefully we’ll have a chance to get grooving a
+    little bit before we come across one, but tl;dr – two people make
+    changes to the same thing, and Git is like “ahhHHHhHHhH WHAt R U
+    doin?\!?\!” we’ll cross that bridge when we come to it. or maybe
+    i’ll write something up beforehand. if not, Happy Git With R
+    [comes in clutch](https://happygitwithr.com/push-rejected.html), as
+    usual.
+  - Git can be kindof an uphill battle while you’re getting started.
+    especially at first, the *why not just Google Docs?* energy can be
+    strong. **response 1:** it gets better, i promise\! **answer 2:**
+    [HGwR, per usual](https://happygitwithr.com/big-picture.html)
+  - i appreciate yall. stoked to get started up on this\!
