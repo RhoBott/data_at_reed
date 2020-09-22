@@ -1,0 +1,47 @@
+---
+output: html_document
+---
+
+# Making tables
+
+If you want to display data, most of the time it’ll need to be in some form of table. The natural R table printing is pretty ugly, so this page covers two of the ways to make nicer table output
+
+#### HTML output with kable
+
+The knitr package has good functionality with kable for printing HTML tables. The basic format is
+
+```
+kable(x, format = 'html')
+```
+
+Most of the good parts of this format come with the kableExtra package, however. You can use the kable_styling function to customize the look of your table.
+
+```
+library(kableExtra)
+head(iris) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = "striped",
+                full_width = FALSE,
+                position = "center")
+```
+
+#### PDF output with xtable
+
+For a PDF document, typically a nice LaTeX table will be a good fit, which we can create with xtable.
+
+```
+library(xtable)
+data(tli)
+print(xtable(head(tli)), type = "latex", booktabs = TRUE)
+```
+
+This table specifically is an image from a knitted PDF version - if you use xtable with an HTML output it won’t come out as well.
+
+To use xtable in an R markdown chunk, you need to add the option results = 'asis' to your chunk. To use the booktabs setting (a nice table style), you need to add the following line to the YAML header of your Markdown file:
+
+```
+header-includes:
+   - \usepackage{booktabs}
+```
+
+This makes sure your file can access the LaTeX package bookdown when it knits, which contains instructions for creating that style.
