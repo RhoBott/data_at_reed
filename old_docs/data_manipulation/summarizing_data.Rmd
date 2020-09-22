@@ -1,0 +1,66 @@
+---
+output: html_document
+---
+
+# Summarizing data
+
+Given some data, R has many options for summarizing it: mean, median, range, % above a certain value, % in each category, etc. These first three examples have pretty intuitive functions that calculate them (literally `mean`, `median`, and `range`). You can calculate the proportion or count that satisfies some condition with variants of mean and sum. For example, if we want to know the number and proportion of flowers in the iris dataset with petal length less than the mean (3.758), the following code would work.
+
+```
+sum(iris$Petal.Length < 3.758)
+
+mean(iris$Petal.Length < 3.758)
+```
+
+Now suppose we want to know how many flowers there are of each of the three different species in the data set. The `table()` command works for this, but `count()` from the dplyr package will often put the result in a nicer form to work with (data frame, instead of a named vector).
+
+```
+table(iris$Species)
+
+library(dplyr)
+count(iris, Species)
+```
+
+#### Grouping and summarizing data
+
+While general data summaries are great, a lot of the time we’re interested in comparing some summary between different groups of the data: does the range differ between two treatment groups, are different age groups more susceptible to certain health problems, and so on. When you combine group_by and summarize from the dplyr package, they become a great tool for performing this grouped analysis.
+
+Earlier we saw the amount of all flowers in `iris` whose petal length was less than the mean, but say we want to differentiate this between the three species. The two steps for this are first grouping by species, then summarizing to get the number and proportion of flowers in each group.
+
+```
+library(dplyr)
+iris %>%
+  group_by(Species) %>%
+  summarize(n = sum(Petal.Length < 3.758),
+            prop = mean(Petal.Length < 3.758))
+## # A tibble: 3 x 3
+##   Species        n  prop
+##   <fct>      <int> <dbl>
+## 1 setosa        50 1.00 
+## 2 versicolor     7 0.140
+## 3 virginica      0 0.
+```
+
+This creates a data frame with 3 rows (the three different species) and 3 columns: Species (the grouping variable), n (created in the summary step to show the count), and prop (created in the summary step to show the proportion). The data shows that all of the setosas, 7/50 (14%) of the versicolors, and none of the virginicas have smaller petal lengths than the total average.
+
+#### The pipe
+
+The `%>%` command above is called a pipe, and it’s really useful for performing a sequence of commands in order on a data set. The pipe takes whatever thing comes before it and “pipes” it into the next function as the first argument. So while a typical line of R code might be something like `function(data, arguments)`, we could equivalently write data %>% `function(arguments)`.
+
+For a simple function like that toy example this isn’t super useful, but in the iris example above it’s quite useful for improving the readability and speed of code. If we don’t use the pipe, the fastest method is harder to understand:
+
+```
+summarize(group_by(iris, Species),
+          n = sum(Petal.Length < 3.758),
+          prop = mean(Petal.Length < 3.758))
+```
+
+And a more understandable method, stopping and saving after each step, will take longer and use more memory (especially on large data sets) because it has to save one or more extra steps that aren’t particularly useful:
+
+```
+grouping <- group_by(iris, Species)
+summarize(grouping,
+          n = sum(Petal.Length < 3.758),
+          prop = mean(Petal.Length < 3.758))
+```
+          
