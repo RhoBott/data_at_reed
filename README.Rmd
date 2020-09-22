@@ -9,7 +9,7 @@ library(knitr)
 
 yall! !!!
 
-this is a GitHub repository that will help us manage an update to the [Data at Reed](data-at-reed) site. specifically, the information at [Analyzing & Visualizing Data > R tutorials]!
+this is a GitHub repository that will help us manage and update to the [Data at Reed](data-at-reed) site. specifically, the information at [Analyzing & Visualizing Data > R tutorials]!
 
 ideally, we can point people who come into the mLab to that site to help address common issues. unfortunately, Nothing Has Happened to those pages for a good bit of time and, as a result, they don’t reflect the kinds of issues we see most often now.
 
