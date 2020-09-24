@@ -1,0 +1,80 @@
+---
+output: html_document
+---
+
+```{r, include = FALSE}
+# to include emojis
+#install.packages("emo")
+library(emo)
+```
+
+# Loading Data
+
+_yada yada yada_
+
+### ...from a package
+
+A lot of data you'll end up working with in R is contained in R packages! (If you're unfamiliar with packages, see our [Getting Started](abcdefg) page.) In fact, most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes datasets from a study of three different species of penguins found in Antarctica.
+
+```{r, echo = FALSE}
+url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"
+
+knitr::include_graphics(url)
+```
+
+How can we load this data in?
+
+First thing's first--you'll need to install the `palmerpenguins` package (or whatever package your data is from) if you haven't already with the `install.packages()` function:
+
+```{r, eval = FALSE}
+install.packages("palmerpenguins")
+```
+
+Now that you have the package installed, you need to load the package into your environment with `library()`. You only need to install the package once, but you'll need to load the package with your data every time you open R back up.
+
+```{r}
+library(palmerpenguins)
+```
+
+Okay... `palmerpenguins` is loaded... now where is the data?
+
+This is a weird thing about loading data from packages--if you don't already know what you're looking for inside the package, how do you find out what's inside?
+
+There are a couple ways. First, you could try running `help(package = "palmerpenguins"` in your console. This will show you all of the data and functions included in a package, as well as descriptions of what they are!
+
+Alternatively, if you think all you need is a list of names of data or functions to jog your memory, you can make use of RStudio's autocomplete. Try typing the name of your package followed by two colons, like this 
+
+```{r, eval = FALSE}
+palmerpenguins::
+```
+
+Your tooltip should show you all of the datasets included in the package.
+
+Regardless, now you've found the name of the dataset you want. From here, you can use the `data()` function! It just takes in the name of the dataset.
+
+```{r}
+data(penguins)
+```
+
+Depending on how datasets are included in a package, you might run that command and see nothing, or maybe just see `<Promise>` up in your Environment in the top-right corner of your RStudio. It might not look like your data is loaded, but it actually is! Try running the `View()` function in your console, which just takes in the name of your dataset.
+
+```{r, eval = FALSE}
+View(penguins)
+```
+
+You did it! Alternatively, if you just want to print the first few rows, try the `head()` function out, which also just takes the name of the dataset.
+
+```{r}
+head(penguins)
+```
+
+Ready to go. `r emo::ji("racing_car")`
+
+### ...from a .csv (and friends, with `readr`)
+
+### ...from Excel (with `readxl`)
+
+
+### ...from Google Sheets (with `googlesheets4`)
+
+### ...from the internet (with `rvest`)
