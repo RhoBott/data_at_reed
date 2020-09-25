@@ -137,7 +137,7 @@ some thoughts:
 
 * as we work on this project, i highly recommend **every time you open up this project in RStudio, pull!** press the lil feller that is the blue down arrow! this will help prevent...
 * merge conflicts. hopefully we'll have a chance to get grooving a little bit before we come across one, but tl;dr -- two people make changes to the same thing, and Git is like "ahhHHHhHHhH WHAt R U doin?!?!" we'll cross that bridge when we come to it. or maybe i'll write something up beforehand. if not, Happy Git With R [comes in clutch](https://happygitwithr.com/push-rejected.html), as usual.
-* Git can be kindof an uphill battle while you're getting started. especially at first, the _why not just Google Docs?_ energy can be strong. **response 1:** it gets better, i promise! **answer 2:** [HGwR, per usual](https://happygitwithr.com/big-picture.html)
+* Git can be kind of an uphill battle while you're getting started. especially at first, the _why not just Google Docs?_ energy can be strong. **response 1:** it gets better, i promise! **answer 2:** [HGwR, per usual](https://happygitwithr.com/big-picture.html)
 * i appreciate yall. stoked to get started up on this!
 
 
