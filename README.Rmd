@@ -39,7 +39,7 @@ Learning more & getting connected (links to the free online textbook, our hours 
 
 We'll be using `palmerpenguins` to demonstrate important functions, instead of `iris`! Here's some [documentation](https://allisonhorst.github.io/palmerpenguins/articles/intro.html) for `palmerpenguins`, and some info on [why we're not using iris](https://www.meganstodel.com/posts/no-to-iris/).
 
-We want people to not only get the information they need, but also to know where to look if our examples don't completely answer their questions (teach a man to fish?). So! As much as possible, we'll link out to other resources (like the Happy Git with R resource Simon linked to, or tidyverse cheatsheets) so that folks get used to using the documentation that's already out there! Not trying to reinvent the wheel!
+We want people to not only get the information they need, but also to know where to look if our examples don't completely answer their questions (teaching someone  to fish?). So! As much as possible, we'll link out to other resources (like the Happy Git with R resource Simon linked to, or tidyverse cheatsheets) so that folks get used to using the documentation that's already out there! Not trying to reinvent the wheel!
 
 Workflow-wise, editing the documents will look something like:
 

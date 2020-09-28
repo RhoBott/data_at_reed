@@ -3,7 +3,7 @@ d\&r update
 
 yall\! \!\!\!
 
-this is a GitHub repository that will help us manage and update to the
+this is a GitHub repository that will help us manage an update to the
 [Data at Reed](data-at-reed) site. specifically, the information at
 \[Analyzing & Visualizing Data \> R tutorials\]\! ideally, we can point
 people who come into the mLab to that site to help address common
@@ -57,14 +57,13 @@ iris](https://www.meganstodel.com/posts/no-to-iris/).
 
 We want people to not only get the information they need, but also to
 know where to look if our examples don’t completely answer their
-questions (teach a man to fish?). So\! As much as possible, we’ll link
-out to other resources (like the Happy Git with R resource Simon linked
-to, or tidyverse cheatsheets) so that folks get used to using the
+questions (teaching someone to fish?). So\! As much as possible, we’ll
+link out to other resources (like the Happy Git with R resource Simon
+linked to, or tidyverse cheatsheets) so that folks get used to using the
 documentation that’s already out there\! Not trying to reinvent the
 wheel\!
 
 Workflow-wise, editing the documents will look something like:
-
 
   - Check for outstanding (i.e. unmerged) pull requests
   - Make a new branch off of `main`
@@ -77,7 +76,8 @@ work sessions on here, check to see if there are any open pull requests.
 If so, take a look over your collaborators’ changes, discuss/make edits
 on the PR, and (possibly) merge their changes back into `main`.
 
-(was thinking of deleting this, maybe nice to have around.) some thoughts:
+(was thinking of deleting this, maybe nice to have around.) some
+thoughts:
 
   - as we work on this project, i highly recommend **every time you open
     up this project in RStudio, pull\!** press the lil feller that is
