@@ -1,0 +1,37 @@
+---
+output: html_document
+---
+
+# Working with flat files
+
+#### Reading plain-text tables
+
+There are two common ways to read plain-text tables (also called "flat files"): base R and the `readr` package. Using `readr` does take an extra step to set up (using `library(readr)` or `readr::function()`), but offers some benefits over base R including:
+
+* Faster run time (not an issue unless you have some big files)
+* Automatically parses some column types, like datetimes
+* Doesn’t automatically convert strings to factors
+
+Here’s a table listing some of the functions that you can use to read files, based on the type of file.
+
+<!-- Type of file	Base R code	readr code -->
+<!-- CSV (comma separated value)	read.csv("file.csv")	read_csv("file.csv") -->
+<!-- TSV (tab separated value)	read.delim("file.txt", sep = "\t")	read_tsv("file.txt") -->
+<!-- Other character-delimited file	read.delim("file.txt", sep = ";|;")	read_delim("file.txt", delim = ";|;") -->
+<!-- Fixed-width text file (FWF)	read.fwf("file.txt", widths = c(5,10,9,3,1,1))	read_fwf("file.txt", col_positions = fwf_widths(c(5,10,9,3,1,1))) -->
+
+To use the `readr` functions, either preface the function as `readr::function()` or run `library(readr)` before use. With the base R functions, you’ll most likely want to include the argument `stringsAsFactors = FALSE` inside the function to simplify common data wrangling steps to follow.
+
+#### Writing plain-text tables
+
+This can mostly be done with base R functions. Fixed-width files require a separate package (`gdata`) and are less clear in column separation than delimited files, so stick to the `csv` format when possible.
+
+CSV: `write.csv(object, "file_name", row.names = FALSE)`
+
+TSV: `write.table(object, "file_name", sep = "\t")`
+
+Other character delimited: `write.table(object, "file_name", sep = ";|;")`
+
+Fixed-width: `gdata::write.fwf(object, "file_name")`
+
+The FWF option will automatically determine column widths based on the data, but you can manually change this with some of the parameters to the function.

@@ -1,0 +1,63 @@
+---
+output: html_document
+---
+
+# Working with Spreadsheets in R
+
+There are a few good packages for interacting with data from a spreadsheet into R. Some of these are `readxl`, `openxlsx` and `googlesheets`.
+
+#### Excel
+
+Reading a local Excel spreadsheet (.xls or .xlsx) is relatively simple, and can be done with the following method.
+
+```
+library(readxl)
+read_excel("example_doc.xlsx", sheet = "sheet1")
+```
+
+Writing to an Excel sheet can be done with the `openxlsx` package. The main steps are:
+
+* Create a blank workbook
+* Add a sheet to the workbook
+* Write data onto the sheet
+* Repeat 2 and 3 for as many sheets as you need.
+* Save the workbook to an Excel file.
+
+```
+library(openxlsx)
+book <- createWorkbook()
+addWorksheet(book, "Sheet name")
+writeData(book, "Sheet name", data_object)
+saveWorkbook(book, file = "test_spreadsheet.xlsx", overwrite = TRUE)
+```
+
+You can find more information on writing Excel files [here](https://www.r-bloggers.com/2018/02/easily-make-multi-tabbed-xlsx-files-with-openxlsx/).
+
+#### Google Sheets
+
+Reading in a Google Sheet is a little more complicated, because you’ll have to give R access to your Google Drive account in order to access the file. This is a different process if you are using R on your computer versus Reed’s R server.
+
+After installing the googlesheets package, try running the following code to prompt R to authenticate your Google account. Follow the instructions that R and the Google authenticator give you to set up access.
+
+#### On the R server:
+
+```
+library(googlesheets) 
+options(httr_oob_default=TRUE) 
+gs_auth(new_user = TRUE)
+```
+
+On your computer:
+
+```
+library(googlesheets)
+gs_auth(new_user = TRUE)
+```
+
+After authenticating, you can access a sheet by its URL with the following method.
+
+```
+sheet <- gs_url("https://docs.google.com/spreadsheets/d/
+1EGF3B9EKhlnNn1TKB8ABY18NtmkJIkw9sVhREd2tO34/edit?usp=sharing")
+table <- gs_read(sheet)
+```
