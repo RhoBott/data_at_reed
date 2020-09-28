@@ -53,7 +53,7 @@ knitr::include_graphics("readme_figs/git_pane.png")
 
 #### branching off
 
-as of now, you're probably still on the `main` branch. see where it says `main` in the top right corner of that screenshot? click the down arrow directly to it's right and select your new branch:
+as of now, you're probably still on the `main` branch. see where it says `main` in the top right corner of that screenshot? click the down arrow directly to its right and select your new branch:
 
 ```{r select-branch, echo = FALSE, out.width = '50%'}
 knitr::include_graphics("readme_figs/select_branch.png")
