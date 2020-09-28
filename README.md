@@ -50,11 +50,11 @@ R*](https://happygitwithr.com/).
 
 okokok let’s get to it\!
 
-you’ll first want to clone this repo to an rstudio project. [HGwR
+you will first want to clone this repo to an rstudio project. [HGwR
 Chapter 15.2](https://happygitwithr.com/new-github-first.html#new-rstudio-project-via-git-clone)
 is very helpful if you haven’t done this before.
 
-alright, you have a project in RStudio now. sweet.
+all right, you have a project in RStudio now. sweet.
 
 now, groove back to GitHub (look\! you’re here\!) you’ll want to branch
 off of `main` by clicking the down arrow beside `main` in the top left
