@@ -9,7 +9,9 @@ library(tidyverse)
 library(knitr)
 ```
 
-## Intro to graphing with ggplot2
+# Presenting and Visualizing Data
+
+### Intro to data visualization with ggplot2
 
 `ggplot2` is an R package for data visualization that will allow you to make pretty graphs with a simplified and standardized syntax!
 
@@ -19,7 +21,7 @@ First, let's load the package:
 library(ggplot2)
 ```
 
-## What kind of data do we need?
+##### What kind of data do we need?
 
 In order to get started with graphing in `ggplot2`, we'll need our data to be in what's called "tidy" format. [Here](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) is some information about what it means for a dataset to be tidy. 
 
@@ -30,7 +32,6 @@ Briefly, for a dataset to be tidy, it must follow these three rules:
 2. Each observation must have its own row
 
 3. Each value must have its own cell
-
 
 Let's look at an example of an untidy versus a tidy dataset that you might come across:
 
@@ -61,7 +62,7 @@ Now, we have three variables, each of which has its own column. Is each row one 
 
 Now that it's tidy, let's graph this data!
 
-##Graphing
+##### Graphing
 
 How did average body mass change over time on each of these islands?
 
@@ -74,26 +75,36 @@ Let's look at the components of our ggplot2 code, and how they made this graph:
 
 First, we specified the `data` we were using, the tidied penguin data. Next comes `mapping`, which essentially means "which variables go where": we told this graph to put year as the x axis, mean body mass as the y axis, and islands as the different colors. Finally, we tell `ggplot2` what `geom` we are using. Here I decided to use points. 
 
-
-##More Aesthetics, Geoms, and Data Types!
+##### More Aesthetics, Geoms, and Data Types!
 
 Luckily, the `penguins` dataset that comes with `palmerpenguins` is already beautifully tidy. Here are some more examples of graphs that utilize different geoms and aesthetics available with `ggplot2`
 
 When making histograms with `ggplot2`, you can decide the width or the number of the bins of the histogram as appropriate for your data. Here I chose to use a binwidth of 100 grams:
+
 ```{r, warning = FALSE}
 ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
   geom_histogram(binwidth = 100)
 ```
 
 Sometimes, when using geom_point, our points can get a bit crowded. One way to address this is to change the transparency of the points. In this code, `alpha = 0.7` specifies the transparency of the points as 0.7, on a scale from 0 (most transparent) to 1 (least transparent):
+
 ```{r, warning = FALSE}
 ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, color = sex)) +
   geom_point(alpha = 0.7)
 ```
 
 What if we want to add another variable, but our graph is already a bit "busy" to look at? This is where facet_wrap can come in handy. Here, I faceted by species, creating three graphs, with the same x and y axes and coloring. These graphs let us compare species side-by-side easily:
+
 ```{r, warning = FALSE}
 ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, color = sex)) +
   geom_point(alpha = 0.7) +
   facet_wrap(~species)
 ```
+
+### Making summary tables in R
+
+_yada yada about `kable`_
+
+### Writing up your results
+
+_yada yada about R Markdown_
