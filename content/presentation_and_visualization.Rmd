@@ -101,7 +101,7 @@ ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, col
   facet_wrap(~species)
 ```
 
-### Making Summary Tables in R
+### Making summary tables in R
 
 _yada yada about `kable`_
 
