@@ -75,6 +75,13 @@ Let's look at the components of our ggplot2 code, and how they made this graph:
 
 First, we specified the `data` we were using, the tidied penguin data. Next comes `mapping`, which essentially means "which variables go where": we told this graph to put year as the x axis, mean body mass as the y axis, and islands as the different colors. Finally, we tell `ggplot2` what `geom` we are using. Here I decided to use points. 
 
+Note that our use of color here will map to the variable island, but if we just wanted to make all of our points blue or something we could use:
+
+```{r}
+geom_point(color = "blue")
+```
+
+
 ##### More Aesthetics, Geoms, and Data Types!
 
 Luckily, the `penguins` dataset that comes with `palmerpenguins` is already beautifully tidy. Here are some more examples of graphs that utilize different geoms and aesthetics available with `ggplot2`
