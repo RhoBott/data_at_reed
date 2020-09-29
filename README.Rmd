@@ -21,7 +21,7 @@ okay, so that's where Git comes in. it's my sense that everyone has done a littl
 
 ## git: tl;dr
 
-this is a _repository_--it's kind of like a folder on Google Drive. however many people we want can have access to it, except...
+this is a _repository_--(also sometimes called a repo)--it's kind of like a folder on Google Drive. however many people we want can have access to it, except...
 
 changes to any documents happen in really discrete steps called _commits_. commits can be as long (i'll draft this README in one) or as short (i.e. fix a typo, see later) as you want.
 
