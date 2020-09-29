@@ -58,4 +58,4 @@ All of us have permission to merge pull requests! At the start of your work sess
 * i appreciate yall. stoked to get started up on this!
 
 
-
+*git is confusing, but we can get through it together! 
