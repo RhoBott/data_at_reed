@@ -75,9 +75,32 @@ Let's look at the components of our ggplot2 code, and how they made this graph:
 
 First, we specified the `data` we were using, the tidied penguin data. Next comes `mapping`, which essentially means "which variables go where": we told this graph to put year as the x axis, mean body mass as the y axis, and islands as the different colors. Finally, we tell `ggplot2` what `geom` we are using. Here I decided to use points. 
 
-##### More Aesthetics, Geoms, and Data Types!
+Note that our use of color here will allow us to represent the variable `island`, but if we just wanted to make all of our points blue (or some other color), we could use:
 
-Luckily, the `penguins` dataset that comes with `palmerpenguins` is already beautifully tidy. Here are some more examples of graphs that utilize different geoms and aesthetics available with `ggplot2`
+```{r}
+ggplot(data = penguin_tidy, mapping = aes(x = year, y = mean_body_mass_g)) +
+  geom_point(color = "blue")
+```
+
+Note that we dropped the `color = island` statement in `aes()` and added `color = "blue"` to `geom_point()`.
+
+##### Other Types of Graphs!
+
+Luckily, the `penguins` dataset that comes with `palmerpenguins` is already beautifully tidy. Here are some more examples of graphs that you can make with `ggplot2`.
+
+You can create a line-graph in exactly the same was as a scatterplot by swapping the `geom_point()` call for `geom_line`!
+
+```{r}
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_line()
+```
+
+Bar plots use the call `geom_bar()`. You can display another variable by including `fill = ` inside of your aes() call!
+
+```{r}
+ggplot(data = penguins, mapping = aes(x = island, fill = sex)) +
+  geom_bar()
+```
 
 When making histograms with `ggplot2`, you can decide the width or the number of the bins of the histogram as appropriate for your data. Here I chose to use a binwidth of 100 grams:
 
@@ -85,6 +108,17 @@ When making histograms with `ggplot2`, you can decide the width or the number of
 ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
   geom_histogram(binwidth = 100)
 ```
+
+Another useful graph to have in your back-pocket is the boxplot. You can create multiple boxplots on the same graph by setting your 'x' to a variable with multiple levels. In this example our call will create a boxplot for each individual island!
+
+```{r}
+ggplot(data = penguins, mapping  = aes(x = island, y = body_mass_g)) +
+  geom_boxplot()
+```
+
+##### More Aesthetics and Geoms!
+
+Below are some more examples of different aesthetics available with `ggplot2`.
 
 Sometimes, when using geom_point, our points can get a bit crowded. One way to address this is to change the transparency of the points. In this code, `alpha = 0.7` specifies the transparency of the points as 0.7, on a scale from 0 (most transparent) to 1 (least transparent):
 
