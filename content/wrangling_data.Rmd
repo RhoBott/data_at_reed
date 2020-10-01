@@ -1,0 +1,91 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+library(knitr)
+```
+
+# Wrangling Data
+
+_explanation/something goofy about data wrangling_
+
+### Data Frames and `tibble`s
+
+_yada yada about data frames and tibbles_ - biggest thing to note here is that the print method (i.e. what happens when you just type the name of a data frame) is much better than that for normal data frames
+
+### Tidy Data Principles, Reshaping Data, and `tidyr`
+
+Packages in the `tidyverse`, like `ggplot2` and `dplyr`, are built to work with tidy data. The `tidyr` package can help us tidy up a dataset by rearranging how data is structured.
+
+Briefly, for a dataset to be tidy, it must follow these three rules:
+
+1. Each variable must have its own column
+
+2. Each observation must have its own row
+
+3. Each value must have its own cell
+
+Let's take a look at a summarized version of the `penguins` data as an example:
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+penguins_sum <- penguins %>%
+  group_by(island, year) %>%
+  summarize(mean_body_mass_g = mean(body_mass_g, na.rm= TRUE))
+
+penguins_sum
+```
+
+
+
+Each variable has its own column, each observation (the sample of penguins on a given island in a given year) is a row, and each value has its own cell.
+
+This dataset, though, could also look like this:
+
+```{r}
+penguins_sum %>%
+  pivot_wider(id_cols = c("island", "year"), names_from = year, values_from = mean_body_mass_g)
+```
+
+This dataset technically contains the same data, but in this version, the mean body mass is held in three different columns!
+
+Sometimes, the data you're asked to analyze might look more like the second, untidy version than the first, tidy version. How do you move from one to the other? Introducing `tidyr`!
+
+Let's start off with the first version:
+
+```{r, message = FALSE, warning = FALSE}
+penguins_sum
+```
+
+We want to "pivot" this data from a "long" format to a "wide" format. The `pivot_wider()` function from `tidyr` will help us to do that:
+
+```{r, warning = FALSE, message = FALSE}
+penguins_wide <- penguins_sum %>%
+  pivot_wider(id_cols = c("island", "year"), 
+              names_from = year, 
+              values_from = mean_body_mass_g)
+
+penguins_wide
+```
+
+The `id_cols` (read: ID columns) are the variables that, together, identify what makes a row unique in the original data, `names_from` determines what columns in the old data will be the names of the new columns, and `values_from` is the name of the variable in the old data that will be the information contained inside the new columns.
+
+What if we want pivot from wider to longer, though? You might have guessed it! `pivot_longer()`! Starting with the widened version of the data:
+
+```{r}
+penguins_wide %>%
+  pivot_longer(cols = c("2007", "2008", "2009"), 
+               names_to = "year",
+               values_to = "mean_body_mass_g")
+```
+
+As you might have noticed, `pivot_longer()` and `pivot_wider()` are inverse operations! Pivoting a widened dataset to a longer format gives you back the original dataset, and vice versa.
+
+If you're interested in learning more about tidy data and pivoting, we recommend the chapter in [R for Data Science](https://r4ds.had.co.nz/tidy-data.html)!
+
+### Transforming Data With `dplyr`
+
+_yada yada about data transformation_
