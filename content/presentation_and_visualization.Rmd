@@ -75,24 +75,27 @@ Let's look at the components of our ggplot2 code, and how they made this graph:
 
 First, we specified the `data` we were using, the tidied penguin data. Next comes `mapping`, which essentially means "which variables go where": we told this graph to put year as the x axis, mean body mass as the y axis, and islands as the different colors. Finally, we tell `ggplot2` what `geom` we are using. Here I decided to use points. 
 
-Note that our use of color here will allow us to represent the variable 'island', but if we just wanted to make all of our points blue or something we could use:
+Note that our use of color here will allow us to represent the variable `island`, but if we just wanted to make all of our points blue (or some other color), we could use:
 
 ```{r}
-geom_point(color = "blue")
+ggplot(data = penguin_tidy, mapping = aes(x = year, y = mean_body_mass_g)) +
+  geom_point(color = "blue")
 ```
+
+Note that we dropped the `color = island` statement in `aes()` and added `color = "blue"` to `geom_point()`.
 
 ##### Other Types of Graphs!
 
 Luckily, the `penguins` dataset that comes with `palmerpenguins` is already beautifully tidy. Here are some more examples of graphs that you can make with `ggplot2`.
 
-You can create a line-graph in exactly the same was as a scatterplot by swapping the 'geom_point()' call for 'geom_line'!
+You can create a line-graph in exactly the same was as a scatterplot by swapping the `geom_point()` call for `geom_line`!
 
 ```{r}
 ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_line()
 ```
 
-Bar plots use the call 'geom_bar'. You can display another variable by including 'fill = ' inside of your aes() call!
+Bar plots use the call `geom_bar()`. You can display another variable by including `fill = ` inside of your aes() call!
 
 ```{r}
 ggplot(data = penguins, mapping = aes(x = island, fill = sex)) +
