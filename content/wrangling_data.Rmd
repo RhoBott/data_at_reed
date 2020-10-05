@@ -88,4 +88,87 @@ If you're interested in learning more about tidy data and pivoting, we recommend
 
 ### Transforming Data With `dplyr`
 
+Now that our data is tidy we can use `dplyr` to further transform our data!
+
+There are 6 fundamental `dpylr` functions that should allow you to perform the data wrangling that you find yourself needing to do. For the following examples we'll be using the full `penguins` data set.
+
+We can use the `head()` function to get a feel for what the different variables are and what values those variables can take on, by looking at the first 5 rows.
+
+```{r}
+penguins %>%
+  head()
+```
+
+#### 1. Filtering rows
+
+Let's say that you want to take a subset of your full data set, by only picking rows that meet certain criteria. For example, in our penguins data set we could choose to look at female penguins only:
+
+```{r}
+penguins %>%
+  filter(sex == "female")%>%
+  head()
+```
+
+Or perhaps we want to only look at penguins with a bill length that's less than 40mm:
+
+```{r}
+penguins %>%
+  filter(bill_length_mm < 40) %>%
+  head()
+```
+
+We can get as specific as we want. Suppose we want to look at the penguins from Trogersen island in 2008 with a body mass greater than 3500 grams:
+
+```{r}
+penguins %>%
+  filter(island == "Torgersen" & year == 2008 & body_mass_g > 3500 ) %>% #is it more intuitive to do this example with & or ,?
+  head()
+```
+
+#### 2. Arranging rows
+
+We can arrange our data, by a certain variable using the `arrange()` function
+
+For arranging by quantitative variable, in ascending order:
+
+```{r}
+penguins %>%
+  arrange(bill_length_mm)%>%
+  head()
+```
+
+and if we wanted to put it in descending order?
+
+```{r}
+penguins %>%
+  arrange(desc(bill_length_mm)) %>%
+  head()
+```
+
+And if we want to arrange by a categorical variable it works alphabetically:
+
+```{r}
+penguins %>%
+  arrange(species) %>%
+  head()
+```
+
+#### 3. Select
+
+A data set can have a ton of different variables, but sometimes we're only interested in a few. We can use the `select()` function to do just that! All you have to do is add all of the variables that you want inside of the function.
+
+```{r}
+penguins %>%
+  select(species, island, sex) %>%
+  head()
+```
+
+#### 4. Mutate
+
+
+#### 5. Grouping 
+
+
+#### 6. Summarize
+
 _yada yada about data transformation_
