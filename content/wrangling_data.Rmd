@@ -92,7 +92,9 @@ Now that our data is tidy we can use `dplyr` to further transform our data!
 
 There are 6 fundamental `dpylr` functions that should allow you to perform the data wrangling that you find yourself needing to do. For the following examples we'll be using the full `penguins` data set.
 
-We can use the `head()` function to get a feel for what the different variables are and what values those variables can take on, by looking at the first 5 rows.
+Whenever you see the `head()` function used, you can think of it as a way for us to take a peek at what our transformations are doing!
+
+First of all we can use it to get a feel for what our variables are and what their values might look like:
 
 ```{r}
 penguins %>%
@@ -165,10 +167,54 @@ penguins %>%
 
 #### 4. Mutate
 
+What if you wanted create a new column or "mutate" an existing column in some way? The `mutate()` function makes both of these things easy! For this example we'll go back to using our `penguins_sum` data frame.
 
-#### 5. Grouping 
+If we want to introduce a new column we choose a name for it and then indicate how we want to calculate it. For example we'll create a new column for the mean body mass in kilograms instead of grams:
+
+```{r}
+penguins_sum %>%
+  mutate(mean_body_mass_kg = (mean_body_mass_g/1000))
+  
+```
+
+If for some reason all of our years were off by 1 we could just change the original column like this:
+
+```{r}
+penguins_sum %>%
+  mutate(year = year +1)
+```
 
 
-#### 6. Summarize
+
+#### 5. Summarize and grouped summarize
+
+You might have noticed that the functions `group_by()` and `summarize()` were used in our explanation of tidy data with the data frame `penguins_sum`. Let's work step-by-step from our original data set to `penguins_sum` to get a better feel for what that code was doing!
+
+We want to end up with a data frame that shows the mean body mass of penguins for each island and each year. We can feed both of those variables into the `group_by()` to start:
+
+```{r}
+penguins %>%
+  group_by(island, year) %>%
+  head()
+```
+Notice how this code didn't actually change the way our data frame looks. This is because the `group_by()` function changes the metadata, you can think of this as R getting the data frame ready for a further transformation to be applied to it. We can apply the `summarize` function to get what we want!
+
+```{r}
+penguins %>%
+  group_by(island, year) %>%
+  summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
+```
+
+all that the `na.rm = TRUE` is doing is removing any NA values in `body_mass_g` so that we dont get any NA values in our final data frame.
+
+If we wanted to do something similar to this, but only look at mean body mass for each year, we can simply remove `island` from our `group_by()` function:
+
+```{r}
+penguins %>%
+  group_by(year) %>%
+  summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
+```
+
+
 
 _yada yada about data transformation_
