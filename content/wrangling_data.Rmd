@@ -218,7 +218,7 @@ penguins %>%
 
 Frequency tables can be a helpful way of displaying information about your data. For example, what if we want to know how many male and female penguins are in our sample? We can build a frequency table for this. 
 
-First, we'll need to `group_by()` the variable that we want to count, and then we'll `count()` frequencies by that variable!
+To do so, we can `count()` by the groups formed by splitting up any number of variables. First, by `sex`!
 
 ```{r}
 penguins %>%
@@ -227,14 +227,14 @@ penguins %>%
 
 Now we can easily see that our sample includes 165 females, 168 males, and 11 rows have an NA value in that column. 
 
-What if we want to see how many males and females were sampled on each island? We can simply `group_by()` island and sex, and then `count()`!
+What if we want to see how many males and females were sampled on each island? We can simply `count()` by `island` and `sex`!
 
 ```{r}
 penguins %>%
   count(island, sex)
 ```
 
-`count()` is a quick and easy way to produce frequency tables in R
+`count()` is a quick and easy way to produce frequency tables in R.
 
 
 _yada yada about data transformation_
