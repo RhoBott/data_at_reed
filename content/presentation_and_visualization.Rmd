@@ -15,10 +15,11 @@ library(knitr)
 
 `ggplot2` is an R package for data visualization that will allow you to make appealing and effective graphs using a simplified and standardized syntax.
 
-First, let's load the package; this is necessary every time you start a graphing session. (To learn more about packages see [[page]].)
+First, let's load the package; this is necessary every time you start a graphing session. (To learn more about packages see [[page]].) We will also load a dataset on penguin populations.
 
 ```{r}
 library(ggplot2)
+library(palmerpenguins)
 ```
 
 In order to get started with graphing in `ggplot2`, we'll need our data to be in what's called "tidy" format. You can read more about what it means for a dataset to be tidy on [our data wrangling page](link-goes-here) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
