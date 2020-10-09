@@ -22,9 +22,11 @@ library(ggplot2)
 library(palmerpenguins)
 ```
 
-In order to get started with graphing in `ggplot2`, we'll need our data to be in what's called "tidy" format. You can read more about what it means for a dataset to be tidy on [our data wrangling page](link-goes-here) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
+In order to get started with graphing in `ggplot2`, we'll need our data to be in  "tidy" format. You can read more about what it means for a dataset to be tidy on [our data wrangling page](link-goes-here) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
 
 ##### Graphing
+
+(consider adding 'three parts of a ggplot are...' for a general structure for folks to wrap their heads around (data+aes+geom() ). later in the write-up, can invoke leila's 'ggplot template' as well, perhaps)
 
 Suppose we're interested in how body mass changed over time on each of these islands. The following `ggplot2` graph might help us get at this question:
 
