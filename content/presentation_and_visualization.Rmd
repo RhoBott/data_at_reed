@@ -13,7 +13,7 @@ library(knitr)
 
 ### Intro to data visualization with ggplot2
 
-`ggplot2` is an R package for data visualization that will allow you to make pretty graphs with a simplified and standardized syntax!
+`ggplot2` is an R package for data visualization that will allow you to make appealing and effective graphs using a simplified and standardized syntax.
 
 First, let's load the package:
 
