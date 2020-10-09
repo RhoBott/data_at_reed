@@ -13,17 +13,22 @@ library(knitr)
 
 ### Intro to data visualization with ggplot2
 
-`ggplot2` is an R package for data visualization that will allow you to make pretty graphs with a simplified and standardized syntax!
+`ggplot2` is an R package for data visualization that will allow you to make appealing and effective graphs using a simplified and standardized syntax.
 
-First, let's load the package:
+First, let's load the package; this is necessary every time you start a graphing session. (To learn more about packages see [[page]].) We will also load a dataset on penguin populations.
 
 ```{r}
 library(ggplot2)
+library(palmerpenguins)
 ```
 
-In order to get started with graphing in `ggplot2`, we'll need our data to be in what's called "tidy" format. You can read more about what it means for a dataset to be tidy on [our data wrangling page](link-goes-here) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
+In order to get started with graphing in `ggplot2`, we'll need our data to be in  "tidy" format. You can read more about what it means for a dataset to be tidy on [our data wrangling page](link-goes-here) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
 
 ##### Graphing
+
+(consider adding 'three parts of a ggplot are...' for a general structure for folks to wrap their heads around (data+aes+geom() ). later in the write-up, can invoke leila's 'ggplot template' as well, perhaps)
+
+#### Scatterplots
 
 Suppose we're interested in how body mass changed over time on each of these islands. The following `ggplot2` graph might help us get at this question:
 
@@ -37,40 +42,63 @@ Let's look at the components of our ggplot2 code, and how they made this graph:
 
 First, we specified the `data` we were using, the penguin data. Next comes `mapping`, which essentially means "which variables encode what information": we told this graph to put bill length as the x axis, body mass as the y axis, and islands as the different colors. Finally, we add a `geom` layer to our plot—in this case, we use points. `geom`s refer to the visual object used to represent data. In `geom_point()`, the `geom` is a point on a scatterplot.
 
-##### Other Types of Graphs!
+##### Other Types of Graphs
 
 Here are some more examples of other types graphs that you can make with `ggplot2`.
 
-You can create a smoothed line-graph in exactly the same way as a scatterplot by swapping out `geom_point()` for `geom_line()`! This is an example of a different geom being used to represent the same data.
+##### Linegraphs
+
+You can create a smoothed linegraph in exactly the same way as a scatterplot by swapping out `geom_point()` for `geom_line()`. This is an example of a different `geom`(etry) being used to represent the same data.
 
 ```{r, message = FALSE, warning = FALSE}
 ggplot(data = penguins, 
-       mapping = aes(x = bill_length_mm, y = body_mass_g,color = island)) +
+       mapping = aes(x = bill_length_mm, y = body_mass_g)) +
   geom_smooth()
 ```
 
-Bar plots use the call `geom_bar()`. You can display another variable by including `fill = ` inside of your aes() call!
+Looking at the data, you may have noticed that we have information on different islands of penguins. You can use `color` as a visual variable to represent the different island populations.
+
+```{r, message = FALSE, warning = FALSE}
+ggplot(data = penguins, 
+       mapping = aes(x = bill_length_mm, y = body_mass_g, color = island)) +
+  geom_smooth()
+```
+
+##### Barplots
+
+Bar plots use the call `geom_bar()`.
+
+```{r}
+ggplot(data = penguins, mapping = aes(x = island)) +
+  geom_bar()
+```
+
+You can display another variable by including `fill = ` inside of your aes() call.
 
 ```{r}
 ggplot(data = penguins, mapping = aes(x = island, fill = sex)) +
   geom_bar()
 ```
 
-When making histograms with `ggplot2`, you can decide the width or the number of the bins of the histogram as appropriate for your data. Here we chose to use a binwidth of 100 grams:
+##### Histograms
+
+When making histograms with `ggplot2`, you can specify either the width of the bins or the number of the bins of the histogram as appropriate for your data. Here we chose to use a binwidth of 100 grams:
 
 ```{r, warning = FALSE}
 ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
   geom_histogram(binwidth = 100)
 ```
 
-Another useful graph to have in your back pocket is the boxplot. You can create multiple boxplots on the same graph by setting your `x` to a variable with multiple levels. In this example our call will create a boxplot for each individual island!
+##### Boxplots
+
+Another useful graph is the boxplot. You can create multiple boxplots on the same graph by setting your `x` to a variable with multiple levels. In this example our call will create a boxplot for each individual island.
 
 ```{r}
 ggplot(data = penguins, mapping  = aes(x = island, y = body_mass_g)) +
   geom_boxplot()
 ```
 
-##### More Aesthetics and Geoms!
+##### More Aesthetics and Geoms
 
 Below are some more examples of different aesthetics available with `ggplot2`.
 
@@ -89,7 +117,7 @@ ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, col
   facet_wrap(~species)
 ```
 
-To read more about `ggplot2`, we recommend the [R for Data Science chapter](https://r4ds.had.co.nz/data-visualisation.html)!
+To read more about `ggplot2`, we recommend the [R for Data Science chapter](https://r4ds.had.co.nz/data-visualisation.html).
 
 ### Making summary tables in R
 
