@@ -43,6 +43,11 @@ We want people to not only get the information they need, but also to know where
 
 Workflow-wise, editing the documents will look something like:
 
+old instructions in the dropdown below, better instructions on [#10](https://github.com/simonpcouch/data_at_reed/issues/10)!
+
+<details><summary></summary>
+<p>
+
 * Check for outstanding (i.e. unmerged) pull requests
 * Make a new branch off of `main`
 * Work on a document, tagging the issue for the relevant document in your commit messages
@@ -54,8 +59,14 @@ All of us have permission to merge pull requests! At the start of your work sess
 
 * as we work on this project, i highly recommend **every time you open up this project in RStudio, pull!** press the lil feller that is the blue down arrow! this will help prevent...
 * merge conflicts. hopefully we'll have a chance to get grooving a little bit before we come across one, but tl;dr -- two people make changes to the same thing, and Git is like "ahhHHHhHHhH WHAt R U doin?!?!" we'll cross that bridge when we come to it. or maybe i'll write something up beforehand. if not, Happy Git With R [comes in clutch](https://happygitwithr.com/push-rejected.html), as usual.
-* Git can be kind of an uphill battle while you're getting started. especially at first, the _why not just Google Docs?_ energy can be strong. **response 1:** it gets better, i promise! **answer 2:** [HGwR, per usual](https://happygitwithr.com/big-picture.html)
+* Git can be kind of an uphill battle while you're getting started. especially at first, the _why not just Google Docs?_ energy can be strong. **response 1:** it gets better, i promise! **response 2:** [HGwR, per usual](https://happygitwithr.com/big-picture.html)
 * i appreciate yall. stoked to get started up on this!
 
+</p>
+</details>
 
-*git is confusing, but we can get through it together! 
+
+
+
+
+*git is confusing, but we can get through it together!* 
