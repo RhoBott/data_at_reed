@@ -73,12 +73,30 @@ ggplot(data = penguins, mapping = aes(x = island)) +
   geom_bar()
 ```
 
-You can display another variable by including `fill = ` inside of your aes() call.
+You can display another variable by including `fill = ` inside of your `aes()` call.
 
 ```{r}
 ggplot(data = penguins, mapping = aes(x = island, fill = sex)) +
   geom_bar()
 ```
+
+In the above examples, `ggplot2` determines the height of bars by counting the number of observations behind the scenes. Sometimes, though, you might need to work with data that is "pre-counted." For example, if we make a new dataset giving the count of penguins by `island`:
+
+```{r, message = FALSE, warning = FALSE}
+penguins_sum <- penguins %>%
+  count(island)
+
+penguins_sum
+```
+
+To make the same graph, we need to use the `geom_col()` (as in "column") function, rather than `geom_bar()`, and supply the height of the bars explicitly.
+
+```{r}
+ggplot(data = penguins_sum, mapping = aes(x = island, y = n)) +
+  geom_col()
+```
+
+Notice that we had to supply `y = n` inside of `aes()`.
 
 ##### Histograms
 
