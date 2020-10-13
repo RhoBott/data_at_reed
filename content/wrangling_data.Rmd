@@ -237,18 +237,16 @@ Most all functions you will want to use from the `stringr` function begin with `
 
 String manipulations are carried out with the use of _patterns_, specified with a language called _regular expressions_ (or "regex", for short). Regular expressions are just shorthand ways of specifying general patterns that you wish to match in data. The following symbols might be helpful in getting started:
 
-1. `?` : means 0 or 1
-2. `+` : means 1 or more
-3. `*` : means 0 or more
-4. `^x` : means 'begins with x'
-5. `x$` : means 'ends with x'
+1. `^x` : means 'begins with x'
+2. `x$` : means 'ends with x'
+3. `x{n}` : means exactly n occurrences of x
+4. `x{n,}` : means n or more occurrences of x
+5. `x{n,m}` : between n and m occurrences of x
 6. `[xyz]` : means 'includes x or y or z'
 
 We'll demo what each of these looks like in context below.
 
-In this first example, we'll filter so that we only pull out `species` whose names end in 'p'. We can use the function `str_detect()` where we specify which variable we want to work with.
-
-Here, we're filtering our data to only look at penguin species that start with the letter 'A' who belong to an island that ends with the letter 'm'. We then use the function `str_to_upper()` to change our values for species to be all upper-case!
+Here, we're filtering our data to only look at penguin species that start with the letter 'A' who belong to an island that ends with the letter 'm'.
 
 ```{r}
 penguins %>%
@@ -268,11 +266,11 @@ penguins %>%
   head()
 ```
 
-Next, we'll take a look at an example where we want to only look at species that end in 1 or more "o's", and then we use a cool function called `str_to_upper' to capitalize the names of those species:
+Next, we'll take a look at an example where we want to only look at species that end in 1 or 2 "o's", and then we use a cool function called `str_to_upper()' to capitalize the names of those species:
 
 ```{r}
 penguins_edited <- penguins %>%
-  filter(str_detect(species, "O+$"))%>%
+  filter(str_detect(species, "o{1,2}$"))%>%
   mutate(species = str_to_upper(species)) %>%
   head()
 
@@ -281,15 +279,34 @@ penguins_edited
 
 Of course, there's also a corresponding `str_to_lower()` function. 
 
-Following off of our previous code, we can then use a function called `str_remove()` to drop zero or more "o's" from the end of each one. You don't get to see it here but if some of our species ended with and number of "O's" our code would have removed all of those "O's" as well.
+Following off of our previous code, we can then use a function called `str_remove()` to drop two "O's" from the end of each one (when they exist). You don't get to see it here but if some of our species ended with three "O's" our code would have only the first two.
 
 ```{r}
 penguins_edited %>%
-  mutate(species = str_remove(species,"O*$")) %>%
+  mutate(species = str_remove(species,"O{2}$")) %>%
   head()
 ```
+This can be especially useful when you have observations that have a prefix or a suffix that you don't want.
 
-This can be especially useful when you have observations that have a prefix or a suffix that you don't want!
+One important thing to note is that your inputs into `str_*` functions are usually case-sensitive.
+
+The last function that we'll show off here will be `str_replace()`. In this example we'll replace the "e" at the end of "Biscoe" with "otti". 
+
+```{r}
+penguins %>%
+  filter(island == "Biscoe") %>%
+  mutate(island = str_replace(island, "e", "tti")) %>%
+  head()
+```
+This is a rather silly example but there are plenty of situations in which making replacements such as these are important for a project you're working on.
+
+If you want to do a more extensive replacing of patterns you can use `str_replace_all()`. Here we replaced all occurrences of vowels with "x".
+
+```{r}
+penguins %>%
+  mutate(species = str_replace_all(species, "[aeiou]", "x")) %>%
+  head()
+```
 
 If you want to learn more about `stringr`, [the package's website](https://stringr.tidyverse.org/) contains a more extensive overview of the package and its functions. You might also check out the [Strings chapter](https://r4ds.had.co.nz/strings.html) of the R for Data Science book.
 
