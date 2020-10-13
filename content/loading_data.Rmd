@@ -10,11 +10,11 @@ library(emo)
 
 # Loading Data
 
-R is a wonderful tool for data cleaning, analysis, and visualization. But before we can do any of that, we need the actual data to work with! This page will help you learn to bring datasets into your R document in various ways: you can use a pre-loaded dataset, your own data from a .csv, excel sheet or a google sheet, or data found on the internet. 
+R is a wonderful tool for data cleaning, analysis, and visualization. But before we can do any of that, we need the actual data to work with. This page will help you learn to bring datasets into your R document in various ways: you can use a pre-loaded dataset, your own data from a .csv, excel sheet or a google sheet, or data found on the internet. 
 
 ### ...from a package
 
-A lot of data you'll end up working with in R is contained in R packages! (If you're unfamiliar with packages, see our [Getting Started](abcdefg) page.) In fact, most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes datasets from a study of three different species of penguins found in Antarctica.
+A lot of data you'll end up working with in R is contained in R packages. (If you're unfamiliar with packages, see our [Getting Started](abcdefg) page.) In fact, most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes datasets from a study of three different species of penguins found in Antarctica.
 
 ```{r, echo = FALSE}
 url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"
@@ -40,7 +40,7 @@ Okay... `palmerpenguins` is loaded... now where is the data?
 
 This is a weird thing about loading data from packages--if you don't already know what you're looking for inside the package, how do you find out what's inside?
 
-There are a couple ways. First, you could try running `help(package = "palmerpenguins"` in your console. This will show you all of the data and functions included in a package, as well as descriptions of what they are!
+There are a couple ways. First, you could try running `help(package = "palmerpenguins")` in your console. This will show you all of the data and functions included in a package, as well as descriptions of what they are.
 
 Alternatively, if you think all you need is a list of names of data or functions to jog your memory, you can make use of RStudio's autocomplete. Try typing the name of your package followed by two colons, like this 
 
@@ -50,7 +50,7 @@ palmerpenguins::
 
 Your tooltip should show you all of the datasets included in the package.
 
-Regardless, now you've found the name of the dataset you want. From here, you can use the `data()` function! It just takes in the name of the dataset.
+Regardless, now you've found the name of the dataset you want. From here, you can use the `data()` function. All you need to add is the name of the dataset.
 
 ```{r}
 data(penguins)
@@ -97,11 +97,13 @@ cat_data <- read_csv("Desktop/Reed/Bio123/cats.csv")
 
 In the above code, we are taking a .csv called "cats.csv", located in a folder "Bio123" within a "Reed" folder on our Desktop. The filepath "Desktop/Reed/Bio123" gives directions to `read_csv()` on where to find "cats.csv". `read_csv()` not only finds this data, it also makes it into a data frame, which we then save using the `<-` operator under a name of our choosing (`cat_data`). This data is now available to us to use in this R session. You can `View()` it, make a graph with it, or display it in a table.
 
+If you are using the Reed RStudio Server, you can upload your data file to your server files, and locate and use it from there. That uses the same `read_csv()` function, just a different filepath.
+
 If you want to learn more about the `readr` package or the `read_csv()` function, [here](https://readr.tidyverse.org/) is a more extensive overview of the package and its functions.
 
 ### ...from Excel (with `readxl`)
 
-If you've collected your own data in a class using Excel, and now want to bring it into R to work with, this process is also made simple with the `readxl` package!
+If you've collected your own data in a class using Excel, and now want to bring it into R to work with, this process is also made simple with the `readxl` package.
 
 As before, let's first install this package:
 ```{r, eval = FALSE}
@@ -215,7 +217,7 @@ reed_table <- url %>%
   html_table()
 ```
 
-Run the code and check your environment for the data frame `reed_table`!
+Run the code and check your environment for the data frame `reed_table`
 
 Hopefully this `rvest` tutorial has been more helpful than overwhelming, as you can see that even though the code looks complicated, you really only need 2 things to make it work: 
 
