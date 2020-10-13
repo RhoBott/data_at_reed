@@ -30,6 +30,9 @@ Briefly, for a dataset to be tidy, it must follow these three rules:
 3. Each value must have its own cell
 
 Let's take a look at a summarized version of the `penguins` data as an example:
+(for loading `penguins`, see [LINK TO DATA LOADING PAGE])
+
+_here_ maybe we should add something about how and why we are summarizing the data
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 penguins_sum <- penguins %>%
@@ -50,7 +53,7 @@ penguins_sum %>%
   pivot_wider(id_cols = c("island", "year"), names_from = year, values_from = mean_body_mass_g)
 ```
 
-This dataset technically contains the same data, but in this version, the mean body mass is held in three different columns!
+This dataset technically contains the same data, but in this version, the mean body mass is held in three different columns- one for each year.
 
 Sometimes, the data you're asked to analyze might look more like the second, untidy version than the first, tidy version. How do you move from one to the other? Introducing `tidyr`!
 
