@@ -97,8 +97,7 @@ Whenever you see the `head()` function used, you can think of it as a way for us
 First of all we can use it to get a feel for what our variables are and what their values might look like:
 
 ```{r}
-penguins %>%
-  head()
+penguins
 ```
 
 #### 1. Filtering rows
@@ -107,24 +106,21 @@ Let's say that you want to take a subset of your full data set, by only picking 
 
 ```{r}
 penguins %>%
-  filter(sex == "female")%>%
-  head()
+  filter(sex == "female")
 ```
 
 Or perhaps we want to only look at penguins with a bill length that's less than 40mm:
 
 ```{r}
 penguins %>%
-  filter(bill_length_mm < 40) %>%
-  head()
+  filter(bill_length_mm < 40)
 ```
 
 We can get as specific as we want. Suppose we want to look at the penguins from Trogersen island in 2008 with a body mass greater than 3500 grams:
 
 ```{r}
 penguins %>%
-  filter(island == "Torgersen" & year == 2008 & body_mass_g > 3500 ) %>% #is it more intuitive to do this example with & or ,?
-  head()
+  filter(island == "Torgersen" & year == 2008 & body_mass_g > 3500 )
 ```
 
 #### 2. Arranging rows
@@ -135,24 +131,21 @@ For arranging by quantitative variable, in ascending order:
 
 ```{r}
 penguins %>%
-  arrange(bill_length_mm)%>%
-  head()
+  arrange(bill_length_mm)
 ```
 
 and if we wanted to put it in descending order?
 
 ```{r}
 penguins %>%
-  arrange(desc(bill_length_mm)) %>%
-  head()
+  arrange(desc(bill_length_mm))
 ```
 
-And if we want to arrange by a categorical variable it works alphabetically:
+Given a categorical variable, `dplyr` will arrange alphabetically.
 
 ```{r}
 penguins %>%
-  arrange(species) %>%
-  head()
+  arrange(species)
 ```
 
 #### 3. Select
@@ -161,8 +154,7 @@ A data set can have a ton of different variables, but sometimes we're only inter
 
 ```{r}
 penguins %>%
-  select(species, island, sex) %>%
-  head()
+  select(species, island, sex)
 ```
 
 #### 4. Mutate
@@ -173,18 +165,15 @@ If we want to introduce a new column we choose a name for it and then indicate h
 
 ```{r}
 penguins_sum %>%
-  mutate(mean_body_mass_kg = (mean_body_mass_g/1000))
-  
+  mutate(mean_body_mass_kg = (mean_body_mass_g / 1000))
 ```
 
 If for some reason all of our years were off by 1 we could just change the original column like this:
 
 ```{r}
 penguins_sum %>%
-  mutate(year = year +1)
+  mutate(year = year + 1)
 ```
-
-
 
 #### 5. Summarize and grouped summarize
 
@@ -204,7 +193,7 @@ penguins %>%
   summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
 ```
 
-all that the `na.rm = TRUE` is doing is removing any NA values in `body_mass_g` so that we dont get any NA values in our final data frame.
+All that the `na.rm = TRUE` is doing is removing any NA values in `body_mass_g` so that we dont get any NA values in our final data frame.
 
 If we wanted to do something similar to this, but only look at mean body mass for each year, we can simply remove `island` from our `group_by()` function:
 
@@ -213,6 +202,8 @@ penguins %>%
   group_by(year) %>%
   summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
 ```
+
+If you want to learn more about `dplyr`, [the package's website](https://dplyr.tidyverse.org/) contains a more extensive overview of the package and its functions. You might also check out the [data transformation chapter](https://r4ds.had.co.nz/transform.html) of the R for Data Science book.
 
 ### Frequency tables
 
@@ -235,7 +226,6 @@ penguins %>%
 ```
 
 `count()` is a quick and easy way to produce frequency tables in R.
-
 
 ## strings with `stringr`
 
@@ -300,5 +290,7 @@ penguins_edited %>%
 ```
 
 This can be especially useful when you have observations that have a prefix or a suffix that you don't want!
+
+If you want to learn more about `stringr`, [the package's website](https://stringr.tidyverse.org/) contains a more extensive overview of the package and its functions. You might also check out the [Strings chapter](https://r4ds.had.co.nz/strings.html) of the R for Data Science book.
 
 _yada yada about data transformation_
