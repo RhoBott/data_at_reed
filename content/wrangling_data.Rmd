@@ -239,35 +239,38 @@ penguins %>%
 
 ## strings with `stringr`
 
-Often times you find yourself with a data set that includes data in the form of a string. In many cases a string in a data set will be in the form of text! The package `stringr` is really useful tool for working with this type of data and thankfully is already included in the `tidyverse` package, so if you already installed, that you should be good to go!
+Often times you find yourself with a data set that includes data in the form of a string. Strings are most often represented as `"text surrounded in quotes"` in R. The package `stringr` is really useful tool for working with this type of data, and thankfully is already included in the `tidyverse` package. If you've already loaded the `tidyverse` with `library(tidyverse)`, then you're ready to jump in.
 
-Instead of going through a step-by-step tutorial on exaclty how each `stringr` function works, we'll go through a couple of concrete examples using the `penguins` dataset to show off different ways to use `stringr` in your data wrangling
+Instead of going through a step-by-step tutorial on exactly how each `stringr` function works, we'll go through a couple of concrete examples using the `penguins` dataset to show off different ways to use `stringr` in your data wrangling.
 
-Some important notation to understand are the following symbols:
+Most all functions you will want to use from the `stringr` function begin with `str_`. If you ever forget the name of the function you need, try just typing `str_` and scrolling through the auto-completed list of functions exported from `stringr`.
 
-1. ? : means 0 or 1
-2. + : means 1 or more
-3. * : means 0 or more
-4. ^x : means 'begins with x'
-5. x$ : means 'ends with x'
-6. [xyz] : means 'includes x or y or z'
+String manipulations are carried out with the use of _patterns_, specified with a language called _regular expressions_ (or "regex", for short). Regular expressions are just shorthand ways of specifying general patterns that you wish to match in data. The following symbols might be helpful in getting started:
 
-These will make a lot more sense as we dive into our first example:
+1. `?` : means 0 or 1
+2. `+` : means 1 or more
+3. `*` : means 0 or more
+4. `^x` : means 'begins with x'
+5. `x$` : means 'ends with x'
+6. `[xyz]` : means 'includes x or y or z'
 
-In this first example we'll filter so that we only pull out species whose names end in 'p'. We can use the function `str_detect()` where we specify which variable we want to work with.
+We'll demo what each of these looks like in context below.
 
-Here we're filtering our data to only look at penguin species that start with the letter 'A' who belong to an island that ends with the letter 'm'. We then use the function `str_to_upper()` to change our values for species to be all upper-case!
+In this first example, we'll filter so that we only pull out `species` whose names end in 'p'. We can use the function `str_detect()` where we specify which variable we want to work with.
+
+Here, we're filtering our data to only look at penguin species that start with the letter 'A' who belong to an island that ends with the letter 'm'. We then use the function `str_to_upper()` to change our values for species to be all upper-case!
 
 ```{r}
 penguins %>%
   filter(str_detect(species, "^A") & str_detect(island, "m$")) %>%
   head()
 ```
-Now if you're comfortable with `dplyr` you may be realizing that this is a bit of a silly way to solve this problem as we could very easily just use `filter(species == "Adelie" & island == "Dream)`, but if you were dealing with a data set that had text that wasn't split into factors, using `str_detect()` makes a lot of things possible.
 
-For example imagine that you were looking at a data set that had a column called 'name' which included the names of 100 different species of fish. You could use the code above to only look at species that started or ended with a certain letter!
+If you're comfortable with `dplyr` you may be realizing that this is a bit of a silly way to solve this problem as we could very easily just use `filter(species == "Adelie" & island == "Dream")`, but if you were dealing with a data set that had text that wasn't split into factors, using `str_detect()` makes a lot of things possible.
 
-Importantly this can be extended beyond just a letter, so that we can look for observations that start or end with any given combination of characters:
+For example, imagine that you were looking at a data set that had a column called 'name' which included the names of 100 different species of fish. You could use the code above to only look at species that started or ended with a certain letter.
+
+This can be extended beyond just a letter, so that we can look for observations that start or end with any given combination of characters:
 
 ```{r}
 penguins %>%
@@ -275,7 +278,7 @@ penguins %>%
   head()
 ```
 
-Next we'll take a look at an example where we want to only look at species that end in 1 or more "o's", and then we use a cool function called `str_to_upper' to capitalize the names of those species:
+Next, we'll take a look at an example where we want to only look at species that end in 1 or more "o's", and then we use a cool function called `str_to_upper' to capitalize the names of those species:
 
 ```{r}
 penguins_edited <- penguins %>%
@@ -286,9 +289,9 @@ penguins_edited <- penguins %>%
 penguins_edited
 ```
 
-(of course theres also a corresponding `str_to_lower`). 
+Of course, there's also a corresponding `str_to_lower()` function. 
 
-following off of our previous code we can then use a function called `str_remove()` to drop zero or more "O's" from the end of each one. You don't get to see it here but if some of our species ended with and number of "O's" our code would have removed all of those "O's" as well.
+Following off of our previous code, we can then use a function called `str_remove()` to drop zero or more "o's" from the end of each one. You don't get to see it here but if some of our species ended with and number of "O's" our code would have removed all of those "O's" as well.
 
 ```{r}
 penguins_edited %>%
@@ -297,16 +300,5 @@ penguins_edited %>%
 ```
 
 This can be especially useful when you have observations that have a prefix or a suffix that you don't want!
-
-
-
-
-
-
-
-
-
-
-
 
 _yada yada about data transformation_
