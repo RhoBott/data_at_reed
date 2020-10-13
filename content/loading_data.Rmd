@@ -72,16 +72,17 @@ Ready to go. `r emo::ji("racing_car")`
 
 ### ...from a .csv (and friends, with `readr`)
 
-A lot of data that you'll find on the internet will be in .csv format. This is a very common and transferrable format of data that can easily go between many different applications, including R! In order to load a .csv into R, we'll need the `readr` package.
+A lot of data that you'll find on the internet will be in .csv format. This is a very common format of data that can be easily transferred between many different applications, including R! In order to load a .csv file into R, we'll need the `readr` package.
 
 First, we'll need to install the `readr` package:
+
 ```{r, eval = FALSE}
 install.packages("readr")
 ```
 
 Now that you have the package installed, you need to load the package into your environment with `library()`. Again, you only need to install the package once, but you'll need to load the package with your data every time you open R back up.
 
-```{r}
+```{r, warning = FALSE, message = FALSE}
 library(readr)
 ```
 
@@ -97,20 +98,21 @@ cat_data <- read_csv("Desktop/Reed/Bio123/cats.csv")
 
 In the above code, we are taking a .csv called "cats.csv", located in a folder "Bio123" within a "Reed" folder on our Desktop. The filepath "Desktop/Reed/Bio123" gives directions to `read_csv()` on where to find "cats.csv". `read_csv()` not only finds this data, it also makes it into a data frame, which we then save using the `<-` operator under a name of our choosing (`cat_data`). This data is now available to us to use in this R session. You can `View()` it, make a graph with it, or display it in a table.
 
-If you want to learn more about the `readr` package or the `read_csv()` function, [here](https://readr.tidyverse.org/) is a more extensive overview of the package and its functions.
+If you want to learn more about the `readr` package or the `read_csv()` function, [the package's website](https://readr.tidyverse.org/) is a more extensive overview of the package and its functions. You might also check out the [data import chapter](https://r4ds.had.co.nz/data-import.html) of the R for Data Science book.
 
 ### ...from Excel (with `readxl`)
 
-If you've collected your own data in a class using Excel, and now want to bring it into R to work with, this process is also made simple with the `readxl` package!
+If you've collected your own data in a class using Excel, and now want to bring it into R to work with, this process is made simple with the `readxl` package!
 
-As before, let's first install this package:
+As before, let's first install the `readxl` package with the following code:
+
 ```{r, eval = FALSE}
 install.packages("readxl")
 ```
 
 Now that you have the package installed, you need to load the package into your environment with `library()`. Again, you only need to install the package once, but you'll need to load the package with your data every time you open R back up.
 
-```{r}
+```{r, warning = FALSE, message = FALSE}
 library(readxl)
 ```
 
@@ -171,6 +173,8 @@ You're done! Check your "environment" in the top right corner of your R window, 
 
 Whew, that was pretty involved. If you grant R access to your folders in the future, however, this will be a much smoother process after the first time. Don't worry!
 
+If you want to learn more about `googlesheets4`, [the package's website](https://googlesheets4.tidyverse.org/) contains a more extensive overview of the package and its functions.
+
 ### ...from the internet (with `rvest`)
 
 Let's say we find some data on a website that we would like to use. We've all been there: trying to copy/paste the whole table into excel or sheets, re-formatting, and eventually slamming the laptop shut before we've even finished. 
@@ -183,10 +187,10 @@ Ok ok ok, that was a longer intro than usual. Let's get into it. First, let's in
 
 ```{r, eval = FALSE}
 install.packages("rvest")
+library(rvest)
 ```
 
-
-```{r}
+```{r, echo = FALSE}
 library(rvest)
 ```
 
@@ -223,7 +227,9 @@ Hopefully this `rvest` tutorial has been more helpful than overwhelming, as you 
 
 2. The "selector" code that will tell R exactly where that table is
 
-##conclusions and more resources!!!
+If you want to learn more about `rvest`, [the package's website](https://rvest.tidyverse.org/) contains a more extensive overview of the package and its functions.
+
+### conclusions and more resources!!!
 
 
 

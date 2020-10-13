@@ -117,7 +117,7 @@ ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, col
   facet_wrap(~species)
 ```
 
-To read more about `ggplot2`, we recommend the [R for Data Science chapter](https://r4ds.had.co.nz/data-visualisation.html).
+To read more about `ggplot2`, we recommend the [R for Data Science chapter](https://r4ds.had.co.nz/data-visualisation.html). More extensive documentation can be found on the [ggplot2 website](https://ggplot2.tidyverse.org/).
 
 ### Making summary tables in R
 
