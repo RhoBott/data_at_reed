@@ -1,0 +1,20 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# More Resources
+
+Hopefully, you've read through the documentation here, and it's answered some of your questions. But there are always more resources out there.
+
+
+### R package cheatsheets
+
+RStudio has collected many cheatsheets for common R packages, and they can be found [here](https://rstudio.com/resources/cheatsheets/). Some possibly helpful ones to check out include sheets for data visualization with `ggplot2`, data transformation with `dplyr`, data import with `readr`, and R Markdown.
+
+### mLab
+
+You can come and get help from someone at the [mLab](https://www.reed.edu/cis/mlab/index.html), and drop-in help hours can be found [here](https://www.reed.edu/cis/mlab/calendar.html).
