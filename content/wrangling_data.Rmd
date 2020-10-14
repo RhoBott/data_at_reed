@@ -100,8 +100,7 @@ Whenever you see the `head()` function used, you can think of it as a way for us
 First of all we can use it to get a feel for what our variables are and what their values might look like:
 
 ```{r}
-penguins %>%
-  head()
+penguins
 ```
 
 #### 1. Filtering rows
@@ -110,24 +109,21 @@ Let's say that you want to take a subset of your full data set, by only picking 
 
 ```{r}
 penguins %>%
-  filter(sex == "female")%>%
-  head()
+  filter(sex == "female")
 ```
 
 Or perhaps we want to only look at penguins with a bill length that's less than 40mm:
 
 ```{r}
 penguins %>%
-  filter(bill_length_mm < 40) %>%
-  head()
+  filter(bill_length_mm < 40)
 ```
 
 We can get as specific as we want. Suppose we want to look at the penguins from Trogersen island in 2008 with a body mass greater than 3500 grams:
 
 ```{r}
 penguins %>%
-  filter(island == "Torgersen" & year == 2008 & body_mass_g > 3500 ) %>% #is it more intuitive to do this example with & or ,?
-  head()
+  filter(island == "Torgersen" & year == 2008 & body_mass_g > 3500 )
 ```
 
 #### 2. Arranging rows
@@ -138,24 +134,21 @@ For arranging by quantitative variable, in ascending order:
 
 ```{r}
 penguins %>%
-  arrange(bill_length_mm)%>%
-  head()
+  arrange(bill_length_mm)
 ```
 
 and if we wanted to put it in descending order?
 
 ```{r}
 penguins %>%
-  arrange(desc(bill_length_mm)) %>%
-  head()
+  arrange(desc(bill_length_mm))
 ```
 
-And if we want to arrange by a categorical variable it works alphabetically:
+Given a categorical variable, `dplyr` will arrange alphabetically.
 
 ```{r}
 penguins %>%
-  arrange(species) %>%
-  head()
+  arrange(species)
 ```
 
 #### 3. Select
@@ -164,8 +157,7 @@ A data set can have a ton of different variables, but sometimes we're only inter
 
 ```{r}
 penguins %>%
-  select(species, island, sex) %>%
-  head()
+  select(species, island, sex)
 ```
 
 #### 4. Mutate
@@ -176,18 +168,15 @@ If we want to introduce a new column we choose a name for it and then indicate h
 
 ```{r}
 penguins_sum %>%
-  mutate(mean_body_mass_kg = (mean_body_mass_g/1000))
-  
+  mutate(mean_body_mass_kg = (mean_body_mass_g / 1000))
 ```
 
 If for some reason all of our years were off by 1 we could just change the original column like this:
 
 ```{r}
 penguins_sum %>%
-  mutate(year = year +1)
+  mutate(year = year + 1)
 ```
-
-
 
 #### 5. Summarize and grouped summarize
 
@@ -207,7 +196,7 @@ penguins %>%
   summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
 ```
 
-all that the `na.rm = TRUE` is doing is removing any NA values in `body_mass_g` so that we dont get any NA values in our final data frame.
+All that the `na.rm = TRUE` is doing is removing any NA values in `body_mass_g` so that we dont get any NA values in our final data frame.
 
 If we wanted to do something similar to this, but only look at mean body mass for each year, we can simply remove `island` from our `group_by()` function:
 
@@ -216,6 +205,8 @@ penguins %>%
   group_by(year) %>%
   summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
 ```
+
+If you want to learn more about `dplyr`, [the package's website](https://dplyr.tidyverse.org/) contains a more extensive overview of the package and its functions. You might also check out the [data transformation chapter](https://r4ds.had.co.nz/transform.html) of the R for Data Science book.
 
 ### Frequency tables
 
@@ -239,7 +230,6 @@ penguins %>%
 
 `count()` is a quick and easy way to produce frequency tables in R.
 
-
 ## strings with `stringr`
 
 Often times you find yourself with a data set that includes data in the form of a string. Strings are most often represented as `"text surrounded in quotes"` in R. The package `stringr` is really useful tool for working with this type of data, and thankfully is already included in the `tidyverse` package. If you've already loaded the `tidyverse` with `library(tidyverse)`, then you're ready to jump in.
@@ -250,18 +240,16 @@ Most all functions you will want to use from the `stringr` function begin with `
 
 String manipulations are carried out with the use of _patterns_, specified with a language called _regular expressions_ (or "regex", for short). Regular expressions are just shorthand ways of specifying general patterns that you wish to match in data. The following symbols might be helpful in getting started:
 
-1. `?` : means 0 or 1
-2. `+` : means 1 or more
-3. `*` : means 0 or more
-4. `^x` : means 'begins with x'
-5. `x$` : means 'ends with x'
+1. `^x` : means 'begins with x'
+2. `x$` : means 'ends with x'
+3. `x{n}` : means exactly n occurrences of x
+4. `x{n,}` : means n or more occurrences of x
+5. `x{n,m}` : between n and m occurrences of x
 6. `[xyz]` : means 'includes x or y or z'
 
 We'll demo what each of these looks like in context below.
 
-In this first example, we'll filter so that we only pull out `species` whose names end in 'p'. We can use the function `str_detect()` where we specify which variable we want to work with.
-
-Here, we're filtering our data to only look at penguin species that start with the letter 'A' who belong to an island that ends with the letter 'm'. We then use the function `str_to_upper()` to change our values for species to be all upper-case!
+Here, we're filtering our data to only look at penguin species that start with the letter 'A' who belong to an island that ends with the letter 'm'.
 
 ```{r}
 penguins %>%
@@ -269,7 +257,7 @@ penguins %>%
   head()
 ```
 
-If you're comfortable with `dplyr` you may be realizing that this is a bit of a silly way to solve this problem as we could very easily just use `filter(species == "Adelie" & island == "Dream")`, but if you were dealing with a data set that had text that wasn't split into factors, using `str_detect()` makes a lot of things possible.
+If you're comfortable with `dplyr` you may be realizing that this is not the most efficient way to solve this problem as we could very easily use `filter(species == "Adelie" & island == "Dream")`, but if you were dealing with a data set that had text that wasn't split into factors, using `str_detect()` makes a lot of things possible.
 
 For example, imagine that you were looking at a data set that had a column called 'name' which included the names of 100 different species of fish. You could use the code above to only look at species that started or ended with a certain letter.
 
@@ -281,11 +269,11 @@ penguins %>%
   head()
 ```
 
-Next, we'll take a look at an example where we want to only look at species that end in 1 or more "o's", and then we use a cool function called `str_to_upper' to capitalize the names of those species:
+Next, we'll take a look at an example where we want to only look at species that end in 1 or 2 "o's", and then we use a helpful function called `str_to_upper()' to capitalize the names of those species:
 
 ```{r}
 penguins_edited <- penguins %>%
-  filter(str_detect(species, "O+$"))%>%
+  filter(str_detect(species, "o{1,2}$"))%>%
   mutate(species = str_to_upper(species)) %>%
   head()
 
@@ -294,14 +282,35 @@ penguins_edited
 
 Of course, there's also a corresponding `str_to_lower()` function. 
 
-Following off of our previous code, we can then use a function called `str_remove()` to drop zero or more "o's" from the end of each one. You don't get to see it here but if some of our species ended with and number of "O's" our code would have removed all of those "O's" as well.
+Following off of our previous code, we can then use a function called `str_remove()` to drop two "O's" from the end of each one (when they exist). You don't get to see it here but if some of our species ended with three "O's" our code would have only the first two.
 
 ```{r}
 penguins_edited %>%
-  mutate(species = str_remove(species,"O*$")) %>%
+  mutate(species = str_remove(species,"O{2}$")) %>%
+  head()
+```
+This can be especially useful when you have observations that have a prefix or a suffix that you don't want.
+
+One important thing to note is that your inputs into `str_*` functions are usually case-sensitive.
+
+The last function that we'll show here will be `str_replace()`. In this example we'll replace the "e" at the end of "Biscoe" with "otti". 
+
+```{r}
+penguins %>%
+  filter(island == "Biscoe") %>%
+  mutate(island = str_replace(island, "e", "tti")) %>%
+  head()
+```
+This is a rather silly example but there are plenty of situations in which making replacements such as these are important for a project you're working on.
+
+If you want to do a more extensive replacing of patterns you can use `str_replace_all()`. Here we replaced all occurrences of vowels with "x".
+
+```{r}
+penguins %>%
+  mutate(species = str_replace_all(species, "[aeiou]", "x")) %>%
   head()
 ```
 
-This can be especially useful when you have observations that have a prefix or a suffix that you don't want!
+If you want to learn more about `stringr`, [the package's website](https://stringr.tidyverse.org/) contains a more extensive overview of the package and its functions. You might also check out the [Strings chapter](https://r4ds.had.co.nz/strings.html) of the R for Data Science book.
 
 _yada yada about data transformation_
