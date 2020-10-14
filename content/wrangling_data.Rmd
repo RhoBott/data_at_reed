@@ -254,7 +254,7 @@ penguins %>%
   head()
 ```
 
-If you're comfortable with `dplyr` you may be realizing that this is a bit of a silly way to solve this problem as we could very easily just use `filter(species == "Adelie" & island == "Dream")`, but if you were dealing with a data set that had text that wasn't split into factors, using `str_detect()` makes a lot of things possible.
+If you're comfortable with `dplyr` you may be realizing that this is not the most efficient way to solve this problem as we could very easily use `filter(species == "Adelie" & island == "Dream")`, but if you were dealing with a data set that had text that wasn't split into factors, using `str_detect()` makes a lot of things possible.
 
 For example, imagine that you were looking at a data set that had a column called 'name' which included the names of 100 different species of fish. You could use the code above to only look at species that started or ended with a certain letter.
 
@@ -266,7 +266,7 @@ penguins %>%
   head()
 ```
 
-Next, we'll take a look at an example where we want to only look at species that end in 1 or 2 "o's", and then we use a cool function called `str_to_upper()' to capitalize the names of those species:
+Next, we'll take a look at an example where we want to only look at species that end in 1 or 2 "o's", and then we use a helpful function called `str_to_upper()' to capitalize the names of those species:
 
 ```{r}
 penguins_edited <- penguins %>%
@@ -290,7 +290,7 @@ This can be especially useful when you have observations that have a prefix or a
 
 One important thing to note is that your inputs into `str_*` functions are usually case-sensitive.
 
-The last function that we'll show off here will be `str_replace()`. In this example we'll replace the "e" at the end of "Biscoe" with "otti". 
+The last function that we'll show here will be `str_replace()`. In this example we'll replace the "e" at the end of "Biscoe" with "otti". 
 
 ```{r}
 penguins %>%
