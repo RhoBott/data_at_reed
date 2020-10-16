@@ -230,8 +230,3 @@ Hopefully in this `rvest` tutorial you can see that even though the code looks c
 2. The "selector" code that will tell R exactly where that table is
 
 If you want to learn more about `rvest`, [the package's website](https://rvest.tidyverse.org/) contains a more extensive overview of the package and its functions.
-
-###More resources
-
-
-

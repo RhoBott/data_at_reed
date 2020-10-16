@@ -11,7 +11,7 @@ library(knitr)
 
 # Wrangling Data
 
-_explanation/something goofy about data wrangling_
+When you first get a dataset, whether it's from a class, downloaded from the internet, or given to you by a professor, there might be ways that you want to change that data to make it easier to work with, add more information, or summarize your data. These all fall under the term "Data Wrangling". Let's learn how to handle our data, how to get more out of it, and how to keep it tidy.
 
 ### Data Frames and `tibble`s
 
@@ -41,7 +41,6 @@ penguins_sum <- penguins %>%
 
 penguins_sum
 ```
-
 
 
 Each variable has its own column, each observation (the sample of penguins on a given island in a given year) is a row, and each value has its own cell.
