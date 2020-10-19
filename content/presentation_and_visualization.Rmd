@@ -137,9 +137,44 @@ ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, col
 
 To read more about `ggplot2`, we recommend the [R for Data Science chapter](https://r4ds.had.co.nz/data-visualisation.html). More extensive documentation can be found on the [ggplot2 website](https://ggplot2.tidyverse.org/).
 
-### Making summary tables in R
+###Making summary tables in R
 
-_yada yada about `kable`_
+On the [Data Wrangling](INSERT LINK TO DATA WRANGLING PAGE) page, we showed how to compute summary statistics for your data. Summary tables can be great for displaying data, and the `kable()` function in the R package `knitr` lets us do this easily.
+
+Let's install and load the package first.
+
+```{r eval = FALSE}
+install.packages("knitr")
+```
+
+```{r}
+library(knitr)
+```
+
+As before, we'll use `palmerpenguins`, and we'll use `kable()` to display the summary statistics we calculated over in our Data Wrangling section. Here is the code for our summary statistics, which I'll save in a new data frame called `penguin_sum`.
+
+```{r}
+penguin_sum <- penguins %>%
+  group_by(island, year) %>%
+  summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
+```
+
+R lets us print data frames like this:
+
+```{r}
+penguin_sum
+```
+
+But that's not a very pretty table to look at. So let's make a nicer one with `kable()`.
+
+```{r}
+kable(x = penguin_sum, 
+      format = "html",
+      col.names = c("Island", "Year", "Mean Body Mass (g)"),
+      caption = "Mean body mass of penguins on different islands over time")
+```
+
+_Can we use KableExtra? How do I make this prettier if not?_
 
 ### Writing up your results
 
