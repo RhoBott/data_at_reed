@@ -15,16 +15,16 @@ library(knitr)
 
 `ggplot2` is an R package for data visualization that will allow you to make appealing and effective graphs using a simplified and standardized syntax.
 
-First, let's load the package; this is necessary every time you start a graphing session. (To learn more about packages see [[page]].) We will also load a dataset on penguin populations.
+First, let's load the package; this is necessary every time you start a graphing session. (To learn more about packages see our [Getting Started](LINK-HERE) page.) We will also load a dataset on penguin populations.
 
 ```{r}
 library(ggplot2)
 library(palmerpenguins)
 ```
 
-In order to get started with graphing in `ggplot2`, we'll need our data to be in  "tidy" format. You can read more about what it means for a dataset to be tidy on [our data wrangling page](link-goes-here) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
+In order to get started with graphing in `ggplot2`, we'll need our data to be in  "tidy" format. You can read more about what it means for a dataset to be tidy on [our data wrangling page](LINK-HERE) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
 
-(consider adding 'three parts of a ggplot are...' for a general structure for folks to wrap their heads around (data+aes+geom() ). later in the write-up, can invoke leila's 'ggplot template' as well, perhaps)
+<!-- (consider adding 'three parts of a ggplot are...' for a general structure for folks to wrap their heads around (data+aes+geom() ). later in the write-up, can invoke leila's 'ggplot template' as well, perhaps) -->
 
 #### Scatterplots
 
@@ -133,7 +133,7 @@ To read more about `ggplot2`, we recommend the [R for Data Science chapter](http
 
 ### Making Summary Tables in R
 
-On the [Data Wrangling](INSERT LINK TO DATA WRANGLING PAGE) page, we showed how to compute summary statistics for your data. Summary tables can be great for displaying data, and the `kable()` function in the R package `knitr` lets us do this easily.
+On the [Data Wrangling](LINK-HERE) page, we showed how to compute summary statistics for your data. Summary tables can be great for displaying data, and the `kable()` function in the R package `knitr` lets us do this easily.
 
 Let's install and load the package first.
 
@@ -168,7 +168,7 @@ kable(x = penguin_sum,
       caption = "Mean body mass of penguins on different islands over time")
 ```
 
-_Can we use KableExtra? How do I make this prettier if not?_
+<!-- _Can we use KableExtra? How do I make this prettier if not?_ -->
 
 ### Writing Up Your Results
 

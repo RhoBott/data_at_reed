@@ -15,7 +15,7 @@ When you first get a dataset, whether it's from a class, downloaded from the int
 
 ### Data Frames and `tibble`s
 
-_yada yada about data frames and tibbles_ - biggest thing to note here is that the print method (i.e. what happens when you just type the name of a data frame) is much better than that for normal data frames
+<!-- _yada yada about data frames and tibbles_ - biggest thing to note here is that the print method (i.e. what happens when you just type the name of a data frame) is much better than that for normal data frames -->
 
 ### Tidy Data Principles, Reshaping Data, and `tidyr`
 
@@ -29,10 +29,10 @@ Briefly, for a dataset to be tidy, it must follow these three rules:
 
 3. Each value must have its own cell
 
-Let's take a look at a summarized version of the `penguins` data as an example:
-(for loading `penguins`, see [LINK TO DATA LOADING PAGE])
+Let's take a look at a summarized version of the `penguins` data as an example.
+(For instructions on loading `penguins`, see our [Getting Started](LINK-HERE) page)
 
-_here_ maybe we should add something about how and why we are summarizing the data
+<!-- _here_ maybe we should add something about how and why we are summarizing the data -->
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 penguins_sum <- penguins %>%
@@ -187,6 +187,7 @@ We want to end up with a data frame that shows the mean body mass of penguins fo
 penguins %>%
   group_by(island, year)
 ```
+
 Notice how this code didn't actually change the way our data frame looks. This is because the `group_by()` function changes the metadata, you can think of this as R getting the data frame ready for a further transformation to be applied to it. We can apply the `summarize` function to get what we want!
 
 ```{r}
@@ -195,7 +196,7 @@ penguins %>%
   summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
 ```
 
-All that the `na.rm = TRUE` is doing is removing any NA values in `body_mass_g` so that we dont get any NA values in our final data frame.
+All that the `na.rm = TRUE` is doing is removing any missing values in `body_mass_g` so that we don't report missing values in our summary.
 
 If we wanted to do something similar to this, but only look at mean body mass for each year, we can simply remove `island` from our `group_by()` function:
 
@@ -211,7 +212,7 @@ If you want to learn more about `dplyr`, [the package's website](https://dplyr.t
 
 Frequency tables can be a helpful way of displaying information about your data. For example, what if we want to know how many male and female penguins are in our sample? We can build a frequency table for this. 
 
-To do so, we can `count()` by the groups formed by splitting up any number of variables. First, by `sex`!
+To do so, we can `count()` by the groups formed by splitting up any number of variables. First, by `sex`:
 
 ```{r}
 penguins %>%
@@ -220,7 +221,7 @@ penguins %>%
 
 Now we can easily see that our sample includes 165 females, 168 males, and 11 rows have an NA value in that column. 
 
-What if we want to see how many males and females were sampled on each island? We can simply `count()` by `island` and `sex`!
+What if we want to see how many males and females were sampled on each island? We can simply `count()` by `island` and `sex`:
 
 ```{r}
 penguins %>%
@@ -288,6 +289,7 @@ penguins_edited %>%
   mutate(species = str_remove(species,"O{2}$")) %>%
   head()
 ```
+
 This can be especially useful when you have observations that have a prefix or a suffix that you don't want.
 
 One important thing to note is that your inputs into `str_*` functions are usually case-sensitive.
@@ -300,9 +302,10 @@ penguins %>%
   mutate(island = str_replace(island, "e", "tti")) %>%
   head()
 ```
-This is a rather silly example but there are plenty of situations in which making replacements such as these are important for a project you're working on.
 
-If you want to do a more extensive replacing of patterns you can use `str_replace_all()`. Here we replaced all occurrences of vowels with "x".
+This is a somewhat silly example, but there are plenty of situations in which making replacements such as these will be important for a project you might be working on.
+
+If you want to replace patterns more extensively, you can use `str_replace_all()`. Here we replaced all occurrences of vowels with "x".
 
 ```{r}
 penguins %>%
