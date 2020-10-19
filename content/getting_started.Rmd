@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Getting Started with R at Reed
 
-_howdy_
+R is a versatile tool, and at Reed R is used across departments and in various ways. Our goal is to help you navigate this tool in any setting that you might use it. This document will be an introduction to the Reed RStudio Server, Desktop R, and the R thesis template. 
 
 ### Reed RStudio Server
 
@@ -20,6 +20,6 @@ _hello_
 
 ### Writing Your Thesis in `thesisdown`
 
-_howdy_
+The `thesisdown` package provides an R Markdown template for writing your senior thesis, which is particularly helpful for easily integrating R code and graphics into your thesis manuscript. Instructions for how to install this package and use the template can be found in the [GitHub repository](https://github.com/ismayc/thesisdown).
 
 ### The `palmerpenguins` Data
