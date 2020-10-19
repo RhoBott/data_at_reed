@@ -6,10 +6,20 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#Reed Rstudio Server
+# Getting Started with R at Reed
+
+_howdy_
+
+### Reed RStudio Server
 
 _hello_
 
-#Desktop R
+### Desktop R
 
 _hello_
+
+### Writing Your Thesis in `thesisdown`
+
+_howdy_
+
+### The `palmerpenguins` Data

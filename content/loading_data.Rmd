@@ -12,9 +12,9 @@ library(emo)
 
 R is a great tool for data cleaning, analysis, and visualization. But before we can do any of that, we need the actual data to work with. This page will help you learn to bring datasets into your R document in various ways: you can use a pre-loaded dataset, your own data from a .csv, excel sheet or a google sheet, or data found on the internet. 
 
-### From a package
+### From a Package
 
-A lot of data you'll end up working with in R is contained in R packages. (If you're unfamiliar with packages, see our [Getting Started](abcdefg) page.) In fact, most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes datasets from a study of three different species of penguins found in Antarctica.
+A lot of data you'll end up working with in R is contained in R packages. (If you're unfamiliar with packages, see our [Getting Started](LINK-HERE) page.) In fact, most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes datasets from a study of three different species of penguins found in Antarctica.
 
 ```{r, echo = FALSE}
 url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"
@@ -56,7 +56,7 @@ Regardless, now you've found the name of the dataset you want. From here, you ca
 data(penguins)
 ```
 
-Depending on how datasets are included in a package, you might run that command and see nothing, or maybe just see `<Promise>` up in your Environment in the top-right corner of your RStudio. It might not look like your data is loaded, but it is. Try running the `View()` function in your console, which just takes in the name of your dataset.
+Depending on how datasets are included in a package, you might run that command and see nothing, or maybe just see `<Promise>` up in your Environment in the top-right corner of your RStudio window. It might not look like your data is loaded, but it is. Try running the `View()` function in your console, which just takes in the name of your dataset.
 
 ```{r, eval = FALSE}
 View(penguins)
@@ -72,7 +72,7 @@ Ready to go. `r emo::ji("racing_car")`
 
 ### From a .csv (with `readr`)
 
-A lot of data that you'll find on the internet will be in .csv format. This is a very common format of data that can be easily transferred between many different applications, including R. In order to load a .csv file into R, we'll need the `readr` package.
+A lot of data that you'll find on the internet will be in `.csv` format. This is a very common format of data that can be easily transferred between many different applications, including R. In order to load a `.csv` file into R, we'll need the `readr` package.
 
 First, we'll need to install the `readr` package:
 
@@ -96,9 +96,9 @@ First, you'll need to download the data and know where this data is on your comp
 cat_data <- read_csv("Desktop/Reed/Bio123/cats.csv")
 ```
 
-In the above code, we are taking a .csv called "cats.csv", located in a folder "Bio123" within a "Reed" folder on our Desktop. The filepath "Desktop/Reed/Bio123" gives directions to `read_csv()` on where to find "cats.csv". 
+In the above code, we are taking a `.csv` called `cats.csv`, located in a folder `Bio123` within a "Reed" folder on our Desktop. The filepath `Desktop/Reed/Bio123` gives directions to `read_csv()` on where to find `cats.csv`. 
 
-`read_csv()` not only finds this data, it also makes it into a data frame, which we then save using the `<-` operator under a name of our choosing (`cat_data`). This data is now available to us to use in this R session. You can `View()` it, make a graph with it, or display it in a table.
+`read_csv()` not only finds this data, it also makes it into a data frame, which we then store using the `<-` operator under a name of our choosing (`cat_data`). This data is now available to us to use in this R session. You can `View()` it, make a graph with it, or display it in a table.
 
 If you are using the Reed RStudio Server, you can upload your data file to your server files, and locate and use it from there. That uses the same `read_csv()` function, just a different filepath.
 
@@ -124,7 +124,7 @@ The package `readxl` contains a function called `read_excel()`, that is very sim
 cat_data <- read_excel("Desktop/Reed/Bio123/cats.xls")
 ```
 
-If you have multiple sheets in your excel file, `read_excel()` can access all of them. Let's say the "cats.xls" data has three sheets: the first sheet is about indoor cats, the second is about outdoor cats, and the third is about stray cats. We can load these in as follows:
+If you have multiple sheets in your excel file, `read_excel()` can access all of them. Let's say the `cats.xls` data has three sheets: the first sheet is about indoor cats, the second is about outdoor cats, and the third is about stray cats. We can load these in as follows:
 
 ```{r, eval = FALSE}
 indoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = 1)
@@ -179,11 +179,11 @@ If you select "yes" in the first step of this process, this will be a much smoot
 
 If you want to learn more about `googlesheets4`, [the package's website](https://googlesheets4.tidyverse.org/) contains a more extensive overview of the package and its functions.
 
-###  From the internet (with `rvest`)
+###  From the Internet (with `rvest`)
 
 If you find data that you would like to use on a website, `rvest` makes the process of bringing that table into R very simple. You will never have to try and copy/paste data from a webpage into an excel document again.
 
-Before you do take data from a website, make sure you are thinking about whether or not this is data that you are allowed to take and use for your own purposes. (ADD RESOURCES)
+Before you do take data from a website, make sure you are thinking about whether or not this is data that you are allowed to take and use for your own purposes. (LINK-HERE)
 
 First, let's install and load the `rvest` package: 
 
