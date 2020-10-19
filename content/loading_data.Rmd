@@ -12,7 +12,7 @@ library(emo)
 
 R is a great tool for data cleaning, analysis, and visualization. But before we can do any of that, we need the actual data to work with. This page will help you learn to bring datasets into your R document in various ways: you can use a pre-loaded dataset, your own data from a .csv, excel sheet or a google sheet, or data found on the internet. 
 
-###From a package
+### From a package
 
 A lot of data you'll end up working with in R is contained in R packages. (If you're unfamiliar with packages, see our [Getting Started](abcdefg) page.) In fact, most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes datasets from a study of three different species of penguins found in Antarctica.
 
@@ -70,7 +70,7 @@ head(penguins)
 
 Ready to go. `r emo::ji("racing_car")`
 
-###From a .csv (with `readr`)
+### From a .csv (with `readr`)
 
 A lot of data that you'll find on the internet will be in .csv format. This is a very common format of data that can be easily transferred between many different applications, including R. In order to load a .csv file into R, we'll need the `readr` package.
 
@@ -104,7 +104,7 @@ If you are using the Reed RStudio Server, you can upload your data file to your 
 
 If you want to learn more about the `readr` package or the `read_csv()` function, [here](https://readr.tidyverse.org/) is a more extensive overview of the package and its functions.
 
-###From Excel (with `readxl`)
+### From Excel (with `readxl`)
 
 If you've collected your own data using Excel, and now want to bring it into R, this process is made simple with the `readxl` package.
 
@@ -142,7 +142,7 @@ stray_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = "Stray")
 
 This code will help you to seamlessly bring in data from excel sheets without having to convert them to .csv format first. If you want to learn more about the `readxl` package or the `read_excel()` function, [here](https://readxl.tidyverse.org/) is a more extensive overview of the package and its functions.
 
-###From Google Sheets (with `googlesheets4`)
+### From Google Sheets (with `googlesheets4`)
 
 Similar to Excel files, you can also read in data that you've collected via Google Sheets using the `googlesheets4` package. Let's install and then load that package:
 
@@ -161,7 +161,7 @@ Note that you will want to make sure you can see your "Console" when you are usi
 
 Now that you can see your console, navigate to the sheet you would like to read in, and copy the sharing URL for that sheet. This can then be fed directly into to the `read_sheet()` function in `googlesheets4`, like so:
 
-```{r}
+```{r, eval = FALSE}
 example <- read_sheet("https://docs.google.com/spreadsheets/d/1qSGfs0ogEOQsynzAtoUIgU5NJDqn7bOd14L9qpWA3w8/edit?usp=sharing")
 ```
 
@@ -179,7 +179,7 @@ If you select "yes" in the first step of this process, this will be a much smoot
 
 If you want to learn more about `googlesheets4`, [the package's website](https://googlesheets4.tidyverse.org/) contains a more extensive overview of the package and its functions.
 
-###From the internet (with `rvest`)
+###  From the internet (with `rvest`)
 
 If you find data that you would like to use on a website, `rvest` makes the process of bringing that table into R very simple. You will never have to try and copy/paste data from a webpage into an excel document again.
 
