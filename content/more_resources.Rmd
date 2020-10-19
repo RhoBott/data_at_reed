@@ -10,21 +10,22 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Hopefully, now that you've read through the documentation here, it's answered some (if not all) of your questions. But there are always more resources out there.
 
-
-
-### R package cheatsheets
+### R Package Cheatsheets
 
 RStudio has collected many cheatsheets for common R packages, and they can be found [here](https://rstudio.com/resources/cheatsheets/). Some possibly helpful ones to check out include sheets for data visualization with `ggplot2`, data transformation with `dplyr`, data import with `readr`, and R Markdown.
 
-### mLab help
+### mLab Help
 
-You can come and get help from someone at the [mLab](https://www.reed.edu/cis/mlab/index.html), and drop-in help hours can be found [on our calendar](https://www.reed.edu/cis/mlab/calendar.html).
+If you're a Reedie, you can drop by the [mLab](https://www.reed.edu/cis/mlab/index.html) to work with our student workers ("mLabbies"). Drop-in help hours can be found [on our calendar](https://www.reed.edu/cis/mlab/calendar.html).
 
+### A Free Online Textbook
 
-### Free online textbook
-
-One great resource for R is the [R for Data Science](https://r4ds.had.co.nz/) textbook. It's free and made to be easy to navigate online. There is a chapter on data visualization, an entire section that goes in-depth on data wrangling, and more. 
+One great resource for R is the [R for Data Science](https://r4ds.had.co.nz/) textbook. It's free, easy to navigate online, and is written by the author of many of the packages we've covered on this website. There is a chapter on data visualization, an entire section that goes in-depth on data wrangling, and more. 
 
 ### Googling
 
 Sometimes, if you get a strange error or have a very specific question about a particular function, other people may have had that question before as well. If you want to google an error or how to do a particular operation in R, we would suggest that you include the name of the package that you are using when you search for help. For anything you want to do, there are going to be many, many ways of doing it in R. But most likely, you are going to want to do those things using packages you already know and love, like `dplyr`, `ggplot2`, or `tidyr`. 
+
+### Asking for Help
+
+_some notes on reprexes, stack overflow, GitHub issues_
