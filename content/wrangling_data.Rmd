@@ -34,7 +34,7 @@ Let's take a look at a summarized version of the `penguins` data as an example.
 
 <!-- _here_ maybe we should add something about how and why we are summarizing the data -->
 
-For our summarized `penguins` data, we want to have the mean body mass for all penguins on a given island in a given year. To do this, we use the `dplyr` function `group_by` which takes the original data and groups it by the given variable (or variables, in this case island and year). Then with `summarize` we can calculate the grouped mean body weights, and we get one table with the mean body mass for all penguins on a given island in a given year.
+For our summarized `penguins` data, we want to have the mean body mass for all penguins on a given island in a given year. To do this, we use the `dplyr` function `group_by()` which takes the original data and groups it by the given variable (or variables, in this case island and year). Then with `summarize()` we can calculate the grouped mean body weights, and we get one table with the mean body mass for all penguins on a given island in a given year. This will be covered more in depth further down this page. 
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 penguins_sum <- penguins %>%
@@ -77,7 +77,8 @@ penguins_wide
 
 The `id_cols` (read: ID columns) are the variables that, together, identify what makes a row unique in the original data, `names_from` determines what columns in the old data will be the names of the new columns, and `values_from` is the name of the variable in the old data that will be the information contained inside the new columns.
 
-What if we want pivot from wider to longer, though? You might have guessed it! `pivot_longer()`! Starting with the widened version of the data:
+If we want pivot from wider to longer, we can use `pivot_longer()`. 
+Starting with the widened version of the data:
 
 ```{r}
 penguins_wide %>%
@@ -86,22 +87,22 @@ penguins_wide %>%
                values_to = "mean_body_mass_g")
 ```
 
-As you might have noticed, `pivot_longer()` and `pivot_wider()` are inverse operations! Pivoting a widened dataset to a longer format gives you back the original dataset, and vice versa.
+As you might have noticed, `pivot_longer()` and `pivot_wider()` are inverse operations. Pivoting a widened dataset to a longer format gives you back the original dataset, and vice versa.
 
-If you're interested in learning more about tidy data and pivoting, we recommend the chapter in [R for Data Science](https://r4ds.had.co.nz/tidy-data.html)!
+If you're interested in learning more about tidy data and pivoting, we recommend the chapter in [R for Data Science](https://r4ds.had.co.nz/tidy-data.html).
 
 ### Transforming Data With `dplyr`
 
-Now that our data is tidy we can use `dplyr` to further transform our data!
+Now that our data is tidy we can use `dplyr` to further transform our data.
 
-There are 6 fundamental `dpylr` functions that should allow you to perform the data wrangling that you find yourself needing to do. For the following examples we'll be using the full `penguins` data set.
+There are 6 fundamental `dpylr` functions that should allow you to perform the data wrangling that you find yourself needing to do. For the following examples we will be using the full `penguins` data set.
 
-Whenever you see the `head()` function used, you can think of it as a way for us to take a peek at what our transformations are doing!
+Whenever you see the `head()` function used, you can think of it as a way for us to take a peek at what our transformations are doing.
 
-First of all we can use it to get a feel for what our variables are and what their values might look like:
+First, we can use it to get a feel for what our variables are and what their values might look like:
 
 ```{r}
-penguins
+head(penguins)
 ```
 
 #### 1. Filtering Rows with `filter()`
@@ -154,7 +155,7 @@ penguins %>%
 
 #### 3. Selecting Columns with `select()`
 
-A data set can have a ton of different variables, but sometimes we're only interested in a few. We can use the `select()` function to do just that! All you have to do is add all of the variables that you want inside of the function.
+A data set can have a ton of different variables, but sometimes we're only interested in a few. We can use the `select()` function to do just that. All you have to do is add all of the variables that you want inside of the function.
 
 ```{r}
 penguins %>%
@@ -210,7 +211,7 @@ penguins %>%
 
 If you want to learn more about `dplyr`, [the package's website](https://dplyr.tidyverse.org/) contains a more extensive overview of the package and its functions. You might also check out the [data transformation chapter](https://r4ds.had.co.nz/transform.html) of the R for Data Science book.
 
-#### Frequency Tables with `count()`
+#### 6. Frequency Tables with `count()`
 
 Frequency tables can be a helpful way of displaying information about your data. For example, what if we want to know how many male and female penguins are in our sample? We can build a frequency table for this. 
 
@@ -234,7 +235,7 @@ penguins %>%
 
 ### strings with `stringr`
 
-Often times you find yourself with a data set that includes data in the form of a string. Strings are most often represented as `"text surrounded in quotes"` in R. The package `stringr` is really useful tool for working with this type of data, and thankfully is already included in the `tidyverse` package. If you've already loaded the `tidyverse` with `library(tidyverse)`, then you're ready to jump in.
+Often times you find yourself with a data set that includes data in the form of a string. A string is basically a group of characters- it can include numbers, letters, spaces, and special characters as well. Strings are most often represented as `"text surrounded in quotes"` in R. The package `stringr` is really useful tool for working with this type of data, and thankfully is already included in the `tidyverse` package. If you've already loaded the `tidyverse` with `library(tidyverse)`, then you're ready to jump in.
 
 Instead of going through a step-by-step tutorial on exactly how each `stringr` function works, we'll go through a couple of concrete examples using the `penguins` dataset to show off different ways to use `stringr` in your data wrangling.
 
@@ -249,7 +250,7 @@ String manipulations are carried out with the use of _patterns_, specified with 
 5. `x{n,m}` : between n and m occurrences of x
 6. `[xyz]` : means 'includes x or y or z'
 
-We'll demo what each of these looks like in context below.
+We will demo what each of these looks like in context below.
 
 Here, we're filtering our data to only look at penguin species that start with the letter 'A' who belong to an island that ends with the letter 'm'.
 
