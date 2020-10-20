@@ -34,6 +34,8 @@ Let's take a look at a summarized version of the `penguins` data as an example.
 
 <!-- _here_ maybe we should add something about how and why we are summarizing the data -->
 
+For our summarized `penguins` data, we want to have the mean body mass for all penguins on a given island in a given year. To do this, we use the `dplyr` function `group_by` which takes the original data and groups it by the given variable (or variables, in this case island and year). Then with `summarize` we can calculate the grouped mean body weights, and we get one table with the mean body mass for all penguins on a given island in a given year.
+
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 penguins_sum <- penguins %>%
   group_by(island, year) %>%
