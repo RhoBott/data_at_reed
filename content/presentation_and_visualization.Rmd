@@ -22,9 +22,35 @@ library(ggplot2)
 library(palmerpenguins)
 ```
 
-In order to get started with graphing in `ggplot2`, we'll need our data to be in  "tidy" format. You can read more about what it means for a dataset to be tidy on [our data wrangling page](LINK-HERE) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
+Before we get started with graphing in `ggplot2`, we'll need our data to be in  "tidy" format. You can read more about what it means for a dataset to be tidy on [our data wrangling page](LINK-HERE) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
 
-<!-- (consider adding 'three parts of a ggplot are...' for a general structure for folks to wrap their heads around (data+aes+geom() ). later in the write-up, can invoke leila's 'ggplot template' as well, perhaps) -->
+
+There are three main pieces that make up a ggplot:
+
+1. Data: You have to specify the data that you want `ggplot()` to plot using 
+      
+              data = ___
+
+2. Aesthetics: In order for `ggplot()` to know which variables you want to use you have to specify what they are by using some combination of the following four options:
+
+              aes(x = ___ , y = ___ , color = ___ , fill = ___ )
+
+Anything that you put inside of `aes()` should be a variable. Additionally, though the whole wide array of possible inputs into `aes()` are given here, the ones that you end up using will be specific to your graph type. For example, in a typical histogram you are looking at the distribution of one variable so you only have to include `x = ___ `, and not the other inputs.
+
+3. Geoms: We can specify what kind of plot we want to make using
+
+              geom_---()
+
+There are a wide range of different options but a couple of common ones are, `geom_point()` for a     scatterplot, and `geom_histogram()` for a histogram.
+
+We can put all of this together to create a full template for making graphs with `ggplot()`:
+
+              ggplot(data = ___ ,
+                     mapping = aes(x = ___  , y = ___  , color = ___  , fill = ___   ) +
+                geom_ ___ ()
+          
+You can always refer back to this template as a way to remember the `ggplot2` convention. 
+
 
 #### Scatterplots
 

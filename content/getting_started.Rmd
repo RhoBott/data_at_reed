@@ -23,3 +23,5 @@ _hello_
 The `thesisdown` package provides an R Markdown template for writing your senior thesis, which is particularly helpful for easily integrating R code and graphics into your thesis manuscript. Instructions for how to install this package and use the template can be found in the [GitHub repository](https://github.com/ismayc/thesisdown).
 
 ### The `palmerpenguins` Data
+
+The `palmerpenguins` data set contains various different size measurements for three penguins species on three islands in Palmer Archipelago, Antarctica. It's versatile and a great data set for demonstrating basic things that you can do in R. More information on the data set can be found [here](https://allisonhorst.github.io/palmerpenguins/articles/intro.html).
