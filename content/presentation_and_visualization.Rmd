@@ -196,6 +196,39 @@ kable(x = penguin_sum,
 
 <!-- _Can we use KableExtra? How do I make this prettier if not?_ -->
 
+There is a way to make it even fancier, and to do that we use the package `kableExtra`. 
+
+```{r}
+install.packages("kableExtra")
+library(kableExtra)
+```
+We can start out with essentially the same code from making the basic `kable` table, but with `kableExtra` we can customize it more.
+
+`kable_styling()` gives us the basic `kableExtra` format.
+
+```{r}
+kable(x=penguin_sum, col.names = c("Island", "Year", "Mean Body Mass (g)"),
+      caption = "Mean body mass of penguins on different islands over time") %>%
+  kable_styling()
+```
+
+We can customize the look of the table with `kable_classic()` as an alternitive to `kable_styling()`. There's also `kable_paper`, `kable_classic_2`,`kable_minimal`, `kable_material` and `kable_material_dark`. 
+
+By adding `full_width = FALSE` we can change the width of the table. We can also change the font, the font size, and there are even more additions and changes we could make, which can be read about more [here](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview)
+
+```{r}
+kable(x=penguin_sum, col.names = c("Island", "Year", "Mean Body Mass (g)"),
+      caption = "Mean body mass of penguins on different islands over time") %>%
+   kable_classic(full_width = FALSE, html_font = "Cambria", font_size=16)
+```
+
+```{r}
+kable(x=penguin_sum, col.names = c("Island", "Year", "Mean Body Mass (g)"),
+      caption = "Mean body mass of penguins on different islands over time") %>%
+   kable_material_dark(html_font = "Cambria")
+```
+
+
 ### Writing Up Your Results
 
 #### R Markdown
