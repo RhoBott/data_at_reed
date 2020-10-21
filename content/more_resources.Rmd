@@ -30,4 +30,19 @@ Sometimes, if you get a strange error or have a very specific question about a p
 
 ### Asking for Help
 
-_some notes on reprexes, stack overflow, GitHub issues_
+#### Stack Overflow
+
+Another good resource for getting help is [stack overflow](https://stackoverflow.com). When googling a problem, you will likely find a lot of results that link to a stack overflow page. This is a great way to read into how other people solved a problem similar to yours. You can also ask questions on stack overflow, but there's no guarantee that someone will respond to you and even if someone does respond it might not be immediate.
+
+#### Reproducible Examples
+
+A great way to streamline the process of getting help is to create what is called a reproducible example or "reprex". There are a couple of key steps to creating a reprex:
+
+1. Include any package loading calls (library("package")) and objects that are relevant to your problem.
+
+2. Only include whatever is relevant or necessary to your problem. In reprex jargon, this is called making your example minimal.
+
+By following this convention you'll make it a lot easier for someone to understand and help with your issue. For more on reproducible examples, check out [this](https://www.tidyverse.org/help/) tidyverse page.
+
+
+_GitHub issues_
