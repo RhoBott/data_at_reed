@@ -12,7 +12,33 @@ R is a versatile tool, and at Reed R is used across departments and in various w
 
 ### Reed RStudio Server
 
-_hello_
+There are a couple of great advantages to using R on the Reed Rstudio server:
+
+- Accessibility from any computer
+- Avoid possible messy installation
+- Provides some storage space for files, data, and images
+
+#### Access
+
+Head to (rstudio.reed.edu) and log in using your Kerberos credentials.
+
+#### Installing Libraries
+
+Most of the libraries that you will need are already installed on the server, but if you want to use a package that is not already on the server you can use `install.package("package_name")`. If you run into errors resulting from installing such packges, contact Kbott (kbott@reed.edu).
+
+#### Jointly Editing Documents
+
+We strongly recommend having one active editor for a shared project. (While you may be used to the collaborative editing/versioning functions in Google Docs, that functionality does not transfer to projects on the RStudio server.) If the server detects that multiple editors are accessing the file, it will block further editing of that file. If the server gives you a saving error, copy/paste your code into a text editor or Google Doc, since the server will not save your work.
+
+If you're looking into jointly editing documents you can look into using [github] ("https://happygitwithr.com/rstudio-git-github.html")
+
+#### The server is broken / down / having problems
+
+Every five minutes, the RStudio Server checks to make sure it is running smoothly; if there is a glitch, the server will restart. This restart should solve any server-level problems.
+
+#### Error occurred during transmission (aka broken sessions)
+
+At some point, you may encounter an error when you log in: Rstudio initialization error, ‘Error occurred during transmission’. Sometimes RStudio user sessions encounter errors of some stripe; while this might be annoying, it is also a problem you can solve. To exit a misbehaving session or create a new session, visit (https://rstudio.reed.edu/home).
 
 ### Desktop R
 
