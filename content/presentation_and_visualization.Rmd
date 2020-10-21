@@ -198,4 +198,17 @@ kable(x = penguin_sum,
 
 ### Writing Up Your Results
 
-_yada yada about R Markdown_
+#### R Markdown
+
+A great way to write up results is with an R Markdown file (.rmd). This type of document consists of both regular text as well as code chunks. When using R Markdown file you can `Knit` which is a really quick way to output a document with all of your text and code as well as the results of each code chunk pasted directly below the chunk. When working in a Markdown file in RStudio you can find the `Knit` button at the tool bar near the top of the file.
+
+You can also specify the type of document that you want to output when knitting. This makes it really easy to seamlessly create reproducible reports in whatever document type you want.
+
+For more in depth information on R Markdown you can check out [this page](https://rmarkdown.rstudio.com/articles_intro.html)
+
+#### R Script
+
+Alternatively if you want a textfile where you can enter R commands wherever you want you can use an R Script (.R). This type of document is useful for Results that are mostly just code and do not necessarily contain very much regular text. A big difference between R Script and R Markdown is that running a code chunk in Markdown will print the output in the file, whereas R Script prints the output in the Console window of RStudio.
+
+To learn more about R Scripts you can check out the [Workflow: scripts] (https://r4ds.had.co.nz/workflow-scripts.html) chapter in [R for Data Science](https://r4ds.had.co.nz/)
+
