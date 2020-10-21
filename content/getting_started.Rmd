@@ -12,7 +12,7 @@ R is a versatile tool, and at Reed R is used across departments and in various w
 
 ### Reed RStudio Server
 
-There are a couple of great advantages to using R on the Reed Rstudio server:
+There are a couple of great advantages to using R on the Reed RStudio server:
 
 - Accessibility from any computer
 - Avoid possible messy installation
@@ -38,11 +38,29 @@ Every five minutes, the RStudio Server checks to make sure it is running smoothl
 
 #### Error occurred during transmission (aka broken sessions)
 
-At some point, you may encounter an error when you log in: Rstudio initialization error, ‘Error occurred during transmission’. Sometimes RStudio user sessions encounter errors of some stripe; while this might be annoying, it is also a problem you can solve. To exit a misbehaving session or create a new session, visit (https://rstudio.reed.edu/home).
+At some point, you may encounter an error when you log in: RStudio initialization error, ‘Error occurred during transmission’. Sometimes RStudio user sessions encounter errors of some stripe; while this might be annoying, it is also a problem you can solve. To exit a misbehaving session or create a new session, visit (https://rstudio.reed.edu/home).
 
 ### Desktop R
 
-_hello_
+If you are using R for projects outside of specific class assignments that are accessed and submitted using the Reed RStudio server, and especiallly if you are using sensitive data, you will want to install the Desktop version of RStudio.
+
+There are two things you need to download in order to use R on your computer: R and RStudio. R is the coding language, and RStudio is the Integrated Development Environment (IDE), which makes R easy to use.
+
+#### On MacOSX
+
+You can download and install R for MacOSX at the [CRAN downloads site](https://cran.r-project.org/), where you'll follow the link to "Download R for (Mac) OS X". Navigate to the appropriate release for your computer's OS. To find your computer's OS, click the top left apple icon, and click "About this Mac". You will see both a name (e.g. "High Sierra", "Catalina", or "El Capitan") and a number ("Version __.__._"). Back on the download site, each download will have a description of what OS it requires in order to run. Choose the newest version possible for your OS (your OS should be equal to or higher than the one listed in the description of the download). Click on the link next to the description to download R. Once the file has downloaded, click it to proceed to installation, leaving all default settings as is.
+
+Next we need to install RStudio. To do this, navigate to the [RStudio downloads page](https://rstudio.com/products/rstudio/download/), and scroll down to "All Installers". Choose the download that matches your OS, most likely "MacOS 10.13+". Click the download link, open the file when it has downloaded, and install with the default settings as you did with R. 
+
+Now you should be able to open RStudio and begin working! Remember to install packages as you need them, either using `install.packages()`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load and use them in the future.
+
+#### On Windows
+
+You can download and install R for Windows at the [CRAN downloads site](https://cran.r-project.org/), where you'll follow the link to "Download R for Windows". From here click "base", and then "Download R 4.0.3 for Windows". Once the file has downloaded, click it to proceed to installation, leaving all default settings as is.
+
+Next we need to install RStudio. To do this, navigate to the [RStudio downloads page](https://rstudio.com/products/rstudio/download/), and scroll down to "All Installers". Choose the download for Windows ("Windows 10/8/7"). Click the download link, open the file when it has downloaded, and install with the default settings as you did with R. 
+
+Now you should be able to open RStudio and begin working! Remember to install packages as you need them, either using `install.packages()`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load and use them in the future.
 
 ### Writing Your Thesis in `thesisdown`
 
