@@ -14,7 +14,7 @@ R is a great tool for data cleaning, analysis, and visualization. But before we 
 
 ### From a Package
 
-A lot of data you'll end up working with in R is contained in R packages. (If you're unfamiliar with packages, see our [Getting Started](LINK-HERE) page.) In fact, most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes datasets from a study of three different species of penguins found in Antarctica.
+A lot of data you will end up working with in R is contained in R packages. (If you are unfamiliar with packages, see our [Getting Started](LINK-HERE) page.) In fact, most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes datasets from a study of three different species of penguins found in Antarctica.
 
 ```{r, echo = FALSE}
 url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"
@@ -24,13 +24,13 @@ knitr::include_graphics(url)
 
 How can we load this data in?
 
-First thing's first--you'll need to install the `palmerpenguins` package (or whatever package your data is from) if you haven't already with the `install.packages()` function:
+You will first need to install the `palmerpenguins` package (or whatever package your data is from) if you have not already with the `install.packages()` function:
 
 ```{r, eval = FALSE}
 install.packages("palmerpenguins")
 ```
 
-Now that you have the package installed, you need to load the package into your environment with `library()`. You only need to install the package once, but you'll need to load the package with your data every time you open R back up.
+Now that you have the package installed, you need to load the package into your environment with `library()`. You only need to install the package once, but you will need to load the package with your data every time you open R back up.
 
 ```{r}
 library(palmerpenguins)
@@ -38,7 +38,7 @@ library(palmerpenguins)
 
 Okay... `palmerpenguins` is loaded... now where is the data?
 
-This is a weird thing about loading data from packages--if you don't already know what you're looking for inside the package, how do you find out what's inside?
+This is a weird thing about loading data from packages--if you do not already know what you are looking for inside the package, how do you find out what is inside?
 
 There are a couple ways. First, you could try running `help(package = "palmerpenguins")` in your console. This will show you all of the data and functions included in a package, as well as descriptions of what they are.
 
@@ -50,7 +50,7 @@ palmerpenguins::
 
 Your tooltip should show you all of the datasets included in the package.
 
-Regardless, now you've found the name of the dataset you want. From here, you can use the `data()` function. All you need to add is the name of the dataset.
+Regardless, now you have found the name of the dataset you want. From here, you can use the `data()` function. All you need to add is the name of the dataset.
 
 ```{r}
 data(penguins)
@@ -72,15 +72,15 @@ Ready to go. `r emo::ji("racing_car")`
 
 ### From a .csv (with `readr`)
 
-A lot of data that you'll find on the internet will be in `.csv` format. This is a very common format of data that can be easily transferred between many different applications, including R. In order to load a `.csv` file into R, we'll need the `readr` package.
+A lot of data that you will find on the internet will be in `.csv` format. This is a very common format of data that can be easily transferred between many different applications, including R. In order to load a `.csv` file into R, we will need the `readr` package.
 
-First, we'll need to install the `readr` package:
+First, we will need to install the `readr` package:
 
 ```{r, eval = FALSE}
 install.packages("readr")
 ```
 
-Now that you have the package installed, you need to load the package into your environment with `library()`. Again, you only need to install the package once, but you'll need to load the package with your data every time you open R back up.
+Now that you have the package installed, you need to load the package into your environment with `library()`. Again, you only need to install the package once, but you will need to load the package with your data every time you open R back up.
 
 ```{r, warning = FALSE, message = FALSE}
 library(readr)
@@ -88,7 +88,7 @@ library(readr)
 
 Now that we have the package, how how do we load the data?
 
-First, you'll need to download the data and know where this data is on your computer.
+First, you will need to download the data and know where this data is on your computer.
 
 `readr` contains a function called `read_csv()`, which uses a filepath to find a .csv file and then brings it into R. Here is an example:
 
@@ -106,13 +106,13 @@ If you want to learn more about the `readr` package or the `read_csv()` function
 
 ### From Excel (with `readxl`)
 
-If you've collected your own data using Excel, and now want to bring it into R, this process is made simple with the `readxl` package.
+If you have collected your own data using Excel, and now want to bring it into R, this process is made simple with the `readxl` package.
 
 ```{r, eval = FALSE}
 install.packages("readxl")
 ```
 
-Now that you have the package installed, you need to load the package into your environment with `library()`. Again, you only need to install the package once, but you'll need to load the package with your data every time you open R back up.
+Now that you have the package installed, you need to load the package into your environment with `library()`. Again, you only need to install the package once, but you will need to load the package with your data every time you open R back up.
 
 ```{r, warning = FALSE, message = FALSE}
 library(readxl)
@@ -144,7 +144,7 @@ This code will help you to seamlessly bring in data from excel sheets without ha
 
 ### From Google Sheets (with `googlesheets4`)
 
-Similar to Excel files, you can also read in data that you've collected via Google Sheets using the `googlesheets4` package. Let's install and then load that package:
+Similar to Excel files, you can also read in data that you have collected via Google Sheets using the `googlesheets4` package. Let's install and then load that package:
 
 ```{r, eval = FALSE}
 install.packages("googlesheets4")
@@ -167,13 +167,13 @@ example <- read_sheet("https://docs.google.com/spreadsheets/d/1qSGfs0ogEOQsynzAt
 
 This code will prompt several interactive steps for you, in order to grant R access to your document.
 
-1. In your console, you will be asked if it's okay to "cache OAuth access credentials in the folder" followed by a URL. This means: is it okay for R to gain access to your Google Drive in the future, or would you like to only grant one-time access? Type "1" in the console for yes, and click enter.
+1. In your console, you will be asked if it is okay to "cache OAuth access credentials in the folder" followed by a URL. This means: is it okay for R to gain access to your Google Drive in the future, or would you like to only grant one-time access? Type "1" in the console for yes, and click enter.
 
 2. R will automatically open a window in your browser asking for tidyverse access to your google account. This will allow it to access your documents in the future when you want to read in files. Follow the directions in the browser and grant access. 
 
 3. You will be asked to copy a URL from your browser window into your console, where you will paste it in as the "authorization code" and then click enter.
 
-Check your "environment" in the top right corner of your R window, and you'll see your data in a nice data frame.
+Check your "environment" in the top right corner of your R window, and you will see your data in a nice data frame.
 
 If you select "yes" in the first step of this process, this will be a much smoother data import after the first time.
 
@@ -196,19 +196,19 @@ library(rvest)
 library(rvest)
 ```
 
-We'll be scraping from [this](https://www.reed.edu/ir/success.html) page where Reed reports about the different occupations of alumni.
+We will be scraping from [this](https://www.reed.edu/ir/success.html) page where Reed reports about the different occupations of alumni.
 
-First, we'll save the URL of this site under a variable name so that it's easy to use later:
+First, we will save the URL of this site under a variable name so that it is easy to use later:
 
 ```{r}
 url <- "https://www.reed.edu/ir/success.html"
 ```
 
-The next step requires that we tell R not only the URL of the graph, but also where on that page this graph is located. Here's how:
+The next step requires that we tell R not only the URL of the graph, but also where on that page this graph is located. Here is how:
 
 1. Right-click on the graph you want to bring into R, and click "inspect" in the menu that comes up. This will open a bar on the right of the window.
 
-2. Hover your mouse over the lines of code in this bar on the right. You'll notice that as you do so, different sections of the webpage will be highlighted. Hover until you find a line of code that highlights the whole table that you want.
+2. Hover your mouse over the lines of code in this bar on the right. you will notice that as you do so, different sections of the webpage will be highlighted. Hover until you find a line of code that highlights the whole table that you want.
 
 3. Right-click that line, go to copy > copy selector. You will then paste that text in the code below where it says `css = " "`. 
 

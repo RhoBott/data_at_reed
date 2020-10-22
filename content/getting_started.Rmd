@@ -28,7 +28,7 @@ Most of the libraries that you will need are already installed on the server, bu
 
 We strongly recommend having one active editor for a shared project. (While you may be used to the collaborative editing/versioning functions in Google Docs, that functionality does not transfer to projects on the RStudio server.) If the server detects that multiple editors are accessing the file, it will block further editing of that file. If the server gives you a saving error, copy/paste your code into a text editor or Google Doc, since the server will not save your work.
 
-If you're looking into jointly editing documents you can look into using [git and github] (https://happygitwithr.com/rstudio-git-github.html).
+If you are looking into jointly editing documents you can look into using [git and github] (https://happygitwithr.com/rstudio-git-github.html).
 
 #### The server is broken / down / having problems
 
@@ -46,11 +46,11 @@ There are two things you need to download in order to use R on your computer: R 
 
 #### On MacOSX
 
-You can download and install R for MacOSX at the [CRAN downloads site](https://cran.r-project.org/), where you'll follow the link to "Download R for (Mac) OS X". Navigate to the appropriate release for your computer's OS. To find your computer's OS, click the top left apple icon, and click "About this Mac". You will see both a name (e.g. "High Sierra", "Catalina", or "El Capitan") and a number ("Version __.__._"). Back on the download site, each download will have a description of what OS it requires in order to run. Choose the newest version possible for your OS (your OS should be equal to or higher than the one listed in the description of the download). Click on the link next to the description to download R. Once the file has downloaded, click it to proceed to installation, leaving all default settings as is.
+You can download and install R for MacOSX at the [CRAN downloads site](https://cran.r-project.org/), where you will follow the link to "Download R for (Mac) OS X". Navigate to the appropriate release for your computer's OS. To find your computer's OS, click the top left apple icon, and click "About this Mac". You will see both a name (e.g. "High Sierra", "Catalina", or "El Capitan") and a number ("Version __.__._"). Back on the download site, each download will have a description of what OS it requires in order to run. Choose the newest version possible for your OS (your OS should be equal to or higher than the one listed in the description of the download). Click on the link next to the description to download R. Once the file has downloaded, click it to proceed to installation, leaving all default settings as is.
 
 Next we need to install RStudio. To do this, navigate to the [RStudio downloads page](https://rstudio.com/products/rstudio/download/), and scroll down to "All Installers". Choose the download that matches your OS, most likely "MacOS 10.13+". Click the download link, open the file when it has downloaded, and install with the default settings as you did with R. 
 
-Now you should be able to open RStudio and begin working! Remember to install packages as you need them, either using `install.packages()`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load and use them in the future.
+Now you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages()`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load and use them in the future.
 
 #### On Windows
 
@@ -58,7 +58,7 @@ You can download and install R for Windows at the [CRAN downloads site](https://
 
 Next we need to install RStudio. To do this, navigate to the [RStudio downloads page](https://rstudio.com/products/rstudio/download/), and scroll down to "All Installers". Choose the download for Windows ("Windows 10/8/7"). Click the download link, open the file when it has downloaded, and install with the default settings as you did with R. 
 
-Now you should be able to open RStudio and begin working! Remember to install packages as you need them, either using `install.packages()`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load and use them in the future.
+Now you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages()`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load and use them in the future.
 
 ### Writing Your Thesis in `thesisdown`
 
@@ -66,19 +66,19 @@ The `thesisdown` package provides an R Markdown template for writing your senior
 
 #### Uploading Data to the Reed Rstudio Server
 
-You might have some data on your computer that you'd like to work with on the server. You can upload data from your computer by:
+You might have some data on your computer that you would like to work with on the server. You can upload data from your computer by:
 
 * logging in to the [RStudio server](https://rstudio.reed.edu) and opening up a session
 * find the "Files" pane in the bottom right
-* navigate to the folder that you'd eventually like your file to be in
+* navigate to the folder that you would eventually like your file to be in
 * click the "Upload" button (with a yellow, up-facing arrow beside it)
 * choose the file on your computer
 
-The data is now uploaded to the server! Now, you'll read in the data to R in the same way you would if you were working with data stored on your computer with the desktop version of R. See our [loading data](LINK-HERE) page for more information.
+The data is now uploaded to the server. Now, you will read in the data to R in the same way you would if you were working with data stored on your computer with the desktop version of R. See our [loading data](LINK-HERE) page for more information.
 
 ### Meet the Palmer Penguins
 
-Throughout these tutorials, we'll be making use of a dataset called `penguins` from the `palmerpenguins` package. The dataset contains various different measurements for penguins of three species on three islands in the Palmer Archipelago, Antarctica.
+Throughout these tutorials, we will be making use of a dataset called `penguins` from the `palmerpenguins` package. The dataset contains various different measurements for penguins of three species on three islands in the Palmer Archipelago, Antarctica.
 
 ```{r, echo = FALSE}
 url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"

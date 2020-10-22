@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # More Resources
 
-Hopefully, now that you've read through the documentation here, it's answered some (if not all) of your questions. But there are always more resources out there.
+Hopefully, now that you have read through the documentation here, it has answered some (if not all) of your questions. But there are always more resources out there.
 
 ### R package Cheatsheets and Documentation
 
@@ -22,7 +22,7 @@ You can come and get help from someone at the [mLab](https://www.reed.edu/cis/ml
 
 ### Free Online Textbook
 
-One great resource for R is the [R for Data Science](https://r4ds.had.co.nz/) textbook. It's free and made to be easy to navigate online. There are chapters on [data visualization](https://r4ds.had.co.nz/data-visualisation.html), [tidy data](https://r4ds.had.co.nz/tidy-data.html), [data transformation](https://r4ds.had.co.nz/transform.html), [strings](https://r4ds.had.co.nz/strings.html), and more. We highly recommend this resource.
+One great resource for R is the [R for Data Science](https://r4ds.had.co.nz/) textbook. It is free and made to be easy to navigate online. There are chapters on [data visualization](https://r4ds.had.co.nz/data-visualisation.html), [tidy data](https://r4ds.had.co.nz/tidy-data.html), [data transformation](https://r4ds.had.co.nz/transform.html), [strings](https://r4ds.had.co.nz/strings.html), and more. We highly recommend this resource.
 
 ### Googling
 
@@ -32,7 +32,7 @@ Sometimes, if you get a strange error or have a very specific question about a p
 
 #### Stack Overflow
 
-Another good resource for getting help is [stack overflow](https://stackoverflow.com). When googling a problem, you will likely find a lot of results that link to a stack overflow page. This is a great way to read into how other people solved a problem similar to yours. You can also ask questions on stack overflow, but there's no guarantee that someone will respond to you and even if someone does respond it might not be immediate.
+Another good resource for getting help is [stack overflow](https://stackoverflow.com). When googling a problem, you will likely find a lot of results that link to a stack overflow page. This is a great way to read into how other people solved a problem similar to yours. You can also ask questions on stack overflow, but there is no guarantee that someone will respond to you and even if someone does respond it might not be immediate.
 
 #### Reproducible Examples
 
@@ -42,4 +42,4 @@ A great way to streamline the process of getting help is to create what is calle
 
 2. Only include whatever is relevant or necessary to your problem. In reprex jargon, this is called making your example minimal.
 
-By following this convention you'll make it a lot easier for someone to understand and help with your issue. For more on reproducible examples, check out [this](https://www.tidyverse.org/help/) tidyverse page.
+By following this convention you will make it a lot easier for someone to understand and help with your issue. For more on reproducible examples, check out [this](https://www.tidyverse.org/help/) tidyverse page.

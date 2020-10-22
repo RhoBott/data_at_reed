@@ -11,7 +11,7 @@ library(knitr)
 
 # Wrangling Data
 
-When you first get a dataset, whether it's from a class, downloaded from the internet, or given to you by a professor, there might be ways that you want to change that data to make it easier to work with, add more information, or summarize your data. These all fall under the term "Data Wrangling". Let's learn how to handle our data, how to get more out of it, and how to keep it tidy.
+When you first get a dataset, whether it is from a class, downloaded from the internet, or given to you by a professor, there might be ways that you want to change that data to make it easier to work with, add more information, or summarize your data. These all fall under the term "Data Wrangling". Let's learn how to handle our data, how to get more out of it, and how to keep it tidy.
 
 ### Tidy Data Principles, Reshaping Data, and `tidyr`
 
@@ -52,7 +52,7 @@ penguins_sum %>%
 
 This dataset technically contains the same data, but in this version, the mean body mass is held in three different columns- one for each year.
 
-Sometimes, the data you're asked to analyze might look more like the second, untidy version than the first, tidy version. How do you move from one to the other? Introducing `tidyr`!
+Sometimes, the data you are asked to analyze might look more like the second, untidy version than the first, tidy version. How do you move from one to the other? Introducing `tidyr`.
 
 Let's start off with the first version:
 
@@ -85,7 +85,7 @@ penguins_wide %>%
 
 As you might have noticed, `pivot_longer()` and `pivot_wider()` are inverse operations. Pivoting a widened dataset to a longer format gives you back the original dataset, and vice versa.
 
-If you're interested in learning more about tidy data and pivoting, we recommend the chapter in [R for Data Science](https://r4ds.had.co.nz/tidy-data.html).
+If you are interested in learning more about tidy data and pivoting, we recommend the chapter in [R for Data Science](https://r4ds.had.co.nz/tidy-data.html).
 
 ### Transforming Data With `dplyr`
 
@@ -110,7 +110,7 @@ penguins %>%
   filter(sex == "female")
 ```
 
-Or perhaps we want to only look at penguins with a bill length that's less than 40mm:
+Or perhaps we want to only look at penguins with a bill length that is less than 40mm:
 
 ```{r}
 penguins %>%
@@ -151,7 +151,7 @@ penguins %>%
 
 #### 3. Selecting Columns with `select()`
 
-A data set can have a ton of different variables, but sometimes we're only interested in a few. We can use the `select()` function to do just that. All you have to do is add all of the variables that you want inside of the function.
+A data set can have a ton of different variables, but sometimes we are only interested in a few. We can use the `select()` function to do just that. All you have to do is add all of the variables that you want inside of the function.
 
 ```{r}
 penguins %>%
@@ -160,9 +160,9 @@ penguins %>%
 
 #### 4. Creating New Columns with `mutate()`
 
-What if you wanted create a new column or "mutate" an existing column in some way? The `mutate()` function makes both of these things easy! For this example we'll go back to using our `penguins_sum` data frame.
+What if you wanted create a new column or "mutate" an existing column in some way? The `mutate()` function makes both of these things easy. For this example we will go back to using our `penguins_sum` data frame.
 
-If we want to introduce a new column we choose a name for it and then indicate how we want to calculate it. For example we'll create a new column for the mean body mass in kilograms instead of grams:
+If we want to introduce a new column we choose a name for it and then indicate how we want to calculate it. For example we will create a new column for the mean body mass in kilograms instead of grams:
 
 ```{r}
 penguins_sum %>%
@@ -178,7 +178,7 @@ penguins_sum %>%
 
 #### 5. Summarizing Data with `group_by()` and `summarize()`
 
-You might have noticed that the functions `group_by()` and `summarize()` were used in our explanation of tidy data with the data frame `penguins_sum`. Let's work step-by-step from our original data set to `penguins_sum` to get a better feel for what that code was doing!
+You might have noticed that the functions `group_by()` and `summarize()` were used in our explanation of tidy data with the data frame `penguins_sum`. Let's work step-by-step from our original data set to `penguins_sum` to get a better feel for what that code was doing.
 
 We want to end up with a data frame that shows the mean body mass of penguins for each island and each year. We can feed both of those variables into the `group_by()` to start:
 
@@ -187,7 +187,7 @@ penguins %>%
   group_by(island, year)
 ```
 
-Notice how this code didn't actually change the way our data frame looks. This is because the `group_by()` function changes the metadata, you can think of this as R getting the data frame ready for a further transformation to be applied to it. We can apply the `summarize` function to get what we want!
+Notice how this code did not actually change the way our data frame looks. This is because the `group_by()` function changes the metadata, you can think of this as R getting the data frame ready for a further transformation to be applied to it. We can apply the `summarize` function to get what we want.
 
 ```{r}
 penguins %>%
@@ -195,7 +195,7 @@ penguins %>%
   summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
 ```
 
-All that the `na.rm = TRUE` is doing is removing any missing values in `body_mass_g` so that we don't report missing values in our summary.
+All that the `na.rm = TRUE` is doing is removing any missing values in `body_mass_g` so that we do not report missing values in our summary.
 
 If we wanted to do something similar to this, but only look at mean body mass for each year, we can simply remove `island` from our `group_by()` function:
 
@@ -231,9 +231,9 @@ penguins %>%
 
 ### strings with `stringr`
 
-Often times you find yourself with a data set that includes data in the form of a string. A string is basically a group of characters- it can include numbers, letters, spaces, and special characters as well. Strings are most often represented as `"text surrounded in quotes"` in R. The package `stringr` is really useful tool for working with this type of data, and thankfully is already included in the `tidyverse` package. If you've already loaded the `tidyverse` with `library(tidyverse)`, then you're ready to jump in.
+Often times you find yourself with a data set that includes data in the form of a string. A string is basically a group of characters- it can include numbers, letters, spaces, and special characters as well. Strings are most often represented as `"text surrounded in quotes"` in R. The package `stringr` is really useful tool for working with this type of data, and thankfully is already included in the `tidyverse` package. If you have already loaded the `tidyverse` with `library(tidyverse)`, then you are ready to jump in.
 
-Instead of going through a step-by-step tutorial on exactly how each `stringr` function works, we'll go through a couple of concrete examples using the `penguins` dataset to show off different ways to use `stringr` in your data wrangling.
+Instead of going through a step-by-step tutorial on exactly how each `stringr` function works, we will go through a couple of concrete examples using the `penguins` dataset to show off different ways to use `stringr` in your data wrangling.
 
 Most all functions you will want to use from the `stringr` function begin with `str_`. If you ever forget the name of the function you need, try just typing `str_` and scrolling through the auto-completed list of functions exported from `stringr`.
 
@@ -248,16 +248,16 @@ String manipulations are carried out with the use of _patterns_, specified with 
 
 We will demo what each of these looks like in context below.
 
-Here, we're filtering our data to only look at penguin species that start with the letter 'A' who belong to an island that ends with the letter 'm'.
+Here, we are filtering our data to only look at penguin species that start with the letter 'A' who belong to an island that ends with the letter 'm'.
 
 ```{r}
 penguins %>%
   filter(str_detect(species, "^A") & str_detect(island, "m$"))
 ```
 
-If you're comfortable with `dplyr` you may be realizing that this is not the most efficient way to solve this problem as we could very easily use `filter(species == "Adelie" & island == "Dream")`, but if you were dealing with a data set that had text that wasn't split into factors, using `str_detect()` makes a lot of things possible.
+If you are comfortable with `dplyr`, you may be realizing that this is not the most efficient way to solve this problem as we could very easily use `filter(species == "Adelie" & island == "Dream")`, but if you were dealing with a data set that had text that was not split into factors, using `str_detect()` makes a lot of things possible.
 
-For example, imagine that you were looking at a data set that had a column called 'name' which included the names of 100 different species of fish. You could use the code above to only look at species that started or ended with a certain letter.
+For example, imagine that you were looking at a data set that had a column called `name` which included the names of 100 different species of fish. You could use the code above to only look at species that started or ended with a certain letter.
 
 This can be extended beyond just a letter, so that we can look for observations that start or end with any given combination of characters:
 
@@ -266,7 +266,7 @@ penguins %>%
   filter(str_detect(species, "^Adeli"))
 ```
 
-Next, we'll take a look at an example where we want to only look at species that end in 1 or 2 "o's", and then we use a helpful function called `str_to_upper()' to capitalize the names of those species:
+Next, we will take a look at an example where we want to only look at species that end in 1 or 2 "o's", and then we use a helpful function called `str_to_upper()` to capitalize the names of those species:
 
 ```{r}
 penguins_edited <- penguins %>%
@@ -276,20 +276,20 @@ penguins_edited <- penguins %>%
 penguins_edited
 ```
 
-Of course, there's also a corresponding `str_to_lower()` function. 
+Of course, there is also a corresponding `str_to_lower()` function. 
 
-Following off of our previous code, we can then use a function called `str_remove()` to drop two "O's" from the end of each one (when they exist). You don't get to see it here but if some of our species ended with three "O's" our code would have only the first two.
+Following off of our previous code, we can then use a function called `str_remove()` to drop two "O's" from the end of each one (when they exist). You do not get to see it here but if some of our species ended with three "O's" our code would have only the first two.
 
 ```{r}
 penguins_edited %>%
   mutate(species = str_remove(species,"O{2}$"))
 ```
 
-This can be especially useful when you have observations that have a prefix or a suffix that you don't want.
+This can be especially useful when you have observations that have a prefix or a suffix that you do not want.
 
 One important thing to note is that your inputs into `str_*` functions are usually case-sensitive.
 
-The last function that we'll show here will be `str_replace()`. In this example we'll replace the "e" at the end of "Biscoe" with "otti". 
+The last function that we will show here will be `str_replace()`. In this example we will replace the "e" at the end of "Biscoe" with "otti". 
 
 ```{r}
 penguins %>%
@@ -310,11 +310,11 @@ If you want to learn more about `stringr`, [the package's website](https://strin
 
 ### Data Frames and `tibble`s
 
-So far in this tutorial, we've exclusively worked with "tibbles". From the [`tibble` website](https://tibble.tidyverse.org/) 
+So far in this tutorial, we have exclusively worked with "tibbles". From the [`tibble` website](https://tibble.tidyverse.org/) 
 
 > A _tibble_, or `tbl_df`, is a modern reimagining of the `data.frame`, keeping what time has proven to be effective, and throwing out what is not. Tibbles are data.frames that are lazy and surly: they do less (i.e. they don’t change variable names or types, and don’t do partial matching) and complain more (e.g. when a variable does not exist). This forces you to confront problems earlier, typically leading to cleaner, more expressive code.
 
-If this sounds like gibberish to you, that's okay. The biggest benefit to `tibble`s over `data.frame`s is the way that they print. If we print `penguins` as a tibble, for example, the output looks like this:
+If this sounds like gibberish to you, that is okay. The biggest benefit to `tibble`s over `data.frame`s is the way that they print. If we print `penguins` as a tibble, for example, the output looks like this:
 
 ```{r, eval = FALSE}
 penguins

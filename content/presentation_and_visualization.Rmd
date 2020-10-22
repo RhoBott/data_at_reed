@@ -22,7 +22,7 @@ library(ggplot2)
 library(palmerpenguins)
 ```
 
-Before we get started with graphing in `ggplot2`, we'll need our data to be in  "tidy" format. You can read more about what it means for a dataset to be tidy on [our data wrangling page](LINK-HERE) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
+Before we get started with graphing in `ggplot2`, we will need our data to be in  "tidy" format. You can read more about what it means for a dataset to be tidy on [our data wrangling page](LINK-HERE) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
 
 
 There are three main pieces that make up a ggplot:
@@ -54,7 +54,7 @@ You can always refer back to this template as a way to remember the `ggplot2` co
 
 #### Scatterplots
 
-Suppose we're interested in how body mass changed over time on each of these islands. The following `ggplot2` graph might help us get at this question:
+Suppose we are interested in how body mass changed over time on each of these islands. The following `ggplot2` graph might help us get at this question:
 
 ```{r}
 ggplot(data = penguins, 
@@ -171,7 +171,7 @@ install.packages("knitr")
 library(knitr)
 ```
 
-As before, we'll use `palmerpenguins`, and we'll use `kable()` to display the summary statistics we calculated over in our Data Wrangling section. Here is the code for our summary statistics, which I'll save in a new data frame called `penguin_sum`.
+As before, we will use `palmerpenguins`, and we will use `kable()` to display the summary statistics we calculated over in our [Data Wrangling](LINK-HERE) section. Here is the code for our summary statistics, which we will save in a new data frame called `penguin_sum`.
 
 ```{r}
 penguin_sum <- penguins %>%
@@ -185,7 +185,7 @@ R lets us print data frames like this:
 penguin_sum
 ```
 
-But that's not a very pretty table to look at. So let's make a nicer one with `kable()`.
+But that is not a very pretty table to look at. So let's make a nicer one with `kable()`.
 
 ```{r}
 kable(x = penguin_sum, 
@@ -194,14 +194,13 @@ kable(x = penguin_sum,
       caption = "Mean body mass of penguins on different islands over time")
 ```
 
-<!-- _Can we use KableExtra? How do I make this prettier if not?_ -->
-
 There is a way to make it even fancier, and to do that we use the package `kableExtra`. 
 
 ```{r}
 install.packages("kableExtra")
 library(kableExtra)
 ```
+
 We can start out with essentially the same code from making the basic `kable` table, but with `kableExtra` we can customize it more.
 
 `kable_styling()` gives us the basic `kableExtra` format.
@@ -212,7 +211,7 @@ kable(x=penguin_sum, col.names = c("Island", "Year", "Mean Body Mass (g)"),
   kable_styling()
 ```
 
-We can customize the look of the table with `kable_classic()` as an alternitive to `kable_styling()`. There's also `kable_paper`, `kable_classic_2`,`kable_minimal`, `kable_material` and `kable_material_dark`. 
+We can customize the look of the table with `kable_classic()` as an alternitive to `kable_styling()`. There is also `kable_paper`, `kable_classic_2`,`kable_minimal`, `kable_material` and `kable_material_dark`. 
 
 By adding `full_width = FALSE` we can change the width of the table. We can also change the font, the font size, and there are even more additions and changes we could make, which can be read about more [here](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview)
 
