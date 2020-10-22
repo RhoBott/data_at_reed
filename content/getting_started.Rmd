@@ -76,7 +76,42 @@ You might have some data on your computer that you'd like to work with on the se
 
 The data is now uploaded to the server! Now, you'll read in the data to R in the same way you would if you were working with data stored on your computer with the desktop version of R. See our [loading data](LINK-HERE) page for more information.
 
-### The `palmerpenguins` Data
+### Meet the Palmer Penguins
 
-The `palmerpenguins` data set contains various different size measurements for three penguins species on three islands in Palmer Archipelago, Antarctica. It's versatile and a great data set for demonstrating basic things that you can do in R. More information on the data set can be found [here](https://allisonhorst.github.io/palmerpenguins/articles/intro.html).
+Throughout these tutorials, we'll be making use of a dataset called `penguins` from the `palmerpenguins` package. The dataset contains various different measurements for penguins of three species on three islands in the Palmer Archipelago, Antarctica.
 
+```{r, echo = FALSE}
+url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"
+
+knitr::include_graphics(url)
+```
+
+If you want to work along with any of the examples on this website and need to load the data, you will first need to install the palmerpenguins package:
+
+```{r, eval = FALSE}
+install.packages("palmerpenguins")
+```
+
+Note that you only need to _install_ the package once. Once you have installed the package, though, you will need to _load_ the package every time you want to use the data. You can do so with the following code:
+
+```{r}
+library(palmerpenguins)
+```
+
+Finally, loading the data with the `data()` function:
+
+```{r}
+data("penguins")
+```
+
+You might notice that the dataset does not seem to be fully loaded in—beside `penguins`, there is probably a `<Promise>` symbol. To _really_ load the data in, click on `<Promise>`. `penguins` is now ready to go.
+
+Let's check `penguins` out:
+
+```{r}
+penguins
+```
+
+In this data, every row is a unique penguin. For each penguin, we have the `species` of the penguin, which `island` it lives on, its `sex`, the `year` the measurements were taken, and some body size measurements.
+
+To learn more about all that we can do with this data, check out the remaining tutorials.
