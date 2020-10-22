@@ -18,9 +18,7 @@ There are a couple of great advantages to using R on the Reed RStudio server:
 - Avoid possible messy installation
 - Provides some storage space for files, data, and images
 
-#### Access
-
-Head to (rstudio.reed.edu) and log in using your Kerberos credentials.
+To access the server, head to [rstudio.reed.edu](https://rstudio.reed.edu) and log in using your Kerberos credentials.
 
 #### Installing Libraries
 
@@ -30,13 +28,13 @@ Most of the libraries that you will need are already installed on the server, bu
 
 We strongly recommend having one active editor for a shared project. (While you may be used to the collaborative editing/versioning functions in Google Docs, that functionality does not transfer to projects on the RStudio server.) If the server detects that multiple editors are accessing the file, it will block further editing of that file. If the server gives you a saving error, copy/paste your code into a text editor or Google Doc, since the server will not save your work.
 
-If you're looking into jointly editing documents you can look into using [github] ("https://happygitwithr.com/rstudio-git-github.html")
+If you're looking into jointly editing documents you can look into using [git and github] (https://happygitwithr.com/rstudio-git-github.html).
 
 #### The server is broken / down / having problems
 
 Every five minutes, the RStudio Server checks to make sure it is running smoothly; if there is a glitch, the server will restart. This restart should solve any server-level problems.
 
-#### Error occurred during transmission (aka broken sessions)
+#### Error occurred during transmission (broken sessions)
 
 At some point, you may encounter an error when you log in: RStudio initialization error, ‘Error occurred during transmission’. Sometimes RStudio user sessions encounter errors of some stripe; while this might be annoying, it is also a problem you can solve. To exit a misbehaving session or create a new session, visit (https://rstudio.reed.edu/home).
 
@@ -66,6 +64,19 @@ Now you should be able to open RStudio and begin working! Remember to install pa
 
 The `thesisdown` package provides an R Markdown template for writing your senior thesis, which is particularly helpful for easily integrating R code and graphics into your thesis manuscript. Instructions for how to install this package and use the template can be found in the [GitHub repository](https://github.com/ismayc/thesisdown).
 
+#### Uploading Data to the Reed Rstudio Server
+
+You might have some data on your computer that you'd like to work with on the server. You can upload data from your computer by:
+
+* logging in to the [RStudio server](https://rstudio.reed.edu) and opening up a session
+* find the "Files" pane in the bottom right
+* navigate to the folder that you'd eventually like your file to be in
+* click the "Upload" button (with a yellow, up-facing arrow beside it)
+* choose the file on your computer
+
+The data is now uploaded to the server! Now, you'll read in the data to R in the same way you would if you were working with data stored on your computer with the desktop version of R. See our [loading data](LINK-HERE) page for more information.
+
 ### The `palmerpenguins` Data
 
 The `palmerpenguins` data set contains various different size measurements for three penguins species on three islands in Palmer Archipelago, Antarctica. It's versatile and a great data set for demonstrating basic things that you can do in R. More information on the data set can be found [here](https://allisonhorst.github.io/palmerpenguins/articles/intro.html).
+
