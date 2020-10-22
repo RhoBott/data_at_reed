@@ -43,6 +43,3 @@ A great way to streamline the process of getting help is to create what is calle
 2. Only include whatever is relevant or necessary to your problem. In reprex jargon, this is called making your example minimal.
 
 By following this convention you'll make it a lot easier for someone to understand and help with your issue. For more on reproducible examples, check out [this](https://www.tidyverse.org/help/) tidyverse page.
-
-
-_GitHub issues_
