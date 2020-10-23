@@ -1,5 +1,7 @@
 ---
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -12,57 +14,17 @@ R is a versatile tool, and at Reed R is used across departments and in various w
 
 ### Reed RStudio Server
 
-There are a couple of great advantages to using R on the Reed RStudio server:
+There are a couple of great advantages to using R on the Reed RStudio Server:
 
 - Accessibility from any computer
-- Avoid possible messy installation
+- Avoids possible messy installation
 - Provides some storage space for files, data, and images
 
 To access the server, head to [rstudio.reed.edu](https://rstudio.reed.edu) and log in using your Kerberos credentials.
 
 #### Installing Libraries
 
-Most of the libraries that you will need are already installed on the server, but if you want to use a package that is not already on the server you can use `install.package("package_name")`. If you run into errors resulting from installing such packges, contact Kbott (kbott@reed.edu).
-
-#### Jointly Editing Documents
-
-We strongly recommend having one active editor for a shared project. (While you may be used to the collaborative editing/versioning functions in Google Docs, that functionality does not transfer to projects on the RStudio server.) If the server detects that multiple editors are accessing the file, it will block further editing of that file. If the server gives you a saving error, copy/paste your code into a text editor or Google Doc, since the server will not save your work.
-
-If you are looking into jointly editing documents you can look into using [git and github] (https://happygitwithr.com/rstudio-git-github.html).
-
-#### The server is broken / down / having problems
-
-Every five minutes, the RStudio Server checks to make sure it is running smoothly; if there is a glitch, the server will restart. This restart should solve any server-level problems.
-
-#### Error occurred during transmission (broken sessions)
-
-At some point, you may encounter an error when you log in: RStudio initialization error, ‘Error occurred during transmission’. Sometimes RStudio user sessions encounter errors of some stripe; while this might be annoying, it is also a problem you can solve. To exit a misbehaving session or create a new session, visit (https://rstudio.reed.edu/home).
-
-### Desktop R
-
-If you are using R for projects outside of specific class assignments that are accessed and submitted using the Reed RStudio server, and especiallly if you are using sensitive data, you will want to install the Desktop version of RStudio.
-
-There are two things you need to download in order to use R on your computer: R and RStudio. R is the coding language, and RStudio is the Integrated Development Environment (IDE), which makes R easy to use.
-
-#### On MacOSX
-
-You can download and install R for MacOSX at the [CRAN downloads site](https://cran.r-project.org/), where you will follow the link to "Download R for (Mac) OS X". Navigate to the appropriate release for your computer's OS. To find your computer's OS, click the top left apple icon, and click "About this Mac". You will see both a name (e.g. "High Sierra", "Catalina", or "El Capitan") and a number ("Version __.__._"). Back on the download site, each download will have a description of what OS it requires in order to run. Choose the newest version possible for your OS (your OS should be equal to or higher than the one listed in the description of the download). Click on the link next to the description to download R. Once the file has downloaded, click it to proceed to installation, leaving all default settings as is.
-
-Next we need to install RStudio. To do this, navigate to the [RStudio downloads page](https://rstudio.com/products/rstudio/download/), and scroll down to "All Installers". Choose the download that matches your OS, most likely "MacOS 10.13+". Click the download link, open the file when it has downloaded, and install with the default settings as you did with R. 
-
-Now you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages()`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load and use them in the future.
-
-#### On Windows
-
-You can download and install R for Windows at the [CRAN downloads site](https://cran.r-project.org/), where you'll follow the link to "Download R for Windows". From here click "base", and then "Download R 4.0.3 for Windows". Once the file has downloaded, click it to proceed to installation, leaving all default settings as is.
-
-Next we need to install RStudio. To do this, navigate to the [RStudio downloads page](https://rstudio.com/products/rstudio/download/), and scroll down to "All Installers". Choose the download for Windows ("Windows 10/8/7"). Click the download link, open the file when it has downloaded, and install with the default settings as you did with R. 
-
-Now you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages()`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load and use them in the future.
-
-### Writing Your Thesis in `thesisdown`
-
-The `thesisdown` package provides an R Markdown template for writing your senior thesis, which is particularly helpful for easily integrating R code and graphics into your thesis manuscript. Instructions for how to install this package and use the template can be found in the [GitHub repository](https://github.com/ismayc/thesisdown).
+Most of the libraries that you will need are already installed on the server, but if you want to use a package that is not already on the server you can use `install.package("packagename")`. If you run into errors installing such packges, contact Kbott (kbott@reed.edu).
 
 #### Uploading Data to the Reed Rstudio Server
 
@@ -75,6 +37,45 @@ You might have some data on your computer that you would like to work with on th
 * choose the file on your computer
 
 The data is now uploaded to the server. Now, you will read in the data to R in the same way you would if you were working with data stored on your computer with the desktop version of R. See our [loading data](LINK-HERE) page for more information.
+
+#### Jointly Editing Documents
+
+We strongly recommend having one active editor for a shared project. The RStudio Server does not have the same simultaneous editing ability that a tool like Google Docs does. If the server detects that multiple editors are accessing the file, it will temporarily block further editing of that file. If the server gives you a saving error, copy and paste your code into a text editor or Google Doc, as the server will not save your work. You can then close the file, wait for your partner to be done with their edits, and then reopen the file to implement your changes.
+
+If you are want to jointly edit documents, you can look into using [Git and GitHub] (https://happygitwithr.com/rstudio-git-github.html).
+
+#### The server is broken / down / having problems
+
+Every five minutes, the RStudio Server checks to make sure it is running smoothly; if there is a glitch, the server will restart. This restart should solve any server-level problems.
+
+#### Error occurred during transmission (broken sessions)
+
+At some point, you may encounter an error when you log in: RStudio initialization error, ‘Error occurred during transmission’. Sometimes RStudio user sessions encounter errors of some stripe; while this might be annoying, it is also a problem you can solve. To exit a misbehaving session or create a new session, visit [https://rstudio.reed.edu/home](https://rstudio.reed.edu/home).
+
+### Desktop R
+
+If you are using R for projects outside of specific class assignments that are accessed and submitted using the Reed RStudio Server, and especially if you are using sensitive data, you will want to install the desktop version of R and RStudio.
+
+There are two things you need to download in order to use R on your computer: R and RStudio. R is the coding language, and RStudio is the Integrated Development Environment (IDE), which makes R easy to use.
+
+#### On MacOSX
+
+You can download and install R for MacOSX at the [CRAN downloads site](https://cran.r-project.org/), where you will follow the link to "Download R for (Mac) OS X". Navigate to the appropriate release for your computer's OS. To find your computer's OS, click the top left Apple icon, and click "About this Mac". You will see both a name (e.g. "High Sierra", "Catalina", or "El Capitan") and a number ("Version __.__._"). Back on the download site, each download will have a description of what OS it requires in order to run. Choose the newest version possible for your OS (your OS should be equal to or higher than the one listed in the description). Click on the link next to the description to download R. Once the file has downloaded, click it to proceed to installation, leaving all default settings as they are.
+
+Next we need to install RStudio. To do this, navigate to the [RStudio downloads page](https://rstudio.com/products/rstudio/download/) and scroll down to "All Installers". Choose the download that matches your OS, most likely "MacOS 10.13+". Click the download link, open the file when it has downloaded, and install with the default settings as you did with R. 
+Now you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages("packagename")`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load (`library(packagename)`) and use them in the future.
+
+#### On Windows
+
+You can download and install R for Windows at the [CRAN downloads site](https://cran.r-project.org/), where you'll follow the link to "Download R for Windows". From here click "base", and then "Download R 4.0.3 for Windows". Once the file has downloaded, click it to proceed to installation, leaving all default settings as they are.
+
+Next we need to install RStudio. To do this, navigate to the [RStudio downloads page](https://rstudio.com/products/rstudio/download/) and scroll down to "All Installers". Choose the download for Windows ("Windows 10/8/7"). Click the download link, open the file when it has downloaded, and install with the default settings as you did with R. 
+
+Now you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages("packagename")`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load (`library(packagename)`) and use them in the future.
+
+### Writing Your Thesis in `thesisdown`
+
+The `thesisdown` package provides an R Markdown template for writing your senior thesis. This is particularly helpful for easily integrating R code and graphics into your thesis manuscript. Instructions for how to install this package and use the template can be found in the [GitHub repository](https://github.com/ismayc/thesisdown).
 
 ### Meet the Palmer Penguins
 
@@ -98,18 +99,18 @@ Note that you only need to _install_ the package once. Once you have installed t
 library(palmerpenguins)
 ```
 
-Finally, loading the data with the `data()` function:
+Now you can load the data with the `data()` function:
 
 ```{r}
 data("penguins")
 ```
 
-You might notice that the dataset does not seem to be fully loaded in—beside `penguins`, there is probably a `<Promise>` symbol. To _really_ load the data in, click on `<Promise>`. `penguins` is now ready to go.
+You might notice that the dataset does not seem to be fully loaded in. Beside `penguins`, there is probably a `<Promise>` symbol. To _really_ load the data in, click on `<Promise>`. `penguins` is now ready to go.
 
-Let's check `penguins` out:
+We can now exlore `penguins`:
 
 ```{r}
-penguins
+head(penguins)
 ```
 
 In this data, every row is a unique penguin. For each penguin, we have the `species` of the penguin, which `island` it lives on, its `sex`, the `year` the measurements were taken, and some body size measurements.

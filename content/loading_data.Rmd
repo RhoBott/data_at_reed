@@ -10,7 +10,7 @@ library(emo)
 
 # Loading Data
 
-R is a great tool for data cleaning, analysis, and visualization. But before we can do any of that, we need the actual data to work with. This page will help you learn to bring datasets into your R document in various ways: you can use a pre-loaded dataset, your own data from a .csv, excel sheet or a google sheet, or data found on the internet. 
+R is a great tool for data cleaning, analysis, and visualization. But before we can do any of that, we need the actual data to work with. This page will help you learn to bring datasets into your R document in various ways: you can use a pre-loaded dataset, your own data from a .csv, Excel Sheet or a Google Sheet, or data found on the internet. 
 
 ### From a Package
 
@@ -36,7 +36,7 @@ Now that you have the package installed, you need to load the package into your 
 library(palmerpenguins)
 ```
 
-Okay... `palmerpenguins` is loaded... now where is the data?
+Okay, `palmerpenguins` is loaded... now where is the data?
 
 This is a weird thing about loading data from packages--if you do not already know what you are looking for inside the package, how do you find out what is inside?
 
@@ -56,7 +56,7 @@ Regardless, now you have found the name of the dataset you want. From here, you 
 data(penguins)
 ```
 
-Depending on how datasets are included in a package, you might run that command and see nothing, or maybe just see `<Promise>` up in your Environment in the top-right corner of your RStudio window. It might not look like your data is loaded, but it is. Try running the `View()` function in your console, which just takes in the name of your dataset.
+Depending on how datasets are included in a package, you might run that command and see nothing, or maybe you will see `<Promise>` up in your Environment in the top-right corner of your RStudio window. It might not look like your data is loaded, but it is. Try running the `View()` function in your console, which just takes in the name of your dataset.
 
 ```{r, eval = FALSE}
 View(penguins)
@@ -90,13 +90,13 @@ Now that we have the package, how how do we load the data?
 
 First, you will need to download the data and know where this data is on your computer.
 
-`readr` contains a function called `read_csv()`, which uses a filepath to find a .csv file and then brings it into R. Here is an example:
+`readr` contains a function called `read_csv()`, which uses a filepath to find a .csv file and then brings that file into R. Here is an example:
 
 ```{r, eval = FALSE}
 cat_data <- read_csv("Desktop/Reed/Bio123/cats.csv")
 ```
 
-In the above code, we are taking a `.csv` called `cats.csv`, located in a folder `Bio123` within a "Reed" folder on our Desktop. The filepath `Desktop/Reed/Bio123` gives directions to `read_csv()` on where to find `cats.csv`. 
+In the above code, we are taking a `.csv` called `cats.csv`, located in a folder `Bio123` within a `Reed` folder on our `Desktop`. The filepath `Desktop/Reed/Bio123` gives directions to `read_csv()` on where to find `cats.csv`. 
 
 `read_csv()` not only finds this data, it also makes it into a data frame, which we then store using the `<-` operator under a name of our choosing (`cat_data`). This data is now available to us to use in this R session. You can `View()` it, make a graph with it, or display it in a table.
 
@@ -118,13 +118,13 @@ Now that you have the package installed, you need to load the package into your 
 library(readxl)
 ```
 
-The package `readxl` contains a function called `read_excel()`, that is very similar to `read_csv()` above. `read_excel()` will take a filepath, bring the data into R, and turn it into a nice data frame. The only difference is that the file will be a .xls or .xlsx, rather than .csv:
+The package `readxl` contains a function called `read_excel()`, that is very similar to `read_csv()` above. `read_excel()` will take a filepath, bring the data into R, and turn it into a nice data frame. The only difference is that the file will be a `.xls` or `.xlsx`, rather than `.csv`:
 
 ```{r, eval = FALSE}
 cat_data <- read_excel("Desktop/Reed/Bio123/cats.xls")
 ```
 
-If you have multiple sheets in your excel file, `read_excel()` can access all of them. Let's say the `cats.xls` data has three sheets: the first sheet is about indoor cats, the second is about outdoor cats, and the third is about stray cats. We can load these in as follows:
+If you have multiple sheets in your Excel file, `read_excel()` can access all of them. Let's say the `cats.xls` data has three sheets: the first sheet is about indoor cats, the second is about outdoor cats, and the third is about stray cats. We can load these in as follows:
 
 ```{r, eval = FALSE}
 indoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = 1)
@@ -140,7 +140,7 @@ outdoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = "Outdoo
 stray_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = "Stray")
 ```
 
-This code will help you to seamlessly bring in data from excel sheets without having to convert them to .csv format first. If you want to learn more about the `readxl` package or the `read_excel()` function, [here](https://readxl.tidyverse.org/) is a more extensive overview of the package and its functions.
+This code will help you to seamlessly bring in data from Excel sheets without having to convert them to `.csv` format first. If you want to learn more about the `readxl` package or the `read_excel()` function, [here](https://readxl.tidyverse.org/) is a more extensive overview of the package and its functions.
 
 ### From Google Sheets (with `googlesheets4`)
 
@@ -157,7 +157,7 @@ library(googlesheets4)
 
 As you might suspect, loading data from Google Sheets is a bit more complicated because of document ownership and privacy around your Google account. However, `googlesheets4` navigates this very elegantly. 
 
-Note that you will want to make sure you can see your "Console" when you are using the following functions, because you will have to grant R access to your Google Sheets. Open your console by clicking the little double-window icon at the right of the gray bar that says "Console" below your current document. 
+Note that you will want to make sure you can see your "console" when you are using the following functions, because you will have to grant R access to your Google Sheets. Open your console by clicking the little double-window icon at the right of the gray bar that says "console" below your current document. 
 
 Now that you can see your console, navigate to the sheet you would like to read in, and copy the sharing URL for that sheet. This can then be fed directly into to the `read_sheet()` function in `googlesheets4`, like so:
 
@@ -167,21 +167,21 @@ example <- read_sheet("https://docs.google.com/spreadsheets/d/1qSGfs0ogEOQsynzAt
 
 This code will prompt several interactive steps for you, in order to grant R access to your document.
 
-1. In your console, you will be asked if it is okay to "cache OAuth access credentials in the folder" followed by a URL. This means: is it okay for R to gain access to your Google Drive in the future, or would you like to only grant one-time access? Type "1" in the console for yes, and click enter.
+1. In your console, you will be asked if it is okay to "cache OAuth access credentials in the folder" followed by a URL. This means: is it okay for R to gain access to your Google Sheets in the future, or would you like to only grant one-time access? Type "1" in the console for yes, and click enter.
 
-2. R will automatically open a window in your browser asking for tidyverse access to your google account. This will allow it to access your documents in the future when you want to read in files. Follow the directions in the browser and grant access. 
+2. R will automatically open a window in your browser asking for `tidyverse` access to your google account. This will allow it to access your documents in the future when you want to read in files. Follow the directions in the browser and grant access. 
 
 3. You will be asked to copy a URL from your browser window into your console, where you will paste it in as the "authorization code" and then click enter.
 
 Check your "environment" in the top right corner of your R window, and you will see your data in a nice data frame.
 
-If you select "yes" in the first step of this process, this will be a much smoother data import after the first time.
+If you select "yes" in the first step of this process, you will have a much easier time importing data from Google Sheets in the future. You can even write files from R into Google Sheets.
 
 If you want to learn more about `googlesheets4`, [the package's website](https://googlesheets4.tidyverse.org/) contains a more extensive overview of the package and its functions.
 
 ###  From the Internet (with `rvest`)
 
-If you find data that you would like to use on a website, `rvest` makes the process of bringing that table into R very simple. You will never have to try and copy/paste data from a webpage into an excel document again.
+If you find data that you would like to use on a website, `rvest` makes the process of bringing that table into R very simple. You will never have to try and copy/paste data from a webpage into an Excel document again.
 
 Before you do take data from a website, make sure you are thinking about whether or not this is data that you are allowed to take and use for your own purposes. (LINK-HERE)
 
@@ -204,15 +204,15 @@ First, we will save the URL of this site under a variable name so that it is eas
 url <- "https://www.reed.edu/ir/success.html"
 ```
 
-The next step requires that we tell R not only the URL of the graph, but also where on that page this graph is located. Here is how:
+The next step requires that we tell R not only the URL of the website that contains the table, but also where on that page this table is located. Here is how:
 
-1. Right-click on the graph you want to bring into R, and click "inspect" in the menu that comes up. This will open a bar on the right of the window.
+1. Right-click on the table you want to bring into R, and click "inspect" in the menu that comes up. This will open a bar on the right of the window.
 
-2. Hover your mouse over the lines of code in this bar on the right. you will notice that as you do so, different sections of the webpage will be highlighted. Hover until you find a line of code that highlights the whole table that you want.
+2. Hover your mouse over the lines of code in this bar on the right. You will notice that as you do so, different sections of the webpage will be highlighted. Hover until you find a line of code that highlights the whole table that you want.
 
 3. Right-click that line, go to copy > copy selector. You will then paste that text in the code below where it says `css = " "`. 
 
-Notice we are using the `url` that we saved before. 
+Notice we are using the `url` that we saved before, and saving this data as `reed_table` using the `<-` operator.
 
 ```{r}
 reed_table <- url %>%
@@ -223,9 +223,9 @@ reed_table <- url %>%
 
 Run the code and check your environment for the data frame `reed_table`.
 
-Hopefully in this `rvest` tutorial you can see that even though the code looks complicated, you really only need 2 things to make it work: 
+Hopefully in this `rvest` tutorial you can see that even though the code looks complicated, you  only need 2 things to make it work: 
 
-1. The URL of the page that has your data table
+1. The URL of the page that has the data table you want
 
 2. The "selector" code that will tell R exactly where that table is
 
