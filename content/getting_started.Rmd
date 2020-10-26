@@ -107,10 +107,10 @@ data("penguins")
 
 You might notice that the dataset does not seem to be fully loaded in. Beside `penguins`, there is probably a `<Promise>` symbol. To _really_ load the data in, click on `<Promise>`. `penguins` is now ready to go.
 
-We can now exlore `penguins`:
+We can now explore `penguins`:
 
 ```{r}
-head(penguins)
+penguins
 ```
 
 In this data, every row is a unique penguin. For each penguin, we have the `species` of the penguin, which `island` it lives on, its `sex`, the `year` the measurements were taken, and some body size measurements.
