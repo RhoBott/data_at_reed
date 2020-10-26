@@ -11,11 +11,11 @@ library(knitr)
 
 # Presenting and Visualizing Data
 
-### Intro to data visualization with ggplot2
+### Intro to data visualization with `ggplot2`
 
 `ggplot2` is an R package for data visualization that will allow you to make appealing and effective graphs using a simplified and standardized syntax.
 
-First, let's load the package; this is necessary every time you start a graphing session. (To learn more about packages see our [Getting Started](LINK-HERE) page.) We will also load a dataset on penguin populations.
+First, let's load the package. This is necessary every time you start a graphing session. (To learn more about packages see our [Getting Started](LINK-HERE) page.) We will also load a package that contains dataset about penguin populations on islands in Antarctica.
 
 ```{r}
 library(ggplot2)
@@ -27,29 +27,29 @@ Before we get started with graphing in `ggplot2`, we will need our data to be in
 
 There are three main pieces that make up a ggplot:
 
-1. Data: You have to specify the data that you want `ggplot()` to plot using 
+1. Data: You have to specify the data that you want `ggplot()` to plot using the following syntax: 
       
               data = ___
 
-2. Aesthetics: In order for `ggplot()` to know which variables you want to use you have to specify what they are by using some combination of the following four options:
+2. Aesthetics: In order for `ggplot()` to know which variables you want to use you have to specify what they are by using some combination of aesthetics, such as:
 
               aes(x = ___ , y = ___ , color = ___ , fill = ___ )
 
-Anything that you put inside of `aes()` should be a variable. Additionally, though the whole wide array of possible inputs into `aes()` are given here, the ones that you end up using will be specific to your graph type. For example, in a typical histogram you are looking at the distribution of one variable so you only have to include `x = ___ `, and not the other inputs.
+Anything that you put inside of `aes()` should be a variable. Additionally, though some possible aesthetics are given here (x, y, color, and fill), the ones that you end up using will be specific to your graph type. For example, in a typical histogram you are looking at the distribution of one variable so you only have to include `x = ___ `, and not the other inputs.
 
-3. Geoms: We can specify what kind of plot we want to make using
+3. Geoms: We can specify what kind of plot we want to make using the following syntax: 
 
-              geom_---()
+              geom_ ___()
 
-There are a wide range of different options but a couple of common ones are, `geom_point()` for a     scatterplot, and `geom_histogram()` for a histogram.
+There are a wide range of different options but a couple of common ones are `geom_point()` for a scatterplot, `geom_histogram()` for a histogram, or `geom_boxplot()` for a boxplot. The word `geom` refers to the visual object used to represent data. 
 
 We can put all of this together to create a full template for making graphs with `ggplot()`:
 
               ggplot(data = ___ ,
                      mapping = aes(x = ___  , y = ___  , color = ___  , fill = ___   ) +
-                geom_ ___ ()
+                geom_ ___()
           
-You can always refer back to this template as a way to remember the `ggplot2` convention. 
+You can always refer back to this template as a way to remember the `ggplot2` syntax. The next several sections will show a few different example graphs.
 
 
 #### Scatterplots
@@ -62,21 +62,13 @@ ggplot(data = penguins,
   geom_point()
 ```
 
-Let's look at the components of our ggplot2 code, and how they made this graph:
+Let's look at the components of our code, and how they made this graph:
 
-First, we specified the `data` we were using, the penguin data. Next comes `mapping`, which essentially means "which variables encode what information": we told this graph to put bill length as the x axis, body mass as the y axis, and islands as the different colors. Finally, we add a `geom` layer to our plot—in this case, we use points. `geom`s refer to the visual object used to represent data. In `geom_point()`, the `geom` is a point on a scatterplot.
+First, we specified the `data` we were using, the penguin data. Next comes `mapping`, which essentially means "which variables encode what information": we told this graph to put bill length as the x axis, body mass as the y axis, and islands as the different colors. Finally, we add a `geom` layer to our plot, where we decided to use points. 
 
 #### Linegraphs
 
-You can create a smoothed linegraph in exactly the same way as a scatterplot by swapping out `geom_point()` for `geom_line()`. This is an example of a different `geom`(etry) being used to represent the same data.
-
-```{r, message = FALSE, warning = FALSE}
-ggplot(data = penguins, 
-       mapping = aes(x = bill_length_mm, y = body_mass_g)) +
-  geom_smooth()
-```
-
-Looking at the data, you may have noticed that we have information on different islands of penguins. You can use `color` as a visual variable to represent the different island populations.
+You can create a smoothed linegraph in exactly the same way as a scatterplot by swapping out `geom_point()` for `geom_line()`. This is an example of a different `geom` being used to represent the same data. 
 
 ```{r, message = FALSE, warning = FALSE}
 ggplot(data = penguins, 
@@ -86,7 +78,7 @@ ggplot(data = penguins,
 
 #### Barplots
 
-Bar plots use the call `geom_bar()`.
+Bar plots use the call `geom_bar()`. 
 
 ```{r}
 ggplot(data = penguins, mapping = aes(x = island)) +
@@ -100,7 +92,7 @@ ggplot(data = penguins, mapping = aes(x = island, fill = sex)) +
   geom_bar()
 ```
 
-In the above examples, `ggplot2` determines the height of bars by counting the number of observations behind the scenes. Sometimes, though, you might need to work with data that is "pre-counted." For example, if we make a new dataset giving the count of penguins by `island`:
+In the above examples, `ggplot2` determines the height of bars by counting the number of observations behind the scenes. This is why we do not provide `geom_bar()` with a y aesthetic. Sometimes, though, you might need to work with data that is "pre-counted." For example, if we make a new dataset with the count of penguins by `island`:
 
 ```{r, message = FALSE, warning = FALSE}
 penguins_sum <- penguins %>%
@@ -116,11 +108,11 @@ ggplot(data = penguins_sum, mapping = aes(x = island, y = n)) +
   geom_col()
 ```
 
-Notice that we had to supply `y = n` inside of `aes()`.
+Notice that we had to supply `y = n` inside of `aes()`. A helpful way to remember this difference between `geom_bar()` and `geom_col()` is that Col needs Counts.
 
 #### Histograms
 
-When making histograms with `ggplot2`, you can specify either the width of the bins or the number of the bins of the histogram as appropriate for your data. Here we chose to use a binwidth of 100 grams:
+When making histograms with `ggplot2`, you can use `geom_histogram()`. You should specify either the width of the bins or the number of bins in the histogram as appropriate for your data. Here we chose to use a `binwidth` of 100 grams:
 
 ```{r, warning = FALSE}
 ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
@@ -129,7 +121,7 @@ ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
 
 #### Boxplots
 
-Another useful graph is the boxplot. You can create multiple boxplots on the same graph by setting your `x` to a variable with multiple levels. In this example our call will create a boxplot for each individual island.
+Another useful graph is the boxplot. You can create multiple boxplots on the same graph by setting `x` to a variable with multiple categories In this example we will create a boxplot for each individual island.
 
 ```{r}
 ggplot(data = penguins, mapping  = aes(x = island, y = body_mass_g)) +
@@ -140,14 +132,14 @@ ggplot(data = penguins, mapping  = aes(x = island, y = body_mass_g)) +
 
 Below are some more examples of different aesthetics available with `ggplot2`.
 
-Sometimes, when using `geom_point`, our points can get a bit crowded. One way to address this is to change the transparency of the points. In this code, `alpha = 0.7` specifies the transparency of the points as 0.7, on a scale from 0 (most transparent) to 1 (least transparent):
+Sometimes, when using `geom_point()`, our points can get a bit crowded. One way to address this is to change the transparency of the points. In this code, `alpha = 0.5` specifies the transparency of the points as 0.5, on a scale from 0 (most transparent) to 1 (least transparent):
 
 ```{r, warning = FALSE}
 ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, color = sex)) +
-  geom_point(alpha = 0.7)
+  geom_point(alpha = 0.5)
 ```
 
-What if we want to add another variable, but our graph is already a bit "busy" to look at? This is where `facet_wrap()` can come in handy. Here, I faceted by `species`, creating three graphs, with the same x and y axes and coloring. These graphs let us compare `species` side-by-side easily:
+What if we want to add another variable, but our graph is already a bit "busy" to look at? This is where `facet_wrap()` can come in handy. Here, we faceted by `species`, creating three graphs, with the same x and y axes and coloring. These graphs let us compare `species` side-by-side easily:
 
 ```{r, warning = FALSE}
 ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, color = sex)) +
@@ -155,7 +147,7 @@ ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, col
   facet_wrap(~species)
 ```
 
-To read more about `ggplot2`, we recommend the [R for Data Science chapter](https://r4ds.had.co.nz/data-visualisation.html). More extensive documentation can be found on the [ggplot2 website](https://ggplot2.tidyverse.org/).
+To read more about `ggplot2`, we recommend the [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) chapter about data visualization. More extensive documentation can be found on the [ggplot2 website](https://ggplot2.tidyverse.org/).
 
 ### Making Summary Tables in R
 
@@ -203,7 +195,7 @@ library(kableExtra)
 
 We can start out with essentially the same code from making the basic `kable` table, but with `kableExtra` we can customize it more.
 
-`kable_styling()` gives us the basic `kableExtra` format.
+We can add the function `kable_styling()` to get the basic `kableExtra` format, rather than the previous default `kable` format:
 
 ```{r}
 kable(x=penguin_sum, col.names = c("Island", "Year", "Mean Body Mass (g)"),
@@ -211,9 +203,9 @@ kable(x=penguin_sum, col.names = c("Island", "Year", "Mean Body Mass (g)"),
   kable_styling()
 ```
 
-We can customize the look of the table with `kable_classic()` as an alternitive to `kable_styling()`. There is also `kable_paper`, `kable_classic_2`,`kable_minimal`, `kable_material` and `kable_material_dark`. 
+We can customize the look of the table with `kable_classic()` as an alternitive to `kable_styling()`. There is also `kable_paper()`, `kable_classic_2()`,`kable_minimal()`, `kable_material()` and `kable_material_dark()`. 
 
-By adding `full_width = FALSE` we can change the width of the table. We can also change the font, the font size, and there are even more additions and changes we could make, which can be read about more [here](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview)
+By adding `full_width = FALSE` we can change the width of the table. We can also change the font, the font size, and there are even more additions and changes we could make, which are documented more extensively [here](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview).
 
 ```{r}
 kable(x=penguin_sum, col.names = c("Island", "Year", "Mean Body Mass (g)"),
@@ -232,15 +224,15 @@ kable(x=penguin_sum, col.names = c("Island", "Year", "Mean Body Mass (g)"),
 
 #### R Markdown
 
-A great way to write up results is with an R Markdown file (.rmd). This type of document consists of both regular text as well as code chunks. When using R Markdown file you can `Knit` which is a really quick way to output a document with all of your text and code as well as the results of each code chunk pasted directly below the chunk. When working in a Markdown file in RStudio you can find the `Knit` button at the tool bar near the top of the file.
+A great way to write up results is with an R Markdown file (.Rmd). This type of document consists of both regular text as well as code chunks. When using an R Markdown file you can `Knit` in order to output a document with all of your text and code as well as the results of each code chunk pasted directly below the chunk. When working in a Markdown file in RStudio you can find the `Knit` button in the tool bar near the top of the file.
 
-You can also specify the type of document that you want to output when knitting. This makes it really easy to seamlessly create reproducible reports in whatever document type you want.
+You can also specify the type of document that you want to output when knitting. This makes it easy to seamlessly create reproducible reports in whatever document type you want.
 
-For more in depth information on R Markdown you can check out [this page](https://rmarkdown.rstudio.com/articles_intro.html)
+For more in-depth information on R Markdown you can check out [this page](https://rmarkdown.rstudio.com/articles_intro.html)
 
 #### R Script
 
-Alternatively if you want a textfile where you can enter R commands wherever you want you can use an R Script (.R). This type of document is useful for Results that are mostly just code and do not necessarily contain very much regular text. A big difference between R Script and R Markdown is that running a code chunk in Markdown will print the output in the file, whereas R Script prints the output in the Console window of RStudio.
+Alternatively, if you want a text file where you can enter R commands wherever you want, you can use an R Script (.R). This type of document is useful for results that are mostly code and do not necessarily contain very much regular text. A big difference between R Script and R Markdown is that running a code chunk in Markdown will print the output in the file, whereas R Script prints the output in the Console window of RStudio.
 
-To learn more about R Scripts you can check out the [Workflow: scripts] (https://r4ds.had.co.nz/workflow-scripts.html) chapter in [R for Data Science](https://r4ds.had.co.nz/)
+To learn more about R Scripts you can check out the [Workflow: scripts](https://r4ds.had.co.nz/workflow-scripts.html) chapter in [R for Data Science](https://r4ds.had.co.nz/)
 
