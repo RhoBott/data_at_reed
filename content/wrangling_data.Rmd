@@ -11,11 +11,11 @@ library(knitr)
 
 # Wrangling Data
 
-When you first get a dataset, whether it is from a class, downloaded from the internet, or given to you by a professor, there might be ways that you want to change that data to make it easier to work with, add more information, or summarize your data. These all fall under the term "Data Wrangling". Let's learn how to handle our data, how to get more out of it, and how to keep it tidy.
+When you first get a dataset, whether it is from a class, downloaded from the internet, or given to you by a professor, there might be ways that you want to change that data to make it easier to work with, add more information, or summarize your data. These all fall under the term "Data Wrangling". Let's learn how to wrangle our data, how to get more out of it, and how to keep it tidy.
 
 ### Tidy Data Principles, Reshaping Data, and `tidyr`
 
-Packages in the `tidyverse`, like `ggplot2` and `dplyr`, are built to work with tidy data. The `tidyr` package can help us tidy up a dataset by rearranging how data is structured.
+Packages in the `tidyverse`, like `ggplot2` and `dplyr`, are built to work with tidy data. The `tidyr` package can help us tidy up a dataset by rearranging how the data is structured.
 
 Briefly, for a dataset to be tidy, it must follow these three rules:
 
@@ -28,9 +28,7 @@ Briefly, for a dataset to be tidy, it must follow these three rules:
 Let's take a look at a summarized version of the `penguins` data as an example.
 (For instructions on loading `penguins`, see our [Getting Started](LINK-HERE) page)
 
-<!-- _here_ maybe we should add something about how and why we are summarizing the data -->
-
-For our summarized `penguins` data, we want to have the mean body mass for all penguins on a given island in a given year. To do this, we use the `dplyr` function `group_by()` which takes the original data and groups it by the given variable (or variables, in this case island and year). Then with `summarize()` we can calculate the grouped mean body weights, and we get one table with the mean body mass for all penguins on a given island in a given year. This will be covered more in depth further down this page. 
+For our summarized `penguins` data, we want to have the mean body mass for all penguins on a given island in a given year. To do this, we use the `dplyr` function `group_by()` which takes the original data and groups it by the given variable (or variables, in this case `island` and `year`). Then with `summarize()` we can calculate the grouped mean body weights, and we get one table with the mean body mass for all penguins on a given island in a given year. This will be covered more in depth further down this page. For now, the purpose of this summary table is to be able to easily see what tidy versus untidy data looks like.
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 penguins_sum <- penguins %>%
@@ -41,7 +39,7 @@ penguins_sum
 ```
 
 
-Each variable has its own column, each observation (the sample of penguins on a given island in a given year) is a row, and each value has its own cell.
+Each variable has its own column, each observation (a penguin on a given island in a given year) is a row, and each value has its own cell.
 
 This dataset, though, could also look like this:
 
@@ -50,17 +48,17 @@ penguins_sum %>%
   pivot_wider(id_cols = c("island", "year"), names_from = year, values_from = mean_body_mass_g)
 ```
 
-This dataset technically contains the same data, but in this version, the mean body mass is held in three different columns- one for each year.
+This dataset technically contains the same data, but in this version, the mean body mass is held in three different columns, one for each year. Year and body mass are both variables that should have their own columns, but here they do not. If year is a variable that we have in our data, then there should be a column called "year", and the same is true for body mass.
 
-Sometimes, the data you are asked to analyze might look more like the second, untidy version than the first, tidy version. How do you move from one to the other? Introducing `tidyr`.
+Sometimes, the data you are asked to analyze might look more like the second, untidy version than the first, tidy version. We can move from tidy to untidy or vice versa using `tidyr`.
 
-Let's start off with the first version:
+Let's start off with the first, tidy version:
 
 ```{r, message = FALSE, warning = FALSE}
 penguins_sum
 ```
 
-We want to "pivot" this data from a "long" format to a "wide" format. The `pivot_wider()` function from `tidyr` will help us to do that:
+To make the untidy version, we "pivot" this data from a "long" format to a "wide" format. The `pivot_wider()` function from `tidyr` will help us to do that:
 
 ```{r, warning = FALSE, message = FALSE}
 penguins_wide <- penguins_sum %>%
@@ -71,10 +69,9 @@ penguins_wide <- penguins_sum %>%
 penguins_wide
 ```
 
-The `id_cols` (read: ID columns) are the variables that, together, identify what makes a row unique in the original data, `names_from` determines what columns in the old data will be the names of the new columns, and `values_from` is the name of the variable in the old data that will be the information contained inside the new columns.
+The `id_cols` (read: ID columns) are the variables that, together, identify what makes a row unique in the original data, `names_from` determines what variable from the old data will determine the names of columns in the new data, and `values_from` is the name of the variable in the old data that will be contained in cells in the new data.
 
-If we want pivot from wider to longer, we can use `pivot_longer()`. 
-Starting with the widened version of the data:
+Now, if we are given this untidy table and want to make it tidy, we can pivot from wider to longer using `pivot_longer()`.
 
 ```{r}
 penguins_wide %>%
@@ -91,7 +88,7 @@ If you are interested in learning more about tidy data and pivoting, we recommen
 
 Now that our data is tidy we can use `dplyr` to further transform our data.
 
-There are 6 fundamental `dpylr` functions that should allow you to perform the data wrangling that you find yourself needing to do. For the following examples we will be using the full `penguins` data set.
+There are 6 fundamental `dpylr` functions that should allow you to perform the data wrangling that you find yourself needing to do. For the following examples we will be using the full `penguins` dataset.
 
 Whenever you see the `head()` function used, you can think of it as a way for us to take a peek at what our transformations are doing.
 
@@ -103,7 +100,7 @@ head(penguins)
 
 #### 1. Filtering Rows with `filter()`
 
-Let's say that you want to take a subset of your full data set, by only picking rows that meet certain criteria. For example, in our penguins data set we could choose to look at female penguins only:
+Let's say that you want to take a subset of your full dataset, by only picking rows that meet certain criteria. For example, in our penguins dataset we could choose to look at female penguins only:
 
 ```{r}
 penguins %>%
@@ -126,16 +123,16 @@ penguins %>%
 
 #### 2. Arranging Rows with `arrange()`
 
-We can arrange our data, by a certain variable using the `arrange()` function
+We can arrange our data by a certain variable using the `arrange()` function.
 
-For arranging by quantitative variable, in ascending order:
+Let's `arrange()` our data by bill length, in ascending order:
 
 ```{r}
 penguins %>%
   arrange(bill_length_mm)
 ```
 
-and if we wanted to put it in descending order?
+We can also arrange by the same variable in descending order:
 
 ```{r}
 penguins %>%
@@ -151,7 +148,7 @@ penguins %>%
 
 #### 3. Selecting Columns with `select()`
 
-A data set can have a ton of different variables, but sometimes we are only interested in a few. We can use the `select()` function to do just that. All you have to do is add all of the variables that you want inside of the function.
+A dataset can have a lot of different variables, but sometimes we are only interested in a few. We can use the `select()` function focus on only those variables we are interested in. All you have to do is add all of the variables that you want inside of the function.
 
 ```{r}
 penguins %>%
@@ -162,14 +159,14 @@ penguins %>%
 
 What if you wanted create a new column or "mutate" an existing column in some way? The `mutate()` function makes both of these things easy. For this example we will go back to using our `penguins_sum` data frame.
 
-If we want to introduce a new column we choose a name for it and then indicate how we want to calculate it. For example we will create a new column for the mean body mass in kilograms instead of grams:
+If we want to introduce a new column, we choose a name for it and then indicate how we want to calculate it. For example, we can create a new column for the mean body mass in kilograms instead of grams:
 
 ```{r}
 penguins_sum %>%
   mutate(mean_body_mass_kg = (mean_body_mass_g / 1000))
 ```
 
-If for some reason all of our years were off by 1 we could just change the original column like this:
+If for some reason all of our years were off by 1, we could just change the original column like this:
 
 ```{r}
 penguins_sum %>%
@@ -178,7 +175,7 @@ penguins_sum %>%
 
 #### 5. Summarizing Data with `group_by()` and `summarize()`
 
-You might have noticed that the functions `group_by()` and `summarize()` were used in our explanation of tidy data with the data frame `penguins_sum`. Let's work step-by-step from our original data set to `penguins_sum` to get a better feel for what that code was doing.
+You might have noticed that the functions `group_by()` and `summarize()` were used in our explanation of tidy data with the data frame `penguins_sum`. Let's work step-by-step from our original dataset to `penguins_sum` to get a better feel for what that code was doing.
 
 We want to end up with a data frame that shows the mean body mass of penguins for each island and each year. We can feed both of those variables into the `group_by()` to start:
 
@@ -187,13 +184,15 @@ penguins %>%
   group_by(island, year)
 ```
 
-Notice how this code did not actually change the way our data frame looks. This is because the `group_by()` function changes the metadata, you can think of this as R getting the data frame ready for a further transformation to be applied to it. We can apply the `summarize` function to get what we want.
+Notice how this code did not actually change the way our data frame looks. This is because the `group_by()` function changes the metadata, you can think of this as R getting the data frame ready for a further transformation to be applied to it. We can now apply the `summarize()` function to get what we want.
 
 ```{r}
 penguins %>%
   group_by(island, year) %>%
   summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
 ```
+
+Now we have the summary statistic we wanted (mean body mass) for each island, in each year.
 
 All that the `na.rm = TRUE` is doing is removing any missing values in `body_mass_g` so that we do not report missing values in our summary.
 
@@ -211,7 +210,7 @@ If you want to learn more about `dplyr`, [the package's website](https://dplyr.t
 
 Frequency tables can be a helpful way of displaying information about your data. For example, what if we want to know how many male and female penguins are in our sample? We can build a frequency table for this. 
 
-To do so, we can `count()` by the groups formed by splitting up any number of variables. First, by `sex`:
+To do so, we can `count()` by the groups of any variable. First, by `sex`:
 
 ```{r}
 penguins %>%
@@ -231,7 +230,7 @@ penguins %>%
 
 ### strings with `stringr`
 
-Often times you find yourself with a data set that includes data in the form of a string. A string is basically a group of characters- it can include numbers, letters, spaces, and special characters as well. Strings are most often represented as `"text surrounded in quotes"` in R. The package `stringr` is really useful tool for working with this type of data, and thankfully is already included in the `tidyverse` package. If you have already loaded the `tidyverse` with `library(tidyverse)`, then you are ready to jump in.
+Often times you find yourself with a dataset that includes data in the form of a string. A string is basically a group of characters. It can include numbers, letters, spaces, and special characters as well. Strings are most often represented as `"text surrounded in quotes"` in R. The package `stringr` is really useful tool for working with this type of data, and thankfully is already included in the `tidyverse` package. If you have already loaded the `tidyverse` with `library(tidyverse)`, then you are ready to start using `stringr`.
 
 Instead of going through a step-by-step tutorial on exactly how each `stringr` function works, we will go through a couple of concrete examples using the `penguins` dataset to show off different ways to use `stringr` in your data wrangling.
 
@@ -255,9 +254,9 @@ penguins %>%
   filter(str_detect(species, "^A") & str_detect(island, "m$"))
 ```
 
-If you are comfortable with `dplyr`, you may be realizing that this is not the most efficient way to solve this problem as we could very easily use `filter(species == "Adelie" & island == "Dream")`, but if you were dealing with a data set that had text that was not split into factors, using `str_detect()` makes a lot of things possible.
+If you are comfortable with `dplyr`, you may be realizing that this is not the most efficient way to solve this problem as we could very easily use `filter(species == "Adelie" & island == "Dream")`, but if you were dealing with a dataset that had text that was not split into factors, using `str_detect()` makes a lot of things possible.
 
-For example, imagine that you were looking at a data set that had a column called `name` which included the names of 100 different species of fish. You could use the code above to only look at species that started or ended with a certain letter.
+For example, imagine that you were looking at a dataset that had a column called `name` which included the names of 100 different species of fish. You could use the code above to only look at species that started or ended with a certain letter.
 
 This can be extended beyond just a letter, so that we can look for observations that start or end with any given combination of characters:
 
