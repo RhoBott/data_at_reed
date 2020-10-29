@@ -157,7 +157,7 @@ penguins %>%
 
 #### 4. Creating New Columns with `mutate()`
 
-What if you wanted create a new column or "mutate" an existing column in some way? The `mutate()` function makes both of these things easy. For this example we will go back to using our `penguins_sum` data frame.
+What if you wanted create a new column or "mutate" an existing column in some way? The `mutate()` function makes both of these things easy. For this example we will go back to using our `penguins_sum` dataset.
 
 If we want to introduce a new column, we choose a name for it and then indicate how we want to calculate it. For example, we can create a new column for the mean body mass in kilograms instead of grams:
 
@@ -175,16 +175,16 @@ penguins_sum %>%
 
 #### 5. Summarizing Data with `group_by()` and `summarize()`
 
-You might have noticed that the functions `group_by()` and `summarize()` were used in our explanation of tidy data with the data frame `penguins_sum`. Let's work step-by-step from our original dataset to `penguins_sum` to get a better feel for what that code was doing.
+You might have noticed that the functions `group_by()` and `summarize()` were used in our explanation of tidy data with the dataset `penguins_sum`. Let's work step-by-step from our original dataset to `penguins_sum` to get a better feel for what that code was doing.
 
-We want to end up with a data frame that shows the mean body mass of penguins for each island and each year. We can feed both of those variables into the `group_by()` to start:
+We want to end up with a dataset that shows the mean body mass of penguins for each island and each year. We can feed both of those variables into the `group_by()` to start:
 
 ```{r}
 penguins %>%
   group_by(island, year)
 ```
 
-Notice how this code did not actually change the way our data frame looks. This is because the `group_by()` function changes the metadata, you can think of this as R getting the data frame ready for a further transformation to be applied to it. We can now apply the `summarize()` function to get what we want.
+Notice how this code did not actually change the way our dataset looks. This is because the `group_by()` function changes the metadata, you can think of this as R getting the dataset ready for a further transformation to be applied to it. We can now apply the `summarize()` function to get what we want.
 
 ```{r}
 penguins %>%

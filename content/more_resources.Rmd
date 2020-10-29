@@ -8,13 +8,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # More Resources
 
-Hopefully, now that you have read through the documentation here, it has answered some of your questions. But there are always more resources out there.
+Hopefully, now that you have read through the documentation here, it has answered some of your questions. There are all sorts of resources to help you take the next step to becoming proficient in R.
 
 ### R package Cheatsheets and Documentation
 
 RStudio has collected many cheatsheets for common R packages, and they can be found [here](https://rstudio.com/resources/cheatsheets/). Some possibly helpful ones to check out include sheets for data visualization with `ggplot2`, data transformation with `dplyr`, data import with `readr`, and R Markdown.
 
-There are also specific websites for many of the packages shown on this site, with more examples and possible uses. Here are links to the websites for [`ggplot2`](https://ggplot2.tidyverse.org/), [`dplyr`](https://dplyr.tidyverse.org/), [`stringr`](https://stringr.tidyverse.org/), [`readr`](https://readr.tidyverse.org/), [`readxl`](https://readxl.tidyverse.org/), [`googlesheets4`](https://googlesheets4.tidyverse.org/), and [`rvest`](https://rvest.tidyverse.org/). For any package you are working with, there should be documentation online to help you figure out how to use it.
+There are also websites for many of the packages shown on this site, with more examples and possible uses. Here are links to the websites for [`ggplot2`](https://ggplot2.tidyverse.org/), [`dplyr`](https://dplyr.tidyverse.org/), [`stringr`](https://stringr.tidyverse.org/), [`readr`](https://readr.tidyverse.org/), [`readxl`](https://readxl.tidyverse.org/), [`googlesheets4`](https://googlesheets4.tidyverse.org/), and [`rvest`](https://rvest.tidyverse.org/). For any package you are working with, there should be documentation online to help you figure out how to use it.
 
 ### mLab Help
 
@@ -26,20 +26,18 @@ One great resource for R is the [R for Data Science](https://r4ds.had.co.nz/) te
 
 ### Googling
 
-Sometimes, if you get a strange error or have a very specific question about a particular function, other people may have had that question before as well. If you want to google an error or how to do a particular operation in R, we would suggest that you include the name of the package that you are using when you search for help. For anything you want to do, there are going to be many, many ways of doing it in R. But most likely, you are going to want to do those things using packages you already know, like `dplyr`, `ggplot2`, or `tidyr`. 
+Sometimes, if you get a strange error or have a very specific question about a particular function, other people may have had that question before as well. If you want to search for an error or how to do a particular operation in R, we would suggest that you include the name of the package that you are using when you search for help. For anything you want to do, there are going to be many, many ways of doing it in R. But most likely, you are going to want to do those things using packages you already know, like `dplyr`, `ggplot2`, or `tidyr`. 
 
 ### Asking for Help
 
-#### Stack Overflow
+When asking for help, the first step is creating a "reprex", short for _repr_oducible _ex_ample. Reproducible examples help others help you by ensuring that they can replicate the problem that you're experiencing in order to troubleshoot more easily. There are a couple of key steps to creating a reprex:
 
-Another good resource for getting help is [Stack Overflow](https://stackoverflow.com). When googling a problem, you will likely find a lot of results that link to a Stack Overflow page. This is a great way to read into how other people solved a problem similar to yours. You can also ask questions on Stack Overflow, but there is no guarantee that someone will respond to you and even if someone does respond it might not be immediate.
-
-#### Reproducible Examples
-
-A great way to streamline the process of getting help is to create what is called a reproducible example or "reprex". There are a couple of key steps to creating a reprex:
-
-1. Include any package loading calls (library(package)) and objects (i.e. data frames) that are relevant to your problem.
+1. Include any package loading calls (library(package)) and objects (i.e. datasets) that are relevant to your problem.
 
 2. Only include whatever is relevant or necessary to your problem. In reprex jargon, this is called making your example minimal.
 
-By following this convention you will make it a lot easier for someone to understand and help with your issue. For more on reproducible examples, check out [this](https://www.tidyverse.org/help/) tidyverse page.
+By following this convention, you will make it a lot easier for someone to understand and help with your issue. For more on reproducible examples, check out [this](https://www.tidyverse.org/help/) tidyverse page.
+
+Once you have a reprex ready to go, there are a few different places you could ask for help. If you are a Reedie, the mLabbies will be thrilled to see that you have prepared a reprex and will be glad to help.
+
+Another option is online forums. The [RStudio Community](https://community.rstudio.com) and  [Stack Overflow](https://stackoverflow.com) are two popular options. When searching a problem, you will likely find a lot of results that link to pages on either of these websites. This is a great way to read into how other people solved a problem similar to yours. You can also ask questions yourself on these websites-asking a question online can be intimidating, but if you’ve taken the time to create a reprex, you’re much more likely to get a useful answer.

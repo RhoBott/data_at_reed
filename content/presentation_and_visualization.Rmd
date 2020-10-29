@@ -15,7 +15,7 @@ library(knitr)
 
 `ggplot2` is an R package for data visualization that will allow you to make appealing and effective graphs using a simplified and standardized syntax.
 
-First, let's load the package. This is necessary every time you start a graphing session. (To learn more about packages see our [Getting Started](LINK-HERE) page.) We will also load a package that contains dataset about penguin populations on islands in Antarctica.
+First, let's load the package. This is necessary every time you start an R session.  We will also load `palmerpenguins`, a package that contains a dataset about penguin populations on islands in Antarctica. To learn more about packages and the `palmerpenguins` package, see our [Getting Started](LINK-HERE) page.
 
 ```{r}
 library(ggplot2)
@@ -35,13 +35,13 @@ There are three main pieces that make up a ggplot:
 
               aes(x = ___ , y = ___ , color = ___ , fill = ___ )
 
-Anything that you put inside of `aes()` should be a variable. Additionally, though some possible aesthetics are given here (x, y, color, and fill), the ones that you end up using will be specific to your graph type. For example, in a typical histogram you are looking at the distribution of one variable so you only have to include `x = ___ `, and not the other inputs.
+Anything that you put inside of `aes()` should be a variable. Additionally, though some possible aesthetics are given here (`x`, `y`, `color`, and `fill`), the ones that you end up using will be specific to your graph type. For example, in a typical histogram you are looking at the distribution of one variable so you only have to include `x = ___ `, and not the other inputs.
 
 3. Geoms: We can specify what kind of plot we want to make using the following syntax: 
 
               geom_ ___()
 
-There are a wide range of different options but a couple of common ones are `geom_point()` for a scatterplot, `geom_histogram()` for a histogram, or `geom_boxplot()` for a boxplot. The word `geom` refers to the visual object used to represent data. 
+`ggplot2` comes with all sorts of `geom`s built in, but a couple of common ones are `geom_point()` for a scatterplot, `geom_histogram()` for a histogram, or `geom_boxplot()` for a boxplot. The word `geom` refers to the visual object used to represent data. 
 
 We can put all of this together to create a full template for making graphs with `ggplot()`:
 
@@ -49,6 +49,8 @@ We can put all of this together to create a full template for making graphs with
                      mapping = aes(x = ___  , y = ___  , color = ___  , fill = ___   ) +
                 geom_ ___()
           
+Note that, in `ggplot2`, layers are added with `+` rather than the pipe `%>%`. When debugging `ggplot2` code, it is usually a good place to start to make sure you have added the new layer rather than piped.
+
 You can always refer back to this template as a way to remember the `ggplot2` syntax. The next several sections will show a few different example graphs.
 
 
@@ -92,7 +94,7 @@ ggplot(data = penguins, mapping = aes(x = island, fill = sex)) +
   geom_bar()
 ```
 
-In the above examples, `ggplot2` determines the height of bars by counting the number of observations behind the scenes. This is why we do not provide `geom_bar()` with a y aesthetic. Sometimes, though, you might need to work with data that is "pre-counted." For example, if we make a new dataset with the count of penguins by `island`:
+In the above examples, `ggplot2` determines the height of bars by counting the number of observations behind the scenes. This is why we do not provide `geom_bar()` with a `y` aesthetic. Sometimes, though, you might need to work with data that is "pre-counted." For example, if we make a new dataset with the count of penguins by `island`:
 
 ```{r, message = FALSE, warning = FALSE}
 penguins_sum <- penguins %>%
@@ -112,7 +114,7 @@ Notice that we had to supply `y = n` inside of `aes()`. A helpful way to remembe
 
 #### Histograms
 
-When making histograms with `ggplot2`, you can use `geom_histogram()`. You should specify either the width of the bins or the number of bins in the histogram as appropriate for your data. Here we chose to use a `binwidth` of 100 grams:
+When making histograms with `ggplot2`, you can use `geom_histogram()`. You should specify either the width of the bins or the number of bins in the histogram as appropriate for your data. Here we choose to use a `binwidth` of 100 grams:
 
 ```{r, warning = FALSE}
 ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
@@ -139,7 +141,7 @@ ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, col
   geom_point(alpha = 0.5)
 ```
 
-What if we want to add another variable, but our graph is already a bit "busy" to look at? This is where `facet_wrap()` can come in handy. Here, we faceted by `species`, creating three graphs, with the same x and y axes and coloring. These graphs let us compare `species` side-by-side easily:
+If we want to add another variable, but our graph is already a bit "busy" to look at,  `facet_wrap()` can come in handy. Here, we faceted by `species`, creating three graphs, with the same x and y axes and coloring. These graphs let us compare `species` side-by-side easily:
 
 ```{r, warning = FALSE}
 ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, color = sex)) +
@@ -163,7 +165,7 @@ install.packages("knitr")
 library(knitr)
 ```
 
-As before, we will use `palmerpenguins`, and we will use `kable()` to display the summary statistics we calculated over in our [Data Wrangling](LINK-HERE) section. Here is the code for our summary statistics, which we will save in a new data frame called `penguin_sum`.
+As before, we will use `palmerpenguins`, and we will use `kable()` to display the summary statistics we calculated over in our [Data Wrangling](LINK-HERE) section. Here is the code for our summary statistics, which we will save in a new dataset called `penguin_sum`.
 
 ```{r}
 penguin_sum <- penguins %>%
@@ -171,7 +173,7 @@ penguin_sum <- penguins %>%
   summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
 ```
 
-R lets us print data frames like this:
+R lets us print datasets like this:
 
 ```{r}
 penguin_sum
@@ -198,7 +200,8 @@ We can start out with essentially the same code from making the basic `kable` ta
 We can add the function `kable_styling()` to get the basic `kableExtra` format, rather than the previous default `kable` format:
 
 ```{r}
-kable(x=penguin_sum, col.names = c("Island", "Year", "Mean Body Mass (g)"),
+kable(x = penguin_sum, 
+      col.names = c("Island", "Year", "Mean Body Mass (g)"),
       caption = "Mean body mass of penguins on different islands over time") %>%
   kable_styling()
 ```
@@ -208,13 +211,15 @@ We can customize the look of the table with `kable_classic()` as an alternitive 
 By adding `full_width = FALSE` we can change the width of the table. We can also change the font, the font size, and there are even more additions and changes we could make, which are documented more extensively [here](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview).
 
 ```{r}
-kable(x=penguin_sum, col.names = c("Island", "Year", "Mean Body Mass (g)"),
+kable(x = penguin_sum, 
+      col.names = c("Island", "Year", "Mean Body Mass (g)"),
       caption = "Mean body mass of penguins on different islands over time") %>%
    kable_classic(full_width = FALSE, html_font = "Cambria", font_size=16)
 ```
 
 ```{r}
-kable(x=penguin_sum, col.names = c("Island", "Year", "Mean Body Mass (g)"),
+kable(x = penguin_sum, 
+      col.names = c("Island", "Year", "Mean Body Mass (g)"),
       caption = "Mean body mass of penguins on different islands over time") %>%
    kable_material_dark(html_font = "Cambria")
 ```
@@ -222,17 +227,12 @@ kable(x=penguin_sum, col.names = c("Island", "Year", "Mean Body Mass (g)"),
 
 ### Writing Up Your Results
 
-#### R Markdown
-
-A great way to write up results is with an R Markdown file (.Rmd). This type of document consists of both regular text as well as code chunks. When using an R Markdown file you can `Knit` in order to output a document with all of your text and code as well as the results of each code chunk pasted directly below the chunk. When working in a Markdown file in RStudio you can find the `Knit` button in the tool bar near the top of the file.
-
-You can also specify the type of document that you want to output when knitting. This makes it easy to seamlessly create reproducible reports in whatever document type you want.
+R Markdown (`.Rmd`) is a great way to write up your results with R. This type of document integrates regular text and R code chunks. When using an R Markdown file, you can `Knit` in order to output a document with all of your text and code as well as the results of each code chunk pasted directly below the chunk. The most common output types to Knit to are `.pdf` (for "white papers") and `.html` (for web content.) When working in a Markdown file in RStudio you can find the `Knit` button in the tool bar near the top of the file.
 
 For more in-depth information on R Markdown you can check out [this page](https://rmarkdown.rstudio.com/articles_intro.html)
 
-#### R Script
-
-Alternatively, if you want a text file where you can enter R commands wherever you want, you can use an R Script (.R). This type of document is useful for results that are mostly code and do not necessarily contain very much regular text. A big difference between R Script and R Markdown is that running a code chunk in Markdown will print the output in the file, whereas R Script prints the output in the Console window of RStudio.
+Alternatively, if you want a text file where you can enter R commands wherever you want, you can use an R Script (`.R`). This type of document is useful for results that are mostly code and do not need to contain much regular text. 
 
 To learn more about R Scripts you can check out the [Workflow: scripts](https://r4ds.had.co.nz/workflow-scripts.html) chapter in [R for Data Science](https://r4ds.had.co.nz/)
 
+The decision to use an R script vs. an R Markdown document will largely depend on what you plan on doing with the document. If you would like to communicate your results, and especially if your audience is non-technical, R Markdown is definitely the way to go. If you work in an `.Rmd` document, you can knit to a format that most people will be familiar with, like a `.pdf` or a webpage. If, instead, you're working by yourself and would like to pass code back and forth with a collaborator or reader, R scripts are the way to go. The advantage to not knitting is that people reading your code can, ideally, open your code up in RStudio and immediately replicate your results.

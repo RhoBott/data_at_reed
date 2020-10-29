@@ -98,7 +98,7 @@ cat_data <- read_csv("Desktop/Reed/Bio123/cats.csv")
 
 In the above code, we are taking a `.csv` called `cats.csv`, located in a folder `Bio123` within a `Reed` folder on our `Desktop`. The filepath `Desktop/Reed/Bio123` gives directions to `read_csv()` on where to find `cats.csv`. 
 
-`read_csv()` not only finds this data, it also makes it into a data frame, which we then store using the `<-` operator under a name of our choosing (`cat_data`). This data is now available to us to use in this R session. You can `View()` it, make a graph with it, or display it in a table.
+`read_csv()` not only finds this data, it also makes it into a dataset, which we then store using the `<-` operator under a name of our choosing (`cat_data`). This data is now available to us to use in this R session. You can `View()` it, make a graph with it, or display it in a table.
 
 If you are using the Reed RStudio Server, you can upload your data file to your server files, and locate and use it from there. That uses the same `read_csv()` function, just a different filepath.
 
@@ -118,7 +118,7 @@ Now that you have the package installed, you need to load the package into your 
 library(readxl)
 ```
 
-The package `readxl` contains a function called `read_excel()`, that is very similar to `read_csv()` above. `read_excel()` will take a filepath, bring the data into R, and turn it into a nice data frame. The only difference is that the file will be a `.xls` or `.xlsx`, rather than `.csv`:
+The package `readxl` contains a function called `read_excel()`, that is very similar to `read_csv()` above. `read_excel()` will take a filepath, bring the data into R, and turn it into a nice dataset. The only difference is that the file will be a `.xls` or `.xlsx`, rather than `.csv`:
 
 ```{r, eval = FALSE}
 cat_data <- read_excel("Desktop/Reed/Bio123/cats.xls")
@@ -173,7 +173,7 @@ This code will prompt several interactive steps for you, in order to grant R acc
 
 3. You will be asked to copy a URL from your browser window into your console, where you will paste it in as the "authorization code" and then click enter.
 
-Check your "environment" in the top right corner of your R window, and you will see your data in a nice data frame.
+Check your "environment" in the top right corner of your R window, and you will see your data in a nice dataset.
 
 If you select "yes" in the first step of this process, you will have a much easier time importing data from Google Sheets in the future. You can even write files from R into Google Sheets.
 
@@ -221,7 +221,7 @@ reed_table <- url %>%
   html_table()
 ```
 
-Run the code and check your environment for the data frame `reed_table`.
+Run the code and check your environment for the dataset `reed_table`.
 
 Hopefully in this `rvest` tutorial you can see that even though the code looks complicated, you  only need 2 things to make it work: 
 
