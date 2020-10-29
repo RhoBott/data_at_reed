@@ -8,7 +8,7 @@ The dplyr package is a good resource for modifying rows and columns of a data 
 
 #### Rows
 
-To add rows, you can use bind_rows to attach data to the bottom of your data set. This is especially useful when you have a list of many data frames, for example after reading in multiple files of the same format that might be separated by county or age group.
+To add rows, you can use bind_rows to attach data to the bottom of your dataset. This is especially useful when you have a list of many data frames, for example after reading in multiple files of the same format that might be separated by county or age group.
 
 ```
 library(dplyr)
@@ -44,7 +44,7 @@ select(iris, Petal.Length, Petal.Width, Species)
 select(iris, -c(1,2))
 ```
 
-To add a column from data you already have as a vector, you can use the typical bracket notation. If we have a vector of planting dates called x that we want to add onto iris as a column, we could just assign this data to the column `plant_date`. That column didn’t exist before this step, but after this it will show up as part of the data set.
+To add a column from data you already have as a vector, you can use the typical bracket notation. If we have a vector of planting dates called x that we want to add onto iris as a column, we could just assign this data to the column `plant_date`. That column didn’t exist before this step, but after this it will show up as part of the dataset.
 
 ```
 iris$plant_date <- x

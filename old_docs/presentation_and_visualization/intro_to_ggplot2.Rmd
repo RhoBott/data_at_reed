@@ -35,7 +35,7 @@ qplot(data = iris, x = Sepal.Width, geom = "histogram")
 
 #### Data
 
-The data that goes into ggplot should be a dataframe, or the function will try to convert it into one and possibly error out. Each row in the dataset will be taken as a data point, so make sure that the single rows in the data represent what you need them to (see here for info on this “tidy data” structure). If you want one row to represent two markers in the plot, you’ll have to set your dataframe up so that the row is split into two units. For example, let’s say you have the following data set of GDP growth (data from the World Bank).
+The data that goes into ggplot should be a dataframe, or the function will try to convert it into one and possibly error out. Each row in the dataset will be taken as a data point, so make sure that the single rows in the data represent what you need them to (see here for info on this “tidy data” structure). If you want one row to represent two markers in the plot, you’ll have to set your dataframe up so that the row is split into two units. For example, let’s say you have the following dataset of GDP growth (data from the World Bank).
 
 ```
 country	2007	2008	2009	2010
@@ -69,7 +69,7 @@ Brazil	2007	6.1
 Pakistan	2007	4.8
 ```
 
-This is the first few rows of a dataset that instead places every country-year pair on a separate row. The tidyr package is a good tool for transforming your data in this way to create new arrangements of the same information. With this new data setup, we can make a more informative graphic.
+This is the first few rows of a dataset that instead places every country-year pair on a separate row. The tidyr package is a good tool for transforming your data in this way to create new arrangements of the same information. With this new datasetup, we can make a more informative graphic.
 
 ```
 ggplot(gdp_tall, aes(x = year, y = growth, col = country)) +
@@ -107,7 +107,7 @@ The visual aesthetics that you’ll most often see are
 
 #### Layers
 
-Layers are the elements that actually plot the data. If you forget to add a layer, it’ll just create an empty plot. After you define your data set and aesthetics inside the ggplotcommand, you can add on layers by just separating each one with a +.
+Layers are the elements that actually plot the data. If you forget to add a layer, it’ll just create an empty plot. After you define your dataset and aesthetics inside the ggplotcommand, you can add on layers by just separating each one with a +.
 
 ```
 ggplot(gdp_tall, aes(x = year, y = growth, col = country)) +

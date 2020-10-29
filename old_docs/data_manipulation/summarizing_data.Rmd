@@ -12,7 +12,7 @@ sum(iris$Petal.Length < 3.758)
 mean(iris$Petal.Length < 3.758)
 ```
 
-Now suppose we want to know how many flowers there are of each of the three different species in the data set. The `table()` command works for this, but `count()` from the dplyr package will often put the result in a nicer form to work with (data frame, instead of a named vector).
+Now suppose we want to know how many flowers there are of each of the three different species in the dataset. The `table()` command works for this, but `count()` from the dplyr package will often put the result in a nicer form to work with (data frame, instead of a named vector).
 
 ```
 table(iris$Species)
@@ -45,7 +45,7 @@ This creates a data frame with 3 rows (the three different species) and 3 column
 
 #### The pipe
 
-The `%>%` command above is called a pipe, and it’s really useful for performing a sequence of commands in order on a data set. The pipe takes whatever thing comes before it and “pipes” it into the next function as the first argument. So while a typical line of R code might be something like `function(data, arguments)`, we could equivalently write data %>% `function(arguments)`.
+The `%>%` command above is called a pipe, and it’s really useful for performing a sequence of commands in order on a dataset. The pipe takes whatever thing comes before it and “pipes” it into the next function as the first argument. So while a typical line of R code might be something like `function(data, arguments)`, we could equivalently write data %>% `function(arguments)`.
 
 For a simple function like that toy example this isn’t super useful, but in the iris example above it’s quite useful for improving the readability and speed of code. If we don’t use the pipe, the fastest method is harder to understand:
 
@@ -55,7 +55,7 @@ summarize(group_by(iris, Species),
           prop = mean(Petal.Length < 3.758))
 ```
 
-And a more understandable method, stopping and saving after each step, will take longer and use more memory (especially on large data sets) because it has to save one or more extra steps that aren’t particularly useful:
+And a more understandable method, stopping and saving after each step, will take longer and use more memory (especially on large datasets) because it has to save one or more extra steps that aren’t particularly useful:
 
 ```
 grouping <- group_by(iris, Species)

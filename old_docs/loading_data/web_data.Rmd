@@ -15,7 +15,7 @@ library(jsonlite)
 quiz <- fromJSON("https://support.oneskyapp.com/hc/en-us/article_attachments/202761727/example_2.json")
 ```
 
-This quiz file is a good example of something that doesn’t translate intuitively into a data frame, but is stored directly as nested lists. For a more data-frame-like object, try this colors data set.
+This quiz file is a good example of something that doesn’t translate intuitively into a data frame, but is stored directly as nested lists. For a more data-frame-like object, try this colors dataset.
 
 For XML files:
 

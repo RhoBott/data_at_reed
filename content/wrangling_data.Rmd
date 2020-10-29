@@ -230,20 +230,20 @@ penguins %>%
 
 ### strings with `stringr`
 
-Often times you find yourself with a dataset that includes data in the form of a string. A string is basically a group of characters. It can include numbers, letters, spaces, and special characters as well. Strings are most often represented as `"text surrounded in quotes"` in R. The package `stringr` is really useful tool for working with this type of data, and thankfully is already included in the `tidyverse` package. If you have already loaded the `tidyverse` with `library(tidyverse)`, then you are ready to start using `stringr`.
+Often times you might find yourself with a dataset that includes data in the form of a string. A string is basically a group of characters, and can include numbers, letters, spaces, and special characters. Strings are most often represented as `"text surrounded in quotes"` in R. The package `stringr` is really useful tool for working with this type of data, and thankfully is already included in the `tidyverse` package. If you have already loaded the `tidyverse` with `library(tidyverse)`, then you are ready to start using `stringr`.
 
 Instead of going through a step-by-step tutorial on exactly how each `stringr` function works, we will go through a couple of concrete examples using the `penguins` dataset to show off different ways to use `stringr` in your data wrangling.
 
-Most all functions you will want to use from the `stringr` function begin with `str_`. If you ever forget the name of the function you need, try just typing `str_` and scrolling through the auto-completed list of functions exported from `stringr`.
+Most functions you will want to use from the `stringr` function begin with `str_`. If you ever forget the name of the function you need, try just typing `str_` and scrolling through the auto-completed list of functions exported from `stringr`.
 
 String manipulations are carried out with the use of _patterns_, specified with a language called _regular expressions_ (or "regex", for short). Regular expressions are just shorthand ways of specifying general patterns that you wish to match in data. The following symbols might be helpful in getting started:
 
-1. `^x` : means 'begins with x'
-2. `x$` : means 'ends with x'
-3. `x{n}` : means exactly n occurrences of x
-4. `x{n,}` : means n or more occurrences of x
-5. `x{n,m}` : between n and m occurrences of x
-6. `[xyz]` : means 'includes x or y or z'
+1. `^x` : means 'begins with `x`'
+2. `x$` : means 'ends with `x`'
+3. `x{n}` : means exactly n occurrences of `x`
+4. `x{n,}` : means n or more occurrences of `x`
+5. `x{n,m}` : between n and m occurrences of `x`
+6. `[xyz]` : means 'includes `x` or `y` or `z`'
 
 We will demo what each of these looks like in context below.
 
@@ -254,7 +254,7 @@ penguins %>%
   filter(str_detect(species, "^A") & str_detect(island, "m$"))
 ```
 
-If you are comfortable with `dplyr`, you may be realizing that this is not the most efficient way to solve this problem as we could very easily use `filter(species == "Adelie" & island == "Dream")`, but if you were dealing with a dataset that had text that was not split into factors, using `str_detect()` makes a lot of things possible.
+If you are comfortable with `dplyr`, you may be realizing that this is not the most efficient way to solve this problem, as we could very easily use `filter(species == "Adelie" & island == "Dream")`, but if you were dealing with a dataset that had trickier structure, using `str_detect()` makes a lot of things possible.
 
 For example, imagine that you were looking at a dataset that had a column called `name` which included the names of 100 different species of fish. You could use the code above to only look at species that started or ended with a certain letter.
 
@@ -305,13 +305,15 @@ penguins %>%
   mutate(species = str_replace_all(species, "[aeiou]", "x"))
 ```
 
-If you want to learn more about `stringr`, [the package's website](https://stringr.tidyverse.org/) contains a more extensive overview of the package and its functions. You might also check out the [Strings chapter](https://r4ds.had.co.nz/strings.html) of the R for Data Science book.
+There are all sorts of tricks for working with strings and regular expressions in R. For many, getting regular expressions to work as you intend is a process of trial and error—you might need a few tries to get where you want to be, but keep at it.
+
+We highly recommend keeping the [stringr cheatsheet](https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf) by Lise Vaudor around for when you are writing regular expressions. If you want to learn more about `stringr`, [the package's website](https://stringr.tidyverse.org/) contains a more extensive overview of the package and its functions. You might also check out the [Strings chapter](https://r4ds.had.co.nz/strings.html) of the R for Data Science book.
 
 ### Data Frames and `tibble`s
 
-So far in this tutorial, we have exclusively worked with "tibbles". From the [`tibble` website](https://tibble.tidyverse.org/) 
+So far in this tutorial, we have exclusively worked with "tibbles". From the [`tibble` website](https://tibble.tidyverse.org/):
 
-> A _tibble_, or `tbl_df`, is a modern reimagining of the `data.frame`, keeping what time has proven to be effective, and throwing out what is not. Tibbles are data.frames that are lazy and surly: they do less (i.e. they don’t change variable names or types, and don’t do partial matching) and complain more (e.g. when a variable does not exist). This forces you to confront problems earlier, typically leading to cleaner, more expressive code.
+> A _tibble_, or `tbl_df`, is a modern reimagining of the `data.frame`, keeping what time has proven to be effective, and throwing out what is not. Tibbles are `data.frames` that are lazy and surly: they do less (i.e. they don’t change variable names or types, and don’t do partial matching) and complain more (e.g. when a variable does not exist). This forces you to confront problems earlier, typically leading to cleaner, more expressive code.
 
 If this sounds like gibberish to you, that is okay. The biggest benefit to `tibble`s over `data.frame`s is the way that they print. If we print `penguins` as a tibble, for example, the output looks like this:
 
