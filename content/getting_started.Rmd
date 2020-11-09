@@ -10,37 +10,37 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Getting Started with R at Reed
 
-R is a versatile tool, and at Reed R is used across departments and in various ways. Our goal is to help you navigate this tool in any setting that you might use it. This document will be an introduction to the Reed RStudio Server, Desktop R, and the R thesis template. 
+R is a versatile tool, and at Reed R is used across a number of departments and disciplines. Our goal is to help you navigate this tool in any setting that you might use it. This document will be an introduction to the Reed RStudio Server, Desktop R, and the R thesis template. 
 
 ### Reed RStudio Server
 
-There are a couple of great advantages to using R on the Reed RStudio Server:
+There are a couple of advantages to using R on the Reed RStudio Server:
 
-- Accessibility from any computer
-- Avoids possible messy installation
+- Accessible from any computer with an internet connection
+- Avoids the need to install software
 - Provides some storage space for files, data, and images
 
 To access the server, head to [rstudio.reed.edu](https://rstudio.reed.edu) and log in using your Kerberos credentials.
 
 #### Installing Libraries
 
-Most of the libraries that you will need are already installed on the server, but if you want to use a package that is not already on the server you can use `install.package("packagename")`. If you run into errors installing such packges, contact Kbott (kbott@reed.edu).
+Most of the libraries that you will need are already installed on the server and globally available. If you want to use a package that is not already on the server you can use `install.package("packagename")` to install a library within your own user space on the server. If you run into errors installing or using packages, contact our RStudio administrators at rstudio-support@reed.edu .
 
 #### Uploading Data to the Reed Rstudio Server
 
-You might have some data on your computer that you would like to work with on the server. You can upload data from your computer by:
+You might have some data on your computer that you would like to work with on the server. To upload data from your computer:
 
-* logging in to the [RStudio server](https://rstudio.reed.edu) and opening up a session
+* log in to the [RStudio server](https://rstudio.reed.edu) to open an RStudio session
 * find the "Files" pane in the bottom right
-* navigate to the folder that you would eventually like your file to be in
+* navigate to the folder (on the server) where you want to store your data
 * click the "Upload" button (with a yellow, up-facing arrow beside it)
-* choose the file on your computer
+* choose the file on your computer and click "Open"
 
-The data is now uploaded to the server. Now, you will read in the data to R in the same way you would if you were working with data stored on your computer with the desktop version of R. See our [loading data](LINK-HERE) page for more information.
+The data is now uploaded to the server. You can now load the data into R in the same way you would if you were working with data stored on your computer with the desktop version of R. See our [loading data](LINK-HERE) page for more information.
 
 #### Jointly Editing Documents
 
-We strongly recommend having one active editor for a shared project. The RStudio Server does not have the same simultaneous editing ability that a tool like Google Docs does. If the server detects that multiple editors are accessing the file, it will temporarily block further editing of that file. If the server gives you a saving error, copy and paste your code into a text editor or Google Doc, as the server will not save your work. You can then close the file, wait for your partner to be done with their edits, and then reopen the file to implement your changes.
+One of the advantages to working on RStudio server is the ability to easily share projects with collaborators. When working on shared projects, we strongly recommend having **one** active editor for a project, because RStudio Server does not have the same simultaneous editing ability that a tool like Google Docs does. If the server detects that multiple editors are accessing the file, it will temporarily block further editing of that file and may not save your work. If the server gives you a saving error, copy and paste your code into a text editor or Google Doc. You can then close the file, wait for your partner to be done with their edits, and then reopen the file to implement your changes.
 
 If you are want to jointly edit documents, you can look into using [Git and GitHub] (https://happygitwithr.com/rstudio-git-github.html).
 
@@ -54,24 +54,25 @@ At some point, you may encounter an error when you log in: RStudio initializatio
 
 ### Desktop R
 
-If you are using R for projects outside of specific class assignments that are accessed and submitted using the Reed RStudio Server, and especially if you are using sensitive data, you will want to install the desktop version of R and RStudio.
+If you are using R for projects outside of specific class assignments that are accessed and submitted using the Reed RStudio Server, if you are using sensitive data, or if you want to be able to work in R independent of an internet connection, you will want to install the desktop version of R and RStudio.
 
-There are two things you need to download in order to use R on your computer: R and RStudio. R is the coding language, and RStudio is the Integrated Development Environment (IDE), which makes R easy to use.
+There are two things you need to download in order to use R on your computer: R and RStudio. R is the coding language, and RStudio is the Integrated Development Environment (IDE) that makes R easy to use.
 
 #### On MacOSX
 
-You can download and install R for MacOSX at the [CRAN downloads site](https://cran.r-project.org/), where you will follow the link to "Download R for (Mac) OS X". Navigate to the appropriate release for your computer's OS. To find your computer's OS, click the top left Apple icon, and click "About this Mac". You will see both a name (e.g. "High Sierra", "Catalina", or "El Capitan") and a number ("Version __.__._"). Back on the download site, each download will have a description of what OS it requires in order to run. Choose the newest version possible for your OS (your OS should be equal to or higher than the one listed in the description). Click on the link next to the description to download R. Once the file has downloaded, click it to proceed to installation, leaving all default settings as they are.
+You can download and install R for MacOSX at the [CRAN downloads site](https://cran.r-project.org/), where you will follow the link to "Download R for (Mac) OS X". Navigate to the appropriate release for your computer's OS. To find your computer's OS, click the top left Apple icon, and click "About this Mac". You will see both a name (e.g. "High Sierra", "Catalina", or "El Capitan") and a number ("Version __.__._"). Back on the R download site, each download will have a description of what OS it requires in order to run. Choose the newest version possible for your OS (your OS should be equal to or higher than the one listed in the description). Click on the link next to the description to download R. Once the file has downloaded, click it to proceed to installation, leaving all default settings as they are.
 
-Next we need to install RStudio. To do this, navigate to the [RStudio downloads page](https://rstudio.com/products/rstudio/download/) and scroll down to "All Installers". Choose the download that matches your OS, most likely "MacOS 10.13+". Click the download link, open the file when it has downloaded, and install with the default settings as you did with R. 
-Now you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages("packagename")`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load (`library(packagename)`) and use them in the future.
+Next you need to install RStudio. To do this, navigate to the [RStudio downloads page](https://rstudio.com/products/rstudio/download/) and scroll down to "All Installers". Choose the download that matches your OS, most likely "MacOS 10.13+". Click the download link, open the file when it has downloaded, and install with the default settings as you did with R.
+
+With both R and RStudio installed, you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages("packagename")`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load (`library(packagename)`) and use them in the future. (Remember that you need to load a library every time you use those tools.)
 
 #### On Windows
 
 You can download and install R for Windows at the [CRAN downloads site](https://cran.r-project.org/), where you'll follow the link to "Download R for Windows". From here click "base", and then "Download R 4.0.3 for Windows". Once the file has downloaded, click it to proceed to installation, leaving all default settings as they are.
 
-Next we need to install RStudio. To do this, navigate to the [RStudio downloads page](https://rstudio.com/products/rstudio/download/) and scroll down to "All Installers". Choose the download for Windows ("Windows 10/8/7"). Click the download link, open the file when it has downloaded, and install with the default settings as you did with R. 
+Next you need to install RStudio. To do this, navigate to the [RStudio downloads page](https://rstudio.com/products/rstudio/download/) and scroll down to "All Installers". Choose the download for Windows ("Windows 10/8/7"). Click the download link, open the file when it has downloaded, and install with the default settings as you did with R. 
 
-Now you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages("packagename")`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load (`library(packagename)`) and use them in the future.
+Now you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages("packagename")`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load (`library(packagename)`) and use them in the future. (Remember that you need to load a library every time you use those tools.)
 
 ### Writing Your Thesis in `thesisdown`
 
@@ -93,7 +94,7 @@ If you want to work along with any of the examples on this website and need to l
 install.packages("palmerpenguins")
 ```
 
-Note that you only need to _install_ the package once. Once you have installed the package, though, you will need to _load_ the package every time you want to use the data. You can do so with the following code:
+Note that you only need to _install_ the package once. Once you have installed the package, though, you will need to _load_ the package every time you want to use the data. To load the package:
 
 ```{r}
 library(palmerpenguins)
