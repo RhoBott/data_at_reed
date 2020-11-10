@@ -207,6 +207,13 @@ Faceting by `species` creates three graphs, with identical x and y axis scales a
 
 To read more about `ggplot2`, see the [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) chapter about data visualization. More extensive documentation can be found on the [ggplot2 website](https://ggplot2.tidyverse.org/).
 
+##### other commonly-used-geoms-maybe
+
+- consider adding geom_smooth() here
+- consider geom_jitter() and why you would/not use it
+- consider linking to info on mosaic plots
+
+
 ### Making Summary Tables in R
 
 The [Data Wrangling](LINK-HERE) page, show how to compute summary statistics for your data. Summary tables can be useful for displaying data, and the `kable()` function in the R package `knitr` enables table creation.
