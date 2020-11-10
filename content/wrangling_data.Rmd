@@ -11,13 +11,13 @@ library(knitr)
 
 # Wrangling Data
 
-When you first get a dataset, whether it is from a class, downloaded from the internet, or given to you by a professor, there might be ways that you want to change that data to make it easier to work with, add more information, or summarize your data. These all fall under the term "Data Wrangling". Let's learn how to wrangle our data, how to get more out of it, and how to keep it tidy.
+While working with data, you may wish to rearrange it, add more information from another data source, add a new variable to the data, or summarize your data. All of these operations fall under the category of "data wrangling", and represent the bulk of data-related work.
 
 ### Tidy Data Principles, Reshaping Data, and `tidyr`
 
-Packages in the `tidyverse`, like `ggplot2` and `dplyr`, are built to work with tidy data. The `tidyr` package can help us tidy up a dataset by rearranging how the data is structured.
+Packages in the `tidyverse`, like `ggplot2` (useful for visualizing data) and `dplyr` (a key tool in data wrangling), are built to work with so-called "tidy" data. 
 
-Briefly, for a dataset to be tidy, it must follow these three rules:
+For a dataset to be tidy, it must follow these three rules:
 
 1. Each variable must have its own column
 
@@ -25,10 +25,21 @@ Briefly, for a dataset to be tidy, it must follow these three rules:
 
 3. Each value must have its own cell
 
-Let's take a look at a summarized version of the `penguins` data as an example.
-(For instructions on loading `penguins`, see our [Getting Started](LINK-HERE) page)
+The `tidyr` package will prove useful in data restructuring or "tidying".
 
-For our summarized `penguins` data, we want to have the mean body mass for all penguins on a given island in a given year. To do this, we use the `dplyr` function `group_by()` which takes the original data and groups it by the given variable (or variables, in this case `island` and `year`). Then with `summarize()` we can calculate the grouped mean body weights, and we get one table with the mean body mass for all penguins on a given island in a given year. This will be covered more in depth further down this page. For now, the purpose of this summary table is to be able to easily see what tidy versus untidy data looks like.
+#### Example: penguin body mass and `group_by()`
+For an example, return to the `palmerpenguins` data. (For instructions on loading `penguins`, see [Getting Started](LINK-HERE).)
+
+For our summarized `penguins` data, we want to have the mean body mass for _all_ penguins, on a given island, in a given year. To do this, we use the `dplyr` function `group_by()` which takes the original data and groups it by the given variable (or variables, in this case `island` and `year`). 
+
+You can read the (incomplete) code below as "take the `penguins` dataset, break it apart by island AND by year, and then..."
+
+```{r, eval = FALSE, message = FALSE, warning = FALSE}
+penguins %>%
+  group_by(island, year) %>%
+```
+
+To calculate the body weight (mass in g) for each group, use `summarize()`. This will be covered more in depth further down this page. For now, the purpose of this summary table is to be able to easily see what tidy versus untidy data looks like.
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 penguins_sum <- penguins %>%
@@ -38,27 +49,28 @@ penguins_sum <- penguins %>%
 penguins_sum
 ```
 
+The resulting data is tidy: each variable has its own column, each observation (penguin) is a row, and each (measure) has its own cell.
 
-Each variable has its own column, each observation (a penguin on a given island in a given year) is a row, and each value has its own cell.
-
-This dataset, though, could also look like this:
+Compare that with the result of this code:
 
 ```{r}
 penguins_sum %>%
   pivot_wider(id_cols = c("island", "year"), names_from = year, values_from = mean_body_mass_g)
 ```
 
-This dataset technically contains the same data, but in this version, the mean body mass is held in three different columns, one for each year. Year and body mass are both variables that should have their own columns, but here they do not. If year is a variable that we have in our data, then there should be a column called "year", and the same is true for body mass.
+While the above data contains the same information, in this version, the mean body mass is found in three different columns, one for each year. Per "tidy data" rules, `year` and `body mass` are both variables and should therefore have their own columns. Similarly, `year` should have its own column.
 
-Sometimes, the data you are asked to analyze might look more like the second, untidy version than the first, tidy version. We can move from tidy to untidy or vice versa using `tidyr`.
+The data you are working with may to analyze might look more like the second version ("untidy" data). No matter; you can move from tidy to untidy or and back again using `tidyr`.
 
-Let's start off with the first, tidy version:
+#### Restructuring with pivot_wider()
+
+Begin with the first, tidy version:
 
 ```{r, message = FALSE, warning = FALSE}
 penguins_sum
 ```
 
-To make the untidy version, we "pivot" this data from a "long" format to a "wide" format. The `pivot_wider()` function from `tidyr` will help us to do that:
+To make the untidy version, "pivot" this data from a "long" format to a "wide" format using the `pivot_wider()` function from `tidyr`:
 
 ```{r, warning = FALSE, message = FALSE}
 penguins_wide <- penguins_sum %>%
@@ -69,9 +81,15 @@ penguins_wide <- penguins_sum %>%
 penguins_wide
 ```
 
-The `id_cols` (read: ID columns) are the variables that, together, identify what makes a row unique in the original data, `names_from` determines what variable from the old data will determine the names of columns in the new data, and `values_from` is the name of the variable in the old data that will be contained in cells in the new data.
+Looking more closely at `pivot_wider()`
 
-Now, if we are given this untidy table and want to make it tidy, we can pivot from wider to longer using `pivot_longer()`.
+- `id_cols` (read: ID columns) are the variables that, together, identify what makes a row unique in the original data
+- `names_from` determines what variable from the old data will determine the names of columns in the new data
+- `values_from` is the name of the variable in the old data that will be contained in cells in the new data.
+
+If given this untidy table, you can tidy the data by pivoting from "wide" to "long" using `pivot_longer()`.
+
+#### Restructuring with pivot_longer()
 
 ```{r}
 penguins_wide %>%
@@ -82,64 +100,77 @@ penguins_wide %>%
 
 As you might have noticed, `pivot_longer()` and `pivot_wider()` are inverse operations. Pivoting a widened dataset to a longer format gives you back the original dataset, and vice versa.
 
-If you are interested in learning more about tidy data and pivoting, we recommend the chapter in [R for Data Science](https://r4ds.had.co.nz/tidy-data.html).
+If you are interested in learning more about tidy data and pivoting, see the [Tidy Data chapter](https://r4ds.had.co.nz/tidy-data.html) in [R for Data Science].
 
 ### Transforming Data With `dplyr`
 
-Now that our data is tidy we can use `dplyr` to further transform our data.
+Once data is tidy, you can use `dplyr` to further transform your data.
 
-There are 6 fundamental `dpylr` functions that should allow you to perform the data wrangling that you find yourself needing to do. For the following examples we will be using the full `penguins` dataset.
+The below documentation covers six fundamental `dpylr` functions that should allow you to perform the majority of data wrangling tasks. Throughout these examples, using the `palmerpenguins` data, you will see the `head()` function used as a way to confirm the effect of the data transformations.
 
-Whenever you see the `head()` function used, you can think of it as a way for us to take a peek at what our transformations are doing.
-
-First, we can use it to get a feel for what our variables are and what their values might look like:
-
+You can also use `head()` to get a sense of your dataset, variables, and values:
 ```{r}
 head(penguins)
 ```
 
 #### 1. Filtering Rows with `filter()`
 
-Let's say that you want to take a subset of your full dataset, by only picking rows that meet certain criteria. For example, in our penguins dataset we could choose to look at female penguins only:
+Perhaps you wish to subset your data, retaining only observations (rows) that meet given criteria. The below code focuses on female penguins only:
 
 ```{r}
 penguins %>%
   filter(sex == "female")
 ```
 
-Or perhaps we want to only look at penguins with a bill length that is less than 40mm:
+While this specifies penguins with a bill length of less than 40mm:
 
 ```{r}
 penguins %>%
   filter(bill_length_mm < 40)
 ```
 
-We can get as specific as we want. Suppose we want to look at the penguins from Trogersen island in 2008 with a body mass greater than 3500 grams:
+You can also get very specific, here focusing on penguins from Trogersen Island that were observed in 2008 with a body mass greater than 3500 grams:
 
 ```{r}
 penguins %>%
   filter(island == "Torgersen" & year == 2008 & body_mass_g > 3500 )
 ```
 
+In working with the penguins data, you may have noticed missing values (`NA`) throughout the dataset. Missing data can complicate data analysis, and you should be intentional in how you approach your `NA`s (!).
+
+You can use `filter()` combined with `!is.na()` ("is not missing") to remove missing observations for a given variable. For example, creating a dataset that is only penguins of known sex:
+
+```{r}
+known <- penguins %>%
+  filter(!is.na(sex))
+```
+
+Conversely, you may wish to focus on observations with missing values, using `filter()` in combination with `is.na()` ("is missing").
+
+```{r}
+unknown <- penguins %>%
+  filter(is.na(sex))
+```
+
 #### 2. Arranging Rows with `arrange()`
 
-We can arrange our data by a certain variable using the `arrange()` function.
+Sometimes it is helpful to sort data, alphabetically or numerically. You can sort data using the `arrange()` function from `dplyr`.
 
-Let's `arrange()` our data by bill length, in ascending order:
+To arrange all penguins, in order of increasing bill length:
 
 ```{r}
 penguins %>%
   arrange(bill_length_mm)
 ```
 
-We can also arrange by the same variable in descending order:
+In order or decreasing bill length:
 
 ```{r}
 penguins %>%
   arrange(desc(bill_length_mm))
 ```
 
-Given a categorical variable, `dplyr` will arrange alphabetically.
+For character data, `dplyr` will arrange alphabetically.
 
 ```{r}
 penguins %>%
@@ -148,59 +179,91 @@ penguins %>%
 
 #### 3. Selecting Columns with `select()`
 
-A dataset can have a lot of different variables, but sometimes we are only interested in a few. We can use the `select()` function focus on only those variables we are interested in. All you have to do is add all of the variables that you want inside of the function.
+A dataset may have more variables than you need. You can use the `select()` function to subset data to only variables of interest.
+
+To create a dataset containing information on penguin species:
 
 ```{r}
-penguins %>%
+spp_only <- penguins %>%
+  select(species)
+```
+
+To create a dataset that is everything _except_ species information:
+```{r}
+no_spp <- penguins %>%
+  select(-species)
+```
+
+To create a dataset of species, island, and sex information:
+```{r}
+sis <- penguins %>%
   select(species, island, sex)
 ```
 
 #### 4. Creating New Columns with `mutate()`
 
-What if you wanted create a new column or "mutate" an existing column in some way? The `mutate()` function makes both of these things easy. For this example we will go back to using our `penguins_sum` dataset.
+Another common data wrangling task is to create a new variable, using function `mutate()`. When creating a new variable, you provide a name for the new column and a method for calculating the new value. 
 
-If we want to introduce a new column, we choose a name for it and then indicate how we want to calculate it. For example, we can create a new column for the mean body mass in kilograms instead of grams:
+Continuing with the penguins data, the below creates a new new column for the mean body mass in kilograms:
 
 ```{r}
-penguins_sum %>%
-  mutate(mean_body_mass_kg = (mean_body_mass_g / 1000))
+penguins %>%
+  mutate(body_mass_kg = (body_mass_g / 1000))
 ```
 
-If for some reason all of our years were off by 1, we could just change the original column like this:
+Perhaps you realized that all flipper measurements were 4 mm short of the true length; you could use `mutate()` to adjust the data:
 
 ```{r}
-penguins_sum %>%
-  mutate(year = year + 1)
+penguins %>%
+  mutate(flipper_length_mm = flipper_length_mm + 4)
+```
+
+You can also combine `mutate()` with other functions. The below code calculates total body mass of _all_ penguins on each island.
+
+```{r}
+penguins %>%
+  group_by(island) %>%
+  mutate(island_penguin_mass = sum(body_mass_g))
+```
+
+It may be useful to give R rules for creating new variables. For example, the below code divides all penguins into flipper length categories, based on the mean flipper length of the dataset (201mm), using the `case_when()` function.
+
+```{r}
+penguins %>%
+  mutate(flipper_category =
+           case_when( flipper_length_mm > 201 ~ "short",
+                      flipper_length_mm < 201 ~ "long",
+                      flipper_length_mm == 201 ~ "average"))
 ```
 
 #### 5. Summarizing Data with `group_by()` and `summarize()`
 
-You might have noticed that the functions `group_by()` and `summarize()` were used in our explanation of tidy data with the dataset `penguins_sum`. Let's work step-by-step from our original dataset to `penguins_sum` to get a better feel for what that code was doing.
+Often, data contains groupings (by geography, time period, experimental group). The `group_by()` function enables R to first group observations and then perform additional calculations. Function `summarize()` often proves useful with `group_by()`, allowing the calculation of measures across groups (mean, median, variance, etc).
 
-We want to end up with a dataset that shows the mean body mass of penguins for each island and each year. We can feed both of those variables into the `group_by()` to start:
+Continuing with the penguins data, one goal may be to end up with a variable that shows  mean body mass of penguins for each island. First feed the grouping variable into `group_by()`:
 
 ```{r}
 penguins %>%
-  group_by(island, year)
+  group_by(island)
 ```
 
-Notice how this code did not actually change the way our dataset looks. This is because the `group_by()` function changes the metadata, you can think of this as R getting the dataset ready for a further transformation to be applied to it. We can now apply the `summarize()` function to get what we want.
+The above code did not change anything about the dataset; the `group_by()` function changes the metadata of the dataset. (You can think of this as R getting the dataset ready for a further transformation to be applied to it, with the rule of "anything that happens, happens within these groupings".) 
+
+With the group defined, apply the `summarize()` function to calculate mean body mass by island.
+
+```{r}
+penguins %>%
+  group_by(island) %>%
+  summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
+```
+
+Missing values (`NA`) are an important consideration in data analysis. In the above code, the `na.rm = TRUE` removes any missing values in `body_mass_g` so R is free to calculate the mean of the body mass data that is in the dataset. (To experiment with the effect of `na.rm = TRUE`, run the above code without that argument.)
+
+You can extend the above approach to group by _both_ island and year:
 
 ```{r}
 penguins %>%
   group_by(island, year) %>%
-  summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
-```
-
-Now we have the summary statistic we wanted (mean body mass) for each island, in each year.
-
-All that the `na.rm = TRUE` is doing is removing any missing values in `body_mass_g` so that we do not report missing values in our summary.
-
-If we wanted to do something similar to this, but only look at mean body mass for each year, we can simply remove `island` from our `group_by()` function:
-
-```{r}
-penguins %>%
-  group_by(year) %>%
   summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
 ```
 
