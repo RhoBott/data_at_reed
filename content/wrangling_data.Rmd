@@ -271,18 +271,18 @@ If you want to learn more about `dplyr`, [the package's website](https://dplyr.t
 
 #### 6. Frequency Tables with `count()`
 
-Frequency tables can be a helpful way of displaying information about your data. For example, what if we want to know how many male and female penguins are in our sample? We can build a frequency table for this. 
+Frequency tables provide one way of displaying information about your data. For example, how many male and female penguins are in the sample?
 
-To do so, we can `count()` by the groups of any variable. First, by `sex`:
+First, use function `count()` by the variable of interest (`sex`):
 
 ```{r}
 penguins %>%
   count(sex)
 ```
 
-Now we can easily see that our sample includes 165 females, 168 males, and 11 rows have an NA value in that column. 
+The penguins dataset includes 165 females, 168 males, and 11 individual birds for which sex is unknown.
 
-What if we want to see how many males and females were sampled on each island? We can simply `count()` by `island` and `sex`:
+To divide these counts by island (as well as sex), `count()` by `island` and `sex`:
 
 ```{r}
 penguins %>%
@@ -293,13 +293,15 @@ penguins %>%
 
 ### strings with `stringr`
 
-Often times you might find yourself with a dataset that includes data in the form of a string. A string is basically a group of characters, and can include numbers, letters, spaces, and special characters. Strings are most often represented as `"text surrounded in quotes"` in R. The package `stringr` is really useful tool for working with this type of data, and thankfully is already included in the `tidyverse` package. If you have already loaded the `tidyverse` with `library(tidyverse)`, then you are ready to start using `stringr`.
+Many of the previous examples have worked with numerica data; you may also work with character, or "string" data. String data can include numbers, letters, spaces, and special characters. Strings are most often represented as `"text surrounded in quotes"` in R. 
 
-Instead of going through a step-by-step tutorial on exactly how each `stringr` function works, we will go through a couple of concrete examples using the `penguins` dataset to show off different ways to use `stringr` in your data wrangling.
+Package `stringr` is  useful tool for working with string data. Instead of going through a step-by-step tutorial for each `stringr` function, the below code presentsconcrete examples using the `penguins` dataset to demonstrate some of the capabilities of `stringr`.
 
-Most functions you will want to use from the `stringr` function begin with `str_`. If you ever forget the name of the function you need, try just typing `str_` and scrolling through the auto-completed list of functions exported from `stringr`.
+Most functions you will want to use from the `stringr` function begin with `str_`. If you forget the name of the function you need to use, try typing `str_` and scrolling through the auto-completed list of functions exported from `stringr`.
 
-String manipulations are carried out with the use of _patterns_, specified with a language called _regular expressions_ (or "regex", for short). Regular expressions are just shorthand ways of specifying general patterns that you wish to match in data. The following symbols might be helpful in getting started:
+String manipulations are carried out with the use of _patterns_, specified with a language called _regular expressions_ (or "regex", for short). Regular expressions are shorthand ways of specifying general patterns that you wish to match in data. 
+
+Some regex that may be useful for getting started:
 
 1. `^x` : means 'begins with `x`'
 2. `x$` : means 'ends with `x`'
@@ -308,27 +310,25 @@ String manipulations are carried out with the use of _patterns_, specified with 
 5. `x{n,m}` : between n and m occurrences of `x`
 6. `[xyz]` : means 'includes `x` or `y` or `z`'
 
-We will demo what each of these looks like in context below.
+To see each of these in context, see below.
 
-Here, we are filtering our data to only look at penguin species that start with the letter 'A' who belong to an island that ends with the letter 'm'.
+The below code subsets data (using `filter()`) to penguins of a species which start with the letter 'A', and who are found on an island that ends with the letter 'm'.
 
 ```{r}
 penguins %>%
   filter(str_detect(species, "^A") & str_detect(island, "m$"))
 ```
 
-If you are comfortable with `dplyr`, you may be realizing that this is not the most efficient way to solve this problem, as we could very easily use `filter(species == "Adelie" & island == "Dream")`, but if you were dealing with a dataset that had trickier structure, using `str_detect()` makes a lot of things possible.
+As is often true in coding, there are other ways to arrive at this same result (example: `filter(species == "Adelie" & island == "Dream")`); the above code is meant to provide an extensible example of `str_detect()`.
 
-For example, imagine that you were looking at a dataset that had a column called `name` which included the names of 100 different species of fish. You could use the code above to only look at species that started or ended with a certain letter.
-
-This can be extended beyond just a letter, so that we can look for observations that start or end with any given combination of characters:
+This same approach can be extended to look for observations that start or end with any given combination of characters. The below will filter to any penguins with a value of `species` beginning with "Adeli".
 
 ```{r}
 penguins %>%
   filter(str_detect(species, "^Adeli"))
 ```
 
-Next, we will take a look at an example where we want to only look at species that end in 1 or 2 "o's", and then we use a helpful function called `str_to_upper()` to capitalize the names of those species:
+The below code filters to species that end in one (1) or or two (2) "o's"; after that subsetting, each species name is capitalized (`adelie` becomes `Adelie`) using the `str_to_upper()` function.
 
 ```{r}
 penguins_edited <- penguins %>%
@@ -338,20 +338,22 @@ penguins_edited <- penguins %>%
 penguins_edited
 ```
 
-Of course, there is also a corresponding `str_to_lower()` function. 
+(If you have reason to have your data in the style of bell hooks, there is also a corresponding `str_to_lower()` function.)
 
-Following off of our previous code, we can then use a function called `str_remove()` to drop two "O's" from the end of each one (when they exist). You do not get to see it here but if some of our species ended with three "O's" our code would have only the first two.
+In addition to looking for a pattern (`str_detect()`) or adjusting the case of characters (`str_to_upper()`/`str_to_lower()`), you can also remove characters based on a pattern-matching rule.
+
+The below code uses `str_remove()` to drop two "O's" from the end of each value of `species`. (This can be especially useful when you have observations that have a prefix or a suffix that you do not want.)
 
 ```{r}
 penguins_edited %>%
   mutate(species = str_remove(species,"O{2}$"))
 ```
 
-This can be especially useful when you have observations that have a prefix or a suffix that you do not want.
+(Note that _no_ values of `species` end in 0's, so the above code changes nothing. If a value of `species` ended in, for example, three "O's", the result would only retain one.)
 
-One important thing to note is that your inputs into `str_*` functions are usually case-sensitive.
+Another common task when working with string data is to replace a pattern, achieved with `str_replace()`.
 
-The last function that we will show here will be `str_replace()`. In this example we will replace the "e" at the end of "Biscoe" with "otti". 
+The below code replaces the "e" at the end of "Biscoe" with "otti". 
 
 ```{r}
 penguins %>%
@@ -359,18 +361,16 @@ penguins %>%
   mutate(island = str_replace(island, "e", "tti"))
 ```
 
-This is a somewhat silly example, but there are plenty of situations in which making replacements such as these will be important for a project you might be working on.
+Transforming seabirds into biscuits notwithstanding, knowing how to make replacements such as these will likely be important for your data work.
 
-If you want to replace patterns more extensively, you can use `str_replace_all()`. Here we replaced all occurrences of vowels with "x".
+To replace patterns throughout a dataset, use `str_replace_all()`. The below code replaces all occurrences of vowels with "x".
 
 ```{r}
 penguins %>%
   mutate(species = str_replace_all(species, "[aeiou]", "x"))
 ```
 
-There are all sorts of tricks for working with strings and regular expressions in R. For many, getting regular expressions to work as you intend is a process of trial and error—you might need a few tries to get where you want to be, but keep at it.
-
-We highly recommend keeping the [stringr cheatsheet](https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf) by Lise Vaudor around for when you are writing regular expressions. If you want to learn more about `stringr`, [the package's website](https://stringr.tidyverse.org/) contains a more extensive overview of the package and its functions. You might also check out the [Strings chapter](https://r4ds.had.co.nz/strings.html) of the R for Data Science book.
+Package `stringr` contains many tools beyond those profiled above, and regex can be challenging to navigate. Some additional resources for this work can be found at [stringr cheatsheet](https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf) (credit: Lise Vaudor). To learn more about `stringr`, [the package's website](https://stringr.tidyverse.org/) contains a more extensive overview of the package and its functions. For further background, visit the [Strings chapter](https://r4ds.had.co.nz/strings.html) of the R for Data Science book.
 
 ### Data Frames and `tibble`s
 
