@@ -374,11 +374,13 @@ Package `stringr` contains many tools beyond those profiled above, and regex can
 
 ### Data Frames and `tibble`s
 
-So far in this tutorial, we have exclusively worked with "tibbles". From the [`tibble` website](https://tibble.tidyverse.org/):
+The explanations on these pages worked with "tibbles". From the [`tibble` website](https://tibble.tidyverse.org/):
 
 > A _tibble_, or `tbl_df`, is a modern reimagining of the `data.frame`, keeping what time has proven to be effective, and throwing out what is not. Tibbles are `data.frames` that are lazy and surly: they do less (i.e. they don’t change variable names or types, and don’t do partial matching) and complain more (e.g. when a variable does not exist). This forces you to confront problems earlier, typically leading to cleaner, more expressive code.
 
-If this sounds like gibberish to you, that is okay. The biggest benefit to `tibble`s over `data.frame`s is the way that they print. If we print `penguins` as a tibble, for example, the output looks like this:
+The biggest advantage of `tibble`s over `data.frame`s is the way that [tibbles] print. 
+
+For sample, here's `penguins` as a tibble:
 
 ```{r, eval = FALSE}
 penguins
@@ -399,9 +401,9 @@ penguins
 # # … with 334 more rows
 ```
 
-We can easily see the dimensions of the tibble (344 x 8), the variable names and their types, and the first ten rows. 
+The reader can the dimensions of the tibble (344 x 8), the variable names and their types, and the first ten rows. 
 
-In contrast, printing out a `data.frame` is a bit unwieldy:
+In contrast, printing out an entire `data.frame` is a bit unwieldy:
 
 ```{r, eval = FALSE}
 as.data.frame(penguins)
@@ -660,7 +662,5 @@ as.data.frame(penguins)
 # 125 2009
 #  [ reached 'max' / getOption("max.print") -- omitted 219 rows ]
 ```
-
-In these tutorials, we make use of `tibble`s rather than `data.frame`s, and encourage you to do so as well.
 
 If you want to learn more about `tibble`s, [the package's website](https://tibble.tidyverse.org/) contains a more extensive overview of the package and its functionality.
