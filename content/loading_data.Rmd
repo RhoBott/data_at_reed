@@ -10,7 +10,7 @@ library(emo)
 
 # Loading Data
 
-R is a powerful tool for data cleaning, analysis, and visualization. The first step to data work is loading your data. Below you can find instructions to bring data into R in a number of ways: using use a pre-loaded dataset, data from a .csv, Excel Sheet or a Google Sheet, or data found on the internet. 
+R is a powerful tool for data cleaning, analysis, and visualization. The first step to working with data in R is loading it in. Below you can find instructions to bring data into R in a number of ways: using use a pre-loaded dataset, data from a .csv, Excel Sheet or a Google Sheet, or data found on the internet. 
 
 ### From a Package
 
@@ -94,9 +94,9 @@ Here is an example:
 cat_data <- read_csv("Desktop/Reed/Bio123/cats.csv")
 ```
 
-The above code takes the file `cats.csv`, located in a folder `Bio123` within a `Reed` folder on the `Desktop`. The filepath `Desktop/Reed/Bio123` gives directions to `read_csv()` on where to find `cats.csv`. 
+The above code reads in the file `cats.csv`, located in a folder `Bio123` within a `Reed` folder on the `Desktop`. The filepath `Desktop/Reed/Bio123` gives directions to `read_csv()` on where to find `cats.csv`. 
 
-`read_csv()` not only finds this data, but also makes it into a dataset, which is then assigned to (using the `<-` operator) the name (`cat_data`). This data is now available for use in R (you can confirm this using `View()`).
+`read_csv()` not only finds this data, but also makes it into a dataset, which is then assigned to the name (`cat_data`) using the `<-` operator. This data is now available for use in R (you can confirm this using `View()`).
 
 If you are using the Reed RStudio Server, you can upload your data file to the server and read it in from the server. This process uses the same `read_csv()` function within the server.
 
@@ -163,7 +163,7 @@ In Google Sheets, navigate to the sheet you would like to read in, and copy the 
 example <- read_sheet("https://docs.google.com/spreadsheets/d/1qSGfs0ogEOQsynzAtoUIgU5NJDqn7bOd14L9qpWA3w8/edit?usp=sharing")
 ```
 
-Keep an eye on your Console, because this code will prompt several interactive steps for you, in order to grant R access to your document.
+Keep an eye on your Console, because this code will prompt several interactive steps for you in order to grant R access to your document.
 
 1. In your console, you will be asked if it is okay to "cache OAuth access credentials in the folder" followed by a URL. (This means: "Is it okay for R to gain access to your Google Sheets in the future, or would you like to only grant one-time access?" Type "1" in the console for yes, and click enter.)
 
@@ -181,7 +181,7 @@ If you want to learn more about `googlesheets4`, [the package's website](https:/
 
 If you find data that you would like to use on a website, package `rvest` can bring that table into R. (This both saves you the process/frustration of copying/pasting data from a webpage, and also makes your work less error-prone and more reproducible.)
 
-NOTE: Before you take data from a website, make sure you are allowed to scrape and analyze the data. (LINK-HERE)
+NOTE: Before you take data from a website, make sure you are allowed to scrape and analyze the data. You can read more about scraping data from the web [here](https://libguides.reed.edu/copyright/images-data#s-lg-box-wrapper-29860611). If you still have questions about the legality of a web-scraping workflow after reading this documentation, you can contact Reed's [data librarian](https://library.reed.edu/about/staff/lebow.html).
 
 First, install and load the `rvest` package: 
 
@@ -219,8 +219,8 @@ Run the code and check your environment for the dataset `reed_table`.
 
 While the `rvest` code may look complicated, it needs only two pieces of information:
 
-1. The URL of the page with the data table
+1. The URL of the page with the data table.
 
-2. The "selector" code that specifies where on the page the data table is located
+2. The "selector" code that specifies where on the page the data table is located. [This tutorial](https://rvest.tidyverse.org/articles/selectorgadget.html) is a great resource for learning more about selector.
 
-If you want to learn more about `rvest`, [the Tidyverse documenetation for `rvest`](https://rvest.tidyverse.org/) contains a more extensive overview of the package and its functions.
+If you want to learn more about `rvest`, [the Tidyverse documentation for `rvest`](https://rvest.tidyverse.org/) contains a more extensive overview of the package and its functions.

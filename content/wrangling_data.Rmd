@@ -85,7 +85,7 @@ Looking more closely at `pivot_wider()`
 
 - `id_cols` (read: ID columns) are the variables that, together, identify what makes a row unique in the original data
 - `names_from` determines what variable from the old data will determine the names of columns in the new data
-- `values_from` is the name of the variable in the old data that will be contained in cells in the new data.
+- `values_from` is the name of the variable in the old data that will be contained in cells in the new data
 
 If given this untidy table, you can tidy the data by pivoting from "wide" to "long" using `pivot_longer()`.
 
@@ -129,14 +129,14 @@ penguins %>%
   filter(bill_length_mm < 40)
 ```
 
-You can also get very specific, here focusing on penguins from Trogersen Island that were observed in 2008 with a body mass greater than 3500 grams:
+You can also get very specific. Focusing on penguins from Torgersen Island that were observed in 2008 with a body mass greater than 3500 grams:
 
 ```{r}
 penguins %>%
   filter(island == "Torgersen" & year == 2008 & body_mass_g > 3500 )
 ```
 
-In working with the penguins data, you may have noticed missing values (`NA`) throughout the dataset. Missing data can complicate data analysis, and you should be intentional in how you approach your `NA`s (!).
+In working with the penguins data, you may have noticed missing values (`NA`) throughout the dataset. Missing data can complicate data analysis, and you should be intentional in how you approach your `NA`s.
 
 You can use `filter()` combined with `!is.na()` ("is not missing") to remove missing observations for a given variable. For example, creating a dataset that is only penguins of known sex:
 
@@ -202,9 +202,9 @@ sis <- penguins %>%
 
 #### 4. Creating New Columns with `mutate()`
 
-Another common data wrangling task is to create a new variable, using function `mutate()`. When creating a new variable, you provide a name for the new column and a method for calculating the new value. 
+Another common data wrangling task is to create a new variable using the `mutate()` function. When creating a new variable, you provide a name for the new column and a method for calculating the new value. 
 
-Continuing with the penguins data, the below creates a new new column for the mean body mass in kilograms:
+Continuing with the penguins data, the below creates a new column for the mean body mass in kilograms:
 
 ```{r}
 penguins %>%
@@ -240,7 +240,7 @@ penguins %>%
 
 Often, data contains groupings (by geography, time period, experimental group). The `group_by()` function enables R to first group observations and then perform additional calculations. Function `summarize()` often proves useful with `group_by()`, allowing the calculation of measures across groups (mean, median, variance, etc).
 
-Continuing with the penguins data, one goal may be to end up with a variable that shows  mean body mass of penguins for each island. First feed the grouping variable into `group_by()`:
+Continuing with the penguins data, one goal may be to end up with a variable that shows mean body mass of penguins for each island. First feed the grouping variable into `group_by()`:
 
 ```{r}
 penguins %>%
@@ -249,7 +249,7 @@ penguins %>%
 
 The above code did not change anything about the dataset; the `group_by()` function changes the metadata of the dataset. (You can think of this as R getting the dataset ready for a further transformation to be applied to it, with the rule of "anything that happens, happens within these groupings".) 
 
-With the group defined, apply the `summarize()` function to calculate mean body mass by island.
+With the grouping defined, apply the `summarize()` function to calculate mean body mass by island.
 
 ```{r}
 penguins %>%
@@ -293,9 +293,9 @@ penguins %>%
 
 ### strings with `stringr`
 
-Many of the previous examples have worked with numerica data; you may also work with character, or "string" data. String data can include numbers, letters, spaces, and special characters. Strings are most often represented as `"text surrounded in quotes"` in R. 
+Many of the previous examples have worked with numeric data; you may also work with character, or "string" data. String data can include numbers, letters, spaces, and special characters. Strings are most often represented as `"text surrounded in quotes"` in R. 
 
-Package `stringr` is  useful tool for working with string data. Instead of going through a step-by-step tutorial for each `stringr` function, the below code presentsconcrete examples using the `penguins` dataset to demonstrate some of the capabilities of `stringr`.
+The `stringr` package is a useful tool for working with string data. Instead of going through a step-by-step tutorial for each `stringr` function, the below code presents concrete examples using the `penguins` dataset to demonstrate some of the capabilities of `stringr`.
 
 Most functions you will want to use from the `stringr` function begin with `str_`. If you forget the name of the function you need to use, try typing `str_` and scrolling through the auto-completed list of functions exported from `stringr`.
 
@@ -328,7 +328,7 @@ penguins %>%
   filter(str_detect(species, "^Adeli"))
 ```
 
-The below code filters to species that end in one (1) or or two (2) "o's"; after that subsetting, each species name is capitalized (`adelie` becomes `Adelie`) using the `str_to_upper()` function.
+The below code filters to species that end in one (1) or or two (2) "o's"; after that subsetting, each species name is capitalized (`Adelie` becomes `ADELIE`) using the `str_to_upper()` function.
 
 ```{r}
 penguins_edited <- penguins %>%
@@ -370,7 +370,7 @@ penguins %>%
   mutate(species = str_replace_all(species, "[aeiou]", "x"))
 ```
 
-Package `stringr` contains many tools beyond those profiled above, and regex can be challenging to navigate. Some additional resources for this work can be found at [stringr cheatsheet](https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf) (credit: Lise Vaudor). To learn more about `stringr`, [the package's website](https://stringr.tidyverse.org/) contains a more extensive overview of the package and its functions. For further background, visit the [Strings chapter](https://r4ds.had.co.nz/strings.html) of the R for Data Science book.
+The `stringr` package contains many tools beyond those profiled above, and regex can be challenging to navigate. Some additional resources for this work can be found at [stringr cheatsheet](https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf) (credit: Lise Vaudor). To learn more about `stringr`, [the package's website](https://stringr.tidyverse.org/) contains a more extensive overview of the package and its functions. For further background, visit the [Strings chapter](https://r4ds.had.co.nz/strings.html) of the R for Data Science book.
 
 ### Data Frames and `tibble`s
 
@@ -380,7 +380,7 @@ The explanations on these pages worked with "tibbles". From the [`tibble` websit
 
 The biggest advantage of `tibble`s over `data.frame`s is the way that [tibbles] print. 
 
-For sample, here's `penguins` as a tibble:
+For example, here's `penguins` as a tibble:
 
 ```{r, eval = FALSE}
 penguins
@@ -401,7 +401,7 @@ penguins
 # # … with 334 more rows
 ```
 
-The reader can the dimensions of the tibble (344 x 8), the variable names and their types, and the first ten rows. 
+The reader can see the dimensions of the tibble (344 x 8), the variable names and their types, and the first ten rows. 
 
 In contrast, printing out an entire `data.frame` is a bit unwieldy:
 
