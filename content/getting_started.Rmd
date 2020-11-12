@@ -58,7 +58,7 @@ If you are using R for projects outside of specific class assignments that are a
 
 There are two things you need to download in order to use R on your computer: R and RStudio. R is the coding language, and RStudio is the Integrated Development Environment (IDE) that makes R easy to use.
 
-#### On MacOSX
+#### Downloading + installing for MacOSX
 
 You can download and install R for MacOSX at the [CRAN downloads site](https://cran.r-project.org/), where you will follow the link to "Download R for (Mac) OS X". Navigate to the appropriate release for your computer's OS. To find your computer's OS, click the top left Apple icon, and click "About this Mac". You will see both a name (e.g. "High Sierra", "Catalina", or "El Capitan") and a number ("Version __.__._"). Back on the R download site, each download will have a description of what OS it requires in order to run. Choose the newest version possible for your OS (your OS should be equal to or higher than the one listed in the description). Click on the link next to the description to download R. Once the file has downloaded, click it to proceed to installation, leaving all default settings as they are.
 
@@ -66,7 +66,7 @@ Next you need to install RStudio. To do this, navigate to the [RStudio downloads
 
 With both R and RStudio installed, you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages("packagename")`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install packages once in order to load (`library(packagename)`) and use them in the future. (Remember that you need to load a library every time you use those tools.)
 
-#### On Windows
+#### Downloading + installing for MacOSX
 
 You can download and install R for Windows at the [CRAN downloads site](https://cran.r-project.org/), where you'll follow the link to "Download R for Windows". From here click "base", and then "Download R 4.0.3 for Windows". Once the file has downloaded, click it to proceed to installation, leaving all default settings as they are.
 
