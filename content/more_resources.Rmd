@@ -8,36 +8,58 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # More Resources
 
-Hopefully, now that you have read through the documentation here, it has answered some of your questions. There are all sorts of resources to help you take the next step to becoming proficient in R.
+In addition to the documentation provided in these pages, there are many resources to help you become more proficient in R. Below you can find some additional resources, as well as recommendations for posing questions in forums and finding answers on your own.
+
+Often, it can be helpful to work through problems with another person in real time. For work related to Reed classes, theses, and student/faculty research, you can get help from someone at the [mLab](https://www.reed.edu/cis/mlab/index.html), and drop-in help hours can be found [on our calendar](https://www.reed.edu/cis/mlab/calendar.html). 
+
+For all data questions, coding and otherwise, you can reach out to the Data@Reed team by emailing data@reed.edu .
+
+## Additional online resources
 
 ### R package Cheatsheets and Documentation
 
-RStudio has collected many cheatsheets for common R packages, and they can be found [here](https://rstudio.com/resources/cheatsheets/). Some possibly helpful ones to check out include sheets for data visualization with `ggplot2`, data transformation with `dplyr`, data import with `readr`, and R Markdown.
+RStudio has curated [cheatsheets](https://rstudio.com/resources/cheatsheets/) for common R packages, providing a single page of some of the most commonly-used commands. Among others, you can find cheatsheets for data visualization with `ggplot2`, data transformation with `dplyr`, data import with `readr`, and R Markdown.
 
-There are also websites for many of the packages shown on this site, with more examples and possible uses. Here are links to the websites for [`ggplot2`](https://ggplot2.tidyverse.org/), [`dplyr`](https://dplyr.tidyverse.org/), [`stringr`](https://stringr.tidyverse.org/), [`readr`](https://readr.tidyverse.org/), [`readxl`](https://readxl.tidyverse.org/), [`googlesheets4`](https://googlesheets4.tidyverse.org/), and [`rvest`](https://rvest.tidyverse.org/). For any package you are working with, there should be documentation online to help you figure out how to use it.
+All R packages should have published documentation. In addition to documentation available directly within R (at the console, type `?packagename`), the developer may provide documentation for a given package. You can also search the [RDocumentation site](https://www.rdocumentation.org/).
 
-### mLab Help
+Most of the packages described on this site are part of the Tidyverse; you can find documentation and examples within [the Tidyverse documentation](https://tidyverse.org), including pages for:
+- [`ggplot2`](https://ggplot2.tidyverse.org/)
+- [`dplyr`](https://dplyr.tidyverse.org/) 
+- [`stringr`](https://stringr.tidyverse.org/)
+- [`readr`](https://readr.tidyverse.org/)
+- [`readxl`](https://readxl.tidyverse.org/)
+- [`googlesheets4`](https://googlesheets4.tidyverse.org/)
+- [`rvest`](https://rvest.tidyverse.org/). 
 
-You can come and get help from someone at the [mLab](https://www.reed.edu/cis/mlab/index.html), and drop-in help hours can be found [on our calendar](https://www.reed.edu/cis/mlab/calendar.html).
+### Textbooks
 
-### Free Online Textbook
+There are a number of texts that provide an introduction to R, coding, and data analysis. Some local favorites include: 
+- [Modern Dive](https://moderndive.netlify.app/) by Chester Ismay and Albert Y Kim for an introduction to statistical inference via data science
+- [R for Data Science](https://r4ds.had.co.nz/) by Hadley Wickham and Garrett Grolemund for an in-depth introduction to working with R and data.
 
-One great resource for R is the [R for Data Science](https://r4ds.had.co.nz/) textbook. It is free and made to be easy to navigate online. There are chapters on [data visualization](https://r4ds.had.co.nz/data-visualisation.html), [tidy data](https://r4ds.had.co.nz/tidy-data.html), [data transformation](https://r4ds.had.co.nz/transform.html), [strings](https://r4ds.had.co.nz/strings.html), and more. We highly recommend this resource.
+## Hive mind: forums and asking questions
 
-### Googling
+Often, you will not be the first person to encounter an error or to have a particular question. (Some examples: "How do I remove `NA`s from my data?" "How do I make R understand this date information?" "How do I combine a boxplot and a scatterplot so I can show multiple aspects of the data?")
 
-Sometimes, if you get a strange error or have a very specific question about a particular function, other people may have had that question before as well. If you want to search for an error or how to do a particular operation in R, we would suggest that you include the name of the package that you are using when you search for help. For anything you want to do, there are going to be many, many ways of doing it in R. But most likely, you are going to want to do those things using packages you already know, like `dplyr`, `ggplot2`, or `tidyr`. 
+### Finding answers in forums
 
-### Asking for Help
+When searching for answers to your code-related questions, include the name of the package that you are using and a few words about what you are trying to do (or the error text). If the code in your search results  don't make sense to you, do not despair - there are many ways of accomplishing the same task in R. 
+
+Two good places to look for already-answered questions are the [RStudio Community](https://community.rstudio.com) and [Stack Overflow](https://stackoverflow.com). Reading forum posts can be useful because you can see how other people have solved a similar problem.
+
+### Asking for help
 
 When asking for help, the first step is creating a "reprex", short for _repr_oducible _ex_ample. Reproducible examples help others help you by ensuring that they can replicate the problem that you're experiencing in order to troubleshoot more easily. There are a couple of key steps to creating a reprex:
 
-1. Include any package loading calls (library(package)) and objects (i.e. datasets) that are relevant to your problem.
+1. Include any package loading calls (`library(package)`) and objects (i.e. datasets) that are relevant to your problem.
 
-2. Only include whatever is relevant or necessary to your problem. In reprex jargon, this is called making your example minimal.
+2. Only include whatever is relevant or necessary to your problem. In reprex jargon, this is called making your example "minimal".
 
-By following this convention, you will make it a lot easier for someone to understand and help with your issue. For more on reproducible examples, check out [this](https://www.tidyverse.org/help/) tidyverse page.
+By taking the time to create a reprex, you are asking a more understandable question - meaning that you are much more likely to get a useful answer. For more on reproducible examples and asking questions, check out [the tidyverse "Get help!" ](https://www.tidyverse.org/help/) page.
 
-Once you have a reprex ready to go, there are a few different places you could ask for help. If you are a Reedie, the mLabbies will be thrilled to see that you have prepared a reprex and will be glad to help.
+Once you have prepared a reprex, two possible courses of action:
+- If you are a Reedie, the mLabbies and/or the Data@Reed team will be thrilled to see that you have prepared a reprex and will be glad to help.
+- Pose your question on an online forum; as mentioned above, two good places to start are the [RStudio Community](https://community.rstudio.com) and  [Stack Overflow](https://stackoverflow.com). 
 
-Another option is online forums. The [RStudio Community](https://community.rstudio.com) and  [Stack Overflow](https://stackoverflow.com) are two popular options. When searching a problem, you will likely find a lot of results that link to pages on either of these websites. This is a great way to read into how other people solved a problem similar to yours. You can also ask questions yourself on these websites-asking a question online can be intimidating, but if you’ve taken the time to create a reprex, you’re much more likely to get a useful answer.
+
+
