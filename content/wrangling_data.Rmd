@@ -154,32 +154,8 @@ unknown <- penguins %>%
   filter(is.na(sex))
 ```
 
-#### 2. Arranging Rows with `arrange()`
 
-Sometimes it is helpful to sort data, alphabetically or numerically. You can sort data using the `arrange()` function from `dplyr`.
-
-To arrange all penguins, in order of increasing bill length:
-
-```{r}
-penguins %>%
-  arrange(bill_length_mm)
-```
-
-In order or decreasing bill length:
-
-```{r}
-penguins %>%
-  arrange(desc(bill_length_mm))
-```
-
-For character data, `dplyr` will arrange alphabetically.
-
-```{r}
-penguins %>%
-  arrange(species)
-```
-
-#### 3. Selecting Columns with `select()`
+#### 2. Selecting Columns with `select()`
 
 A dataset may have more variables than you need. You can use the `select()` function to subset data to only variables of interest.
 
@@ -202,7 +178,7 @@ sis <- penguins %>%
   select(species, island, sex)
 ```
 
-#### 4. Creating New Columns with `mutate()`
+#### 3. Creating New Columns with `mutate()`
 
 Another common data wrangling task is to create a new variable using the `mutate()` function. When creating a new variable, you provide a name for the new column and a method for calculating the new value. 
 
@@ -238,7 +214,7 @@ penguins %>%
                       flipper_length_mm == 201 ~ "average"))
 ```
 
-#### 5. Summarizing Data with `group_by()` and `summarize()`
+#### 4. Summarizing Data with `group_by()` and `summarize()`
 
 Often, data contains groupings (by geography, time period, experimental group). The `group_by()` function enables R to first group observations and then perform additional calculations. Function `summarize()` often proves useful with `group_by()`, allowing the calculation of measures across groups (mean, median, variance, etc).
 
@@ -270,6 +246,32 @@ penguins %>%
 ```
 
 If you want to learn more about `dplyr`, [the package's website](https://dplyr.tidyverse.org/) contains a more extensive overview of the package and its functions. You might also check out the [data transformation chapter](https://r4ds.had.co.nz/transform.html) of the R for Data Science book.
+
+#### 5. Arranging Rows with `arrange()`
+
+Sometimes it is helpful to sort data, alphabetically or numerically. You can sort data using the `arrange()` function from `dplyr`.
+
+To arrange all penguins, in order of increasing bill length:
+
+```{r}
+penguins %>%
+  arrange(bill_length_mm)
+```
+
+In order or decreasing bill length:
+
+```{r}
+penguins %>%
+  arrange(desc(bill_length_mm))
+```
+
+For character data, `dplyr` will arrange alphabetically.
+
+```{r}
+penguins %>%
+  arrange(species)
+```
+
 
 #### 6. Frequency Tables with `count()`
 
