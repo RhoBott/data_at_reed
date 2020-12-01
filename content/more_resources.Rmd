@@ -37,17 +37,17 @@ There are a number of texts that provide an introduction to R, coding, and data 
 - [R for Data Science](https://r4ds.had.co.nz/) by Hadley Wickham and Garrett Grolemund for an in-depth introduction to working with R and data.
 - [Modern Dive](https://moderndive.netlify.app/) by Chester Ismay and Albert Y Kim for an introduction to statistical inference via data science
 
-## Hive mind: forums and asking questions
+### Hive mind: forums and asking questions
 
 Often, you will not be the first person to encounter an error or to have a particular question. (Some examples: "How do I remove `NA`s from my data?" "How do I make R understand this date information?" "How do I combine a boxplot and a scatterplot so I can show multiple aspects of the data?")
 
-### Finding answers in forums
+#### Finding answers in forums
 
 When searching for answers to your code-related questions, include the name of the package that you are using and a few words about what you are trying to do (or the error text). If the code in your search results doesn't make sense to you, do not despair - there are many ways of accomplishing the same task in R. 
 
 Two good places to look for already-answered questions are the [RStudio Community](https://community.rstudio.com) and [Stack Overflow](https://stackoverflow.com). Reading forum posts can be useful because you can see how other people have solved a similar problem.
 
-### Asking for help
+#### Asking for help
 
 When asking for help, the first step is creating a "reprex", short for _repr_oducible _ex_ample. Reproducible examples help others help you by ensuring that they can replicate the problem that you're experiencing in order to troubleshoot more easily. There are a couple of key steps to creating a reprex:
 
