@@ -17,29 +17,33 @@ While working with data, you may wish to rearrange it, add more information from
 
 Packages in the `tidyverse`, like `ggplot2` (useful for visualizing data) and `dplyr` (a key tool in data wrangling), are built to work with so-called "tidy" data. 
 
-For a dataset to be tidy, it must follow these three rules:
+```{r, echo = FALSE}
+url <- "https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/tidydata_1.jpg?raw=true"
 
-1. Each variable must have its own column
-
-2. Each observation must have its own row
-
-3. Each value must have its own cell
-
-The `tidyr` package will prove useful in data restructuring or "tidying".
-
-#### Example: penguin body mass and `group_by()`
-For an example, return to the `palmerpenguins` data. (For instructions on loading `penguins`, see [Getting Started](LINK-HERE).)
-
-For our summarized `penguins` data, we want to have the mean body mass for _all_ penguins, on a given island, in a given year. To do this, we use the `dplyr` function `group_by()` which takes the original data and groups it by the given variable (or variables, in this case `island` and `year`). 
-
-You can read the (incomplete) code below as "take the `penguins` dataset, break it apart by island AND by year, and then..."
-
-```{r, eval = FALSE, message = FALSE, warning = FALSE}
-penguins %>%
-  group_by(island, year) %>%
+knitr::include_graphics(url)
 ```
 
-To calculate the body weight (mass in g) for each group, use `summarize()`. This will be covered more in depth further down this page. For now, the purpose of this summary table is to be able to easily see what tidy versus untidy data looks like.
+One of the core arguments for tidy data is often summarized with an adaptation of the famous Leo Tolstoy quote "Happy families are all alike; every unhappy family is unhappy in its own way." 
+
+```{r, echo = FALSE}
+url <- "https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/tidydata_2.jpg?raw=true"
+
+knitr::include_graphics(url)
+```
+
+With a consistent set of rules for formatting data, the ideas and tools used to conduct one data analysis can be more easily transferred to another.
+
+```{r, echo = FALSE}
+url <- "https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/tidydata_3.jpg?raw=true"
+
+knitr::include_graphics(url)
+```
+
+The `tidyr` package will prove useful in data restructuring or "tidying". All of the packages in the `tidyverse`, like `ggplot2` and `dplyr`, as well as all sorts of community-contributed packages, are designed to work seamlessly with data in tidy format.
+
+The "tidy" format of a data can depend on what you want to use the data for. To get us started in thinking about tidy data, we'll return to the `penguins` data. (For instructions on loading `penguins`, see [Getting Started](LINK-HERE).)
+
+This summarized version of the penguins data, called `penguins_sum` gives the  mean body mass for all penguins on a given island in a given year.
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 penguins_sum <- penguins %>%
@@ -49,18 +53,16 @@ penguins_sum <- penguins %>%
 penguins_sum
 ```
 
-The resulting data is tidy: each variable has its own column, each observation (penguin) is a row, and each (measure) has its own cell.
+The resulting data is tidy; each variable has its own column, each observation (penguin) is a row, and each measurement has its own cell. 
 
-Compare that with the result of this code:
+Compare that with this representation of the same data:
 
-```{r}
+```{r, echo = FALSE}
 penguins_sum %>%
   pivot_wider(id_cols = c("island", "year"), names_from = year, values_from = mean_body_mass_g)
 ```
 
-While the above data contains the same information, in this version, the mean body mass is found in three different columns, one for each year. Per "tidy data" rules, `year` and `body mass` are both variables and should therefore have their own columns. Similarly, `year` should have its own column.
-
-The data you are working with may to analyze might look more like the second version ("untidy" data). No matter; you can move from tidy to untidy or and back again using `tidyr`.
+While the above data contains the same information, in this version, the mean body mass is found in three different columns, one for each year. This representation is usually called "wide" data, while the first option is referred to as "long." Per tidy data rules, `year` and `body mass` are both variables and should therefore have their own columns. Similarly, `year` should have its own column. `tidyr` will help us "pivot" from one to the other.
 
 #### Restructuring with pivot_wider()
 
@@ -70,7 +72,7 @@ Begin with the first, tidy version:
 penguins_sum
 ```
 
-To make the untidy version, "pivot" this data from a "long" format to a "wide" format using the `pivot_wider()` function from `tidyr`:
+To make the untidy version, "pivot" this data from long to wide format using the `pivot_wider()` function from `tidyr`:
 
 ```{r, warning = FALSE, message = FALSE}
 penguins_wide <- penguins_sum %>%
