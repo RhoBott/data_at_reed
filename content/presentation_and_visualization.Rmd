@@ -205,6 +205,21 @@ ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, col
 
 Faceting by `species` creates three graphs, with identical x and y axis scales and coloring. These graphs let us compare `species` side-by-side easily.
 
+#### Graph customization 
+
+Once you have a basic graph, you may want to customize it more to fit your needs. Starting with a scatterplot showing penguin bill length and body mass by island which was created above, adding a few simple commands allows you to adjust the graph to your liking. `labs()` is used to customize axis labels, as well as adding titles, subtitles, and captions. `theme()` is used to change the overall theme of the graph. Some options are `theme_dark()`, `theme_bw()` and `theme_classic()`. Using `scale_color_manual()`, the colors in the graph can be manually set. These are just a few ways to make a graph your own.
+
+```{r}
+ggplot(data = penguins, 
+       mapping = aes(x = bill_length_mm, y = body_mass_g, color = island)) +
+  geom_point(alpha=.7)+
+  scale_color_manual(values=c("magenta3", "darkorange", "blue4"))+
+  labs(x="Bill length (mm)", y="Body mass (g)", title="Palmer Penguins", subtitle="Examining penguin body mass and bill length")+
+  theme_bw()
+  
+```
+
+
 To read more about `ggplot2`, see the [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) chapter about data visualization. More extensive documentation can be found on the [ggplot2 website](https://ggplot2.tidyverse.org/).
 
 <!-- other commonly-used-geoms-maybe -->
