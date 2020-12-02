@@ -7,6 +7,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(palmerpenguins)
 library(tidyverse)
 library(knitr)
+library(waffle)
 ```
 
 # Presenting and Visualizing Data
@@ -173,7 +174,7 @@ ggplot(data = penguins, mapping  = aes(x = island, y = body_mass_g, color = sex)
   geom_boxplot()
 ```
 
-#### More Aesthetics and Geoms
+#### More Aesthetics
 
 In addition to the five specified above, there are numerous geometries and additional arguments available for `ggplot2`. Below are some examples.
 
@@ -234,9 +235,24 @@ To read more about `ggplot2`, see the [R for Data Science](https://r4ds.had.co.n
 
 <!-- other commonly-used-geoms-maybe -->
 
-<!-- - consider adding geom_smooth() here -->
-<!-- - consider geom_jitter() and why you would/not use it -->
+#### More Geoms
+
+Although some of the most frequently used geoms are described above, some other commonly used geoms include:
+
+  - `geom_density()`: for density estimates
+  - `geom_dotplot()`: for dot-plots
+  - `geom_abline()`, `geom_hline()`, `geom_vline()`: for adding customizable reference lines
+  - `geom_errorbar()`: for adding error bars to your plot
+  - `geom_smooth()`: for adding regression lines and other conditional means to your plot
+  - `geom_jitter()`: for dealing with overplotting. This plots the data points but with some
+                     specified amount of random variation to the location of each point. Importantly, it should 
+                     not be used in conjunction with `geom_point()` as this will result in plotting your
+                     observations twice. Additionally it is primarily a tool for data exploration, but it is a
+                     fabrication of the data and so likely shouldn't be used for any technical analysis.
+  - `geom_waffle()` : for showing category breakdowns. This geom exists inside of the `waffle` package.
+
 <!-- - consider linking to info on mosaic plots -->
+
 
 
 ### Making Summary Tables in R
