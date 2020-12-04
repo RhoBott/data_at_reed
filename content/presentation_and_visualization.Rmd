@@ -79,20 +79,31 @@ Linegraphs also show the relationship between two continuous variables, often sh
 
 The below code is very similar to the scatterplot above, with two changes: (1) time (year) is now on the x-axis and (2) a different `geom` is being used to represent the same data. 
 
-All islands together:
-
-```{r, message = FALSE, warning = FALSE}
-ggplot(data = penguins, 
-       mapping = aes(x = year, y = body_mass_g)) +
-  geom_line()
-```
-
-Separated by island:
 ```{r, message = FALSE, warning = FALSE}
 ggplot(data = penguins, 
        mapping = aes(x = year, y = body_mass_g, color = island)) +
   geom_line()
 ```
+
+The above graph looks a bit wonky... this is because there are multiple data points at each x location. Linegraphs work best when your data has only one value per x location. In this example, that means you would want one y value for each island in each year. You can summarize the `penguins` data to achieve this, by taking the mean of `body_mass_g` for each combination of `island` and `year`:
+
+```{r}
+penguins_sum <- penguins %>%
+  drop_na(body_mass_g) %>%
+  group_by(island, year) %>%
+  summarize(mean_body_mass_g = mean(body_mass_g))
+
+penguins_sum
+```
+
+Now you can make the same linegraph, using the new `penguins_sum` dataset, and with `mean_body_mass_g` in place of `body_mass_g`
+
+```{r, message = FALSE, warning = FALSE}
+ggplot(data = penguins_sum, 
+       mapping = aes(x = year, y = mean_body_mass_g, color = island)) +
+  geom_line()
+```
+
 
 #### Barplots
 
@@ -138,7 +149,7 @@ Histograms are one tool to show the distribution of data for a continuous variab
 ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
   geom_histogram()
 ```
-Changing either the number of bins, or the width of those bins, can greatly affect the resulting visual. Compare the two below graphs to the initial histogram.
+Changing either the number of bins, or the width of those bins, can greatly affect the resulting visual. Compare the two below graphs to the initial histogram (notice you can specify `bins` or `binwidth`).
 
 ```{r, warning = FALSE}
 ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
