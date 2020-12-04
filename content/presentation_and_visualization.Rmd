@@ -250,17 +250,18 @@ To read more about `ggplot2`, see the [R for Data Science](https://r4ds.had.co.n
 
 Although some of the most frequently used geoms are described above, some other commonly used geoms include:
 
-  - `geom_density()`: for density estimates
-  - `geom_dotplot()`: for dot-plots
-  - `geom_abline()`, `geom_hline()`, `geom_vline()`: for adding customizable reference lines
-  - `geom_errorbar()`: for adding error bars to your plot
-  - `geom_smooth()`: for adding regression lines and other conditional means to your plot
-  - `geom_jitter()`: for dealing with overplotting. This plots the data points but with some
+  - `geom_density()`: for [density estimates](https://ggplot2.tidyverse.org/reference/geom_density.html) 
+  - `geom_dotplot()`: for [dot-plots](https://ggplot2.tidyverse.org/reference/geom_dotplot.html?q=dotplot)
+  - `geom_abline()`, `geom_hline()`, `geom_vline()`: for adding [customizable reference lines](https://ggplot2.tidyverse.org/reference/geom_abline.html?q=geom%20_%20hli#arguments)
+  - `geom_errorbar()`: for adding [error bars](https://ggplot2.tidyverse.org/reference/geom_linerange.html) to your plot
+  - `geom_smooth()`: for adding [regression lines](https://ggplot2.tidyverse.org/reference/geom_smooth.html?q=smooth) and other conditional means to your plot
+  - `geom_jitter()`: for dealing with [overplotting](https://ggplot2.tidyverse.org/reference/geom_jitter.html). 
+                    This plots the data points but with some
                      specified amount of random variation to the location of each point. Importantly, it should 
                      not be used in conjunction with `geom_point()` as this will result in plotting your
                      observations twice. Additionally it is primarily a tool for data exploration, but it is a
                      fabrication of the data and so likely shouldn't be used for any technical analysis.
-  - `geom_waffle()` : for showing category breakdowns. This geom exists inside of the `waffle` package.
+  - `geom_waffle()` : for showing [category breakdowns](https://rud.is/rpubs/building-waffle-charts.html). This geom exists inside of the `waffle` package.
 
 <!-- - consider linking to info on mosaic plots -->
 
