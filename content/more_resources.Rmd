@@ -16,7 +16,7 @@ For all data questions, coding and otherwise, you can reach out to the Data@Reed
 
 ### Additional online resources
 
-#### R package Cheatsheets and Documentation
+#### R package cheatsheets and documentation
 
 RStudio has curated [cheatsheets](https://rstudio.com/resources/cheatsheets/) for common R packages, providing a single page of some of the most commonly-used commands. Among others, you can find cheatsheets for data visualization with `ggplot2`, data transformation with `dplyr`, data import with `readr`, and R Markdown.
 
