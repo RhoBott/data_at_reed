@@ -13,7 +13,7 @@ library(knitr)
 
 While working with data, you may wish to rearrange it, add more information from another data source, add a new variable to the data, or summarize your data. All of these operations fall under the category of "data wrangling", and represent the bulk of data-related work.
 
-### Tidy Data Principles, Reshaping Data, and `tidyr`
+### Tidy data principles, reshaping data, and `tidyr`
 
 Packages in the `tidyverse`, like `ggplot2` (useful for visualizing data) and `dplyr` (a key tool in data wrangling), are built to work with so-called "tidy" data. 
 
@@ -41,6 +41,8 @@ knitr::include_graphics(url)
 
 The `tidyr` package will prove useful in data restructuring or "tidying". All of the packages in the `tidyverse`, like `ggplot2` and `dplyr`, as well as all sorts of community-contributed packages, are designed to work seamlessly with data in tidy format.
 
+#### Tidying example
+
 The "tidy" format of a data can depend on what you want to use the data for. To get us started in thinking about tidy data, we'll return to the `penguins` data. (For instructions on loading `penguins`, see [Getting Started](LINK-HERE).)
 
 This summarized version of the penguins data, called `penguins_sum` gives the  mean body mass for all penguins on a given island in a given year.
@@ -64,7 +66,7 @@ penguins_sum %>%
 
 While the above data contains the same information, in this version, the mean body mass is found in three different columns, one for each year. This representation is usually called "wide" data, while the first option is referred to as "long." Per tidy data rules, `year` and `body mass` are both variables and should therefore have their own columns. Similarly, `year` should have its own column. `tidyr` will help us "pivot" from one to the other.
 
-#### Restructuring with pivot_wider()
+#### Restructuring with `pivot_wider()`
 
 Begin with the first, tidy version:
 
@@ -91,7 +93,7 @@ Looking more closely at `pivot_wider()`
 
 If given this untidy table, you can tidy the data by pivoting from "wide" to "long" using `pivot_longer()`.
 
-#### Restructuring with pivot_longer()
+#### Restructuring with `pivot_longer()`
 
 ```{r}
 penguins_wide %>%
@@ -104,7 +106,7 @@ As you might have noticed, `pivot_longer()` and `pivot_wider()` are inverse oper
 
 If you are interested in learning more about tidy data and pivoting, see the [Tidy Data chapter](https://r4ds.had.co.nz/tidy-data.html) in [R for Data Science].
 
-### Transforming Data With `dplyr`
+### Transforming data with `dplyr`
 
 Once data is tidy, you can use `dplyr` to further transform your data.
 
@@ -115,7 +117,7 @@ You can also use `head()` to get a sense of your dataset, variables, and values:
 head(penguins)
 ```
 
-#### 1. Filtering Rows with `filter()`
+#### Filtering rows with `filter()`
 
 Perhaps you wish to subset your data, retaining only observations (rows) that meet given criteria. The below code focuses on female penguins only:
 
@@ -155,7 +157,7 @@ unknown <- penguins %>%
 ```
 
 
-#### 2. Selecting Columns with `select()`
+#### Selecting columns with `select()`
 
 A dataset may have more variables than you need. You can use the `select()` function to subset data to only variables of interest.
 
@@ -178,7 +180,7 @@ sis <- penguins %>%
   select(species, island, sex)
 ```
 
-#### 3. Creating New Columns with `mutate()`
+#### Creating new columns with `mutate()`
 
 Another common data wrangling task is to create a new variable using the `mutate()` function. When creating a new variable, you provide a name for the new column and a method for calculating the new value. 
 
@@ -214,7 +216,7 @@ penguins %>%
                       flipper_length_mm == 201 ~ "average"))
 ```
 
-#### 4. Summarizing Data with `group_by()` and `summarize()`
+#### Summarizing data with `group_by()` and `summarize()`
 
 Often, data contains groupings (by geography, time period, experimental group). The `group_by()` function enables R to first group observations and then perform additional calculations. Function `summarize()` often proves useful with `group_by()`, allowing the calculation of measures across groups (mean, median, variance, etc).
 
@@ -247,7 +249,7 @@ penguins %>%
 
 If you want to learn more about `dplyr`, [the package's website](https://dplyr.tidyverse.org/) contains a more extensive overview of the package and its functions. You might also check out the [data transformation chapter](https://r4ds.had.co.nz/transform.html) of the R for Data Science book.
 
-#### 5. Arranging Rows with `arrange()`
+#### Arranging rows with `arrange()`
 
 Sometimes it is helpful to sort data, alphabetically or numerically. You can sort data using the `arrange()` function from `dplyr`.
 
@@ -273,7 +275,7 @@ penguins %>%
 ```
 
 
-#### 6. Frequency Tables with `count()`
+#### Frequency tables with `count()`
 
 Frequency tables provide one way of displaying information about your data. For example, how many male and female penguins are in the sample?
 
@@ -295,7 +297,7 @@ penguins %>%
 
 `count()` is a quick and easy way to produce frequency tables in R.
 
-### Combining Data
+### Combining data
 
 During data analysis, you might find that you have two separate datasets that offer complementary information to each other. In this case, you might be interested in combining, or _joining_ them.
 
@@ -330,7 +332,7 @@ Other join types include inner, left, and right joins. These join types differ i
 
 To read more about combining data, we recommend the [relational data chapter](https://r4ds.had.co.nz/relational-data.html) of R for Data Science.
 
-### strings with `stringr`
+### Strings with `stringr`
 
 Many of the previous examples have worked with numeric data; you may also work with character, or "string" data. String data can include numbers, letters, spaces, and special characters. Strings are most often represented as `"text surrounded in quotes"` in R. 
 

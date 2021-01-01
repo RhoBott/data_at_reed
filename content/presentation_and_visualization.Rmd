@@ -186,11 +186,11 @@ ggplot(data = penguins, mapping  = aes(x = island, y = body_mass_g, color = sex)
   geom_boxplot()
 ```
 
-#### More Aesthetics
+### More aesthetics
 
 In addition to the five specified above, there are numerous geometries and additional arguments available for `ggplot2`. Below are some examples.
 
-##### Alpha: adjusting transparency
+#### Alpha: adjusting transparency
 
 Sometimes, when using `geom_point()`, points can get a bit crowded. (This is called overplotting.) One way to address this is to change the transparency of the points. In this code, `alpha = 0.5` specifies the transparency of the points as 0.5, on a scale from 0 (most transparent) to 1 (least transparent):
 
@@ -199,7 +199,7 @@ ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, col
   geom_point(alpha = 0.5)
 ```
 
-##### Faceting: small multiples
+#### Faceting: side-by-side graphs
 
 To add another variable to an already "busy" graph, consider `facet_wrap()`. Consider the following:
 
@@ -218,7 +218,34 @@ ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, col
 
 Faceting by `species` creates three graphs, with identical x and y axis scales and coloring. These graphs let us compare `species` side-by-side easily.
 
-#### Graph customization 
+### More geoms
+
+Although some of the most frequently used geoms are described above, some other commonly used geoms include:
+
+  - `geom_density()`: for [density estimates](https://ggplot2.tidyverse.org/reference/geom_density.html) 
+  - `geom_dotplot()`: for [dot-plots](https://ggplot2.tidyverse.org/reference/geom_dotplot.html?q=dotplot)
+  - `geom_abline()`, `geom_hline()`, `geom_vline()`: for adding [customizable reference lines](https://ggplot2.tidyverse.org/reference/geom_abline.html?q=geom%20_%20hli#arguments)
+  - `geom_errorbar()`: for adding [error bars](https://ggplot2.tidyverse.org/reference/geom_linerange.html) to your plot
+  - `geom_smooth()`: for adding [regression lines](https://ggplot2.tidyverse.org/reference/geom_smooth.html?q=smooth) and other conditional means to your plot
+  - `geom_jitter()`: for dealing with [overplotting](https://ggplot2.tidyverse.org/reference/geom_jitter.html). 
+                    This plots the data points but with some
+                     specified amount of random variation to the location of each point. Importantly, it should 
+                     not be used in conjunction with `geom_point()` as this will result in plotting your
+                     observations twice. Additionally it is primarily a tool for data exploration, but it is a
+                     fabrication of the data and so likely shouldn't be used for any technical analysis.
+                     **I might consider taking geom_jitter() out**
+  - `geom_waffle()` : for showing [category breakdowns](https://rud.is/rpubs/building-waffle-charts.html). This geom exists inside of the `waffle` package.
+
+#### Mosaic plots with `ggmosaic`
+
+Mosaic plots are a way of visually displaying data from two or more categorical variables. The area of cells are used to show the frequency of observations. Mosaic plots can be created in R with the [`ggmosaic` package](https://cran.r-project.org/web/packages/ggmosaic/vignettes/ggmosaic.html), or the [vcd package](https://r-graphics.org/recipe-miscgraph-mosaic). 
+<!-- - consider linking to info on mosaic plots --> 
+
+#### Spatial data with `ggmap`
+
+`ggmap` is a package designed to follow many of the same basic principles and syntax as `ggplot2` that allows you to display spatial data. The [`ggmap` CRAN site](https://cran.r-project.org/web/packages/ggmap/readme/README.html) has some helpful example maps, as does [the R Graph Gallery](https://www.r-graph-gallery.com/324-map-background-with-the-ggmap-library.html). 
+
+### Graph customization 
 
 Once you have a basic graph, you may want to customize it more to fit your needs. Starting with a scatterplot showing penguin bill length and body mass by island which was created above, adding a few simple commands allows you to adjust the graph to your liking. `labs()` is used to customize axis labels, as well as adding titles, subtitles, and captions. `theme()` is used to change the overall theme of the graph. Some premade options are:
 
@@ -247,31 +274,7 @@ To read more about `ggplot2`, see the [R for Data Science](https://r4ds.had.co.n
 
 <!-- other commonly-used-geoms-maybe -->
 
-#### More Geoms
-
-Although some of the most frequently used geoms are described above, some other commonly used geoms include:
-
-  - `geom_density()`: for [density estimates](https://ggplot2.tidyverse.org/reference/geom_density.html) 
-  - `geom_dotplot()`: for [dot-plots](https://ggplot2.tidyverse.org/reference/geom_dotplot.html?q=dotplot)
-  - `geom_abline()`, `geom_hline()`, `geom_vline()`: for adding [customizable reference lines](https://ggplot2.tidyverse.org/reference/geom_abline.html?q=geom%20_%20hli#arguments)
-  - `geom_errorbar()`: for adding [error bars](https://ggplot2.tidyverse.org/reference/geom_linerange.html) to your plot
-  - `geom_smooth()`: for adding [regression lines](https://ggplot2.tidyverse.org/reference/geom_smooth.html?q=smooth) and other conditional means to your plot
-  - `geom_jitter()`: for dealing with [overplotting](https://ggplot2.tidyverse.org/reference/geom_jitter.html). 
-                    This plots the data points but with some
-                     specified amount of random variation to the location of each point. Importantly, it should 
-                     not be used in conjunction with `geom_point()` as this will result in plotting your
-                     observations twice. Additionally it is primarily a tool for data exploration, but it is a
-                     fabrication of the data and so likely shouldn't be used for any technical analysis.
-  - `geom_waffle()` : for showing [category breakdowns](https://rud.is/rpubs/building-waffle-charts.html). This geom exists inside of the `waffle` package.
-
-#### Mosaic plots
-
-Mosaic plots are a way of visually displaying data from two or more categorical variables. The area of cells are used to show the frequency of observations. Mosaic plots can be created in R with the [ggmosaic package](https://cran.r-project.org/web/packages/ggmosaic/vignettes/ggmosaic.html), or the [vcd package](https://r-graphics.org/recipe-miscgraph-mosaic). 
-<!-- - consider linking to info on mosaic plots --> 
-
-
-
-### Making Summary Tables in R
+### Summary tables
 
 The [Data Wrangling](LINK-HERE) page shows how to compute summaries of your data. Summary tables can be useful for displaying data, and the `kable()` function in the R package `knitr` allows you to present tables with helpful formatting.
 
@@ -347,7 +350,7 @@ kable(x = penguin_sum,
 
 To learn more about these and other customizations, see [the kableExtra vingette](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview).
 
-### Writing Up Your Results
+### Writing up your results
 
 R Markdown (`.Rmd`) is a great way to write up your results with R. The ability to integrate text, code, and output provides flexibility for presenting your work. R Markdowns `Knit` into output documents, which are most commonly `.pdf` (for assignments and "white papers") and `.html` (for web content). When working in a Markdown file in RStudio, you can find the `Knit` button in the tool bar near the top of the file.
 
