@@ -1,5 +1,7 @@
 ---
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -218,22 +220,17 @@ ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, col
 
 Faceting by `species` creates three graphs, with identical x and y axis scales and coloring. These graphs let us compare `species` side-by-side easily.
 
-### More geoms
+### More geoms and other extensions
 
 Although some of the most frequently used geoms are described above, some other commonly used geoms include:
 
   - `geom_density()`: for [density estimates](https://ggplot2.tidyverse.org/reference/geom_density.html) 
   - `geom_dotplot()`: for [dot-plots](https://ggplot2.tidyverse.org/reference/geom_dotplot.html?q=dotplot)
   - `geom_abline()`, `geom_hline()`, `geom_vline()`: for adding [customizable reference lines](https://ggplot2.tidyverse.org/reference/geom_abline.html?q=geom%20_%20hli#arguments)
-  - `geom_errorbar()`: for adding [error bars](https://ggplot2.tidyverse.org/reference/geom_linerange.html) to your plot
-  - `geom_smooth()`: for adding [regression lines](https://ggplot2.tidyverse.org/reference/geom_smooth.html?q=smooth) and other conditional means to your plot
+  - `geom_errorbar()`: for adding [error bars](https://ggplot2.tidyverse.org/reference/geom_linerange.html)
+  - `geom_smooth()`: for adding [regression lines](https://ggplot2.tidyverse.org/reference/geom_smooth.html?q=smooth) and other conditional means
   - `geom_jitter()`: for dealing with [overplotting](https://ggplot2.tidyverse.org/reference/geom_jitter.html). 
-                    This plots the data points but with some
-                     specified amount of random variation to the location of each point. Importantly, it should 
-                     not be used in conjunction with `geom_point()` as this will result in plotting your
-                     observations twice. Additionally it is primarily a tool for data exploration, but it is a
-                     fabrication of the data and so likely shouldn't be used for any technical analysis.
-                     **I might consider taking geom_jitter() out**
+                    This plots the data points with some specified amount of random variation to the location of each point, for when many observations are stacked on top of one another. Importantly, it should not be used in conjunction with `geom_point()` as this will result in plotting your observations twice. Additionally it is primarily a tool for data exploration, but it is a fabrication of the data and so likely shouldn't be used for any technical analysis.
   - `geom_waffle()` : for showing [category breakdowns](https://rud.is/rpubs/building-waffle-charts.html). This geom exists inside of the `waffle` package.
 
 #### Mosaic plots with `ggmosaic`
@@ -254,7 +251,7 @@ Once you have a basic graph, you may want to customize it more to fit your needs
     - `theme_classic()`
     - `theme_minimal()`
     
-You can also change individual aspects of your them inside of the `theme()` call, this [https://ggplot2.tidyverse.org/reference/theme.html] is an extensive resource for doing that. Also, by using `scale_color_manual()`, the colors in the graph can be manually set. These are just a few ways to make a graph your own.
+You can also change individual aspects of your them inside of the `theme()` call, [here](https://ggplot2.tidyverse.org/reference/theme.html) is an extensive resource for doing that. By using `scale_color_manual()`, the colors in the graph can be manually set. You can also change axis labels and add a title to your graph using `labs()`. These are just a few ways to make a graph your own.
 
 ```{r, message=FALSE, warning=FALSE}
 ggplot(data = penguins, 
@@ -271,8 +268,6 @@ ggplot(data = penguins,
 
 
 To read more about `ggplot2`, see the [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) chapter about data visualization. More extensive documentation can be found on the [ggplot2 website](https://ggplot2.tidyverse.org/).
-
-<!-- other commonly-used-geoms-maybe -->
 
 ### Summary tables
 
