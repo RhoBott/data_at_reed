@@ -190,7 +190,11 @@ ggplot(data = penguins, mapping  = aes(x = island, y = body_mass_g, color = sex)
 
 ### More aesthetics
 
-In addition to the five specified above, there are numerous geometries and additional arguments available for `ggplot2`. Below are some examples.
+In addition to `x`, `y`, `color`, and `fill`, there are numerous geometries and additional arguments available for `ggplot2`. Below are some examples.
+
+#### Aesthetic mappings
+
+The aesthetics `shape` and `linetype` can be used to display a categorical variable, while `size` can show a continuous variable. [This site](https://www.datanovia.com/en/blog/ggplot-aes-how-to-assign-aesthetics-in-ggplot2/#group-and-line-type) contains helpful examples on how to use each of these aesthetics, and highlights cases where they might be particularly appropriate.
 
 #### Alpha: adjusting transparency
 
@@ -220,23 +224,30 @@ ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, col
 
 Faceting by `species` creates three graphs, with identical x and y axis scales and coloring. These graphs let us compare `species` side-by-side easily.
 
-### More geoms and other extensions
+### More with ggplot2
+
+#### Additional geoms and layers
 
 Although some of the most frequently used geoms are described above, some other commonly used geoms include:
 
   - `geom_density()`: for [density estimates](https://ggplot2.tidyverse.org/reference/geom_density.html) 
   - `geom_dotplot()`: for [dot-plots](https://ggplot2.tidyverse.org/reference/geom_dotplot.html?q=dotplot)
+  - `geom_violin()`: for making [violin plots](https://ggplot2.tidyverse.org/reference/geom_violin.html)
+  - `geom_jitter()`: for dealing withn [overplotting](https://ggplot2.tidyverse.org/reference/geom_jitter.html).
+
+You can also add more layers to your plots using the following functions:
+
   - `geom_abline()`, `geom_hline()`, `geom_vline()`: for adding [customizable reference lines](https://ggplot2.tidyverse.org/reference/geom_abline.html?q=geom%20_%20hli#arguments)
   - `geom_errorbar()`: for adding [error bars](https://ggplot2.tidyverse.org/reference/geom_linerange.html)
   - `geom_smooth()`: for adding [regression lines](https://ggplot2.tidyverse.org/reference/geom_smooth.html?q=smooth) and other conditional means
-  - `geom_jitter()`: for dealing with [overplotting](https://ggplot2.tidyverse.org/reference/geom_jitter.html). 
-                    This plots the data points with some specified amount of random variation to the location of each point, for when many observations are stacked on top of one another. Importantly, it should not be used in conjunction with `geom_point()` as this will result in plotting your observations twice. Additionally it is primarily a tool for data exploration, but it is a fabrication of the data and so likely shouldn't be used for any technical analysis.
-  - `geom_waffle()` : for showing [category breakdowns](https://rud.is/rpubs/building-waffle-charts.html). This geom exists inside of the `waffle` package.
+  
+#### Waffle plots with `waffle`
+
+Waffle plots are a way of visualizing category breakdowns, where a grid of boxes is filled in with different colors to match your categories. Waffle plots can be created in R with the [`waffle` package](https://cran.r-project.org/web/packages/waffle/waffle.pdf). You can find examples of how to use the `waffle()` function to make these plots [on the R Documentation site](https://www.rdocumentation.org/packages/waffle/versions/0.7.0/topics/waffle) or on [R Bloggers](https://www.r-bloggers.com/2015/03/making-waffle-charts-in-r-with-the-new-waffle-package/).
 
 #### Mosaic plots with `ggmosaic`
 
 Mosaic plots are a way of visually displaying data from two or more categorical variables. The area of cells are used to show the frequency of observations. Mosaic plots can be created in R with the [`ggmosaic` package](https://cran.r-project.org/web/packages/ggmosaic/vignettes/ggmosaic.html), or the [vcd package](https://r-graphics.org/recipe-miscgraph-mosaic). 
-<!-- - consider linking to info on mosaic plots --> 
 
 #### Spatial data with `ggmap`
 
@@ -265,7 +276,6 @@ ggplot(data = penguins,
   theme_bw()
   
 ```
-
 
 To read more about `ggplot2`, see the [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) chapter about data visualization. More extensive documentation can be found on the [ggplot2 website](https://ggplot2.tidyverse.org/).
 
@@ -356,9 +366,3 @@ For more in-depth information on R Markdown see [the RMarkdown pages from RStudi
 R Script (`.R`) is also very useful for code organization and documentation. You can easily alternate between code and regular text using comments with a pound sign at the beginning of a line that contains text, not code (`#like this`). This can be very useful either to remind yourself what your code is doing, or for if you are sharing your code with others, so that they can understand what is happening more easily. 
 
 To learn more about R Scripts, visit the [Workflow: scripts](https://r4ds.had.co.nz/workflow-scripts.html) chapter in [R for Data Science](https://r4ds.had.co.nz/)
-
-Sometimes the decision between an R Scrip or an R Markdown will be dictated by your end goal. If you want to produce a PDF with plain text, code, and output, an R Markdown will be best suited for that purpose. However, what you do along the way in a project is up to you.
-**still don't know about this part**
-
-The decision to use an R script or an R Markdown document will largely depend on what you plan on doing with the document. If you would like to communicate your results, and especially if your audience is non-technical, R Markdown may be the way to go. If you work in an `.Rmd` document, you can knit to a format that most people will be familiar with, like a `.pdf` or a webpage. If, instead, you're working by yourself and would like to pass code back and forth with a collaborator or reader, R scripts are the way to go. The advantage to not knitting is that people reading your code can, ideally, open your code up in RStudio and immediately replicate your results.
-** again, maybe revisit the above as a crew **
