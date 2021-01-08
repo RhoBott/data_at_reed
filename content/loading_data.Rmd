@@ -5,12 +5,14 @@ output: html_document
 ```{r, include = FALSE}
 # to include emojis
 #install.packages("emo")
-library(emo)
+#library(emo)
 ```
 
 # Loading Data
 
 R is a powerful tool for data cleaning, analysis, and visualization. The first step to working with data in R is loading it in. Below you can find instructions to bring data into R in a number of ways: using use a pre-loaded dataset, data from a .csv, Excel Sheet or a Google Sheet, or data found on the internet. 
+
+---
 
 ### From a package
 
@@ -66,7 +68,9 @@ Alternatively, you can use the `head()` function to print the first few rows:
 head(penguins)
 ```
 
-Your data is loaded! You're ready to go. `r emo::ji("racing_car")`
+Your data is loaded! You're ready to go.
+
+---
 
 ### From a .csv (with `readr`)
 
@@ -102,6 +106,8 @@ If you are using the Reed RStudio Server, you can upload your data file to the s
 
 If you want to learn more about the `readr` package or the `read_csv()` function, [the Tidyverse documentation for `readr`](https://readr.tidyverse.org/) provides a more extensive overview of the package and its functions.
 
+---
+
 ### From Excel (with `readxl`)
 
 If you are working with an Excel file, you can read your data into R using the `readxl` package.
@@ -116,7 +122,7 @@ Once the package is installed, load it into your environment with `library()`.
 library(readxl)
 ```
 
-The package `readxl` contains a function called `read_excel()`, which is very similar to `read_csv()` (see above). The main difference between these two tools is that the file is be a `.xls` or `.xlsx`, rather than `.csv`:
+The package `readxl` contains a function called `read_excel()`, which is very similar to [`read_csv()`](link to read_csv doc). The main difference between these two tools is that the file is be a `.xls` or `.xlsx`, rather than `.csv`:
 
 ```{r, eval = FALSE}
 cat_data <- read_excel("Desktop/Reed/Bio123/cats.xls")
@@ -139,6 +145,8 @@ stray_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = "Stray")
 ```
 
 This code will help you to bring in data directly from Excel sheets. If you want to learn more about the `readxl` package or the `read_excel()` function, [the Tidyverse documentation for `readxl`](https://readxl.tidyverse.org/) provides a more extensive overview of the package and its functions.
+
+---
 
 ### From Google Sheets (with `googlesheets4`)
 
@@ -177,6 +185,8 @@ If you select "yes" in the first step of this process, you will have a much easi
 
 If you want to learn more about `googlesheets4`, [the package's website](https://googlesheets4.tidyverse.org/) contains a more extensive overview of the package and its functions.
 
+---
+
 ###  From the internet (with `rvest`)
 
 If you find data that you would like to use on a website, package `rvest` can bring that table into R. (This both saves you the process/frustration of copying/pasting data from a webpage, and also makes your work less error-prone and more reproducible.)
@@ -208,7 +218,7 @@ In order to access the data, R needs to know not only the URL of the website tha
 
 Once you have the specific location of the table, use the `url` saved earlier, then save the data (example: as `reed_table`) using the `<-` operator.
 
-```{r}
+```{r, eval = FALSE}
 reed_table <- url %>%
   read_html() %>%
   html_node(css = "#mainContent > table:nth-child(3)") %>%

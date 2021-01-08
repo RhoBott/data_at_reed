@@ -1,7 +1,7 @@
 ---
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -12,7 +12,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 R is a versatile tool, and at Reed R is used across a number of departments and disciplines. Our goal is to help you navigate this tool in any setting that you might use it. This document will be an introduction to the Reed RStudio Server, Desktop R, and the R thesis template. 
 
----------------------------------------------------------
+---
+
 ### Reed RStudio server
 
 There are a couple of advantages to using R on the Reed RStudio Server:
@@ -53,7 +54,7 @@ Every five minutes, the RStudio Server checks to make sure it is running smoothl
 
 At some point, you may encounter an error when you log in: RStudio initialization error, ‘Error occurred during transmission’. Sometimes RStudio user sessions encounter errors of some stripe; while this might be annoying, it is also a problem you can solve. To exit a misbehaving session or create a new session, visit [https://rstudio.reed.edu/home](https://rstudio.reed.edu/home).
 
----------------------------------------------------------
+---
 
 ### Desktop R
 
@@ -77,13 +78,13 @@ Next you need to install RStudio. To do this, navigate to the [RStudio downloads
 
 Now you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages("packagename")`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install a package once in order to load (`library(packagename)`) and use it in the future, but you need to load a package every time you use it.
 
----------------------------------------------------------
+---
 
 ### Writing your thesis in `thesisdown`
 
 The `thesisdown` package provides an R Markdown template for writing your senior thesis. This is particularly helpful for easily integrating R code and graphics into your thesis manuscript. Instructions for how to install this package and use the template can be found in the [GitHub repository](https://github.com/ismayc/thesisdown).
 
----------------------------------------------------------
+---
 
 ### Meet the Palmer Penguins
 

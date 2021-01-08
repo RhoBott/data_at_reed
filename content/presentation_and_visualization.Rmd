@@ -1,7 +1,7 @@
 ---
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -55,6 +55,8 @@ Note that in `ggplot2`, layers are added to the graph (using `+`) rather than th
 
 The next several sections provide examples of commonly-used data visualizations.
 
+---
+
 #### Scatterplots
 
 Scatterplots are commonly used to visualize the relationship between two continuous variables. For example, you may be interested in the relationship between body mass and bill length _across_ all islands:
@@ -74,6 +76,8 @@ ggplot(data = penguins,
        mapping = aes(x = bill_length_mm, y = body_mass_g, color = island)) +
   geom_point()
 ```
+
+---
 
 #### Linegraphs
 
@@ -106,6 +110,7 @@ ggplot(data = penguins_sum,
   geom_line()
 ```
 
+---
 
 #### Barplots
 
@@ -143,6 +148,8 @@ ggplot(data = penguins_sum, mapping = aes(x = island, y = n)) +
 
 Notice that we had to supply `y = n` inside of `aes()`. A helpful way to remember the difference between `geom_bar()` and `geom_col()` is that Col needs Counts. For additional examples of `geom_bar()` and `geom_col()`, visit [ModernDive](https://moderndive.com/2-viz.html#barplots-via-geom_bar-or-geom_col). 
 
+---
+
 #### Histograms
 
 Histograms are one tool to show the distribution of data for a continuous variable, specified with `geom_histogram()`.
@@ -162,6 +169,8 @@ ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
 ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
   geom_histogram(binwidth=200)
 ```
+
+---
 
 #### Boxplots
 
@@ -187,6 +196,8 @@ You can create multiple boxplots on the same graph by setting `x` to a variable 
 ggplot(data = penguins, mapping  = aes(x = island, y = body_mass_g, color = sex)) +
   geom_boxplot()
 ```
+
+---
 
 ### More aesthetics
 
@@ -224,6 +235,8 @@ ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, col
 
 Faceting by `species` creates three graphs, with identical x and y axis scales and coloring. These graphs let us compare `species` side-by-side easily.
 
+---
+
 ### More with ggplot2
 
 #### Additional geoms and layers
@@ -253,6 +266,8 @@ Mosaic plots are a way of visually displaying data from two or more categorical 
 
 `ggmap` is a package designed to follow many of the same basic principles and syntax as `ggplot2` that allows you to display spatial data. The [`ggmap` CRAN site](https://cran.r-project.org/web/packages/ggmap/readme/README.html) has some helpful example maps, as does [the R Graph Gallery](https://www.r-graph-gallery.com/324-map-background-with-the-ggmap-library.html). 
 
+---
+
 ### Graph customization 
 
 Once you have a basic graph, you may want to customize it more to fit your needs. Starting with a scatterplot showing penguin bill length and body mass by island which was created above, adding a few simple commands allows you to adjust the graph to your liking. `labs()` is used to customize axis labels, as well as adding titles, subtitles, and captions. `theme()` is used to change the overall theme of the graph. Some premade options are:
@@ -278,6 +293,8 @@ ggplot(data = penguins,
 ```
 
 To read more about `ggplot2`, see the [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) chapter about data visualization. More extensive documentation can be found on the [ggplot2 website](https://ggplot2.tidyverse.org/).
+
+---
 
 ### Summary tables
 
@@ -354,6 +371,8 @@ kable(x = penguin_sum,
 ```
 
 To learn more about these and other customizations, see [the kableExtra vingette](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview).
+
+---
 
 ### Writing up your results
 

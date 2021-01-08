@@ -14,6 +14,8 @@ Often, it can be helpful to work through problems with another person in real ti
 
 For all data questions, coding and otherwise, you can reach out to the Data@Reed team by emailing data@reed.edu .
 
+---
+
 ### Additional online resources
 
 #### R package cheatsheets and documentation
@@ -36,6 +38,8 @@ Most of the packages described on this site are part of the Tidyverse; you can f
 There are a number of texts that provide an introduction to R, coding, and data analysis. Some local favorites include: 
 - [R for Data Science](https://r4ds.had.co.nz/) by Hadley Wickham and Garrett Grolemund for an in-depth introduction to working with R and data.
 - [Modern Dive](https://moderndive.netlify.app/) by Chester Ismay and Albert Y Kim for an introduction to statistical inference via data science
+
+---
 
 ### Hive mind: forums and asking questions
 
