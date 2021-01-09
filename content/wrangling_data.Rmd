@@ -125,7 +125,7 @@ head(penguins)
 
 ---
 
-#### Filtering rows with `filter()`
+#### Subsetting data with `filter()` and `select()`
 
 Perhaps you wish to subset your data, retaining only observations (rows) that meet given criteria. The below code focuses on female penguins only:
 
@@ -352,7 +352,7 @@ To read more about combining data, we recommend the [relational data chapter](ht
 
 ---
 
-### Strings with `stringr`
+### Working with text data with `stringr`
 
 Many of the previous examples have worked with numeric data; you may also work with character, or "string" data. String data can include numbers, letters, spaces, and special characters. Strings are most often represented as `"text surrounded in quotes"` in R. 
 

@@ -199,8 +199,9 @@ ggplot(data = penguins, mapping  = aes(x = island, y = body_mass_g, color = sex)
 
 ---
 
-### More aesthetics
+### More aesthetics -- basically how to show more variables in one plot -- how to make complex and comprehensible graphs
 
+***why is this section important? how to show more variables in your graph without making it busy***
 In addition to `x`, `y`, `color`, and `fill`, there are numerous geometries and additional arguments available for `ggplot2`. Below are some examples.
 
 #### Aesthetic mappings
@@ -237,7 +238,7 @@ Faceting by `species` creates three graphs, with identical x and y axis scales a
 
 ---
 
-### More with ggplot2
+### More with ggplot2 -- again change title
 
 #### Additional geoms and layers
 
@@ -371,17 +372,3 @@ kable(x = penguin_sum,
 ```
 
 To learn more about these and other customizations, see [the kableExtra vingette](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview).
-
----
-
-### Writing up your results
-
-R Markdown (`.Rmd`) is a great way to write up your results with R. The ability to integrate text, code, and output provides flexibility for presenting your work. R Markdowns `Knit` into output documents, which are most commonly `.pdf` (for assignments and "white papers") and `.html` (for web content). When working in a Markdown file in RStudio, you can find the `Knit` button in the tool bar near the top of the file.
-
-R Markdown allows you to incorporate headings and subheadings, for consistent formatting in the output document. In each code "chunk," there are also presets so that you can decide whether to show your code, output, warnings, or error messages in the final document. These features make R Markdown a great teaching and presentation tool.
-
-For more in-depth information on R Markdown see [the RMarkdown pages from RStudio](https://rmarkdown.rstudio.com/articles_intro.html)
-
-R Script (`.R`) is also very useful for code organization and documentation. You can easily alternate between code and regular text using comments with a pound sign at the beginning of a line that contains text, not code (`#like this`). This can be very useful either to remind yourself what your code is doing, or for if you are sharing your code with others, so that they can understand what is happening more easily. 
-
-To learn more about R Scripts, visit the [Workflow: scripts](https://r4ds.had.co.nz/workflow-scripts.html) chapter in [R for Data Science](https://r4ds.had.co.nz/)
