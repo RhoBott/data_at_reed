@@ -127,21 +127,21 @@ head(penguins)
 
 #### Subsetting data with `filter()` and `select()`
 
-Perhaps you wish to subset your data, retaining only observations (rows) that meet given criteria. The below code focuses on female penguins only:
+Perhaps you wish to subset your data, retaining only observations (rows) that meet given criteria. The below code uses the function `filter()` to subset only female penguins:
 
 ```{r}
 penguins %>%
   filter(sex == "female")
 ```
 
-While this specifies penguins with a bill length of less than 40mm:
+While this code subsets penguins with a bill length of less than 40mm:
 
 ```{r}
 penguins %>%
   filter(bill_length_mm < 40)
 ```
 
-You can also get very specific. Focusing on penguins from Torgersen Island that were observed in 2008 with a body mass greater than 3500 grams:
+You can also get very specific, for example subsetting penguins from Torgersen Island that were observed in 2008 with a body mass greater than 3500 grams:
 
 ```{r}
 penguins %>%
@@ -153,39 +153,37 @@ In working with the penguins data, you may have noticed missing values (`NA`) th
 You can use `filter()` combined with `!is.na()` ("is not missing") to remove missing observations for a given variable. For example, creating a dataset that is only penguins of known sex:
 
 ```{r}
-known <- penguins %>%
+penguins %>%
   filter(!is.na(sex))
 ```
 
-Conversely, you may wish to focus on observations with missing values, using `filter()` in combination with `is.na()` ("is missing").
+Conversely, you may wish to subset observations with missing values, using `filter()` in combination with `is.na()` ("is missing").
 
 ```{r}
-unknown <- penguins %>%
+penguins %>%
   filter(is.na(sex))
 ```
 
----
+Another way that you can subset your data is by subsetting columns, or variables. A dataset may have more variables than you need, so you can use the `select()` function to subset data to only variables of interest.
 
-#### Selecting columns with `select()`
-
-A dataset may have more variables than you need. You can use the `select()` function to subset data to only variables of interest.
-
-To create a dataset containing information on penguin species:
+To subset only species information from your dataset, you can use the following code:
 
 ```{r}
-spp_only <- penguins %>%
+penguins %>%
   select(species)
 ```
 
-To create a dataset that is everything _except_ species information:
+You can subset everything _except_ species information from your data:
+
 ```{r}
-no_spp <- penguins %>%
+penguins %>%
   select(-species)
 ```
 
-To create a dataset of species, island, and sex information:
+You can also list out which variables you would like to subset, for example `species`, `island`, and `sex`:
+
 ```{r}
-sis <- penguins %>%
+penguins %>%
   select(species, island, sex)
 ```
 
