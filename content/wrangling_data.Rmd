@@ -352,7 +352,7 @@ To read more about combining data, we recommend the [relational data chapter](ht
 
 ### Working with text data with `stringr`
 
-Many of the previous examples have worked with numeric data; you may also work with character, or "string" data. String data can include numbers, letters, spaces, and special characters. Strings are most often represented as `"text surrounded in quotes"` in R. 
+Many of the previous examples have worked with numeric data; you may also work with text, or "string" data. String data can include numbers, letters, spaces, and special characters. Strings are most often represented as `"text surrounded in quotes"` in R. 
 
 The `stringr` package is a useful tool for working with string data. Instead of going through a step-by-step tutorial for each `stringr` function, the below code presents concrete examples using the `penguins` dataset to demonstrate some of the capabilities of `stringr`.
 
