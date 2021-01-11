@@ -199,7 +199,7 @@ ggplot(data = penguins, mapping  = aes(x = island, y = body_mass_g, color = sex)
 
 ---
 
-### Making informative and readable graphs: how to add more variables
+### Making informative and readable graphs
 
 In addition to `x`, `y`, `color`, and `fill` covered in the [Intro to data visualization section](link), there are many other ways to represent even more variables with `ggplot2`, while keeping your graphs readable. Below are some additional methods for conveying more information on your graphs, or making your information more readable.
 
