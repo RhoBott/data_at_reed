@@ -3,16 +3,10 @@ output: html_document
 ---
 
 ```{r, include = FALSE}
-# to include emojis
-#install.packages("emo")
-#library(emo)
+
 ```
 
 # Loading Data
-
-R is a powerful tool for data cleaning, analysis, and visualization. The first step to working with data in R is loading it in. Below you can find instructions to bring data into R in a number of ways: using use a pre-loaded dataset, data from a .csv, Excel Sheet or a Google Sheet, or data found on the internet. 
-
----
 
 ### From a package
 

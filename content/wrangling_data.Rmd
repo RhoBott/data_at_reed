@@ -11,10 +11,6 @@ library(knitr)
 
 # Wrangling Data
 
-While working with data, you may wish to rearrange it, add more information from another data source, add a new variable to the data, or summarize your data. All of these operations fall under the category of "data wrangling", and represent the bulk of data-related work.
-
----
-
 ### Tidy data principles, reshaping data, and `tidyr`
 
 Packages in the `tidyverse`, like `ggplot2` (useful for visualizing data) and `dplyr` (a key tool in data wrangling), are built to work with so-called "tidy" data. 

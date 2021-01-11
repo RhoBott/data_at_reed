@@ -10,10 +10,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Getting Started with R at Reed
 
-R is a versatile tool, and at Reed R is used across a number of departments and disciplines. Our goal is to help you navigate this tool in any setting that you might use it. This document will be an introduction to the Reed RStudio Server, Desktop R, and the R thesis template. 
-
----
-
 ### Reed RStudio server
 
 There are a couple of advantages to using R on the Reed RStudio Server:

@@ -8,14 +8,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # More Resources
 
-In addition to the documentation provided in these pages, there are many resources to help you become more proficient in R. Below you can find some additional resources, as well as recommendations for posing questions in forums and finding answers on your own.
-
-Often, it can be helpful to work through problems with another person in real time. For work related to Reed classes, theses, and student/faculty research, you can get help from someone at the [mLab](https://www.reed.edu/cis/mlab/index.html), and drop-in help hours can be found [on our calendar](https://www.reed.edu/cis/mlab/calendar.html). 
-
-For all data questions, coding and otherwise, you can reach out to the Data@Reed team by emailing data@reed.edu .
-
----
-
 ### Additional online resources
 
 #### R package cheatsheets and documentation
@@ -51,9 +43,15 @@ When searching for answers to your code-related questions, include the name of t
 
 Two good places to look for already-answered questions are the [RStudio Community](https://community.rstudio.com) and [Stack Overflow](https://stackoverflow.com). Reading forum posts can be useful because you can see how other people have solved a similar problem.
 
+#### One-on-one assistance from Reedies
+
+Often, it can be helpful to work through problems with another person in real time. For work related to Reed classes, theses, and student/faculty research, you can get help from someone at the [mLab](https://www.reed.edu/cis/mlab/index.html), and drop-in help hours can be found [on our calendar](https://www.reed.edu/cis/mlab/calendar.html). 
+
+For all data questions, coding and otherwise, you can reach out to the Data@Reed team by emailing data@reed.edu .
+
 #### Asking for help
 
-When asking for help, the first step is creating a "reprex", short for _repr_oducible _ex_ample. Reproducible examples help others help you by ensuring that they can replicate the problem that you're experiencing in order to troubleshoot more easily. There are a couple of key steps to creating a reprex:
+You can also ask your own questions on online forums such as Stack Overflow. When asking for help, the first step is creating a "reprex", short for _repr_oducible _ex_ample. Reproducible examples help others help you by ensuring that they can replicate the problem that you're experiencing in order to troubleshoot more easily. There are a couple of key steps to creating a reprex:
 
 1. Include any package loading calls (`library(package)`) and objects (i.e. datasets) that are relevant to your problem.
 
