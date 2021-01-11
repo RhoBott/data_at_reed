@@ -45,7 +45,7 @@ The `tidyr` package will prove useful in data restructuring or "tidying". All of
 
 The "tidy" format of a data can depend on what you want to use the data for. To get us started in thinking about tidy data, we'll return to the `penguins` data. (For instructions on loading `penguins`, see [Getting Started](LINK-HERE).)
 
-This summarized version of the penguins data, called `penguins_sum` gives the  mean body mass for all penguins on a given island in a given year.
+This summarized version of the penguins data, called `penguins_sum`, gives the  mean body mass for all penguins on a given island in a given year.
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 penguins_sum <- penguins %>%
@@ -70,7 +70,14 @@ While the above data contains the same information, in this version, the mean bo
 
 #### Restructuring with `pivot_wider()` and `pivot_longer()`
 
-Begin with the first, tidy version:
+Let's take a look at how to move from untidy data to tidy data, and the reverse. First, you will need the package that contains the functions `pivot_wider()` and `pivot_longer()`. The package is called `tidyverse`, and you can install and load it like this:
+
+```{r eval = FALSE}
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+Now you can learn how to restructure data. Begin with the first, tidy version:
 
 ```{r, message = FALSE, warning = FALSE}
 penguins_sum
@@ -238,7 +245,7 @@ The above code did not change anything about the dataset; the `group_by()` funct
 
 With the grouping defined, apply the `summarize()` function to calculate mean body mass by island.
 
-```{r}
+```{r message = FALSE}
 penguins %>%
   group_by(island) %>%
   summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
@@ -248,7 +255,7 @@ Missing values (`NA`) are an important consideration in data analysis. In the ab
 
 You can extend the above approach to group by _both_ island and year:
 
-```{r}
+```{r message = FALSE}
 penguins %>%
   group_by(island, year) %>%
   summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
@@ -408,10 +415,15 @@ penguins_edited %>%
 
 Another common task when working with string data is to replace a pattern, achieved with `str_replace()`.
 
-The below code replaces the "e" at the end of "Biscoe" with "otti". 
+The below code replaces the "e" at the end of "Biscoe" with "otti".
+
+```{r echo = FALSE}
+penguin <- penguins %>%
+  select(-body_mass_g)
+```
 
 ```{r}
-penguins %>%
+penguin %>%
   filter(island == "Biscoe") %>%
   mutate(island = str_replace(island, "e", "tti"))
 ```

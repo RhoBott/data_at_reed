@@ -8,7 +8,9 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 library(palmerpenguins)
 library(tidyverse)
+library(ggplot2)
 library(knitr)
+library(kableExtra)
 library(waffle)
 ```
 
@@ -18,11 +20,12 @@ library(waffle)
 
 `ggplot2` is an R package for data visualization that makes appealing and effective graphs using a standardized syntax.
 
-First, load the package, which is necessary every time you start an R session. For this example, also load `palmerpenguins`, a package that contains a dataset about penguin populations on islands in Antarctica. To learn more about packages and the `palmerpenguins` package, see our [Getting Started](LINK-HERE) page.
+First, load the package, which is necessary every time you start an R session. For this example, also load `palmerpenguins`, a package that contains a dataset about penguin populations on islands in Antarctica, as well as `tidyverse`, which contains many helpful functions covered in the [Data Wrangling section](link). To learn more about packages and the `palmerpenguins` package, see our [Getting Started](LINK-HERE) page.
 
-```{r}
+```{r, eval = FALSE}
 library(ggplot2)
 library(palmerpenguins)
+library(tidyverse)
 ```
 
 Before graphing using `ggplot2`, the data needs to be "tidy". (Read more about tidy data on [our data wrangling page](LINK-HERE) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html). For this example, the `palmerpenguins` data is already tidy.
@@ -95,7 +98,7 @@ The above graph looks a bit wonky... this is because there are multiple data poi
 
 ```{r, message=FALSE, warning=FALSE}
 penguins_sum <- penguins %>%
-  drop_na(body_mass_g) %>%
+  filter(!is.na(body_mass_g)) %>%
   group_by(island, year) %>%
   summarize(mean_body_mass_g = mean(body_mass_g))
 
@@ -280,10 +283,10 @@ Mosaic plots are a way of visually displaying data from two or more categorical 
 
 Once you have a basic graph, you may want to customize it more to fit your needs. Starting with a scatterplot showing penguin bill length and body mass by island which was created above, adding a few simple commands allows you to adjust the graph to your liking. `labs()` is used to customize axis labels, as well as adding titles, subtitles, and captions. `theme()` is used to change the overall theme of the graph. Some premade options are:
 
-    - `theme_dark()`
-    - `theme_bw()`
-    - `theme_classic()`
-    - `theme_minimal()`
+  - `theme_dark()`
+  - `theme_bw()`
+  - `theme_classic()`
+  - `theme_minimal()`
     
 You can also change individual aspects of your them inside of the `theme()` call, [here](https://ggplot2.tidyverse.org/reference/theme.html) is an extensive resource for doing that. By using `scale_color_manual()`, the colors in the graph can be manually set. You can also change axis labels and add a title to your graph using `labs()`. These are just a few ways to make a graph your own.
 
@@ -312,9 +315,6 @@ First, install and load the package.
 
 ```{r eval = FALSE}
 install.packages("knitr")
-```
-
-```{r}
 library(knitr)
 ```
 
@@ -322,7 +322,7 @@ Using the `palmerpenguins` data, calculate the mean value of penguin body mass (
 
 Here is the code for our summary statistic, which we will save in a new dataset called `penguin_sum`.
 
-```{r warning = FALSE}
+```{r message = FALSE}
 penguin_sum <- penguins %>%
   group_by(island, year) %>%
   summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
@@ -343,13 +343,12 @@ kable(x = penguin_sum,
       caption = "Mean body mass of penguins on different islands over time")
 ```
 
+
+
 For additional customization options, use the package `kableExtra`. 
 
 ```{r eval = FALSE}
 install.packages("kableExtra")
-```
-
-```{r}
 library(kableExtra)
 ```
 

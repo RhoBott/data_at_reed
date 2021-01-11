@@ -75,6 +75,7 @@ Next you need to install RStudio. To do this, navigate to the [RStudio downloads
 Now you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages("packagename")`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install a package once in order to load (`library(packagename)`) and use it in the future, but you need to load a package every time you use it.
 
 ---
+
 ### Writing up your results
 
 #### R Script

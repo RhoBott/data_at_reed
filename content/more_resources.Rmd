@@ -17,19 +17,21 @@ RStudio has curated [cheatsheets](https://rstudio.com/resources/cheatsheets/) fo
 All R packages should have published documentation. In addition to documentation available directly within R (at the console, type `?packagename`), the developer may provide documentation for a given package. You can also search the [RDocumentation site](https://www.rdocumentation.org/).
 
 Most of the packages described on this site are part of the Tidyverse; you can find documentation and examples within [the Tidyverse documentation](https://tidyverse.org), including pages for:
-- [`ggplot2`](https://ggplot2.tidyverse.org/)
-- [`dplyr`](https://dplyr.tidyverse.org/) 
-- [`stringr`](https://stringr.tidyverse.org/)
-- [`readr`](https://readr.tidyverse.org/)
-- [`readxl`](https://readxl.tidyverse.org/)
-- [`googlesheets4`](https://googlesheets4.tidyverse.org/)
-- [`rvest`](https://rvest.tidyverse.org/). 
+ 
+  - [`ggplot2`](https://ggplot2.tidyverse.org/)
+  - [`dplyr`](https://dplyr.tidyverse.org/) 
+  - [`stringr`](https://stringr.tidyverse.org/)
+  - [`readr`](https://readr.tidyverse.org/)
+  - [`readxl`](https://readxl.tidyverse.org/)
+  - [`googlesheets4`](https://googlesheets4.tidyverse.org/)
+  - [`rvest`](https://rvest.tidyverse.org/). 
 
 #### Textbooks
 
 There are a number of texts that provide an introduction to R, coding, and data analysis. Some local favorites include: 
-- [R for Data Science](https://r4ds.had.co.nz/) by Hadley Wickham and Garrett Grolemund for an in-depth introduction to working with R and data.
-- [Modern Dive](https://moderndive.netlify.app/) by Chester Ismay and Albert Y Kim for an introduction to statistical inference via data science
+ 
+  - [R for Data Science](https://r4ds.had.co.nz/) by Hadley Wickham and Garrett Grolemund for an in-depth introduction to working with R and data.
+  - [Modern Dive](https://moderndive.netlify.app/) by Chester Ismay and Albert Y Kim for an introduction to statistical inference via data science
 
 ---
 
@@ -51,7 +53,7 @@ For all data questions, coding and otherwise, you can reach out to the Data@Reed
 
 #### Asking for help
 
-You can also ask your own questions on online forums such as Stack Overflow. When asking for help, the first step is creating a "reprex", short for _repr_oducible _ex_ample. Reproducible examples help others help you by ensuring that they can replicate the problem that you're experiencing in order to troubleshoot more easily. There are a couple of key steps to creating a reprex:
+When asking for help, the first step is creating a "reprex", short for _repr_oducible _ex_ample. Reproducible examples help others help you by ensuring that they can replicate the problem that you're experiencing in order to troubleshoot more easily. There are a couple of key steps to creating a reprex:
 
 1. Include any package loading calls (`library(package)`) and objects (i.e. datasets) that are relevant to your problem.
 
@@ -60,5 +62,6 @@ You can also ask your own questions on online forums such as Stack Overflow. Whe
 By taking the time to create a reprex, you are asking a more understandable question - meaning that you are much more likely to get a useful answer. For more on reproducible examples and asking questions, check out [the tidyverse "Get help!" ](https://www.tidyverse.org/help/) page.
 
 Once you have prepared a reprex, two possible courses of action:
-- If you are a Reedie, the mLabbies and/or the Data@Reed team will be thrilled to see that you have prepared a reprex and will be glad to help.
-- Pose your question on an online forum; as mentioned above, two good places to start are the [RStudio Community](https://community.rstudio.com) and  [Stack Overflow](https://stackoverflow.com). 
+
+  - If you are a Reedie, the mLabbies and/or the Data@Reed team will be thrilled to see that you have prepared a reprex and will be glad to help.
+  - Pose your question on an online forum; as mentioned above, two good places to start are the [RStudio Community](https://community.rstudio.com) and  [Stack Overflow](https://stackoverflow.com). 
