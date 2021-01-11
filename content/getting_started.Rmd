@@ -81,15 +81,17 @@ Now you should be able to open RStudio and begin working. Remember to install pa
 ---
 ### Writing up your results
 
-R Markdown (`.Rmd`) is a great way to write up your results with R. The ability to integrate text, code, and output provides flexibility for presenting your work. R Markdowns `Knit` into output documents, which are most commonly `.pdf` (for assignments and "white papers") and `.html` (for web content). When working in a Markdown file in RStudio, you can find the `Knit` button in the tool bar near the top of the file.
+#### R Script
 
-R Markdown allows you to incorporate headings and subheadings, for consistent formatting in the output document. In each code "chunk," there are also presets so that you can decide whether to show your code, output, warnings, or error messages in the final document. These features make R Markdown a great teaching and presentation tool.
-
-For more in-depth information on R Markdown see [the RMarkdown pages from RStudio](https://rmarkdown.rstudio.com/articles_intro.html)
-
-R Script (`.R`) is also very useful for code organization and documentation. You can easily alternate between code and regular text using comments with a pound sign at the beginning of a line that contains text, not code (`#like this`). This can be very useful either to remind yourself what your code is doing, or for if you are sharing your code with others, so that they can understand what is happening more easily. 
+R Script (`.R`) is very useful for code organization and documentation, especially for collaborative coding projects. You can easily alternate between code and regular text using comments with a pound sign at the beginning of a line that contains text, not code (`#like this`). Commenting is an important habit to get into, as it is very useful either to remind yourself what your code is doing, or for if you are sharing your code with others, so that they can understand what is happening more easily. R Scripts are a good starting point for learning to code in R, with simple formatting and the ability to integrate comments with your code.
 
 To learn more about R Scripts, visit the [Workflow: scripts](https://r4ds.had.co.nz/workflow-scripts.html) chapter in [R for Data Science](https://r4ds.had.co.nz/)
+
+#### R Markdown
+
+R Markdown (`.Rmd`) is a great way to write up your results with R. The ability to integrate text, code, and output provides flexibility for presenting your work. R Markdowns `Knit` into output documents, which are most commonly `.pdf` (for assignments and "white papers") and `.html` (for web content). When working in a Markdown file in RStudio, you can find the `Knit` button in the tool bar near the top of the file. R Markdown provides many personalizable formatting options. One caveat for R Markdown is that sometimes knitting your document can bring up errors that are unrelated to the code itself (in other words, your code might work, but the document still will not knit). This can mean additional troubleshooting.
+
+For more in-depth information on R Markdown see [the RMarkdown pages from RStudio](https://rmarkdown.rstudio.com/articles_intro.html)
 
 ---
 
