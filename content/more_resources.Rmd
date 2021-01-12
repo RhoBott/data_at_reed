@@ -24,7 +24,7 @@ Most of the packages described on this site are part of the Tidyverse; you can f
   - [`readr`](https://readr.tidyverse.org/)
   - [`readxl`](https://readxl.tidyverse.org/)
   - [`googlesheets4`](https://googlesheets4.tidyverse.org/)
-  - [`rvest`](https://rvest.tidyverse.org/). 
+  - [`rvest`](https://rvest.tidyverse.org/)
 
 #### Textbooks
 
