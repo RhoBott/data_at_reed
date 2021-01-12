@@ -1,0 +1,63 @@
+---
+output: html_document
+---
+
+```{r, include = FALSE}
+
+```
+
+### From a package
+
+Many R packages contain their own data. (If you are unfamiliar with packages, see our [Getting Started](LINK-HERE) page.) Most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes datasets from a study of three different species of penguins found in Antarctica.
+
+```{r, echo = FALSE}
+url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"
+
+knitr::include_graphics(url)
+```
+
+To load data from a package, first install the package with the `install.packages()` function:
+
+```{r, eval = FALSE}
+install.packages("palmerpenguins")
+```
+
+Now that you have the package installed, you need to load the package into your environment with `library()`. You only need to install the package once, but you will need to load the package every time you open R.
+
+```{r}
+library(palmerpenguins)
+```
+
+Now `palmerpenguins` is loaded. Where is the data?
+
+When working with a package, there are a couple of options for finding the data contained in that package. (While all of these examples focus on the `palmerpenguins` data, you could use these instructions for any dataset of interest.)
+
+For the most complete information, run `help(package = "palmerpenguins")` in your console. This will show you all of the data and functions included in a package, as well as descriptions of what they are.
+
+If you are already familiar with the data and functions in a package and you just need a list of names to jog your memory, you can make use of RStudio's autocomplete. Type the name of your package followed by two colons, like this 
+
+```{r, eval = FALSE}
+palmerpenguins::
+```
+
+Your tooltip should show you all of the datasets included in the package.
+
+Once you have found the name of the dataset you want, in our case `penguins`,you can use the `data()` function:
+
+```{r}
+data(penguins)
+```
+
+Depending on how datasets are included in a package, you might run that command and see nothing, or you may see `<Promise>` up in your Environment in the top-right corner of your RStudio window. It might not seem like your data is loaded. One way to confirm your data is loaded is to run the `View()` function in your console:
+
+```{r, eval = FALSE}
+View(penguins)
+```
+
+Alternatively, you can use the `head()` function to print the first few rows:
+
+```{r}
+head(penguins)
+```
+
+Your data is loaded! You're ready to go.

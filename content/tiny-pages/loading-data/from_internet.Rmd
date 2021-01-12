@@ -1,0 +1,58 @@
+---
+output: html_document
+---
+
+```{r, include = FALSE}
+
+```
+
+###  From the internet (with `rvest`)
+
+If you find data that you would like to use on a website, package `rvest` can bring that table into R. (This both saves you the process/frustration of copying/pasting data from a webpage, and also makes your work less error-prone and more reproducible.)
+
+NOTE: Before you take data from a website, make sure you are allowed to scrape and analyze the data. You can read more about scraping data from the web [here](https://libguides.reed.edu/copyright/images-data#s-lg-box-wrapper-29860611). If you still have questions about the legality of a web-scraping workflow after reading this documentation, you can contact Reed's [data librarian](https://library.reed.edu/about/staff/lebow.html).
+
+First, install and load the `rvest` package: 
+
+```{r, eval = FALSE}
+install.packages("rvest")
+```
+
+```{r message = FALSE}
+library(rvest)
+```
+
+This example will work from a page reporting on the [different occupations of Reed alumni](https://www.reed.edu/ir/success.html).
+
+First, save the URL of this site under a variable name so that it is easy to use later:
+
+```{r}
+url <- "https://www.reed.edu/ir/success.html"
+```
+
+In order to access the data, R needs to know not only the URL of the website that contains the table, but also where on that page the table is located. To point R to the data:
+
+1. Right-click on the table you want to bring into R, and click "inspect" in the menu that comes up. This will open a bar on the right of the window.
+
+2. Hover your mouse over the lines of code in this bar on the right. You will notice that as you move your mouse, different sections of the webpage will be highlighted. Hover until you find a line of code that highlights the whole table that you want.
+
+3. Right-click that line, go to copy > copy selector. You will then paste that text in the code below where it says `css = " "`. 
+
+Once you have the specific location of the table, use the `url` saved earlier, then save the data (example: as `reed_table`) using the `<-` operator.
+
+```{r, eval = FALSE}
+reed_table <- url %>%
+  read_html() %>%
+  html_node(css = "#mainContent > table:nth-child(3)") %>%
+  html_table()
+```
+
+Run the code and check your environment for the dataset `reed_table`.
+
+While the `rvest` code may look complicated, it needs only two pieces of information:
+
+1. The URL of the page with the data table.
+
+2. The "selector" code that specifies where on the page the data table is located. [This tutorial](https://rvest.tidyverse.org/articles/selectorgadget.html) is a great resource for learning more about selector.
+
+If you want to learn more about `rvest`, [the Tidyverse documentation for `rvest`](https://rvest.tidyverse.org/) contains a more extensive overview of the package and its functions.

@@ -1,0 +1,44 @@
+---
+output: html_document
+---
+
+```{r, include = FALSE}
+
+```
+
+### From Google Sheets (with `googlesheets4`)
+
+You can also read in data that you have collected via Google Sheets using the `googlesheets4` package. First install and load the package:
+
+```{r, eval = FALSE}
+install.packages("googlesheets4")
+```
+
+
+```{r}
+library(googlesheets4)
+```
+
+Loading data from Google Sheets is a bit more complicated because of document ownership and privacy around user Google accounts. However, `googlesheets4` navigates this very elegantly. 
+
+When you are using the following function, you will want to make sure you can see your console (in RStudio), because you will need to grant R access to your Google Sheets. If you cannot see your console, click the small double-window icon at the right of the gray bar that says "Console" below your current document. 
+
+In Google Sheets, navigate to the sheet you would like to read in, and copy the sharing URL for that sheet. To read in the data from that sheet, insert that URL  into to the `read_sheet()` function in `googlesheets4`:
+
+```{r, eval = FALSE}
+example <- read_sheet("https://docs.google.com/spreadsheets/d/1qSGfs0ogEOQsynzAtoUIgU5NJDqn7bOd14L9qpWA3w8/edit?usp=sharing")
+```
+
+Keep an eye on your Console, because this code will prompt several interactive steps for you in order to grant R access to your document.
+
+1. In your console, you will be asked if it is okay to "cache OAuth access credentials in the folder" followed by a URL. (This means: "Is it okay for R to gain access to your Google Sheets in the future, or would you like to only grant one-time access?" Type "1" in the console for yes, agreeing to both one-time and future access, and click enter.)
+
+2. Next, R will open a window in your browser asking for `tidyverse` access to your Google account. This will allow R to access your documents in the future when you want to read in files. Follow the directions in the browser and grant access. 
+
+3. Finally, you will be asked to copy a URL from your browser window into your console, where you will paste it in as the "authorization code" and then click enter.
+
+Once you have completed the above steps, check your "Environment" in the top right corner of your R window. If you were successful, you should see your dataset.
+
+If you select "yes" in the first step of this process, you will have a much easier time importing data from Google Sheets in the future. You can even write files from R into Google Sheets.
+
+If you want to learn more about `googlesheets4`, [the package's website](https://googlesheets4.tidyverse.org/) contains a more extensive overview of the package and its functions.
