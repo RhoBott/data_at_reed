@@ -37,7 +37,7 @@ url <- "https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-a
 knitr::include_graphics(url)
 ```
 
-The `tidyr` package will prove useful in data restructuring or "tidying". All of the packages in the `tidyverse`, like `ggplot2` and `dplyr`, as well as all sorts of community-contributed packages, are designed to work seamlessly with data in tidy format.
+The `tidyr` package will prove useful in data restructuring or "tidying". All of the packages in the `tidyverse`, including `ggplot2` and `dplyr`, as well as many community-contributed packages, are designed to work  with data in tidy format.
 
 ---
 
@@ -283,7 +283,7 @@ penguins %>%
   arrange(desc(bill_length_mm))
 ```
 
-For character data, `dplyr` will arrange alphabetically.
+For text data, `dplyr` will arrange alphabetically.
 
 ```{r}
 penguins %>%
@@ -344,10 +344,10 @@ full_join(x = penguins, y = palmer_islands, by = "island") %>%
 
 Other join types include inner, left, and right joins. These join types differ in how they match rows between the two different datasets. If `x` and `y` are the first and second datasets, respectively,
 
-* `inner_join()` includes all rows in `x` and `y`.
-* `left_join()` includes all rows in `x`.
-* `right_join()` includes all rows in `y`.
-* `full_join()` includes all rows in `x` _or_ `y`.
+* `inner_join()` includes all rows in `x` _and_ `y` that match 
+* `left_join()` includes all rows in `x` (and any from `y` that match)
+* `right_join()` includes all rows in `y` (and any from `x` that match)
+* `full_join()` includes all rows in `x` _or_ `y`, even if they do not match something in the other dataset
 
 To read more about combining data, we recommend the [relational data chapter](https://r4ds.had.co.nz/relational-data.html) of R for Data Science.
 
@@ -411,7 +411,7 @@ penguins_edited %>%
   mutate(species = str_remove(species,"O{2}$"))
 ```
 
-(Note that _no_ values of `species` end in 0's, so the above code changes nothing. If a value of `species` ended in, for example, three "O's", the result would only retain one.)
+(Note that _no_ values of `species` end in O's, so the above code changes nothing. If a value of `species` ended in, for example, three "O's", the result would only retain one.)
 
 Another common task when working with string data is to replace a pattern, achieved with `str_replace()`.
 
