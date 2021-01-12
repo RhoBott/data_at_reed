@@ -1,0 +1,233 @@
+---
+output: html_document
+---
+
+```{r, include = FALSE}
+
+```
+
+# Loading Data
+
+### From a package
+
+Many R packages contain their own data. (If you are unfamiliar with packages, see our [Getting Started](LINK-HERE) page.) Most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes datasets from a study of three different species of penguins found in Antarctica.
+
+```{r, echo = FALSE}
+url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"
+
+knitr::include_graphics(url)
+```
+
+To load data from a package, first install the package with the `install.packages()` function:
+
+```{r, eval = FALSE}
+install.packages("palmerpenguins")
+```
+
+Now that you have the package installed, you need to load the package into your environment with `library()`. You only need to install the package once, but you will need to load the package every time you open R.
+
+```{r}
+library(palmerpenguins)
+```
+
+Now `palmerpenguins` is loaded. Where is the data?
+
+When working with a package, there are a couple of options for finding the data contained in that package. (While all of these examples focus on the `palmerpenguins` data, you could use these instructions for any package of interest.)
+
+For the most complete information, run `help(package = "palmerpenguins")` in your console. This will show you all of the data and functions included in a package, as well as descriptions of what they are.
+
+If you are already familiar with the data and functions in a package and you just need a list of names to jog your memory, you can make use of RStudio's autocomplete. Type the name of your package followed by two colons, like this 
+
+```{r, eval = FALSE}
+palmerpenguins::
+```
+
+Your tooltip should show you all of the datasets included in the package.
+
+Once you have found the name of the dataset you want, in our case `penguins`,you can use the `data()` function:
+
+```{r}
+data(penguins)
+```
+
+Depending on how datasets are included in a package, you might run that command and see nothing, or you may see `<Promise>` up in your Environment in the top-right corner of your RStudio window. It might not seem like your data is loaded. One way to confirm your data is loaded is to run the `View()` function in your console:
+
+```{r, eval = FALSE}
+View(penguins)
+```
+
+Alternatively, you can use the `head()` function to print the first few rows:
+
+```{r}
+head(penguins)
+```
+
+Your data is loaded! You're ready to go.
+
+---
+
+### From a .csv (with `readr`)
+
+Comma-separated value (`.csv`) files are a very common format of data that can be easily transferred between many different applications, including R. In order to load a `.csv` file into R, you will need the `readr` package.
+
+First, install the `readr` package:
+
+```{r, eval = FALSE}
+install.packages("readr")
+```
+
+Now that you have the package installed, load the package into your environment with `library()`.
+
+```{r, warning = FALSE, message = FALSE}
+library(readr)
+```
+
+Now that you have installed the package, you can load your data.
+
+First, you will need to know where the data is on your computer. You will need the filepath to the data to show `readr` where to find the file. Since this is a `.csv` file, you will use the `read_csv()` function to read in the file.
+
+Here is an example:
+
+```{r, eval = FALSE}
+cat_data <- read_csv("Desktop/Reed/Bio123/cats.csv")
+```
+
+The above code reads in the file `cats.csv`, located in a folder `Bio123` within a `Reed` folder on the `Desktop`. The filepath `Desktop/Reed/Bio123` gives directions to `read_csv()` on where to find `cats.csv`. 
+
+`read_csv()` not only finds this data, but also makes it into a dataset, which is then assigned to the name (`cat_data`) using the `<-` operator. This data is now available for use in R (you can confirm this using `View()`).
+
+If you are using the Reed RStudio Server, you can upload your data file to the server and read it in from the server. This process uses the same `read_csv()` function within the server.
+
+If you want to learn more about the `readr` package or the `read_csv()` function, [the Tidyverse documentation for `readr`](https://readr.tidyverse.org/) provides a more extensive overview of the package and its functions.
+
+---
+
+### From Excel (with `readxl`)
+
+If you are working with an Excel file, you can read your data into R using the `readxl` package.
+
+```{r, eval = FALSE}
+install.packages("readxl")
+```
+
+Once the package is installed, load it into your environment with `library()`. 
+
+```{r, warning = FALSE, message = FALSE}
+library(readxl)
+```
+
+The package `readxl` contains a function called `read_excel()`, which is very similar to [`read_csv()`](link to read_csv doc). The main difference between these two tools is that the file is be a `.xls` or `.xlsx`, rather than `.csv`:
+
+```{r, eval = FALSE}
+cat_data <- read_excel("Desktop/Reed/Bio123/cats.xls")
+```
+
+If you have multiple sheets in your Excel file, `read_excel()` can access all of them. Let's say the `cats.xls` data has three sheets: the first sheet is about indoor cats, the second is about outdoor cats, and the third is about stray cats. We can load these in as follows:
+
+```{r, eval = FALSE}
+indoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = 1)
+outdoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = 2)
+stray_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = 3)
+```
+
+We can also call the sheets by their names instead of by numbers:
+
+```{r, eval = FALSE}
+indoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = "Indoor")
+outdoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = "Outdoor")
+stray_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = "Stray")
+```
+
+This code will help you to bring in data directly from Excel sheets. If you want to learn more about the `readxl` package or the `read_excel()` function, [the Tidyverse documentation for `readxl`](https://readxl.tidyverse.org/) provides a more extensive overview of the package and its functions.
+
+---
+
+### From Google Sheets (with `googlesheets4`)
+
+You can also read in data that you have collected via Google Sheets using the `googlesheets4` package. First install and load the package:
+
+```{r, eval = FALSE}
+install.packages("googlesheets4")
+```
+
+
+```{r}
+library(googlesheets4)
+```
+
+Loading data from Google Sheets is a bit more complicated because of document ownership and privacy around user Google accounts. However, `googlesheets4` navigates this very elegantly. 
+
+When you are using the following function, you will want to make sure you can see your console (in RStudio), because you will need to grant R access to your Google Sheets. If you cannot see your console, click the small double-window icon at the right of the gray bar that says "Console" below your current document. 
+
+In Google Sheets, navigate to the sheet you would like to read in, and copy the sharing URL for that sheet. To read in the data from that sheet, insert that URL  into to the `read_sheet()` function in `googlesheets4`:
+
+```{r, eval = FALSE}
+example <- read_sheet("https://docs.google.com/spreadsheets/d/1qSGfs0ogEOQsynzAtoUIgU5NJDqn7bOd14L9qpWA3w8/edit?usp=sharing")
+```
+
+Keep an eye on your Console, because this code will prompt several interactive steps for you in order to grant R access to your document.
+
+1. In your console, you will be asked if it is okay to "cache OAuth access credentials in the folder" followed by a URL. (This means: "Is it okay for R to gain access to your Google Sheets in the future, or would you like to only grant one-time access?" Type "1" in the console for yes, and click enter.)
+
+2. Next, R will open a window in your browser asking for `tidyverse` access to your Google account. This will allow R to access your documents in the future when you want to read in files. Follow the directions in the browser and grant access. 
+
+3. Finally, you will be asked to copy a URL from your browser window into your console, where you will paste it in as the "authorization code" and then click enter.
+
+Once you have completed the above steps, check your "Environment" in the top right corner of your R window. If you were successful, you should see your dataset.
+
+If you select "yes" in the first step of this process, you will have a much easier time importing data from Google Sheets in the future. You can even write files from R into Google Sheets.
+
+If you want to learn more about `googlesheets4`, [the package's website](https://googlesheets4.tidyverse.org/) contains a more extensive overview of the package and its functions.
+
+---
+
+###  From the internet (with `rvest`)
+
+If you find data that you would like to use on a website, package `rvest` can bring that table into R. (This both saves you the process/frustration of copying/pasting data from a webpage, and also makes your work less error-prone and more reproducible.)
+
+NOTE: Before you take data from a website, make sure you are allowed to scrape and analyze the data. You can read more about scraping data from the web [here](https://libguides.reed.edu/copyright/images-data#s-lg-box-wrapper-29860611). If you still have questions about the legality of a web-scraping workflow after reading this documentation, you can contact Reed's [data librarian](https://library.reed.edu/about/staff/lebow.html).
+
+First, install and load the `rvest` package: 
+
+```{r, eval = FALSE}
+install.packages("rvest")
+```
+
+```{r}
+library(rvest)
+```
+
+This example will work from a page reporting on the [different occupations of Reed alumni](https://www.reed.edu/ir/success.html).
+
+First, save the URL of this site under a variable name so that it is easy to use later:
+
+```{r}
+url <- "https://www.reed.edu/ir/success.html"
+```
+
+In order to access the data, R needs to know not only the URL of the website that contains the table, but also where on that page the table is located. To point R to the data:
+
+1. Right-click on the table you want to bring into R, and click "inspect" in the menu that comes up. This will open a bar on the right of the window.
+
+2. Hover your mouse over the lines of code in this bar on the right. You will notice that as you move your mouse, different sections of the webpage will be highlighted. Hover until you find a line of code that highlights the whole table that you want.
+
+3. Right-click that line, go to copy > copy selector. You will then paste that text in the code below where it says `css = " "`. 
+
+Once you have the specific location of the table, use the `url` saved earlier, then save the data (example: as `reed_table`) using the `<-` operator.
+
+```{r, eval = FALSE}
+reed_table <- url %>%
+  read_html() %>%
+  html_node(css = "#mainContent > table:nth-child(3)") %>%
+  html_table()
+```
+
+Run the code and check your environment for the dataset `reed_table`.
+
+While the `rvest` code may look complicated, it needs only two pieces of information:
+
+1. The URL of the page with the data table.
+
+2. The "selector" code that specifies where on the page the data table is located. [This tutorial](https://rvest.tidyverse.org/articles/selectorgadget.html) is a great resource for learning more about selector.
+
+If you want to learn more about `rvest`, [the Tidyverse documentation for `rvest`](https://rvest.tidyverse.org/) contains a more extensive overview of the package and its functions.

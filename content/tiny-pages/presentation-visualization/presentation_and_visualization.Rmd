@@ -1,0 +1,383 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+library(ggplot2)
+library(knitr)
+library(kableExtra)
+library(waffle)
+```
+
+# Presenting and Visualizing Data
+
+### Intro to data visualization with `ggplot2`
+
+`ggplot2` is an R package for data visualization that makes appealing and effective graphs using a standardized syntax.
+
+First, load the package, which is necessary every time you start an R session. For this example, also load `palmerpenguins`, a package that contains a dataset about penguin populations on islands in Antarctica, as well as `tidyverse`, which contains many helpful functions covered in the [Data Wrangling section](link). To learn more about packages and the `palmerpenguins` package, see our [Getting Started](LINK-HERE) page.
+
+```{r, eval = FALSE}
+library(ggplot2)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+Before graphing using `ggplot2`, the data needs to be "tidy". (Read more about tidy data on [our data wrangling page](LINK-HERE) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html). For this example, the `palmerpenguins` data is already tidy.
+
+There are three main pieces that make up a ggplot:
+
+1. Data: You have to specify the data that you want `ggplot()` to plot using the following syntax: 
+      
+              data = ___
+
+2. Aesthetics: In order for `ggplot()` to know which variables you want to use you have to specify what they are by using some combination of aesthetics, such as:
+
+              aes(x = ___ , y = ___ , color = ___ , fill = ___ )
+
+Anything that you put inside of `aes()` should be a variable. The aesthetics that you end up using will be specific to your graph type. (For example, a histogram shows the distribution of one variable and will include `x = ___ `, and not all of the aesthetics listed above.)
+
+3. Geometry: You can think of the `geom` as specifying what shape your data will take, appearing in `ggplot2` code as variations on:
+
+              geom_ ___()
+
+The `ggplot2` package includes a number of standard geometries. Some common `geoms` include `geom_point()` for a scatterplot, `geom_histogram()` for a histogram, and `geom_boxplot()` for a boxplot. 
+
+You can use these three pieces to create a template for making graphs with `ggplot()`:
+
+              ggplot(data = ___ ,
+                     mapping = aes(x = ___  , y = ___  , color = ___  , fill = ___   ) +
+                geom_ ___()
+          
+Note that in `ggplot2`, layers are added to the graph (using `+`) rather than the pipe `%>%`. When debugging `ggplot2` code, make sure you have added layers rather than piped together components.
+
+The next several sections provide examples of commonly-used data visualizations.
+
+---
+
+#### Scatterplots
+
+Scatterplots are commonly used to visualize the relationship between two continuous variables. For example, you may be interested in the relationship between body mass and bill length _across_ all islands:
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(data = penguins, 
+       mapping = aes(x = bill_length_mm, y = body_mass_g)) +
+  geom_point()
+```
+
+The above code first specifies the `data` (`penguins`). The `mapping` arguments define "which variables belong where". In this case, `bill_length_mm` is on the x axis, `body_mass_g` on the y. The `geom` of `geom_point` specifies that this is a scatterplot.
+
+You could add the visual variable of color to show patterns _within_ each island:
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(data = penguins, 
+       mapping = aes(x = bill_length_mm, y = body_mass_g, color = island)) +
+  geom_point()
+```
+
+---
+
+#### Linegraphs
+
+Linegraphs also show the relationship between two continuous variables, often showing progression over time. You can create a linegraph in much the same way as a scatterplot by swapping out `geom_point()` for `geom_line()`.
+
+The below code is very similar to the scatterplot above, with two changes: (1) time (year) is now on the x-axis and (2) a different `geom` is being used to represent the same data. 
+
+```{r, message = FALSE, warning = FALSE}
+ggplot(data = penguins, 
+       mapping = aes(x = year, y = body_mass_g, color = island)) +
+  geom_line()
+```
+
+The above graph looks a bit wonky... this is because there are multiple data points at each x location. Linegraphs work best when your data has only one value per x location. In this example, that means you would want one y value for each island in each year. You can summarize the `penguins` data to achieve this, by taking the mean of `body_mass_g` for each combination of `island` and `year`:
+
+```{r, message=FALSE, warning=FALSE}
+penguins_sum <- penguins %>%
+  filter(!is.na(body_mass_g)) %>%
+  group_by(island, year) %>%
+  summarize(mean_body_mass_g = mean(body_mass_g))
+
+penguins_sum
+```
+
+Now you can make the same linegraph, using the new `penguins_sum` dataset, and with `mean_body_mass_g` in place of `body_mass_g`
+
+```{r, message = FALSE, warning = FALSE}
+ggplot(data = penguins_sum, 
+       mapping = aes(x = year, y = mean_body_mass_g, color = island)) +
+  geom_line()
+```
+
+---
+
+#### Barplots
+
+Barplots demonstrate the distribution of data across categories (categorical variables) and use the `geom_bar()` function. 
+
+```{r}
+ggplot(data = penguins, mapping = aes(x = island)) +
+  geom_bar()
+```
+
+You can display another variable by including `fill = ` inside of your `aes()` call.
+
+```{r}
+ggplot(data = penguins, mapping = aes(x = island, fill = sex)) +
+  geom_bar()
+```
+
+In the above examples, `ggplot2` determines the height of bars by counting the number of observations behind the scenes. This count provides `geom_bar()` with a `y` aesthetic, so it is not necessary to specify one in the `ggplot2` code.
+
+Your data may already contain counts, in which case you would use a slightly different `geom_` to contruct your barplot. Continuing to work with the penguins example, first create a new dataset with the count of penguins by `island`:
+
+```{r, message = FALSE, warning = FALSE}
+penguin_sum <- penguins %>%
+  count(island)
+
+penguin_sum
+```
+
+To make the same graph as above with pre-counted data, use the `geom_col()` (as in "column") function, rather than `geom_bar()`, and supply the height of the bars explicitly.
+
+```{r}
+ggplot(data = penguin_sum, mapping = aes(x = island, y = n)) +
+  geom_col()
+```
+
+Notice that we had to supply `y = n` inside of `aes()`. A helpful way to remember the difference between `geom_bar()` and `geom_col()` is that Col needs Counts. For additional examples of `geom_bar()` and `geom_col()`, visit [ModernDive](https://moderndive.com/2-viz.html#barplots-via-geom_bar-or-geom_col). 
+
+---
+
+#### Histograms
+
+Histograms are one tool to show the distribution of data for a continuous variable, specified with `geom_histogram()`.
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
+  geom_histogram()
+```
+
+Changing either the number of bins, or the width of those bins, can greatly affect the resulting visual. Compare the two below graphs to the initial histogram (notice you can specify `bins` or `binwidth`).
+
+```{r, warning = FALSE}
+ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
+  geom_histogram(bins=100)
+```
+```{r, warning = FALSE}
+ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
+  geom_histogram(binwidth=200)
+```
+
+---
+
+#### Boxplots
+
+Boxplots can be another useful tool for visualizing a dataset, showing both the spread of the data (range of most of the data, presence of outlier) and how the data is concentrated in the middle (mean, median). 
+
+Boxplots are often most useful to compare data across categories. For example, we can construct a boxplot for penguin weight (body mass in g) across _all_ islands:
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(data = penguins, mapping  = aes(y = body_mass_g)) +
+  geom_boxplot()
+```
+
+But it may be more informative to break that data apart by island: 
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(data = penguins, mapping  = aes(x = island, y = body_mass_g)) +
+  geom_boxplot()
+```
+
+You can create multiple boxplots on the same graph by setting `x` to a variable with multiple categories. As seen in the previous examples, you can also use `color` to further divide your data for visualizing:
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(data = penguins, mapping  = aes(x = island, y = body_mass_g, color = sex)) +
+  geom_boxplot()
+```
+
+---
+
+### Making informative and readable graphs
+
+In addition to `x`, `y`, `color`, and `fill` covered in the [Intro to data visualization section](link), there are many other ways to represent even more variables with `ggplot2`, while keeping your graphs readable. Below are some additional methods for conveying more information on your graphs, or making your information more readable.
+
+#### Aesthetic mappings
+
+The aesthetics `shape` and `linetype` can be used to display a categorical variable, while `size` can show a continuous variable. These are used in the same way as `color` above. For example, you could make the same exact graph that was shown in the [Linegraphs section](link), with different islands shown by `linetype` instead of `color`:
+
+```{r, message = FALSE, warning = FALSE}
+ggplot(data = penguins_sum, 
+       mapping = aes(x = year, y = mean_body_mass_g, linetype = island)) +
+  geom_line()
+```
+
+[This site](https://www.datanovia.com/en/blog/ggplot-aes-how-to-assign-aesthetics-in-ggplot2/#group-and-line-type) contains helpful examples on how to use each of these aesthetics, and highlights cases where they might be particularly appropriate.
+
+#### Adjusting transparency
+
+Sometimes, when using `geom_point()`, points can get a bit crowded. (This is called overplotting.) One way to address this is to change the transparency of the points. In this code, `alpha = 0.5` specifies the transparency of the points as 0.5, on a scale from 0 (most transparent) to 1 (least transparent):
+
+```{r, warning = FALSE}
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, color = sex)) +
+  geom_point(alpha = 0.5)
+```
+
+#### Creating side-by-side graphs
+
+To add another variable to an already "busy" graph, `facet_wrap()` can be useful. Consider the following plot:
+
+```{r, warning = FALSE}
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, color = sex)) +
+  geom_point(alpha = 0.7)
+```
+
+Incorporating `facet_wrap()` separates the data by species and plots them side-by-side, providing a visual that shows how bill length and bill depth vary across species _and_ across sex:
+
+```{r, warning = FALSE}
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, color = sex)) +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~species)
+```
+
+Faceting by `species` creates three graphs, with identical x and y axis scales and coloring. These graphs let us compare `species` side-by-side easily.
+
+---
+
+### Extensions of `ggplot2`
+
+#### More graph types and add-ons
+
+Although some of the most frequently used graph types (geoms) are described above, some other commonly used geoms include:
+
+  - `geom_density()`: for [density estimates](https://ggplot2.tidyverse.org/reference/geom_density.html) 
+  - `geom_dotplot()`: for [dot-plots](https://ggplot2.tidyverse.org/reference/geom_dotplot.html?q=dotplot)
+  - `geom_violin()`: for making [violin plots](https://ggplot2.tidyverse.org/reference/geom_violin.html)
+  - `geom_jitter()`: for dealing with [overplotting](https://ggplot2.tidyverse.org/reference/geom_jitter.html).
+
+There are also many extra add-ons (layers) that you can add to your plots using the following functions:
+
+  - `geom_abline()`, `geom_hline()`, `geom_vline()`: for adding [customizable reference lines](https://ggplot2.tidyverse.org/reference/geom_abline.html?q=geom%20_%20hli#arguments)
+  - `geom_errorbar()`: for adding [error bars](https://ggplot2.tidyverse.org/reference/geom_linerange.html)
+  - `geom_smooth()`: for adding [regression lines](https://ggplot2.tidyverse.org/reference/geom_smooth.html?q=smooth) and other conditional means
+  
+#### Waffle plots with `waffle`
+
+Waffle plots (sometimes referred to as "square pie charts") are a way of visualizing category breakdowns, where a grid of boxes is filled in with different colors to match your categories. Waffle plots can be created in R with the [`waffle` package](https://cran.r-project.org/web/packages/waffle/waffle.pdf). You can find examples of how to use the `waffle()` function to make these plots [on the R Documentation site](https://www.rdocumentation.org/packages/waffle/versions/0.7.0/topics/waffle) or on [R Bloggers](https://www.r-bloggers.com/2015/03/making-waffle-charts-in-r-with-the-new-waffle-package/).
+
+#### Mosaic plots with `ggmosaic`
+
+Mosaic plots are a way of visually displaying data from two or more categorical variables. The area of cells are used to show the frequency of observations. Mosaic plots can be created in R with the [`ggmosaic` package](https://cran.r-project.org/web/packages/ggmosaic/vignettes/ggmosaic.html), or the [vcd package](https://r-graphics.org/recipe-miscgraph-mosaic). 
+
+#### Spatial data with `ggmap`
+
+`ggmap` is a package designed to follow many of the same basic principles and syntax as `ggplot2`, that allows you to display spatial data. The [`ggmap` CRAN site](https://cran.r-project.org/web/packages/ggmap/readme/README.html) has some helpful example maps, as does [the R Graph Gallery](https://www.r-graph-gallery.com/324-map-background-with-the-ggmap-library.html). 
+
+---
+
+### Graph customization 
+
+Once you have a basic graph, you may want to customize it more to fit your needs. Starting with a scatterplot showing penguin bill length and body mass by island which was created above, adding a few simple commands allows you to adjust the graph to your liking. `labs()` is used to customize axis labels, as well as adding titles, subtitles, and captions. `theme()` is used to change the overall theme of the graph. Some premade options are:
+
+  - `theme_dark()`
+  - `theme_bw()`
+  - `theme_classic()`
+  - `theme_minimal()`
+    
+You can also change individual aspects of your them inside of the `theme()` call, [here](https://ggplot2.tidyverse.org/reference/theme.html) is an extensive resource for doing that. By using `scale_color_manual()`, the colors in the graph can be manually set. You can also change axis labels and add a title to your graph using `labs()`. These are just a few ways to make a graph your own.
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(data = penguins, 
+       mapping = aes(x = bill_length_mm, y = body_mass_g, color = island)) +
+  geom_point(alpha = 0.7) +
+  scale_color_manual(values = c("magenta3", "darkorange", "blue4")) +
+  labs(x = "Bill length (mm)",
+       y = "Body mass (g)",
+       title = "Palmer Penguins",
+       subtitle = "Examining penguin body mass and bill length") + 
+  theme_bw()
+  
+```
+
+To read more about `ggplot2`, see the [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) chapter about data visualization. More extensive documentation can be found on the [ggplot2 website](https://ggplot2.tidyverse.org/).
+
+---
+
+### Summary tables
+
+The [Data Wrangling](LINK-HERE) page shows how to compute summaries of your data. Summary tables can be useful for displaying data, and the `kable()` function in the R package `knitr` allows you to present tables with helpful formatting.
+
+First, install and load the package.
+
+```{r eval = FALSE}
+install.packages("knitr")
+library(knitr)
+```
+
+Using the `palmerpenguins` data, calculate the mean value of penguin body mass (g) across islands over time. (For more on calculating summary statistics, see the [Data Wrangling](LINK-HERE) section.)
+
+Here is the code for our summary statistic, which we will save in a new dataset called `penguin_sum`.
+
+```{r message = FALSE}
+penguin_sum <- penguins %>%
+  group_by(island, year) %>%
+  summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
+```
+
+You can print the dataset within R/RStudio:
+
+```{r}
+penguin_sum
+```
+
+To make a possibly more appealing table with the same data, use `kable()`:
+
+```{r}
+kable(x = penguin_sum, 
+      format = "html",
+      col.names = c("Island", "Year", "Mean Body Mass (g)"),
+      caption = "Mean body mass of penguins on different islands over time")
+```
+
+
+
+For additional customization options, use the package `kableExtra`. 
+
+```{r eval = FALSE}
+install.packages("kableExtra")
+library(kableExtra)
+```
+
+Start with very similar code to what you used with the basic `kable` table. Add the function `kable_styling()` to get the basic `kableExtra` format:
+
+```{r}
+kable(x = penguin_sum, 
+      col.names = c("Island", "Year", "Mean Body Mass (g)"),
+      caption = "Mean body mass of penguins on different islands over time") %>%
+  kable_styling()
+```
+
+Some other options to consider as alternatives to `kable_styling()`: `kable_classic()`, `kable_paper()`, `kable_classic_2()`,`kable_minimal()`, `kable_material()` and `kable_material_dark()`. 
+
+To change the width of the table, add `full_width = FALSE` within your `kable_styling()` (or similar) argument. Additional options with `kableExtra` include changing the font:
+
+```{r}
+kable(x = penguin_sum, 
+      col.names = c("Island", "Year", "Mean Body Mass (g)"),
+      caption = "Mean body mass of penguins on different islands over time") %>%
+   kable_classic(full_width = FALSE, html_font = "Cambria", font_size=16)
+```
+
+...or the font size: 
+```{r}
+kable(x = penguin_sum, 
+      col.names = c("Island", "Year", "Mean Body Mass (g)"),
+      caption = "Mean body mass of penguins on different islands over time") %>%
+   kable_material_dark(html_font = "Cambria")
+```
+
+To learn more about these and other customizations, see [the kableExtra vingette](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview).
