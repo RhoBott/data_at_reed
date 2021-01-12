@@ -53,7 +53,7 @@ For all data questions, coding and otherwise, you can reach out to the Data@Reed
 
 #### Asking for help
 
-When asking for help, the first step is creating a "reprex", short for _repr_oducible _ex_ample. Reproducible examples help others help you by ensuring that they can replicate the problem that you're experiencing in order to troubleshoot more easily. There are a couple of key steps to creating a reprex:
+When asking for help, the first step is creating a "reprex", short for *repr*oducible *ex*ample. Reproducible examples help others help you by ensuring that they can replicate the problem that you're experiencing in order to troubleshoot more easily. There are a couple of key steps to creating a reprex:
 
 1. Include any package loading calls (`library(package)`) and objects (i.e. datasets) that are relevant to your problem.
 
