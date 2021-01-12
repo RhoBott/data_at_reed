@@ -32,7 +32,7 @@ library(palmerpenguins)
 
 Now `palmerpenguins` is loaded. Where is the data?
 
-When working with a package, there are a couple of options for finding the data contained in that package. (While all of these examples focus on the `palmerpenguins` data, you could use these instructions for any package of interest.)
+When working with a package, there are a couple of options for finding the data contained in that package. (While all of these examples focus on the `palmerpenguins` data, you could use these instructions for any dataset of interest.)
 
 For the most complete information, run `help(package = "palmerpenguins")` in your console. This will show you all of the data and functions included in a package, as well as descriptions of what they are.
 
@@ -167,7 +167,7 @@ example <- read_sheet("https://docs.google.com/spreadsheets/d/1qSGfs0ogEOQsynzAt
 
 Keep an eye on your Console, because this code will prompt several interactive steps for you in order to grant R access to your document.
 
-1. In your console, you will be asked if it is okay to "cache OAuth access credentials in the folder" followed by a URL. (This means: "Is it okay for R to gain access to your Google Sheets in the future, or would you like to only grant one-time access?" Type "1" in the console for yes, and click enter.)
+1. In your console, you will be asked if it is okay to "cache OAuth access credentials in the folder" followed by a URL. (This means: "Is it okay for R to gain access to your Google Sheets in the future, or would you like to only grant one-time access?" Type "1" in the console for yes, agreeing to both one-time and future access, and click enter.)
 
 2. Next, R will open a window in your browser asking for `tidyverse` access to your Google account. This will allow R to access your documents in the future when you want to read in files. Follow the directions in the browser and grant access. 
 
