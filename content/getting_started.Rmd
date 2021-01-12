@@ -139,6 +139,6 @@ We can now explore `penguins`:
 penguins
 ```
 
-In this data, every row is a unique penguin. For each penguin, we have the `species` of the penguin, which `island` it lives on, its `sex`, the `year` the measurements were taken, and some body size measurements.
+In this data, every row is a unique observation (penguin). For each penguin, we have the `species` of the penguin, which `island` it lives on, its `sex`, the `year` the measurements were taken, and some body size measurements.
 
 To learn more about all that we can do with this data, check out the remaining tutorials.
