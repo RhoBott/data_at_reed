@@ -1,0 +1,32 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Additional online resources
+
+#### R package cheatsheets and documentation
+
+RStudio has curated [cheatsheets](https://rstudio.com/resources/cheatsheets/) for common R packages, providing a single page of some of the most commonly-used commands. Among others, you can find cheatsheets for data visualization with `ggplot2`, data transformation with `dplyr`, data import with `readr`, and R Markdown.
+
+All R packages should have published documentation. In addition to documentation available directly within R (at the console, type `?packagename`), the developer may provide documentation for a given package. You can also search the [RDocumentation site](https://www.rdocumentation.org/).
+
+Most of the packages described on this site are part of the Tidyverse; you can find documentation and examples within [the Tidyverse documentation](https://tidyverse.org), including pages for:
+ 
+  - [`ggplot2`](https://ggplot2.tidyverse.org/)
+  - [`dplyr`](https://dplyr.tidyverse.org/) 
+  - [`stringr`](https://stringr.tidyverse.org/)
+  - [`readr`](https://readr.tidyverse.org/)
+  - [`readxl`](https://readxl.tidyverse.org/)
+  - [`googlesheets4`](https://googlesheets4.tidyverse.org/)
+  - [`rvest`](https://rvest.tidyverse.org/)
+
+#### Textbooks
+
+There are a number of texts that provide an introduction to R, coding, and data analysis. Some local favorites include: 
+ 
+  - [R for Data Science](https://r4ds.had.co.nz/) by Hadley Wickham and Garrett Grolemund for an in-depth introduction to working with R and data.
+  - [Modern Dive](https://moderndive.netlify.app/) by Chester Ismay and Albert Y Kim for an introduction to statistical inference via data science.
