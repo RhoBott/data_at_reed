@@ -1,0 +1,63 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+library(ggplot2)
+library(knitr)
+library(kableExtra)
+library(waffle)
+```
+
+### Intro to data visualization with `ggplot2`
+
+`ggplot2` is an R package for data visualization that makes appealing and effective graphs using a standardized syntax.
+
+First, load the package, which is necessary every time you start an R session. For this example, also load `palmerpenguins`, a package that contains a dataset about penguin populations on islands in Antarctica, as well as `tidyverse`, which contains many helpful functions covered in the [Data Wrangling section](link). To learn more about packages and the `palmerpenguins` package, see our [Getting Started](LINK-HERE) page.
+
+```{r, eval = FALSE}
+library(ggplot2)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+Before graphing using `ggplot2`, the data needs to be "tidy". (Read more about tidy data on [our data wrangling page](LINK-HERE) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html). For this example, the `palmerpenguins` data is already tidy.
+
+There are three main pieces that make up a ggplot:
+
+1. Data: You have to specify the data that you want `ggplot()` to plot using the following syntax: 
+      
+              data = ___
+
+2. Aesthetics: In order for `ggplot()` to know which variables you want to use you have to specify what they are by using some combination of aesthetics, such as:
+
+              aes(x = ___ , y = ___ , color = ___ , fill = ___ )
+
+Anything that you put inside of `aes()` should be a variable. The aesthetics that you end up using will be specific to your graph type. (For example, a histogram shows the distribution of one variable and will include `x = ___ `, and not all of the aesthetics listed above.)
+
+3. Geometry: You can think of the `geom` as specifying what shape your data will take, appearing in `ggplot2` code as variations on:
+
+              geom_ ___()
+
+The `ggplot2` package includes a number of standard geometries. Some common `geoms` include `geom_point()` for a scatterplot, `geom_histogram()` for a histogram, and `geom_boxplot()` for a boxplot. 
+
+You can use these three pieces to create a template for making graphs with `ggplot()`:
+
+              ggplot(data = ___ ,
+                     mapping = aes(x = ___  , y = ___  , color = ___  , fill = ___   ) +
+                geom_ ___()
+          
+Note that in `ggplot2`, layers are added to the graph (using `+`) rather than the pipe `%>%`. When debugging `ggplot2` code, make sure you have added layers rather than piped together components.
+
+The next several sections provide examples of these commonly-used data visualizations:
+
+  - [Scatterplots](INTERNAL-LINK)
+  - [Linegraphs](INTERNAL-LINK)
+  - [Barplots](INTERNAL-LINK)
+  - [Histograms](INTERNAL-LINK)
+  - [Boxplots](INTERNAL-LINK)

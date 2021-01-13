@@ -1,0 +1,44 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+library(ggplot2)
+library(knitr)
+library(kableExtra)
+library(waffle)
+```
+
+### Extensions of `ggplot2`
+
+#### More graph types and add-ons
+
+Although some of the most frequently used graph types (geoms) are described above, some other commonly used geoms include:
+
+  - `geom_density()`: for [density estimates](https://ggplot2.tidyverse.org/reference/geom_density.html) 
+  - `geom_dotplot()`: for [dot-plots](https://ggplot2.tidyverse.org/reference/geom_dotplot.html?q=dotplot)
+  - `geom_violin()`: for making [violin plots](https://ggplot2.tidyverse.org/reference/geom_violin.html)
+  - `geom_jitter()`: for dealing with [overplotting](https://ggplot2.tidyverse.org/reference/geom_jitter.html).
+
+There are also many extra add-ons (layers) that you can add to your plots using the following functions:
+
+  - `geom_abline()`, `geom_hline()`, `geom_vline()`: for adding [customizable reference lines](https://ggplot2.tidyverse.org/reference/geom_abline.html?q=geom%20_%20hli#arguments)
+  - `geom_errorbar()`: for adding [error bars](https://ggplot2.tidyverse.org/reference/geom_linerange.html)
+  - `geom_smooth()`: for adding [regression lines](https://ggplot2.tidyverse.org/reference/geom_smooth.html?q=smooth) and other conditional means
+  
+#### Waffle plots with `waffle`
+
+Waffle plots (sometimes referred to as "square pie charts") are a way of visualizing category breakdowns, where a grid of boxes is filled in with different colors to match your categories. Waffle plots can be created in R with the [`waffle` package](https://cran.r-project.org/web/packages/waffle/waffle.pdf). You can find examples of how to use the `waffle()` function to make these plots [on the R Documentation site](https://www.rdocumentation.org/packages/waffle/versions/0.7.0/topics/waffle) or on [R Bloggers](https://www.r-bloggers.com/2015/03/making-waffle-charts-in-r-with-the-new-waffle-package/).
+
+#### Mosaic plots with `ggmosaic`
+
+Mosaic plots are a way of visually displaying data from two or more categorical variables. The area of cells are used to show the frequency of observations. Mosaic plots can be created in R with the [`ggmosaic` package](https://cran.r-project.org/web/packages/ggmosaic/vignettes/ggmosaic.html), or the [vcd package](https://r-graphics.org/recipe-miscgraph-mosaic). 
+
+#### Spatial data with `ggmap`
+
+You can use R for a wealth of spatial analyses (not covered here), and can also use R to make quick maps. `ggmap` is a package designed to follow many of the same basic principles and syntax as `ggplot2`, that allows you to display spatial data. The [`ggmap` CRAN site](https://cran.r-project.org/web/packages/ggmap/readme/README.html) has some helpful example maps, as does [the R Graph Gallery](https://www.r-graph-gallery.com/324-map-background-with-the-ggmap-library.html).
