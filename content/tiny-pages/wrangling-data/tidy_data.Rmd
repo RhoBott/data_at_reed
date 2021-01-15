@@ -13,7 +13,7 @@ library(knitr)
 
 Packages in the `tidyverse`, like `ggplot2` (useful for visualizing data) and `dplyr` (a key tool in data wrangling), are built to work with so-called "tidy" data. 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, dpi = 50}
 url <- "https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/tidydata_1.jpg?raw=true"
 
 knitr::include_graphics(url)
@@ -21,7 +21,7 @@ knitr::include_graphics(url)
 
 One of the core arguments for tidy data is often summarized with an adaptation of the famous Leo Tolstoy quote "Happy families are all alike; every unhappy family is unhappy in its own way." 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, dpi = 50}
 url <- "https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/tidydata_2.jpg?raw=true"
 
 knitr::include_graphics(url)
@@ -29,7 +29,7 @@ knitr::include_graphics(url)
 
 With a consistent set of rules for formatting data, the ideas and tools used to conduct one data analysis can be more easily transferred to another.
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, dpi = 50}
 url <- "https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/tidydata_3.jpg?raw=true"
 
 knitr::include_graphics(url)
