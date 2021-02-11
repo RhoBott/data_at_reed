@@ -15,6 +15,7 @@ url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lt
 
 knitr::include_graphics(url)
 ```
+*Artwork by @allison_horst*
 
 To load data from a package, first install the package with the `install.packages()` function:
 

@@ -16,18 +16,21 @@ Packages in the `tidyverse`, like `ggplot2` (useful for visualizing data) and `d
 ```{r, echo = FALSE}
 knitr::include_graphics(path = "tidy-images/small_tidydata_1.jpg")
 ```
+*Artwork by @allison_horst*
 
 One of the core arguments for tidy data is often summarized with an adaptation of the famous Leo Tolstoy quote "Happy families are all alike; every unhappy family is unhappy in its own way." 
 
 ```{r, echo = FALSE}
 knitr::include_graphics(path = "tidy-images/small_tidydata_2.jpg")
 ```
+*Artwork by @allison_horst*
 
 With a consistent set of rules for formatting data, the ideas and tools used to conduct one data analysis can be more easily transferred to another.
 
 ```{r, echo = FALSE}
 knitr::include_graphics(path = "tidy-images/small_tidydata_3.jpg")
 ```
+*Artwork by @allison_horst*
 
 The `tidyr` package will prove useful in data restructuring or "tidying". All of the packages in the `tidyverse`, including `ggplot2` and `dplyr`, as well as many community-contributed packages, are designed to work  with data in tidy format.
 

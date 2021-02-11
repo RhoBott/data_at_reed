@@ -17,6 +17,7 @@ url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lt
 
 knitr::include_graphics(url)
 ```
+*Artwork by @allison_horst*
 
 If you want to work along with any of the examples on this website and need to load the data, you will first need to install the palmerpenguins package:
 
