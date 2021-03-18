@@ -1,31 +1,29 @@
 
-================
-Data @ Reed R Resource
-=======
+# Data @ Reed R Resources
 
 Welcome to the Data at Reed GitHub repository. This contains the source code for the new and improved [Data at Reed](https://www.reed.edu/data-at-reed/resources/R/index.html) R Resources site. The site contains walkthroughs and tutorials for some common R usages.
 
 
 ## [Contents](https://www.reed.edu/data-at-reed/resources/R/index.html)
 
-#### 01\. Getting Started with R
+### 01\. Getting Started with R
 
 The RStudio Server, Desktop R, Script vs Markdown terminology,
 `thesisdown`, and meeting the `palmerpenguins`
 
-#### 02\. Loading Data
+### 02\. Loading Data
 
 `readr`, `readxl`, `googlesheets4`, and `rvest`
 
-#### 03\. Wrangling Data
+### 03\. Wrangling Data
 
 Tidy data principles, `tidyr`, `dplyr`, and `stringr`
 
-#### 04\. Presentation & Visualization
+### 04\. Presentation & Visualization
 
 graphs with `ggplot2`, tables with `knitr` and `kableExtra`
 
-#### 05\. More Resources
+### 05\. More Resources
 
 Learning more & getting connected- cheatsheets, online textbooks, and
 where to ask for help.
