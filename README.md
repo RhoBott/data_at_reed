@@ -1,15 +1,10 @@
-Data @ Reed R Resources
-================
 
-Welcome to the Data at Reed GitHub repository. This contains the source
-code for the new and improved [Data at
-Reed](https://www.reed.edu/data-at-reed/resources/R/index.html) R
-<<<<<<< HEAD
-Resources site. The site contains walkthroughs and tutorials for some
-common R usages.
+================
+Data @ Reed R Resource
 =======
-Resources site.
->>>>>>> 63ceb8dda793ee86f6006c2eb8a8bc0a438670ad
+
+Welcome to the Data at Reed GitHub repository. This contains the source code for the new and improved [Data at Reed](https://www.reed.edu/data-at-reed/resources/R/index.html) R Resources site. The site contains walkthroughs and tutorials for some common R usages.
+
 
 ## [Contents](https://www.reed.edu/data-at-reed/resources/R/index.html)
 
