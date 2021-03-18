@@ -1,0 +1,45 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+library(knitr)
+```
+
+### Combining data
+
+During data analysis, you might find that you have two separate datasets that offer complementary information to each other. In this case, you might be interested in combining, or _joining_ them.
+
+For example, suppose you also have some data about the islands that these penguins live on that you believe might inform your analyses of penguin characteristics.
+
+```{r, include = FALSE}
+palmer_islands <-
+  tibble(island = c("Torgersen", "Biscoe", "Dream"),
+         mean_temperature_c = c(-3, -6, -1),
+         mean_elevation_m = c(17, 8, 10))
+```
+
+```{r}
+palmer_islands
+```
+
+`penguins` and `islands` share a column, `island`, that allows you to combine the two datasets. To join these two datasets, we can use the `full_join()` function from `dplyr`.
+
+```{r}
+full_join(x = penguins, y = palmer_islands, by = "island") %>%
+  select(species, island)
+```
+
+"Full" joins are one of many types of joins, and keep any rows that are included in both `x` and `y` (the first and second datasets, respectively). Since the `palmer_islands` dataset only has one row per island, its rows are repeated as many times as needed so that each row in `penguins` has the entry it needs.
+
+Other join types include inner, left, and right joins. These join types differ in how they match rows between the two different datasets. If `x` and `y` are the first and second datasets, respectively,
+
+* `inner_join()` includes all rows in `x` _and_ `y` that match 
+* `left_join()` includes all rows in `x` (and any from `y` that match)
+* `right_join()` includes all rows in `y` (and any from `x` that match)
+* `full_join()` includes all rows in `x` _or_ `y`, even if they do not match something in the other dataset
+
+To read more about combining data, we recommend the [relational data chapter](https://r4ds.had.co.nz/relational-data.html) of R for Data Science.

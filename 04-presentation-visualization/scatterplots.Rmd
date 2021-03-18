@@ -1,0 +1,35 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+library(ggplot2)
+library(knitr)
+library(kableExtra)
+library(waffle)
+```
+
+#### Scatterplots
+
+Scatterplots are commonly used to visualize the relationship between two continuous variables. For example, you may be interested in the relationship between body mass and bill length _across_ all islands:
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(data = penguins, 
+       mapping = aes(x = bill_length_mm, y = body_mass_g)) +
+  geom_point()
+```
+
+The above code first specifies the `data` (`penguins`). The `mapping` arguments define "which variables belong where". In this case, `bill_length_mm` is on the x axis, `body_mass_g` on the y. The `geom` of `geom_point` specifies that this is a scatterplot.
+
+You could add the visual variable of color to show patterns _within_ each island:
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(data = penguins, 
+       mapping = aes(x = bill_length_mm, y = body_mass_g, color = island)) +
+  geom_point()
+```

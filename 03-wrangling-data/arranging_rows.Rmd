@@ -1,0 +1,35 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+library(knitr)
+```
+
+#### Arranging rows with `arrange()`
+
+Sometimes it is helpful to sort data, alphabetically or numerically. You can sort data using the `arrange()` function from `dplyr`.
+
+To arrange all penguins, in order of increasing bill length:
+
+```{r}
+penguins %>%
+  arrange(bill_length_mm)
+```
+
+In order or decreasing bill length:
+
+```{r}
+penguins %>%
+  arrange(desc(bill_length_mm))
+```
+
+For text data, `dplyr` will arrange alphabetically.
+
+```{r}
+penguins %>%
+  arrange(species)
+```

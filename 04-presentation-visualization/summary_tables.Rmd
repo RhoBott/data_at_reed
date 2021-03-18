@@ -1,0 +1,90 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+library(ggplot2)
+library(knitr)
+library(kableExtra)
+library(waffle)
+```
+
+### Summary tables
+
+The [Data Wrangling](LINK-HERE) page shows how to compute summaries of your data. Summary tables can be useful for displaying data, and the `kable()` function in the R package `knitr` allows you to present tables with helpful formatting.
+
+First, install and load the package.
+
+```{r eval = FALSE}
+install.packages("knitr")
+library(knitr)
+```
+
+Using the `palmerpenguins` data, calculate the mean value of penguin body mass (g) across islands over time. (For more on calculating summary statistics, see the [Data Wrangling](LINK-HERE) section.)
+
+Here is the code for our summary statistic, which we will save in a new dataset called `penguin_sum`.
+
+```{r message = FALSE}
+penguin_sum <- penguins %>%
+  group_by(island, year) %>%
+  summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
+```
+
+You can print the dataset within R/RStudio:
+
+```{r}
+penguin_sum
+```
+
+To make a possibly more appealing table with the same data, use `kable()`:
+
+```{r}
+kable(x = penguin_sum, 
+      format = "html",
+      col.names = c("Island", "Year", "Mean Body Mass (g)"),
+      caption = "Mean body mass of penguins on different islands over time")
+```
+
+
+
+For additional customization options, use the package `kableExtra`. 
+
+```{r eval = FALSE}
+install.packages("kableExtra")
+library(kableExtra)
+```
+
+Start with very similar code to what you used with the basic `kable` table. Add the function `kable_styling()` to get the basic `kableExtra` format:
+
+```{r}
+kable(x = penguin_sum, 
+      col.names = c("Island", "Year", "Mean Body Mass (g)"),
+      caption = "Mean body mass of penguins on different islands over time") %>%
+  kable_styling()
+```
+
+Some other options to consider as alternatives to `kable_styling()`: `kable_classic()`, `kable_paper()`, `kable_classic_2()`,`kable_minimal()`, `kable_material()` and `kable_material_dark()`. 
+
+To change the width of the table, add `full_width = FALSE` within your `kable_styling()` (or similar) argument. Additional options with `kableExtra` include changing the font:
+
+```{r}
+kable(x = penguin_sum, 
+      col.names = c("Island", "Year", "Mean Body Mass (g)"),
+      caption = "Mean body mass of penguins on different islands over time") %>%
+   kable_classic(full_width = FALSE, html_font = "Cambria", font_size=16)
+```
+
+You can also adjust the font size: 
+```{r}
+kable(x = penguin_sum, 
+      col.names = c("Island", "Year", "Mean Body Mass (g)"),
+      caption = "Mean body mass of penguins on different islands over time") %>%
+   kable_material_dark(html_font = "Cambria")
+```
+
+To learn more about these and other customizations, see [the kableExtra vingette](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview).

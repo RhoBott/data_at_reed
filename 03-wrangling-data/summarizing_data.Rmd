@@ -1,0 +1,41 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+library(knitr)
+```
+
+#### Summarizing data with `group_by()` and `summarize()`
+
+Often, data contains groupings (by geography, time period, experimental group). The `group_by()` function enables R to first group observations and then perform additional calculations. Function `summarize()` often proves useful with `group_by()`, allowing the calculation of measures across groups (mean, median, variance, etc).
+
+Continuing with the penguins data, one goal may be to end up with a variable that shows mean body mass of penguins for each island. First feed the grouping variable into `group_by()`:
+
+```{r}
+penguins %>%
+  group_by(island)
+```
+
+The above code did not change anything about the dataset; the `group_by()` function changes the metadata of the dataset. (You can think of this as R getting the dataset ready for a further transformation to be applied to it, with the rule of "anything that happens, happens within these groupings".) 
+
+With the grouping defined, apply the `summarize()` function to calculate mean body mass by island.
+
+```{r message = FALSE}
+penguins %>%
+  group_by(island) %>%
+  summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
+```
+
+Missing values (`NA`) are an important consideration in data analysis. In the above code, the `na.rm = TRUE` removes any missing values in `body_mass_g` so R is free to calculate the mean of the body mass data that is in the dataset. (To experiment with the effect of `na.rm = TRUE`, run the above code without that argument.)
+
+You can extend the above approach to group by _both_ island and year:
+
+```{r message = FALSE}
+penguins %>%
+  group_by(island, year) %>%
+  summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
+```

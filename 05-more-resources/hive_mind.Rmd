@@ -1,0 +1,38 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Hive mind: forums and asking questions
+
+Often, you will not be the first person to encounter an error or to have a particular question. (Some examples: "How do I remove `NA`s from my data?" "How do I make R understand this date information?" "How do I combine a boxplot and a scatterplot so I can show multiple aspects of the data?")
+
+#### Finding answers in forums
+
+When searching for answers to your code-related questions, include the name of the package that you are using and a few words about what you are trying to do (or the error text). If the code in your search results doesn't make sense to you, do not despair - there are many ways of accomplishing the same task in R. 
+
+Two good places to look for already-answered questions are the [RStudio Community](https://community.rstudio.com) and [Stack Overflow](https://stackoverflow.com). Reading forum posts can be useful because you can see how other people have solved a similar problem.
+
+#### One-on-one assistance from Reedies
+
+Often, it can be helpful to work through problems with another person in real time. For work related to Reed classes, theses, and student/faculty research, you can get help from someone at the [mLab](https://www.reed.edu/cis/mlab/index.html), and drop-in help hours can be found [on our calendar](https://www.reed.edu/cis/mlab/calendar.html). 
+
+For all data questions, coding and otherwise, you can reach out to the Data@Reed team by emailing data@reed.edu .
+
+#### Asking for help
+
+When asking for help, the first step is creating a "reprex", short for *repr*oducible *ex*ample. Reproducible examples help others help you by ensuring that they can replicate the problem that you're experiencing in order to troubleshoot more easily. There are a couple of key steps to creating a reprex:
+
+1. Include any package loading calls (`library(package)`) and objects (i.e. datasets) that are relevant to your problem.
+
+2. Only include whatever is relevant or necessary to your problem. In reprex jargon, this is called making your example "minimal".
+
+By taking the time to create a reprex, you are asking a more understandable question - meaning that you are much more likely to get a useful answer. For more on reproducible examples and asking questions, check out [the tidyverse "Get help!" ](https://www.tidyverse.org/help/) page.
+
+Once you have prepared a reprex, two possible courses of action:
+
+  - If you are a Reedie, the mLabbies and/or the Data@Reed team will be thrilled to see that you have prepared a reprex and will be glad to help.
+  - Pose your question on an online forum; as mentioned above, two good places to start are the [RStudio Community](https://community.rstudio.com) and  [Stack Overflow](https://stackoverflow.com).

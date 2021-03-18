@@ -1,0 +1,45 @@
+---
+output: html_document
+---
+
+```{r, include = FALSE}
+
+```
+
+### From Excel (with `readxl`)
+
+If you are working with an Excel file, you can read your data into R using the `readxl` package.
+
+```{r, eval = FALSE}
+install.packages("readxl")
+```
+
+Once the package is installed, load it into your environment with `library()`. 
+
+```{r, warning = FALSE, message = FALSE}
+library(readxl)
+```
+
+The package `readxl` contains a function called `read_excel()`, which is very similar to [`read_csv()`](link to read_csv doc). The main difference between these two tools is that the file is be a `.xls` or `.xlsx`, rather than `.csv`:
+
+```{r, eval = FALSE}
+cat_data <- read_excel("Desktop/Reed/Bio123/cats.xls")
+```
+
+If you have multiple sheets in your Excel file, `read_excel()` can access all of them. Let's say the `cats.xls` data has three sheets: the first sheet is about indoor cats, the second is about outdoor cats, and the third is about stray cats. We can load these in as follows:
+
+```{r, eval = FALSE}
+indoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = 1)
+outdoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = 2)
+stray_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = 3)
+```
+
+We can also call the sheets by their names instead of by numbers:
+
+```{r, eval = FALSE}
+indoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = "Indoor")
+outdoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = "Outdoor")
+stray_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = "Stray")
+```
+
+This code will help you to bring in data directly from Excel sheets. If you want to learn more about the `readxl` package or the `read_excel()` function, [the Tidyverse documentation for `readxl`](https://readxl.tidyverse.org/) provides a more extensive overview of the package and its functions.

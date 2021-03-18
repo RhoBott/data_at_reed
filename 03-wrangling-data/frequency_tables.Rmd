@@ -1,0 +1,32 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+library(knitr)
+```
+
+#### Frequency tables with `count()`
+
+Frequency tables provide one way of displaying information about your data. For example, how many male and female penguins are in the sample?
+
+First, use function `count()` by the variable of interest (`sex`):
+
+```{r}
+penguins %>%
+  count(sex)
+```
+
+The penguins dataset includes 165 females, 168 males, and 11 individual birds for which sex is unknown.
+
+To divide these counts by island (as well as sex), `count()` by `island` and `sex`:
+
+```{r}
+penguins %>%
+  count(island, sex)
+```
+
+`count()` is a quick and easy way to produce frequency tables in R.

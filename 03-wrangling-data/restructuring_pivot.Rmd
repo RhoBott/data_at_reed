@@ -1,0 +1,61 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+library(knitr)
+```
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+penguins_sum <- penguins %>%
+  group_by(island, year) %>%
+  summarize(mean_body_mass_g = mean(body_mass_g, na.rm= TRUE))
+```
+
+#### Restructuring with `pivot_wider()` and `pivot_longer()`
+
+Let's take a look at how to move from untidy data to tidy data, and the reverse. The functions that allow you to do this, `pivot_wider()` and `pivot_longer()`, exist in the package `tidyr`. This package is included in `tidyverse`, along with many other helpful packages, so you can install and load `tidyverse`:
+
+```{r eval = FALSE}
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+Now you can learn how to restructure data. Begin with the first, tidy version:
+
+```{r, message = FALSE, warning = FALSE}
+penguins_sum
+```
+
+To make the untidy version, "pivot" this data from long to wide format using the `pivot_wider()` function from `tidyr`:
+
+```{r, warning = FALSE, message = FALSE}
+penguins_wide <- penguins_sum %>%
+  pivot_wider(id_cols = c("island", "year"), 
+              names_from = year, 
+              values_from = mean_body_mass_g)
+
+penguins_wide
+```
+
+Looking more closely at `pivot_wider()`
+
+- `id_cols` (read: ID columns) are the variables that, together, identify what makes a row unique in the original data
+- `names_from` determines what variable from the old data will determine the names of columns in the new data
+- `values_from` is the name of the variable in the old data that will be contained in cells in the new data
+
+If given this untidy table, you can tidy the data by pivoting from "wide" to "long" using `pivot_longer()`.
+
+```{r}
+penguins_wide %>%
+  pivot_longer(cols = c("2007", "2008", "2009"), 
+               names_to = "year",
+               values_to = "mean_body_mass_g")
+```
+
+As you might have noticed, `pivot_longer()` and `pivot_wider()` are inverse operations. Pivoting a widened dataset to a longer format gives you back the original dataset, and vice versa.
+
+If you are interested in learning more about tidy data and pivoting, see the [Tidy Data chapter](https://r4ds.had.co.nz/tidy-data.html) in R for Data Science.

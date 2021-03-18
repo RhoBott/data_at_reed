@@ -1,0 +1,50 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Reed RStudio server
+
+There are a couple of advantages to using R on the Reed RStudio Server:
+
+- Accessible from any computer with an internet connection
+- No need to install software
+- Provides some storage for files, data, and images
+- Useful for collaborative work (see notes below)
+
+To access the server, head to [rstudio.reed.edu](https://rstudio.reed.edu) and log in using your Kerberos credentials.
+
+#### Installing libraries
+
+Most of the libraries that you will need are already installed on the server. If you want to use a package that is not already on the server you can use `install.package("packagename")` to install a library within your own user space on the server. If you run into errors installing or using packages, contact our RStudio administrators at [rstudio-support@reed.edu](mailto:rstudio-support@reed.edu).
+
+#### Uploading data to the Reed Rstudio server
+
+You might have some data on your computer that you would like to work with on the server. To upload data from your computer:
+
+* log in to the [RStudio server](https://rstudio.reed.edu) to open an RStudio session
+* find the "Files" pane in the bottom right
+* navigate to the folder (on the server) where you want to store your data
+* click the "Upload" button (with a yellow, up-facing arrow beside it)
+* choose the file on your computer and click "Open"
+
+The data is now uploaded to the server. You can now load the data into R in the same way you would if you were working with data stored on your computer with the desktop version of R. See our [loading data](LINK-HERE) page for more information.
+
+#### Jointly editing documents
+
+One of the advantages to working on RStudio server is the ability to easily share projects with collaborators. When working on shared projects, we strongly recommend having **one** active editor for a project, because RStudio Server does not have the same simultaneous editing ability that a tool like Google Docs does. If the server detects that multiple editors are accessing the file, it will temporarily block further editing of that file and may not save your work. If the server gives you a saving error, copy and paste your code into a text editor or Google Doc. You can then close the file, wait for your partner to be done with their edits, and then reopen the file to implement your changes.
+
+If you are want to jointly edit documents, you can look into using [Git and GitHub](https://happygitwithr.com/rstudio-git-github.html).
+
+#### Help! The server is broken / down / having problems
+
+Every five minutes, the RStudio Server checks to make sure it is running smoothly; if there is a glitch, the server will restart. This restart should solve any server-level problems.
+
+#### Error occurred during transmission (broken sessions)
+
+At some point, you may encounter an error when you log in: RStudio initialization error, ‘Error occurred during transmission’. Sometimes RStudio user sessions encounter errors of some stripe; while this might be annoying, it is also a problem you can solve. To exit a misbehaving session or create a new session, visit [https://rstudio.reed.edu/home](https://rstudio.reed.edu/home).

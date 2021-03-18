@@ -1,0 +1,42 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+library(ggplot2)
+library(knitr)
+library(kableExtra)
+library(waffle)
+```
+
+### Graph customization 
+
+Once you have a basic graph, you may want to further alter its appearance. Some common customizations include:
+
+- changing axis labels, titles, and captions (using `labs()`)
+- specifying colors within the graph (e.g. with `scale_fill_manual`)
+- applying a `theme()` to the graph, changing its overall appearance (e.g. `theme_dark()`, `theme_bw()`, `theme_classic()`,`theme_minimal()`
+  
+You can also change individual aspects of your them inside of the `theme()` call. For specifics of working with `theme()`, see [the ggplot2 documentation](https://ggplot2.tidyverse.org/reference/theme.html).
+
+To see these customizations in action, start with the scatterplot showing penguin bill length and body mass by island (created above), and add a few lines to change title, color, and labels:
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(data = penguins, 
+       mapping = aes(x = bill_length_mm, y = body_mass_g, color = island)) +
+  geom_point(alpha = 0.7) +
+  scale_color_manual(values = c("magenta3", "darkorange", "blue4")) +
+  labs(x = "Bill length (mm)",
+       y = "Body mass (g)",
+       title = "Palmer Penguins",
+       subtitle = "Examining penguin body mass and bill length") + 
+  theme_bw()
+  
+```
+
+To read more about `ggplot2`, see the [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) chapter about data visualization. More extensive documentation can be found on the [ggplot2 website](https://ggplot2.tidyverse.org/).
