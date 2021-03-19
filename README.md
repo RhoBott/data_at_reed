@@ -8,8 +8,7 @@ Welcome to the Data at Reed GitHub repository. This contains the source code for
 
 ### 01\. Getting Started with R
 
-The RStudio Server, Desktop R, Script vs Markdown terminology,
-`thesisdown`, and meeting the `palmerpenguins`
+The RStudio Server, Desktop R, Script vs Markdown terminology, `thesisdown`, and meeting the `palmerpenguins`
 
 ### 02\. Loading Data
 
@@ -25,25 +24,17 @@ graphs with `ggplot2`, tables with `knitr` and `kableExtra`
 
 ### 05\. More Resources
 
-Learning more & getting connected- cheatsheets, online textbooks, and
-where to ask for help.
+Learning more & getting connected- cheatsheets, online textbooks, and where to ask for help.
 
 ## About the Data
 
-We’ll be using `palmerpenguins` to demonstrate important functions,
-instead of `iris`\! Here’s some
-[documentation](https://allisonhorst.github.io/palmerpenguins/articles/intro.html)
-for `palmerpenguins`, and some info on [why we’re not using
-iris](https://www.meganstodel.com/posts/no-to-iris/).
+We use `palmerpenguins` as an example dataset to demonstrate important functions instead of `iris`. Here’s some [documentation](https://allisonhorst.github.io/palmerpenguins/articles/intro.html) for `palmerpenguins`, and some info on [why we’re not using iris](https://www.meganstodel.com/posts/no-to-iris/).
 
-![](https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png)<!-- -->
+![](https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png)
 *Artwork by @allison\_horst*
 
 ## Credits
 
-Written by Kristen Bott, Simon Couch, Leila Shokat, Josh Yamamoto, and
-Ingrid Zoll
+Written by Kristen Bott, [Simon Couch](https://twitter.com/simonpcouch), Leila Shokat, [Josh Yamamoto](https://github.com/joshyam-k), and [Ingrid Zoll](https://github.com/zolli22)
 
-Palmer Penguins artwork by [Allison
-Horst](https://twitter.com/allison_horst) and [Julia
-Lowndes](https://twitter.com/juliesquid)
+Palmer Penguins artwork by [Allison Horst](https://twitter.com/allison_horst) and [Julia Lowndes](https://twitter.com/juliesquid)
