@@ -35,6 +35,6 @@ We use `palmerpenguins` as an example dataset to demonstrate important functions
 
 ## Credits
 
-Written by Kristen Bott, [Simon Couch](https://twitter.com/simonpcouch), Leila Shokat, [Josh Yamamoto](https://github.com/joshyam-k), and [Ingrid Zoll](https://github.com/zolli22)
+Written by [Kristen Bott](https://twitter.com/RhoBott), [Simon Couch](https://twitter.com/simonpcouch), [Leila Shokat](https://github.com/shokatl), [Josh Yamamoto](https://github.com/joshyam-k), and [Ingrid Zoll](https://github.com/zolli22)
 
 Palmer Penguins artwork by [Allison Horst](https://twitter.com/allison_horst) and [Julia Lowndes](https://twitter.com/juliesquid)
