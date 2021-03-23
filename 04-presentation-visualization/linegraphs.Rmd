@@ -18,7 +18,7 @@ library(waffle)
 
 Linegraphs also show the relationship between two continuous variables, often showing progression over time. You can create a linegraph in much the same way as a scatterplot by swapping out `geom_point()` for `geom_line()`.
 
-The below code is very similar to the scatterplot above, with two changes: (1) time (year) is now on the x-axis and (2) a different `geom` is being used to represent the same data. 
+The below code is very similar to that in the [Scatterplots](link) section, with two changes: (1) time (year) is now on the x-axis and (2) a different `geom` is being used to represent the same data. 
 
 ```{r, message = FALSE, warning = FALSE}
 ggplot(data = penguins, 

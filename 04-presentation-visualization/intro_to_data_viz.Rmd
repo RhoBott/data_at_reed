@@ -18,7 +18,7 @@ library(waffle)
 
 `ggplot2` is an R package for data visualization that makes appealing and effective graphs using a standardized syntax.
 
-First, load the package, which is necessary every time you start an R session. For this example, also load `palmerpenguins`, a package that contains a dataset about penguin populations on islands in Antarctica, as well as `tidyverse`, which contains many helpful functions covered in the [Data Wrangling section](link). To learn more about packages and the `palmerpenguins` package, see our [Getting Started](LINK-HERE) page.
+First, load the package, which is necessary every time you start an R session. For this example, also load `palmerpenguins`, a package that contains a dataset about penguin populations on islands in Antarctica, as well as `tidyverse`, which contains many helpful functions covered in the [Transforming data with `dplyr`](link) section. To learn more about packages and the `palmerpenguins` package, see our [Getting Started](LINK-HERE) page.
 
 ```{r, eval = FALSE}
 library(ggplot2)

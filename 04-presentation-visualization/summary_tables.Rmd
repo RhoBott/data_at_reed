@@ -16,7 +16,7 @@ library(waffle)
 
 ### Summary tables
 
-The [Data Wrangling](LINK-HERE) page shows how to compute summaries of your data. Summary tables can be useful for displaying data, and the `kable()` function in the R package `knitr` allows you to present tables with helpful formatting.
+The [Summarizing data](LINK-HERE) page shows how to compute summaries of your data. Summary tables can be useful for displaying data, and the `kable()` function in the R package `knitr` allows you to present tables with helpful formatting.
 
 First, install and load the package.
 
