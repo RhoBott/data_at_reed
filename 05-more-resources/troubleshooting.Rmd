@@ -1,0 +1,26 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Troubleshooting
+
+
+#### First steps
+
+
+#### Getting information about a function in R
+
+
+#### Troubleshooting variable types
+
+
+#### Locating the problem in a chunk of code
+
+
+#### Being aware of NAs
