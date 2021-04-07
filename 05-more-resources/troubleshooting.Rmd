@@ -6,6 +6,8 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
 ```
 
 ### Troubleshooting
@@ -14,30 +16,30 @@ knitr::opts_chunk$set(echo = TRUE)
 #### First steps
 
 
-#### Getting information about a function in R
+#### Getting information about a function in RStudio
 
-You can always look up a function name on the internet and read it's documentation, but most R-packages and functions have help files that can be accessed through the RStudio Console.
+You can always look up a function name on the internet and read it's documentation, but most R packages and functions have help files that can be accessed through the RStudio Console.
 
-For example if you can't quite remember what arguments should be used for a function you can type: `?function_name`, into the console and hit enter. This will load up the help file for that function in the RStudio Help panel which has several useful pieces of information:
+For example, if you can't quite remember what arguments should be used for a function, you can type `?function_name` into the console and hit enter. This will load up the help file for that function in the RStudio Help panel which has several useful pieces of information:
 
   - Usage: a general description of the function as well as it's default arguments
-  - Arguments: a more detailed breakdown of the function's inputs/arguments. This is particularly useful for finding out       what types of objects the function accepts as arguments.
+  - Arguments: a more detailed breakdown of the function's inputs/arguments. This is particularly useful for finding out what types of objects the function accepts as arguments
   - Value: A description of what the output of the function will be
-  - Examples: Some code that shows off a common way to use the function.
+  - Examples: Some code that shows off a common way to use the function
   
-For example, running
+For example, running the following code will bring up the help file for the `mean()` function.
 
 ```{r}
 ?mean
 ```
 
-will bring up the help file. A fairly common problem with using the `mean` function is to run something like:
+A fairly common problem with using the `mean` function is to run something like this:
 
 ```{r}
 mean(1,2,3)
 ```
 
-which will not break, but it will output 1 which we know is not the correct value. By looking at the help file we can figure out that the values that we want to find the mean of should all be in the first argument. We can see this both in the "Usage" section and also the "Examples' section. So what we should actually be doing is:
+The above code will not produce an error, but it will output 1 which we know is not the mean of 1, 2, and 3. By looking at the help file we can figure out that the values that we want to find the mean of should all be in the first argument. We can see this both in the "Usage" section and also the "Examples' section. So what we should actually be doing is this:
 
 ```{r}
 mean(c(1,2,3))
@@ -51,9 +53,9 @@ A fairly common error message to get is something along the lines of
 
 "argument is not ____ " or " non- ____ argument to a ___ function" or "NAs introduced by coercion"
 
-These often have to do with an argument or variable being the wrong type. For example if you might be trying to perform a mathematical operation of a character vector. There are a couple of good ways to check variables types:
+These often have to do with an argument or variable being the wrong type. For example, you might be trying to perform a mathematical operation (like taking the mean) on a character vector (like days of the week). There are a couple of good ways to check variable types:
 
-Using `class` we can check the type of vectors and values. For example the output of running the following chunk will be "numeric", "character", and "logical"
+Using `class` we can check the types of vectors and values. For example the output of running the following chunk will be "numeric", "character", and "logical"
 
 ```{r}
 class(1)
@@ -61,41 +63,56 @@ class("a")
 class(NA)
 ```
 
-This can be a bit tedious if you're working with a dataframe though, in which case it's easier to run something like
+We can use the same function to check the class of a variable in our dataset, using the following syntax:
 
-```{r}
+```{r eval = FALSE}
+class(data_frame_name$variable_name)
+```
+
+If you want an overview of all the variables in your dataset, you can use the `str()` function like this:
+
+```{r eval = FALSE}
 str(data_frame_name)
 ```
 
-which will give a breakdown of all the variables and their corresponding types.
+The above code will give a breakdown of all the variables and their corresponding types.
 
-Now in order to change a variable type, the suite of as.* functions is quite useful. Generally the syntax is `as.desired_type(object_that_needs_converting)`
+In order to fix an error with variable type, you will need to know how to change the type (or class) of a variable. The suite of as.* functions is quite useful. Generally the syntax is `as.desired_type(object_that_needs_converting)`.
 
-For example if we get stuck with a "1" instead of a 1, we could use 
+For example, if a column in our dataset has numbers, but R is treating them as characters (type "chr") instead, we can use the function `as.numeric()` like this:
 
-```{r}
-character_one <- "1"
-
-numeric_one <- as.numeric(character_one)
+```{r eval = FALSE}
+numeric_var <- as.numeric(character_var)
 ```
 
 Inside of a dataframe this often looks something like this:
 
-```{r}
-data_frame_converted <- old_data_frame %>% 
-  mutate(converted_type = as.numeric(old_object))
+```{r eval = FALSE}
+new_data_frame <- old_data_frame %>% 
+  mutate(numeric_var = as.numeric(character_var))
 ```
 
-This ties in nicely to the previous section where we detailed how to access the help files of a function. Help files will almost always describe what variable types are expected and so if you're trying to troubleshoot a function that isn't working, checking the help file and your argument types is always a good place to start.
+This ties in nicely to the previous section where we detailed how to access the help files of a function. Help files will almost always describe what variable types are expected by a function. If you're trying to troubleshoot a function that isn't working, checking the help file and your argument types is always a good place to start.
 
 #### Locating the problem in a chunk of code
 
 
 #### Being aware of NAs
 
+Sometimes errors can arise when you compute summary statistics on a dataset. Here is an example of one such error. Let's try to compute the mean of bill length and body mass in the `penguins` dataset.
 
+```{r}
+penguins %>%
+  summarise(mean_bill_length = mean(bill_length_mm),
+            mean_body_mass = mean(body_mass_g))
+```
 
+The resulting dataset shows `NA` values where our means should be. This happens because there are `NA`s in these columns. Luckily, there is a very easy fix for this, using the argumens `na.rm = TRUE`. This tells the `mean()` function to remove the `NA`s from its calculation. We can try the same summarization using `na.rm` like this:
 
+```{r}
+penguins %>%
+  summarise(mean_bill_length = mean(bill_length_mm, na.rm = TRUE),
+            mean_body_mass = mean(body_mass_g, na.rm = TRUE))
+```
 
-
-
+`na.rm` can be very useful when computing summary statistics, and is an argument that can be included in functions like `mean()`, `median()`, `sum()`, `min()`, `max()`, and more.
