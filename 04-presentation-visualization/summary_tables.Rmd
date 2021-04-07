@@ -12,9 +12,12 @@ library(ggplot2)
 library(knitr)
 library(kableExtra)
 library(waffle)
+library(gt)
 ```
 
 ### Summary tables
+
+#### kable and kableExtra
 
 The [Summarizing data](LINK-HERE) page shows how to compute summaries of your data. Summary tables can be useful for displaying data, and the `kable()` function in the R package `knitr` allows you to present tables with helpful formatting.
 
@@ -32,7 +35,8 @@ Here is the code for our summary statistic, which we will save in a new dataset 
 ```{r message = FALSE}
 penguin_sum <- penguins %>%
   group_by(island, year) %>%
-  summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
+  summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE)) %>% 
+  ungroup()
 ```
 
 You can print the dataset within R/RStudio:
@@ -87,4 +91,80 @@ kable(x = penguin_sum,
    kable_material_dark(html_font = "Cambria")
 ```
 
-To learn more about these and other customizations, see [the kableExtra vingette](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview).
+To learn more about these and other customizations, see [the kableExtra vignette](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview).
+
+#### gt
+
+Another approach for creating tables is the `gt` package. `gt` stands for "grammar of tables," and feels a lot like working with `ggplot`'s grammar of graphics.
+
+```{r}
+install.packages("gt")
+library(gt)
+```
+
+You can create a baseline table just by adding `gt()` on to the end of your code:
+
+```{r}
+penguin_sum %>% 
+  gt()
+```
+
+We can also adjust some of our column names and include a title by adding on to our baseline table. Notice that we can use the `md()` wrapper, which stands for "markdown," to use markdown styling in our tables; the `**` on either side will bold the `title` argument.
+
+```{r}
+penguin_sum %>% 
+  gt() %>% 
+  cols_label(
+    mean_body_mass_g = "Mean Body Mass (g)"
+    ) %>% 
+  tab_header(
+    title = md("**Mean body mass of penguins on different islands**"),
+    subtitle = "2007-2009"
+    ) 
+```
+
+Finally, we can do some grouping and then color our columns to help the viewer differentiate between the species. There are a couple of steps that need to be done before coloring our table.
+
+First, we need to install a few new packages and then choose a palette from the huge collection of available ones. 
+
+```{r}
+install.packages("paletteer")
+install.packages("scales")
+```
+
+You can run this line of code to look at all the color options:
+
+```{r, eval = FALSE}
+info_paletteer(color_pkgs = NULL)
+```
+
+The syntax is generally `packagename::palette` and you'll usually have to install the package before accessing the palette. Notice that we can specify how many colors we want with the `n = 3` argument.
+
+```{r}
+install.packages("ggsci")
+
+palette <- paletteer::paletteer_d("ggsci::teal_material", n = 3) %>%
+  as.character()
+```
+
+```{r}
+penguin_sum %>% 
+  gt() %>% 
+  cols_label(
+    mean_body_mass_g = "Mean Body Mass (g)"
+    ) %>% 
+  tab_header(
+    title = md("**Mean body mass of penguins on different islands**"),
+    subtitle = "2007-2009"
+    ) %>% 
+  data_color(
+    columns = "island",
+    colors = scales::col_factor(
+      as.character(palette),
+      domain = NULL
+    )
+  )
+```
+
+
+As with kable, there is a lot that you can do to customize your `gt` tables. We've only scratched the surface here, but there are a lot of great resources that go in depth on using the package---[the `gt` website](https://gt.rstudio.com/reference/index.html) is a good place to start.
