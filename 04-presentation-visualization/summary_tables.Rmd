@@ -95,7 +95,7 @@ To learn more about these and other customizations, see [the kableExtra vignette
 
 #### gt
 
-Another approach for creating tables is the `gt` package. `gt` stands for "grammar of tables," and feels a lot like working with `ggplot`'s grammar or graphics.
+Another approach for creating tables is the `gt` package. `gt` stands for "grammar of tables," and feels a lot like working with `ggplot`'s grammar of graphics.
 
 ```{r}
 install.packages("gt")
@@ -125,7 +125,7 @@ penguin_sum %>%
 
 Finally, we can do some grouping and then color our columns to help the viewer differentiate between the species. There are a couple of steps that need to be done before coloring our table.
 
-First, we need to install a few new packages and then choose a palette from the huge collection of available ones 
+First, we need to install a few new packages and then choose a palette from the huge collection of available ones. 
 
 ```{r}
 install.packages("paletteer")
@@ -168,7 +168,3 @@ penguin_sum %>%
 
 
 As with kable, there is a lot that you can do to customize your `gt` tables. We've only scratched the surface here, but there are a lot of great resources that go in depth on using the package---[the `gt` website](https://gt.rstudio.com/reference/index.html) is a good place to start.
-
-
-
-
