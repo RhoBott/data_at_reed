@@ -47,8 +47,55 @@ which works properly.
 
 #### Troubleshooting variable types
 
+A fairly common error message to get is something along the lines of
+
+"argument is not ____ " or " non- ____ argument to a ___ function" or "NAs introduced by coercion"
+
+These often have to do with an argument or variable being the wrong type. For example if you might be trying to perform a mathematical operation of a character vector. There are a couple of good ways to check variables types:
+
+Using `class` we can check the type of vectors and values. For example the output of running the following chunk will be "numeric", "character", and "logical"
+
+```{r}
+class(1)
+class("a")
+class(NA)
+```
+
+This can be a bit tedious if you're working with a dataframe though, in which case it's easier to run something like
+
+```{r}
+str(data_frame_name)
+```
+
+which will give a breakdown of all the variables and their corresponding types.
+
+Now in order to change a variable type, the suite of as.* functions is quite useful. Generally the syntax is `as.desired_type(object_that_needs_converting)`
+
+For example if we get stuck with a "1" instead of a 1, we could use 
+
+```{r}
+character_one <- "1"
+
+numeric_one <- as.numeric(character_one)
+```
+
+Inside of a dataframe this often looks something like this:
+
+```{r}
+data_frame_converted <- old_data_frame %>% 
+  mutate(converted_type = as.numeric(old_object))
+```
+
+This ties in nicely to the previous section where we detailed how to access the help files of a function. Help files will almost always describe what variable types are expected and so if you're trying to troubleshoot a function that isn't working, checking the help file and your argument types is always a good place to start.
 
 #### Locating the problem in a chunk of code
 
 
 #### Being aware of NAs
+
+
+
+
+
+
+
