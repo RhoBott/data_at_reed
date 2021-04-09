@@ -15,6 +15,22 @@ library(palmerpenguins)
 
 #### First steps
 
+Below we outline four different tips for approaching troubleshooting your code. That being said, sometimes when your code isn't working properly or you're getting a weird error it's just a small syntactical mistake.
+
+A good list of things to quickly look for are:
+
+  - Misspelled words
+  - Missing commas
+  - Unclosed and/or extra parentheses or brackets
+  - Missing pipes `%>%` to connect code
+  - Missing plus signs `+` to connect `ggplot()` code
+  - All necessary packages and data loaded
+  - Using the correct file path when trying to load in data or objects
+
+Additionally sometimes your RStudio can just get a little bit confused or backed up and so saving your work and restarting it can fix the problem.
+
+If you've run through the list of things to check and you're still getting an error or your code isn't functioning properly, it's time to move on to the steps outlined below.
+
 
 #### Getting information about a function in RStudio
 
@@ -96,7 +112,22 @@ This ties in nicely to the previous section where we detailed how to access the 
 
 #### Locating the problem in a chunk of code
 
+There are a couple of good practices for locating the problem in a chunk of code
 
+1. Not all error messages are helpful, but often times they will specify which function or operation is causing your    function to fail. 
+
+2. After getting an error you can run the function `traceback()` in the console and this will show you the steps that    led up to the error. This is especially useful when a long chunk of code is throwing you an error
+
+3. Add `print()` statements in your code. This can take a little bit of time to get used to, but the basic idea is 
+   that by adding something like `print("got to here!") in your code, you'll still get an error, but you'll be able 
+   to see if your code at least made it to that point successfully.
+   
+   Alternatively if you're creating objects in your code you can print those objects when they're created in the code
+   to check if they're outputting what you expect.
+
+4. Depending on what type of code you're writing you can always try using `#` to comment out lines of your code. If 
+   your code runs when you comment out a line, it's a good sign that the problem is happening there.
+   
 #### Being aware of NAs
 
 Sometimes errors can arise when you compute summary statistics on a dataset. Here is an example of one such error. Let's try to compute the mean of bill length and body mass in the `penguins` dataset.
