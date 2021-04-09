@@ -19,7 +19,7 @@ Below we outline four different tips for approaching troubleshooting your code. 
 
 A good list of things to quickly look for are:
 
-  - Misspelled words
+  - Misspelled words, functions, or names of datasets and variables
   - Missing commas
   - Unclosed and/or extra parentheses or brackets
   - Missing pipes `%>%` to connect code
@@ -27,9 +27,9 @@ A good list of things to quickly look for are:
   - All necessary packages and data loaded
   - Using the correct file path when trying to load in data or objects
 
-Additionally sometimes your RStudio can just get a little bit confused or backed up and so saving your work and restarting it can fix the problem.
+Additionally sometimes RStudio can just get a little bit confused or backed up, so saving your work and restarting RStudio can fix the problem. The "try turning it off and on again" method can sometimes be effective. 
 
-If you've run through the list of things to check and you're still getting an error or your code isn't functioning properly, it's time to move on to the steps outlined below.
+If you've run through the above list of things to check and you're still getting an error or your code isn't functioning properly, it's time to move on to the steps outlined below.
 
 
 #### Getting information about a function in RStudio
@@ -55,13 +55,14 @@ A fairly common problem with using the `mean` function is to run something like 
 mean(1,2,3)
 ```
 
-The above code will not produce an error, but it will output 1 which we know is not the mean of 1, 2, and 3. By looking at the help file we can figure out that the values that we want to find the mean of should all be in the first argument. We can see this both in the "Usage" section and also the "Examples' section. So what we should actually be doing is this:
+The above code will not produce an error, but it will output 1 which we know is not the mean of 1, 2, and 3. By looking at the help file we can figure out that the values that we want to find the mean of should all be in the first argument. We can see this both in the "Usage" section and also the "Examples' section. The correct code looks like this:
 
 ```{r}
 mean(c(1,2,3))
 ```
 
-which works properly.
+which works properly, outputting a mean of 2.
+
 
 #### Troubleshooting variable types
 
@@ -93,7 +94,14 @@ str(data_frame_name)
 
 The above code will give a breakdown of all the variables and their corresponding types.
 
-In order to fix an error with variable type, you will need to know how to change the type (or class) of a variable. The suite of as.* functions is quite useful. Generally the syntax is `as.desired_type(object_that_needs_converting)`.
+Some common variable types you will see are:  
+- "int" (integer)
+- "num" (numeric)  
+- "chr" (character)  
+- "Factor with [x] levels"  
+
+
+In order to fix an error with variable type, you will need to know how to change the type (or class) of a variable. The suite of `as.*` functions is quite useful. Generally the syntax is `as.desired_type(object_that_needs_converting)`.
 
 For example, if a column in our dataset has numbers, but R is treating them as characters (type "chr") instead, we can use the function `as.numeric()` like this:
 
@@ -101,7 +109,7 @@ For example, if a column in our dataset has numbers, but R is treating them as c
 numeric_var <- as.numeric(character_var)
 ```
 
-Inside of a dataframe this often looks something like this:
+Inside of a dataframe, this code often looks something like this:
 
 ```{r eval = FALSE}
 new_data_frame <- old_data_frame %>% 
@@ -125,8 +133,7 @@ There are a couple of good practices for locating the problem in a chunk of code
    Alternatively if you're creating objects in your code you can print those objects when they're created in the code
    to check if they're outputting what you expect.
 
-4. Depending on what type of code you're writing you can always try using `#` to comment out lines of your code. If 
-   your code runs when you comment out a line, it's a good sign that the problem is happening there.
+4. Depending on what type of code you're writing you can always try using `#` at the start of a line to comment out lines of your code. If your code runs after you comment out a line, it's a good sign that the problem is happening there.
    
 #### Being aware of NAs
 
@@ -138,7 +145,7 @@ penguins %>%
             mean_body_mass = mean(body_mass_g))
 ```
 
-The resulting dataset shows `NA` values where our means should be. This happens because there are `NA`s in these columns. Luckily, there is a very easy fix for this, using the argumens `na.rm = TRUE`. This tells the `mean()` function to remove the `NA`s from its calculation. We can try the same summarization using `na.rm` like this:
+The resulting dataset shows `NA` values where our means should be. This happens because there are `NA`s in these columns. Luckily, there is a very easy fix for this, using the argument `na.rm = TRUE`. This tells the `mean()` function to remove the `NA`s from its calculation. We can try the same summarization using `na.rm` like this:
 
 ```{r}
 penguins %>%
@@ -146,4 +153,5 @@ penguins %>%
             mean_body_mass = mean(body_mass_g, na.rm = TRUE))
 ```
 
-`na.rm` can be very useful when computing summary statistics, and is an argument that can be included in functions like `mean()`, `median()`, `sum()`, `min()`, `max()`, and more.
+`na.rm` can be very useful when computing summary statistics, and is an argument that can be included in functions like `mean()`, `median()`, `sum()`, `min()`, `max()`, and more. 
+
