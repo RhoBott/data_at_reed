@@ -15,6 +15,19 @@ library(palmerpenguins)
 
 #### First steps
 
+Below we outline four different tips for approaching troubleshooting your code. That being said, sometimes when your code isn't working properly or you're getting a weird error it's just a small syntactical mistake.
+
+A good list of things to quickly run through are the following:
+
+  - Have I misspelled any words in my code?
+  - Am I missing a comma in my code?
+  - Do I have unclosed and/or extra parentheses or brackets?
+  - Am I missing a pipe `%>%` to connect some of my code or a plus `+` to connect lines in my `ggplot()` code
+
+Additionally sometimes your RStudio can just get a little bit confused or backed up and so saving your work and restarting it can fix the problem.
+
+If you've run through the list of things to check and you're still getting an error or your code isn't functioning properly, it's time to move on to the steps outlined below.
+
 
 #### Getting information about a function in RStudio
 
