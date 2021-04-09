@@ -17,12 +17,15 @@ library(palmerpenguins)
 
 Below we outline four different tips for approaching troubleshooting your code. That being said, sometimes when your code isn't working properly or you're getting a weird error it's just a small syntactical mistake.
 
-A good list of things to quickly run through are the following:
+A good list of things to quickly look for are:
 
-  - Have I misspelled any words in my code?
-  - Am I missing a comma in my code?
-  - Do I have unclosed and/or extra parentheses or brackets?
-  - Am I missing a pipe `%>%` to connect some of my code or a plus `+` to connect lines in my `ggplot()` code
+  - Misspelled words
+  - Missing commas
+  - Unclosed and/or extra parentheses or brackets
+  - Missing pipes `%>%` to connect code
+  - Missing plus signs `+` to connect `ggplot()` code
+  - All necessary packages and data loaded
+  - Using the correct file path when trying to load in data or objects
 
 Additionally sometimes your RStudio can just get a little bit confused or backed up and so saving your work and restarting it can fix the problem.
 
