@@ -44,3 +44,8 @@ ggplot(data = penguins_sum,
        mapping = aes(x = year, y = mean_body_mass_g, color = island)) +
   geom_line()
 ```
+
+
+You may come across problems with your linegraphs when your x-variable is categorical. This issue can be resolved by adding `group = 1` into your `aes()` call.
+
+

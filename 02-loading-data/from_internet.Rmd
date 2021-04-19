@@ -10,7 +10,23 @@ output: html_document
 
 If you find data that you would like to use on a website, package `rvest` can bring that table into R. (This both saves you the process/frustration of copying/pasting data from a webpage, and also makes your work less error-prone and more reproducible.)
 
-NOTE: Before you take data from a website, make sure you are allowed to scrape and analyze the data. You can read more about scraping data from the web [here](https://libguides.reed.edu/copyright/images-data#s-lg-box-wrapper-29860611). If you still have questions about the legality of a web-scraping workflow after reading this documentation, you can contact Reed's [data librarian](https://library.reed.edu/about/staff/lebow.html).
+NOTE: Before you take data from a website, make sure you are allowed to scrape and analyze the data.
+
+Luckily there's a package that makes this process fairly straightforward. First we need to install it
+
+```{r}
+install.packages("robotstxt")
+```
+
+and then we can use the function `paths_allowed()` with the url to the website to check if scraping is allowed.
+
+```{r}
+robotstxt::paths_allowed("url_to_website")
+```
+
+This will return either TRUE or FALSE.
+
+You can read more about scraping data from the web [here](https://libguides.reed.edu/copyright/images-data#s-lg-box-wrapper-29860611). If you still have questions about the legality of a web-scraping workflow after reading this documentation, you can contact Reed's [data librarian](https://library.reed.edu/about/staff/lebow.html).
 
 First, install and load the `rvest` package: 
 

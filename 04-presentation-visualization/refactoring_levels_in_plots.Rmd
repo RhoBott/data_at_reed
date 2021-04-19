@@ -1,0 +1,53 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+library(knitr)
+```
+
+When making barplots or boxplots with multiple levels it isn't uncommon for your plot output your bars or boxplots in an order that you don't want. A common example of this is a barplot that you wish were ordered by height of the bars. There is a whole family of functions within the `forcats` package that helps with these types of problems.
+
+
+#### Reordering Barplots
+
+For example say we wanted to make a plot comparing how many different species we have in the `palmerpenguins` dataset. Notice that the bars are ordered alphabetically when we'd rather have them ordered by `n`.
+
+```{r}
+penguins %>% 
+  count(species) %>% 
+  ggplot(aes(x = species, y = n)) +
+  geom_col()
+```
+
+When we want to order a categorical variable by some quantitative variable `fct_reorder` is the best option. Generally the syntax is as follows:
+
+```
+fct_reorder(categorical_variable_to_be_ordered, quantitative_variable_to_order_other_variable_by)
+```
+
+We'll use the function inside of `mutate` since we're changing the underlying levels attached to our data.
+
+```{r}
+penguins %>% 
+  count(species) %>% 
+  mutate(species_ordered = fct_reorder(species, n)) %>%
+  ggplot(aes(x = species_ordered, y = n)) +
+  geom_col()
+```
+
+And as desired, our bars are now in order. If we wanted them to be in descending rather than ascending order we can just add a minus sign in from of the `n`:
+
+```{r}
+penguins %>% 
+  count(species) %>% 
+  mutate(species_ordered = fct_reorder(species, -n)) %>%
+  ggplot(aes(x = species_ordered, y = n)) +
+  geom_col()
+```
+
+
+

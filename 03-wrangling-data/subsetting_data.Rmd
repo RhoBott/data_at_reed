@@ -70,3 +70,10 @@ You can also list out which variables you would like to subset, for example `spe
 penguins %>%
   select(species, island, sex)
 ```
+
+
+To recap, subsetting columns is done with `select` and subsetting rows is done with `filter`.
+
+
+
+

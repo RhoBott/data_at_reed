@@ -27,7 +27,7 @@ A good list of things to quickly look for are:
   - All necessary packages and data loaded
   - Using the correct file path when trying to load in data or objects
 
-Additionally sometimes RStudio can just get a little bit confused or backed up, so saving your work and restarting RStudio can fix the problem. The "try turning it off and on again" method can sometimes be effective. 
+Additionally sometimes RStudio can just get a little bit confused or backed up, so saving your work and restarting RStudio can fix the problem. The age-old "try turning it off and on again" method can sometimes be the answer. 
 
 If you've run through the above list of things to check and you're still getting an error or your code isn't functioning properly, it's time to move on to the steps outlined below.
 
