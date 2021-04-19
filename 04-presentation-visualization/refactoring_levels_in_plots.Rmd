@@ -14,7 +14,7 @@ When making barplots or boxplots with multiple levels it isn't uncommon for your
 
 #### Reordering Barplots
 
-For example say we wanted to make a plot comparing how many different species we have in the `palmerpenguins` dataset. Notice that the bars are ordered alphabetically when we'd rather have them ordered by `n`.
+For example, say we wanted to make a plot comparing how many penguins of each species we have in the `palmerpenguins` dataset. Notice that the bars are ordered alphabetically when we'd rather have them ordered by `n`, which is the number of penguins of each species.
 
 ```{r}
 penguins %>% 
