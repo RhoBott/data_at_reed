@@ -19,7 +19,7 @@ library(gt)
 
 #### kable and kableExtra
 
-The [Summarizing data](LINK-HERE) page shows how to compute summaries of your data. Summary tables can be useful for displaying data, and the `kable()` function in the R package `knitr` allows you to present tables with helpful formatting.
+The [Summarizing data](https://www.reed.edu/data-at-reed/resources/R/summarizing-data.html) page shows how to compute summaries of your data. Summary tables can be useful for displaying data, and the `kable()` function in the R package `knitr` allows you to present tables with helpful formatting.
 
 First, install and load the package.
 
@@ -28,9 +28,9 @@ install.packages("knitr")
 library(knitr)
 ```
 
-Using the `palmerpenguins` data, calculate the mean value of penguin body mass (g) across islands over time. (For more on calculating summary statistics, see the [Data Wrangling](LINK-HERE) section.)
+Using the `palmerpenguins` data, calculate the mean value of penguin body mass (g) across islands over time. (For more information on calculating summary statistics, see the [Data Wrangling](https://www.reed.edu/data-at-reed/resources/R/transforming-data-with-dplyr.html)) section.)  
 
-Here is the code for our summary statistic, which we will save in a new dataset called `penguin_sum`.
+Here is the code for our summary statistic, which we will save in a new dataset called `penguin_sum`.  
 
 ```{r message = FALSE}
 penguin_sum <- penguins %>%
@@ -72,7 +72,7 @@ kable(x = penguin_sum,
   kable_styling()
 ```
 
-Some other options to consider as alternatives to `kable_styling()`: `kable_classic()`, `kable_paper()`, `kable_classic_2()`,`kable_minimal()`, `kable_material()` and `kable_material_dark()`. 
+Some other options to consider as alternatives to `kable_styling()` are: `kable_classic()`, `kable_paper()`, `kable_classic_2()`,`kable_minimal()`, `kable_material()` and `kable_material_dark()`. 
 
 To change the width of the table, add `full_width = FALSE` within your `kable_styling()` (or similar) argument. Additional options with `kableExtra` include changing the font:
 
@@ -93,6 +93,7 @@ kable(x = penguin_sum,
 
 To learn more about these and other customizations, see [the kableExtra vignette](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview).
 
+
 #### gt
 
 Another approach for creating tables is the `gt` package. `gt` stands for "grammar of tables," and feels a lot like working with `ggplot`'s grammar of graphics.
@@ -102,14 +103,14 @@ install.packages("gt")
 library(gt)
 ```
 
-You can create a baseline table just by adding `gt()` on to the end of your code:
+You can create a basic table just by adding `gt()` on to the end of your code:
 
 ```{r}
 penguin_sum %>% 
   gt()
 ```
 
-We can also adjust some of our column names and include a title by adding on to our baseline table. Notice that we can use the `md()` wrapper, which stands for "markdown," to use markdown styling in our tables; the `**` on either side will bold the `title` argument.
+We can also adjust some of our column names and include a title by adding on to our baseline table. Notice that we can use the `md()` wrapper, which stands for "markdown," to use markdown styling in our tables; the `**` on either side will bold the `title` argument. One `*` on either side will italicize the text.
 
 ```{r}
 penguin_sum %>% 
