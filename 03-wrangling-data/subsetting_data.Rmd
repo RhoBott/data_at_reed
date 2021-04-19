@@ -48,6 +48,16 @@ penguins %>%
   filter(is.na(sex))
 ```
 
+Logical and Boolean operators are used with `filter()`. The two pieces of code below (`?base::Logic` and `?Comparison`) give more information on the different operators and their uses. 
+
+```{r}
+?base::Logic
+
+?Comparison
+```
+
+
+
 Another way that you can subset your data is by subsetting columns, or variables. A dataset may have more variables than you need, so you can use the `select()` function to subset data to only variables of interest.
 
 To subset only species information from your dataset, you can use the following code:

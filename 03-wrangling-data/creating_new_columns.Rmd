@@ -13,12 +13,14 @@ library(knitr)
 
 Another common data wrangling task is to create a new variable using the `mutate()` function. When creating a new variable, you provide a name for the new column and a method for calculating the new value. 
 
-Continuing with the penguins data, the below creates a new column for the mean body mass in kilograms:
+Continuing with the penguins data from `palmerpenguins`, the code below creates a new column for the mean body mass in kilograms:
 
 ```{r}
 penguins %>%
   mutate(body_mass_kg = (body_mass_g / 1000))
 ```
+The syntax for mutating an existing column and creating a new column follows the pattern of `mutate(newcolumn = oldcolumn * operation)`, with "operation" being whatever change you are making to the old column to create the new column.
+
 
 Perhaps you realized that all flipper measurements were 4 mm short of the true length; you could use `mutate()` to adjust the data:
 
@@ -35,12 +37,12 @@ penguins %>%
   mutate(island_penguin_mass = sum(body_mass_g, na.rm = T))
 ```
 
-It may be useful to give R rules for creating new variables. For example, the below code divides all penguins into flipper length categories, based on the mean flipper length of the dataset (201mm), using the `case_when()` function. You can think of `case_when` as being a multilevel `if` statement.
+It may be useful to give R rules for creating new variables. For example, the below code divides all penguins into flipper length categories, based on the mean flipper length of the dataset (201mm), using the `case_when()` function. You can think of `case_when` as being a multilevel `if` statement. Essentially, the `case_when()` function in the code below is saying "for each observation (row), when the variable `flipper_length_mm` meets a certain condition (greater than, equal to, or less than 201mm), the new column should have the specified category - 'long', 'average', or 'short'." 
 
 ```{r}
 penguins %>%
   mutate(flipper_category =
-           case_when( flipper_length_mm > 201 ~ "short",
-                      flipper_length_mm < 201 ~ "long",
-                      flipper_length_mm == 201 ~ "average"))
+           case_when( flipper_length_mm > 201 ~ "long",
+                      flipper_length_mm == 201 ~ "average",
+                      flipper_length_mm < 201 ~ "short"))
 ```
