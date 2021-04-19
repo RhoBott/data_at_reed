@@ -32,10 +32,10 @@ You can also combine `mutate()` with other functions. The below code calculates 
 ```{r}
 penguins %>%
   group_by(island) %>%
-  mutate(island_penguin_mass = sum(body_mass_g))
+  mutate(island_penguin_mass = sum(body_mass_g, na.rm = T))
 ```
 
-It may be useful to give R rules for creating new variables. For example, the below code divides all penguins into flipper length categories, based on the mean flipper length of the dataset (201mm), using the `case_when()` function.
+It may be useful to give R rules for creating new variables. For example, the below code divides all penguins into flipper length categories, based on the mean flipper length of the dataset (201mm), using the `case_when()` function. You can think of `case_when` as being a multilevel `if` statement.
 
 ```{r}
 penguins %>%

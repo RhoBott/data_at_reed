@@ -27,11 +27,11 @@ Changing either the number of bins, or the width of those bins, can greatly affe
 
 ```{r, warning = FALSE}
 ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
-  geom_histogram(bins=100)
+  geom_histogram(bins = 100)
 ```
 ```{r, warning = FALSE}
 ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
-  geom_histogram(binwidth=200)
+  geom_histogram(binwidth = 200)
 ```
 
 When creating a histogram of your data, you will likely want to try different binning schemes to see what provides the best visual representation of your data.

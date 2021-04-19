@@ -40,3 +40,16 @@ ggplot(data = penguins, mapping  = aes(x = island, y = body_mass_g, color = sex)
 ```
 
 (The dots you see as part of the boxplots are outliers, which `geom_boxplot` defines as being outside of 150% the value of the interquartile range [IQR], the difference between the 1st [25%] and the 3rd [75%] quartile of your data.)
+
+
+A common problem when creating multiple boxplots on the same graph is that even though you supply an x-variable, your plot only has one boxplot. This usually happens when the x-variable is not a factor. One option for a fix is to have `ggplot` interpret the variable as a factor :
+
+```{r}
+ggplot(data = penguins, mapping  = aes(x = factor(island), y = body_mass_g)) +
+  geom_boxplot()
+```
+
+
+
+
+
