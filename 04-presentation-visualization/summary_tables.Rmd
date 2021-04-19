@@ -35,7 +35,7 @@ Here is the code for our summary statistic, which we will save in a new dataset 
 ```{r message = FALSE}
 penguin_sum <- penguins %>%
   group_by(island, year) %>%
-  summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE)) %>% 
+  summarize(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE)) %>% 
   ungroup()
 ```
 

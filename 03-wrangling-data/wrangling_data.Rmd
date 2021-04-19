@@ -250,7 +250,7 @@ With the grouping defined, apply the `summarize()` function to calculate mean bo
 ```{r message = FALSE}
 penguins %>%
   group_by(island) %>%
-  summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
+  summarize(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
 ```
 
 Missing values (`NA`) are an important consideration in data analysis. In the above code, the `na.rm = TRUE` removes any missing values in `body_mass_g` so R is free to calculate the mean of the body mass data that is in the dataset. (To experiment with the effect of `na.rm = TRUE`, run the above code without that argument.)
@@ -260,7 +260,7 @@ You can extend the above approach to group by _both_ island and year:
 ```{r message = FALSE}
 penguins %>%
   group_by(island, year) %>%
-  summarise(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
+  summarize(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE))
 ```
 
 ---

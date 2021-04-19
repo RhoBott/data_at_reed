@@ -141,7 +141,7 @@ Sometimes errors can arise when you compute summary statistics on a dataset. Her
 
 ```{r}
 penguins %>%
-  summarise(mean_bill_length = mean(bill_length_mm),
+  summarize(mean_bill_length = mean(bill_length_mm),
             mean_body_mass = mean(body_mass_g))
 ```
 
@@ -149,7 +149,7 @@ The resulting dataset shows `NA` values where our means should be. This happens 
 
 ```{r}
 penguins %>%
-  summarise(mean_bill_length = mean(bill_length_mm, na.rm = TRUE),
+  summarize(mean_bill_length = mean(bill_length_mm, na.rm = TRUE),
             mean_body_mass = mean(body_mass_g, na.rm = TRUE))
 ```
 
