@@ -17,9 +17,10 @@ Continuing with the penguins data from `palmerpenguins`, the code below creates 
 
 ```{r}
 penguins %>%
-  mutate(body_mass_kg = (body_mass_g / 1000))
+  mutate(body_mass_kg = body_mass_g / 1000)
 ```
-The syntax for mutating an existing column and creating a new column follows the pattern of `mutate(newcolumn = oldcolumn * operation)`, with "operation" being whatever change you are making to the old column to create the new column.
+
+The syntax for mutating a column follows the pattern of `mutate(new_column_name = expression)`, where `expression` is some sort of instruction for combining values in existing columns. In the above example, `new_column_name` is `body_mass_kg`, and `expression` is `body_mass_g / 1000`.
 
 
 Perhaps you realized that all flipper measurements were 4 mm short of the true length; you could use `mutate()` to adjust the data:
@@ -37,7 +38,7 @@ penguins %>%
   mutate(island_penguin_mass = sum(body_mass_g, na.rm = T))
 ```
 
-It may be useful to give R rules for creating new variables. For example, the below code divides all penguins into flipper length categories, based on the mean flipper length of the dataset (201mm), using the `case_when()` function. You can think of `case_when` as being a multilevel `if` statement. Essentially, the `case_when()` function in the code below is saying "for each observation (row), when the variable `flipper_length_mm` meets a certain condition (greater than, equal to, or less than 201mm), the new column should have the specified category - 'long', 'average', or 'short'." 
+It may be useful to give R rules for creating new variables. For example, the below code divides all penguins into flipper length categories, based on the mean flipper length of the dataset (201mm), using the `case_when()` function. You can think of `case_when` as being a multilevel `if` statement. Essentially, the `case_when()` function in the code below is saying "for each observation (row), when the variable `flipper_length_mm` meets a certain condition (greater than, equal to, or less than 201mm), the new column should contain the respective category---`"long"`, `"average"`, or `"short"`.
 
 ```{r}
 penguins %>%

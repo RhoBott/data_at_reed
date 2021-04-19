@@ -50,7 +50,7 @@ penguins %>%
 
 Logical and Boolean operators are used with `filter()`. The two pieces of code below (`?base::Logic` and `?Comparison`) give more information on the different operators and their uses. 
 
-```{r}
+```{r, eval = FALSE}
 ?base::Logic
 
 ?Comparison
