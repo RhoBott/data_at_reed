@@ -23,7 +23,7 @@ To access the server, head to [rstudio.reed.edu](https://rstudio.reed.edu) and l
 
 #### Installing libraries
 
-Most of the libraries that you will need are already installed on the server. If you want to use a package that is not already on the server you can use `install.package("packagename")` to install a library within your own user space on the server. You can also uninstall a package using `remove.packages("packagename")`. If you run into errors installing or using packages, contact our RStudio administrators at [rstudio-support@reed.edu](mailto:rstudio-support@reed.edu).
+Most of the libraries that you will need are already installed on the server. If you want to use a package that is not already on the server you can use `install.package("packagename")` to install a library within your own user space on the server. You can also uninstall a package using `remove.packages("packagename")`. If you run into errors installing or using packages, contact our RStudio administrators at [rstudio-support@reed.edu](mailto:rstudio-support@reed.edu). You only need to install packages once, but you need to load them using `library(packagename)` every time you want to use them.
 
 #### Uploading data to the Reed Rstudio server
 
