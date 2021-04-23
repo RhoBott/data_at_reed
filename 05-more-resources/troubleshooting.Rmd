@@ -96,6 +96,7 @@ str(data_frame_name)
 The above code will give a breakdown of all the variables and their corresponding types.
 
 Some common variable types you will see are:  
+
 - "int" (integer)
 - "num" (numeric)  
 - "chr" (character)  
@@ -143,7 +144,7 @@ penguins %>%
             mean_body_mass = mean(body_mass_g))
 ```
 
-The resulting dataset shows `NA` values where our means should be. This happens because there are `NA`s in these columns. Luckily, there is a very easy fix for this: using the argument `na.rm = TRUE`. This tells the `mean()` function to remove the `NA`s from its calculation. We can try the same summarization using `na.rm` like this:
+The resulting dataset shows `NA` values where our means should be. This happens because there are `NA`s in these columns. Even just one `NA` will get in the way of our calculations. Luckily, there is a very easy fix for this: using the argument `na.rm = TRUE`. This tells the `mean()` function to remove the `NA`s from its calculation. We can try the same summarization using `na.rm` like this:
 
 ```{r}
 penguins %>%
