@@ -9,12 +9,13 @@ library(tidyverse)
 library(knitr)
 ```
 
-When making barplots or boxplots with multiple levels it isn't uncommon for your plot output your bars or boxplots in an order that you don't want. A common example of this is a barplot that you wish were ordered by height of the bars. There is a whole family of functions within the `forcats` package that helps with these types of problems.
+### Reordering Categories in a Plot
 
+When making barplots or boxplots with multiple categories it isn't uncommon for ggplot to put your categories in an order that you don't want. Common examples of this are a boxplot that you wish were ordered by height of the bars, or a barplot where the days of the week are displayed out of order. There is a whole family of functions within the `forcats` package that helps with these types of problems.
 
-#### Reordering Barplots
+#### Reordering by another variable
 
-For example, say we wanted to make a plot comparing how many penguins of each species we have in the `palmerpenguins` dataset. Notice that the bars are ordered alphabetically when we'd rather have them ordered by `n`, which is the number of penguins of each species.
+Let's make a plot comparing how many penguins of each species we have in the `palmerpenguins` dataset. Notice that the bars are ordered alphabetically when we'd rather have them ordered by `n`, which is the number of penguins of each species.
 
 ```{r}
 penguins %>% 
@@ -23,7 +24,7 @@ penguins %>%
   geom_col()
 ```
 
-When we want to order a categorical variable by some quantitative variable `fct_reorder` is the best option. Generally the syntax is as follows:
+When we want to order a categorical variable (`species`) by some quantitative variable (`n`) `fct_reorder()` is the best option. Generally the syntax is as follows:
 
 ```
 fct_reorder(categorical_variable_to_be_ordered, quantitative_variable_to_order_other_variable_by)
@@ -39,7 +40,7 @@ penguins %>%
   geom_col()
 ```
 
-And as desired, our bars are now in order. If we wanted them to be in descending rather than ascending order we can just add a minus sign in from of the `n`:
+And as desired, our bars are now in order. If we wanted them to be in descending rather than ascending order we can just add a minus sign in from of the `n` in `fct_reorder()`:
 
 ```{r}
 penguins %>% 
@@ -50,4 +51,6 @@ penguins %>%
 ```
 
 
+#### Reordering manually
 
+#maybe use days of the week example or "control" "A" "B" treatments here
