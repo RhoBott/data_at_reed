@@ -12,6 +12,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Throughout these tutorials, we will be making use of a dataset called `penguins` from the `palmerpenguins` package. The dataset contains various different measurements for penguins of three species on three islands in the Palmer Archipelago, Antarctica.
 
+The `penguins` dataset is excellent for learning and practicing new skills in R. It contains both categorical and numeric variables, and has numerous uses, from calculating statistics to creating data visualizations. More information about the package and its data can be found on its [github repository](https://github.com/allisonhorst/palmerpenguins) or through some additional [documentation](https://allisonhorst.github.io/palmerpenguins/articles/intro.html). You can read about why we're not using `iris`, another common example dataset, with [this blogpost by Megan Stodel](https://www.meganstodel.com/posts/no-to-iris/). 
+
 ```{r, echo = FALSE}
 url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"
 
