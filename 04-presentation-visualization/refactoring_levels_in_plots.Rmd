@@ -3,7 +3,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 library(palmerpenguins)
 library(tidyverse)
 library(knitr)
@@ -132,17 +132,3 @@ days_of_week %>%
   ggplot(aes(x = fct_relevel(.f = days, levels = day_order), y = hours_worked)) +
   geom_col()
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
