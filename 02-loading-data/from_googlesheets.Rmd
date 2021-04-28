@@ -19,6 +19,12 @@ install.packages("googlesheets4")
 library(googlesheets4)
 ```
 
+__Important side note if you are working in the Reed RStudio Server:__ In addition to loading the `googlesheets4` package, include the following line of code at the top of your document. This is necessary to tell the R that you want to use something called out-of-band authentication (or "oob auth"). If you would like to read more about what this means, check out [this blog post](https://gargle.r-lib.org/articles/auth-from-web.html). Otherwise, just enjoy this silly line of code at the top of your document:
+
+```{r}
+options(gargle_oob_default = TRUE)
+```
+
 Loading data from Google Sheets is a bit more complicated because of document ownership and privacy around user Google accounts. However, `googlesheets4` navigates this very elegantly. 
 
 When you are using the following function, you will want to make sure you can see your console (in RStudio), because you will need to grant R access to your Google Sheets. If you cannot see your console, click the small double-window icon at the right of the gray bar that says "Console" below your current document. 
