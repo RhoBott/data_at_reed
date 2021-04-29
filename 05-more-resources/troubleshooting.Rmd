@@ -12,33 +12,33 @@ library(palmerpenguins)
 
 ### Troubleshooting
 
-Deciphering error messages in R, especially the first time you see them, can be a perplexing and time-consuming task. Here our team offers some tips and tricks to hopefully make your debugging experiences a bit less painful.
+Deciphering error messages in R, especially the first time you see them, can be perplexing and time-consuming. Here our team offers some tips to hopefully make your debugging experiences a bit less painful.
 
 #### First steps
 
-First, we recommend looking for errors in syntax; these are often small.
+First, we recommend looking for common, small errors.
 
 Start by checking your code for:
 
-  - Misspellings: words, functions, or names of datasets and variables. (Note that objects in R are case-sensitive; `data` and `Data` are not interchangeable.)
-  - Commas: missing or duplicate
-  - Parentheses / brackets: missing or duplicate
-  - Pipes `%>%`, used to connect code: do you have the connections you need?
-  - Within `ggplot()` code: are you missing plus signs `+` (used to connect plotting code)
+  - Misspellings: Are words, functions, and names of datasets and variables spelled correctly? (Note that objects in R are case-sensitive; `data` and `Data` are distinct.)
+  - Commas: Any missing, any extra?
+  - Parentheses / brackets: Any unmatched? (This could be too few, or too many)
+  - Pipes `%>%`, used to connect code: Do you have the connections you need?
+  - Within `ggplot()` code: Do you have the correcte number of plus signs `+`? (used to connect plotting code)
   - Packages and data: Have you loaded everything you are using? (If not, you may get an error like "could not find function" or "object not found")
-  - File paths: when loading in data or objects, are you asking R to look in the correct place?
+  - File paths: When loading in data or objects, are you asking R to look in the correct place?
 
-Sometimes, your R session can just get a bit backed up; in that case, saving your work and restarting RStudio may fix the problem. (Yes, "try turning it off and on again" _is_ sometimes the answer.)
+Sometimes, your R session can get a bit clogged up; in that case, saving your work and restarting RStudio may fix the problem. (Yes, sometimes "try turning it off and on again" _is_ the solution)
 
 If you have checked the above list and you are still encountering an error, or your code isn't functioning properly, consider the below four approaches for further troubleshooting.
 
 #### Getting information about a function in RStudio
 
-You can always look up a function name on the internet and read its documentation, but most R packages and functions have help files that can be accessed through the R Console.
+Reading the details behind a function can help with troubleshooting. While you can also look up documentation on the internet, most R packages and functions have help files that can be accessed through the R Console.
 
-For example, if you can't quite remember what arguments should be used for a function, you can type `?function_name` into the console and hit enter. This will load up the help file for that function in the RStudio Help panel which has several useful pieces of information:
+Once you have loaded a package into your environment, you can type `?function_name` into the console and hit enter/return. This will load the help file for that function in the RStudio Help panel, containing several useful pieces of information:
 
-  - Usage: a general description of the function as well as it's default arguments
+  - Usage: a general description of the function as well as its default arguments
   - Arguments: a more detailed breakdown of the function's inputs/arguments. This is particularly useful for finding out what types of objects the function accepts as arguments
   - Value: A description of what the output of the function will be
   - Examples: Some code that shows off a common way to use the function
@@ -55,24 +55,24 @@ A fairly common problem with using the `mean()` function is to run something lik
 mean(1, 2, 3)
 ```
 
-The above code will not produce an error, but it will output 1 which we know is not the mean of 1, 2, and 3. By looking at the help file we can figure out that the values that we want to find the mean of should all be in the first argument. We can see this both in the "Usage" section and also the "Examples' section. The correct code makes use of the `c()` function to concatenate 1, 2, and 3 into one argument:
+The above code will not produce an error, but it will return "1" which we know is not the mean of 1, 2, and 3. The help file specifies that the values used to find the mean of should all be in the first argument (before any commas). (In the "mean" help documentation, you can see this in both the "Usage" and the "Examples" section). The correct code makes use of the `c()` function to concatenate 1, 2, and 3 into one argument:
 
 ```{r}
 mean(c(1, 2, 3))
 ```
 
-The above code works properly, outputting a mean of 2.
+The above code works properly, returning a mean value of 2.
 
 
 #### Troubleshooting variable types
 
-A fairly common error message to get is something along the lines of
+A fairly common error message to get is something along the lines of"
 
 "argument is not ____ " or " non- ____ argument to a ___ function" or "NAs introduced by coercion"
 
-These often have to do with an argument or variable being the wrong type. For example, you might be trying to perform a mathematical operation (like taking the mean) on a character vector (like days of the week). There are a couple of good ways to check variable types:
+These errors often have to do with an argument or variable being the wrong type. For example, you might be trying to perform a mathematical operation (e.g. calculating the mean) on a character/string variable (e.g. text data, or numbers stored as text). There are a couple of good ways to check variable types:
 
-Using `class` we can check the types of vectors and values. For example the output of running the following chunk will be "numeric", "character", and "logical"
+Using `class` tocheck the types of vectors and values. For example, the output of running the following chunk will be "numeric", "character", and "logical"
 
 ```{r}
 class(1)
@@ -80,13 +80,13 @@ class("a")
 class(NA)
 ```
 
-We can use the same function to check the class of a variable in our dataset, using the following syntax:
+You can use the same function to check the class of a variable in a dataset, using the following syntax:
 
 ```{r eval = FALSE}
 class(data_frame_name$variable_name)
 ```
 
-If you want an overview of all the variables in your dataset, you can use the `str()` function like this:
+If you want an overview of all the variables in your dataset, you can use the `str()` (structure) function:
 
 ```{r eval = FALSE}
 str(data_frame_name)
@@ -104,38 +104,38 @@ Some common variable types you will see are:
 
 In order to fix an error with variable types, you will need to know how to change the type (or class) of a variable. The suite of `as.*` functions is quite useful. Generally the syntax is `as.desired_type(object_that_needs_converting)`.
 
-For example, if a column in our dataset has numbers, but R is treating them as characters (type "chr") instead, we can use the function `as.numeric()` like this:
+For example, if a column in a dataset has numbers, but R is treating them as characters (type "chr") instead, use the function `as.numeric()`:
 
 ```{r eval = FALSE}
 numeric_var <- as.numeric(character_var)
 ```
 
-Inside of a dataframe, this code often looks something like this:
+Inside of a dataframe, the code may look something like this:
 
 ```{r eval = FALSE}
 new_data_frame <- old_data_frame %>% 
   mutate(numeric_var = as.numeric(character_var))
 ```
 
-This ties in nicely to the previous section where we detailed how to access the help files of a function. Help files will almost always describe what variable types are expected by a function. If you're trying to troubleshoot a function that isn't working, checking the help file and your argument types is always a good place to start.
+This ties in nicely to the previous section, which detailed how to access the help files of a function. Help files will almost always describe what variable types are expected by a function. If you're trying to troubleshoot a function that isn't working, checking the help file and your variable types is a good place to start.
 
 #### Locating the problem in a chunk of code
 
 A couple of good practices for locating the problem in a chunk of code:
 
-1. Not all error messages are helpful, but often times they will specify which function or operation is causing your function to fail. 
+1. Read error messages closely for clues. While not all error messages are helpful, often times they will specify which function or operation is causing your function to fail. 
 
-2. After getting an error, you can run the function `traceback()` in the console and this will show you the steps that led up to the error. This is especially useful when a long chunk of code is throwing you an error
+2. Look behind you using `traceback()`. After getting an error, run the function `traceback()` in the console; this will show the steps that led up to the error. This can be especially useful when a long chunk of code is throwing an error.
 
-3. Add `print()` statements in your code. This can take a little bit of time to get used to, but the basic idea is that by adding something like `print("got to here!") in your code, you'll still get an error, but you'll be able to see if your code at least made it to that point successfully.
+3. Add checkpoints to your code via `print()` statements. By adding lines like `print("got to here!")` throughout your code, you may be able to identify exactly where your code is failing. (note: `print()` statements will not fix errors, but may prove helpful in isolating errors.)
    
-Alternatively, if you're creating objects in your code you can print those objects when they're created in the code to check if they're outputting what you expect.
+A variation on `print()` statements: if you are creating objects in your code, you can print those objects when they are created to check if the output matches what you expect.
 
-4. Depending on what type of code you're writing, you can always try using `#` at the start of a line to comment out lines of your code. If your code runs successfully after you comment out a line, it's a good sign that the problem is happening there.
+4. Isolate code through comments. Depending on what type of code you're writing, you can place a `#` at the start of a line to comment out lines of your code. (When lines are commented out, R ignores that code.) If your code runs successfully after you comment out a line, there is a good chance the problem is happening in that line of code.
    
 #### Being aware of NAs
 
-Sometimes errors can arise when you compute summary statistics on a dataset. Here is an example of one such error. Let's try to compute the mean of bill length and body mass in the `penguins` dataset.
+Sometimes errors can arise when you compute summary statistics on a dataset. For example, the below code attempts to compute the mean of bill length and body mass in the `penguins` dataset.
 
 ```{r}
 penguins %>%
@@ -143,7 +143,7 @@ penguins %>%
             mean_body_mass = mean(body_mass_g))
 ```
 
-The resulting dataset shows `NA` values where our means should be. This happens because there are `NA`s in these columns. Even just one `NA` will get in the way of our calculations. Luckily, there is a very easy fix for this: using the argument `na.rm = TRUE`. This tells the `mean()` function to remove the `NA`s from its calculation. We can try the same summarization using `na.rm` like this:
+The resulting dataset shows `NA` values where means should be. Why? There are `NA`s in the columns used for this calculation, and R cannot calculate the mean of _missing_. Because R is by default cautious about missing values, a single `NA` is enough to disrupt calculations. To change the way R approaches missing values, use the argument `na.rm = TRUE`. This tells the `mean()` function to remove the `NA`s before making the calculation. Note the change when `na.rm` is incorporated into code:
 
 ```{r}
 penguins %>%
@@ -151,5 +151,5 @@ penguins %>%
             mean_body_mass = mean(body_mass_g, na.rm = TRUE))
 ```
 
-`na.rm` can be very useful when computing summary statistics, and is an argument that can be included in functions like `mean()`, `median()`, `sum()`, `min()`, `max()`, and more. 
+Exclusing missing values from calculations can be very useful when computing summary statistics, and `na.rm`can be included in functions like `mean()`, `median()`, `sum()`, `min()`, `max()`, among others. If your dataset includes missing values and you are encountering errors in your code, double-check to make sure R is handling `NA`s as you expect. 
 
