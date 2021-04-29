@@ -12,30 +12,29 @@ library(palmerpenguins)
 
 ### Troubleshooting
 
-Deciphering error messages in R, especially the first time you see them, can be a perplexing and time-consuming task. This page offers some tips and tricks compiled by the team to, hopefully, make your debugging experiences a bit less painful.
+Deciphering error messages in R, especially the first time you see them, can be a perplexing and time-consuming task. Here our team offers some tips and tricks to hopefully make your debugging experiences a bit less painful.
 
 #### First steps
 
-Below, we outline four different tips for approaching troubleshooting your code. That being said, we recommend starting with looking for small syntactical mistakes.
+First, we recommend looking for errors in syntax; these are often small.
 
-A good list of things to quickly look for are:
+Start by checking your code for:
 
-  - Misspelled words, functions, or names of datasets and variables---note that objects in R are case-sensitive
-  - Missing commas
-  - Unclosed and/or extra parentheses or brackets
-  - Missing pipes `%>%` to connect code
-  - Missing plus signs `+` to connect `ggplot()` code
-  - All necessary packages and data loaded---errors will often look like "could not find function" or "object not found" in this case
-  - Using the correct file path when trying to load in data or objects
+  - Misspellings: words, functions, or names of datasets and variables. (Note that objects in R are case-sensitive; `data` and `Data` are not interchangeable.)
+  - Commas: missing or duplicate
+  - Parentheses / brackets: missing or duplicate
+  - Pipes `%>%`, used to connect code: do you have the connections you need?
+  - Within `ggplot()` code: are you missing plus signs `+` (used to connect plotting code)
+  - Packages and data: Have you loaded everything you are using? (If not, you may get an error like "could not find function" or "object not found")
+  - File paths: when loading in data or objects, are you asking R to look in the correct place?
 
-Sometimes, your R session can just get a little bit backed up, so saving your work and restarting RStudio can fix the problem. The age-old "try turning it off and on again" method can sometimes be the answer. 
+Sometimes, your R session can just get a bit backed up; in that case, saving your work and restarting RStudio may fix the problem. (Yes, "try turning it off and on again" _is_ sometimes the answer.)
 
-If you've run through the above list of things to check and you're still getting an error or your code isn't functioning properly, it's time to move on to the steps outlined below.
-
+If you have checked the above list and you are still encountering an error, or your code isn't functioning properly, consider the below four approaches for further troubleshooting.
 
 #### Getting information about a function in RStudio
 
-You can always look up a function name on the internet and read it's documentation, but most R packages and functions have help files that can be accessed through the R Console.
+You can always look up a function name on the internet and read its documentation, but most R packages and functions have help files that can be accessed through the R Console.
 
 For example, if you can't quite remember what arguments should be used for a function, you can type `?function_name` into the console and hit enter. This will load up the help file for that function in the RStudio Help panel which has several useful pieces of information:
 
