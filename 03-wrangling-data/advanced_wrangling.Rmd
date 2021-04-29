@@ -11,15 +11,15 @@ library(knitr)
 
 ### Advanced data wrangling
 
-Throughout the pages in the Wrangling Data section of these tutorials, we've introduced all sorts of ways to transform, manipulate, and reshape data. These tools will be more than enough to handle many data analysis projects. If you're looking to learn more, though, here is a compilation of some links to resources that we particularly appreciate.
+The Wrangling Data section of these tutorials have introduced all sorts of ways to transform, manipulate, and reshape data. These tools will be sufficient to handle many data analysis projects. If you are looking to learn more, below is a compilation of links to some additional resources.
 
 #### Doing things many times with `purrr`
 
-In R, there are many ways of doing things many times---you may or may not have heard of `for` loops, the `apply` family, or `map`ping functions. The tidy approach to running a function many times, or "iterating," is implemented in the `purrr` package via `map` functions. [Dr. Rebecca Barter](http://www.rebeccabarter.com/) wrote a wonderful [introduction to `purrr`](http://www.rebeccabarter.com/blog/2019-08-19_purrr/) that we recommend if you want to learn about vectors, lists, data frames, and iterating over them. To learn more about iteration, generally, check out the [R for Data Science](https://r4ds.had.co.nz/iteration.html) chapter on the topic.
+In R, there are many ways of doing things repeatedly; you may have heard of `for` loops, the `apply` family, or `map`ping functions. The "tidy approach" to running a function many times, or "iterating," is implemented in the `purrr` package via `map` functions. [Dr. Rebecca Barter](http://www.rebeccabarter.com/) wrote a wonderful [introduction to `purrr`](http://www.rebeccabarter.com/blog/2019-08-19_purrr/) that we recommend if you want to learn about vectors, lists, data frames, and iterating over them. To learn more about iteration generally, check out the [R for Data Science](https://r4ds.had.co.nz/iteration.html) chapter on the topic.
 
 #### Writing your own functions
 
-As you do more data analysis, you may find yourself finding uses for the same code time and time again. Rather than copying and pasting each time you need that code, you could instead automate that task by writing your own _function_. The [R for Data Science](https://r4ds.had.co.nz/index.html) book outlines three advantages of writing a custom function over copying and pasting that we quote here:
+As you do more data analysis, you may find yourself finding uses for the same code time and time again. Rather than copying and pasting each time you need that code, you could automate that task by writing your own _function_. The [R for Data Science](https://r4ds.had.co.nz/index.html) book outlines three advantages of writing a custom function over copying and pasting:
 
 > 1) You can give a function an evocative name that makes your code easier to understand.
 > 
@@ -27,12 +27,15 @@ As you do more data analysis, you may find yourself finding uses for the same co
 > 
 > 3) You eliminate the chance of making incidental mistakes when you copy and paste (i.e. updating a variable name in one place, but not in another).
 
-We recommend the [R4DS Chapter](https://r4ds.had.co.nz/functions.html) if you're interested in learning more about writing your own functions!
+We recommend the [R4DS Chapter](https://r4ds.had.co.nz/functions.html) if you are interested in learning more about writing your own functions!
 
 #### Working with time and date data with `lubridate`
 
-If you've come across time and/or date data while working on a data analysis, you may have found it trickier than expected. As the relevant [R for Data Science chapter](https://r4ds.had.co.nz/dates-and-times.html) notes about dates and times: "You use them all the time in your regular life, and they don’t seem to cause much confusion. However, the more you learn about dates and times, the more complicated they seem to get." We recommend the chapter linked above if you need to work with time and/or data and don't know where to get started.
+If you have worked with time and/or date data, you may have found it trickier than expected. As the relevant [R for Data Science chapter](https://r4ds.had.co.nz/dates-and-times.html) notes about dates and times: "You use them all the time in your regular life, and they don’t seem to cause much confusion. However, the more you learn about dates and times, the more complicated they seem to get." We recommend the chapter linked above if you need to work with time and/or data and don't know where to start.
 
-#### Working with ordinal categories with `forcats`
+#### Working with categories using `forcats`
+In R, data can be classified in a number of ways: logical (true/false), numeric (numbers), or character / string (words). Another data type is a "factor", or categorical data. When visualizing or presenting categorical data, the order of those categories is often important.
 
-If a graph you made is showing categories in an order that does not make the most sense for your visualization, you might want to learn about how to change that using `forcats`. Our brief tutorial on how to refactor levels can be found [here](LINK) **insert correct link and delete this before publishing!!** . In R, there are a few different types that a variable can be classified as. For example, numerical or character data. Another data type is a "factor," which is another way of saying an ordinal categorical variable. A great example of this is days of the week. It is a categorical variable, but one that wouldn't make sense in just any order. You can learn more about what factors are, how to make your variables into factors, and how to change the order of factors in the [R for Data Science chapter](https://r4ds.had.co.nz/factors.html). 
+By default, R will order characters alphabetically; if you are graphing categorical data, this ordering may not make sense. (Example: we generally consider days of the week in a non-alphabetical order.) You can reorder categories in your data using `forcats`. Our brief tutorial on how to refactor levels can be found [here](LINK) **insert correct link and delete this before publishing!!** . 
+
+You can learn more about factors, how to make your variables into factors, and how to change the order of factors in the [R for Data Science chapter](https://r4ds.had.co.nz/factors.html). 
