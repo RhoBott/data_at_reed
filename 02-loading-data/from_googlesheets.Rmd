@@ -37,7 +37,7 @@ example <- read_sheet("https://docs.google.com/spreadsheets/d/1qSGfs0ogEOQsynzAt
 
 Keep an eye on your Console, because this code will prompt several interactive steps for you in order to grant R access to your document.
 
-1. In your console, you will be asked if it is okay to "cache OAuth access credentials in the folder" followed by a URL. (This means: "Is it okay for R to gain access to your Google Sheets in the future, or would you like to only grant one-time access?" Type "1" in the console for yes, agreeing to both one-time and future access, and click enter.)
+1. In your console, you will be asked if it is okay to "cache OAuth access credentials in the folder" followed by a URL. (This means: "Is it okay for R to gain access to your Google Sheets in the future, or would you like to only grant one-time access?") Type "1" in the console for "yes", agreeing to both one-time and future access, and click enter.
 
 2. Next, R will open a window in your browser asking for `tidyverse` access to your Google account. This will allow R to access your documents in the future when you want to read in files. Follow the directions in the browser and grant access. 
 
@@ -45,6 +45,6 @@ Keep an eye on your Console, because this code will prompt several interactive s
 
 Once you have completed the above steps, check your "Environment" in the top right corner of your R window. If you were successful, you should see your dataset.
 
-If you select "yes" in the first step of this process, you will have a much easier time importing data from Google Sheets in the future. You can even write files from R into Google Sheets.
+If you select "yes" in the first step of this process, you will have a much easier time importing data from Google Sheets in the future. (You can even write files from R directly into Google Sheets.)
 
 If you want to learn more about `googlesheets4`, [the package's website](https://googlesheets4.tidyverse.org/) contains a more extensive overview of the package and its functions.
