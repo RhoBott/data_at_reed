@@ -11,13 +11,13 @@ library(knitr)
 
 ### Reordering Categories in a Plot
 
-When making barplots or boxplots with multiple categories it isn't uncommon for `ggplot` to put your categories in an order that you don't want. Common examples of this are boxplots that you wish were ordered by median, or a barplot where the x-axis is days of the week and is displayed out of order. There is a whole family of functions within the `forcats` package that helps with these types of problems.
+When building plots with categorical data, `ggplot` will default to ordering categories alphabetically; this may not make sense for your data. (Example: a barplot showing days of the week on the x-axis; alphabetical order is not the correct ordering/sequencing.) Within the `forcats` package, there is a family of functions that helps with these types of problems.
 
 #### Reordering by another variable
 
 ##### Barplots
 
-Let's make a plot comparing how many penguins of each species we have in the `palmerpenguins` dataset. Notice that the bars are ordered alphabetically when we'd rather have them ordered by `n`, which is the number of penguins of each species.
+Make a plot comparing how many penguins of each species are in the `palmerpenguins` dataset. Notice that the bars are ordered alphabetically, when perhaps you would rather have them ordered by `n`, the number of penguins of each species.
 
 ```{r}
 penguins %>% 
@@ -26,13 +26,13 @@ penguins %>%
   geom_col()
 ```
 
-When we want to order a categorical variable (`species`) by some quantitative variable (`n`) `fct_reorder()` is a great option. Generally the syntax is as follows:
+If you wish to order a categorical variable (`species`) by some quantitative variable (`n`) `fct_reorder()` is a useful option. Generally the syntax is as follows:
 
 ```
 fct_reorder(.f = categorical_variable_to_be_ordered, .x = quantitative_variable_to_order_other_variable_by)
 ```
 
-We'll use the function inside of `mutate` since we're changing the underlying levels attached to our data. 
+To make a change to the "factor levels" of the data, use this function inside of `mutate`:
 
 ```{r}
 penguins %>% 
@@ -42,7 +42,7 @@ penguins %>%
   geom_col()
 ```
 
-And as desired, our bars are now in order. If we wanted them to be in descending rather than ascending order we can set the `.desc` argument to TRUE in `fct_reorder()`:
+Note the change in the order of the bars in the graph produced by the code below. To order the bars in descending rather than ascending (numeric) order, set the `.desc` argument to TRUE in `fct_reorder()`:
 
 ```{r}
 penguins %>% 
@@ -54,9 +54,9 @@ penguins %>%
 
 ##### Boxplots
 
-With boxplots it's a little bit more tricky because, we don't necessarily have some explicit variable in our dataset that we can tell `fct_reorder` to use as a reference. Fortunately `fct_reorder` makes it straightforward to order boxplots by some function. Generally the function should be a summary function that can be applied to your y-variable. A few common examples include `max`, `min`, `median`, and `mean`.
+Boxplots can be trickier because there may not be some explicit variable in the dataset that `fct_reorder` can use as a reference. You can use `fct_reorder` to order boxplots by some function, which is generally a summary function that can be applied to your y-variable. (A few examples include `max`, `min`, `median`, and `mean`.)
 
-Below we show a plot with multiple boxplots which be default gets ordered alphabetically, and then a plot with multiple boxplots ordered by the median.
+For example, start with a plot featuring multiple boxplots (one for each species), where the boxplots areordered alphabetically:
 
 ```{r}
 penguins %>% 
@@ -64,7 +64,9 @@ penguins %>%
   geom_boxplot()
 ```
 
-To reorder by the median we can use the argument `.fun`. Note the inclusion of `na.rm = T`, sometimes when the data contains missing values, it will cause the reordering to not function properly. Note that we don't write the function as `median()`, but rather as `median`.
+For contrast, create a plot with multiple boxplots ordered by the median value of `bill_length_mm`.
+
+The below code uses the argument `.fun` to reorder by median. (Note that the function is written as `median` and not as `median()`.) You may notice the specification `na.rm = T`; this removes missing data from the calculation of median. If there are missing values in your data, it may cause the reordering to not function properly. 
 
 ```{r}
 penguins %>% 
@@ -73,7 +75,7 @@ penguins %>%
   geom_boxplot()
 ```
 
-And again to put them in descending order we can use to `.desc` argument
+Similar to the earlier example, you can put groups in descending order using `.desc`:
 
 ```{r}
 penguins %>% 
@@ -84,7 +86,7 @@ penguins %>%
 
 #### Reordering manually
 
-To change up the example a little bit we'll create a new demo dataset: 
+For a different example, create a new demo dataset called `days_of_week`, showing the hours worked on each day:
 
 ```{r}
 days_of_week <- tibble(
@@ -95,7 +97,7 @@ days_of_week <- tibble(
 days_of_week
 ```
 
-If we create a Barplot for this data we'll get the following:
+Plotting this data using a barplot yields:
 
 ```{r}
 days_of_week %>% 
@@ -103,15 +105,15 @@ days_of_week %>%
   geom_col()
 ```
 
-The columns are automatically sorted alphabetically, but days of the week are ordinal so we'd like to order them as such. Note that we can no longer use `fct_reorder` here because we aren't ordering by another variable, but by some defined levels which we can set.
+The columns are automatically sorted alphabetically, but days of the week are _ordinal data_, meaning that the order of the values is important. Here `fct_reorder` is not the correct tool because order is not defined by another variable, but by external information. (In this case, knowledge of a calendar.)
 
-For this type of problem, `fct_relevel` will do exactly what we want. The syntax is generally:
+The `forcats` function `fct_relevel` will help here. The syntax is generally:
 
 ```
 fct_relevel(.f = factor_that_needs_reordering, levels = levels_to_order_by)
 ```
 
-Here we create a vector of our levels put in the desired order, and then feed that vector into our `fct_relevel` call.
+The below code creates a vector with days (levels) in the desired order, and then feeds that vector into the `fct_relevel` call.
 
 ```{r}
 day_order <- c('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat')
@@ -123,9 +125,9 @@ days_of_week %>%
 
 ```
 
-And just like that our bars are ordered by the levels that we set. This very same thing can also be done with boxplots.
+After reordering factors, the bar order in the bargraph has changed. This same approach can be used with boxplots.
 
-One other thing to note is that the `fct_*` functions don't strictly have to be used inside of mutate although that is usually a good practice. Another option is to do the reordering right inside of the `ggplot` call:
+Another option is to do the reordering inside of the `ggplot` call:
 
 ```{r}
 days_of_week %>% 
@@ -133,10 +135,7 @@ days_of_week %>%
   geom_col()
 ```
 
-
-
-
-
+While the above graph shows the data/levels correctly ordered, the underlying levels of the data have not been changed. For consistency across visualizations and analysis, consider using `fct_*` functions inside of `mutate`.
 
 
 
