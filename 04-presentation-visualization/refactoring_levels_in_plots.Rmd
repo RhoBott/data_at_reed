@@ -56,7 +56,7 @@ penguins %>%
 
 Boxplots can be trickier because there may not be some explicit variable in the dataset that `fct_reorder` can use as a reference. You can use `fct_reorder` to order boxplots by some function, which is generally a summary function that can be applied to your y-variable. (A few examples include `max`, `min`, `median`, and `mean`.)
 
-For example, start with a plot featuring multiple boxplots (one for each species), where the boxplots areordered alphabetically:
+For example, start with a plot featuring multiple boxplots (one for each species), where the boxplots are ordered alphabetically:
 
 ```{r}
 penguins %>% 
@@ -136,7 +136,7 @@ days_of_week %>%
 ```
 
 
-While the above graph shows the data/levels correctly ordered, the underlying levels of the data have not been changed. For consistency across visualizations and analysis, consider using `fct_*` functions inside of `mutate`.
+While the above graph shows the data/levels correctly ordered, the underlying levels of the data have not been changed. There's nothing wrong with doing your reordering within the `ggplot` call, but for consistency across visualizations and analysis, consider using `fct_*` functions inside of `mutate`.
 
 
 
