@@ -56,7 +56,7 @@ penguins %>%
 
 Boxplots can be trickier because there may not be some explicit variable in the dataset that `fct_reorder` can use as a reference. You can use `fct_reorder` to order boxplots by some function, which is generally a summary function that can be applied to your y-variable. (A few examples include `max`, `min`, `median`, and `mean`.)
 
-For example, start with a plot featuring multiple boxplots (one for each species), where the boxplots areordered alphabetically:
+For example, start with a plot featuring multiple boxplots (one for each species), where the boxplots are ordered alphabetically:
 
 ```{r}
 penguins %>% 
@@ -85,6 +85,8 @@ penguins %>%
 ```
 
 #### Reordering manually
+
+##### Barplots
 
 For a different example, create a new demo dataset called `days_of_week`, showing the hours worked on each day:
 
@@ -125,20 +127,35 @@ days_of_week %>%
 
 ```
 
-After reordering factors, the bar order in the bargraph has changed. This same approach can be used with boxplots.
+After reordering factors, the bar order in the bargraph has changed. 
 
-Another option is to do the reordering inside of the `ggplot` call:
+##### Boxplots
+
+To see how this works with Boxplots, make some changes to the demo dataset:
 
 ```{r}
-days_of_week %>% 
-  ggplot(aes(x = fct_relevel(.f = days, levels = day_order), y = hours_worked)) +
-  geom_col()
+days_of_week_new <- tibble(
+  days = rep(c('Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'), 10),
+  hours_worked = rnorm(70, 25, 7)
+)
 ```
 
+Plotting once again yields a x-axis ordered alphabetically, which is not what we want. 
 
-While the above graph shows the data/levels correctly ordered, the underlying levels of the data have not been changed. For consistency across visualizations and analysis, consider using `fct_*` functions inside of `mutate`.
+```{r}
+days_of_week_new %>% 
+  ggplot(aes(x = days, y = hours_worked)) +
+  geom_boxplot()
+```
 
+Use the same vector describing the levels inside of `fct_relevel` to get:
 
+```{r}
+days_of_week_new %>% 
+  mutate(days = fct_relevel(.f = days, levels = day_order )) %>% 
+  ggplot(aes(x = days, y = hours_worked)) +
+  geom_boxplot()
+```
 
 
 
