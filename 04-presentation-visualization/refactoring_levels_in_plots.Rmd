@@ -132,3 +132,5 @@ days_of_week %>%
   ggplot(aes(x = fct_relevel(.f = days, levels = day_order), y = hours_worked)) +
   geom_col()
 ```
+
+
