@@ -27,6 +27,7 @@ ggplot(data = penguins,
 ```
 
 The above graph looks a bit odd; this is because there are multiple data points (body mass, y) at each time point (year, x). Linegraphs work best when your data has one value per x location. In this example, that means you would want one y value for _each_ island in _each_ year. You can achieve this by taking the mean of `body_mass_g` for each combination of `island` and `year`:  
+
 ```{r, message=FALSE, warning=FALSE}
 penguins_sum <- penguins %>%
   filter(!is.na(body_mass_g)) %>%
@@ -35,6 +36,7 @@ penguins_sum <- penguins %>%
 
 penguins_sum
 ```
+
 (In the above code, note the removal of missing values for `body_mass_g` before calculating the mean body mass.)
 
 Now you can make the same linegraph, using the new `penguins_sum` dataset, and with `mean_body_mass_g` in place of `body_mass_g`
