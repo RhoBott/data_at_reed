@@ -8,7 +8,7 @@ output: html_document
 
 ### From a package
 
-Many R packages contain their own data. (If you are unfamiliar with packages, see our [Getting Started](LINK-HERE) page.) Most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes datasets from a study of three different species of penguins found in Antarctica.
+Many R packages contain their own data. Most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes datasets from a study of three different species of penguins found in Antarctica.
 
 ```{r, echo = FALSE}
 url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"

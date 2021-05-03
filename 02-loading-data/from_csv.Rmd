@@ -8,7 +8,7 @@ output: html_document
 
 ### From a .csv (with `readr`)
 
-Comma-separated value (`.csv`) files are a very common format of data that can be easily transferred between many different applications, including R. In order to load a `.csv` file into R, you will need the `readr` package.
+Comma-separated value (`.csv`) files are a very common format of data that can be easily transferred between many different applications, including R. To load a `.csv` file into R, you can use the `readr` package.
 
 First, install the `readr` package:
 
@@ -33,6 +33,18 @@ cat_data <- read_csv("Desktop/Reed/Bio123/cats.csv")
 ```
 
 The above code reads in the file `cats.csv`, located in a folder `Bio123` within a `Reed` folder on the `Desktop`. The filepath `Desktop/Reed/Bio123` gives directions to `read_csv()` on where to find `cats.csv`. 
+
+To find a filepath on computer running MacOSX you can follow these steps
+  - Locate the desired file
+  - Right-click on the file
+  - Hold down the option key and click "copy 'filename' as Pathname"
+  
+To find a filepath on a computer running Windows follow these steps
+  - Locate the desired file
+  - Hold shift and right-click on the file
+  - Select "Copy as Path"
+  
+The copied value can now be used as the argument in `read_csv()`.
 
 `read_csv()` not only finds this data, but also makes it into a dataset, which is then assigned to the name (`cat_data`) using the `<-` operator. This data is now available for use in R (you can confirm this using `View()`).
 
