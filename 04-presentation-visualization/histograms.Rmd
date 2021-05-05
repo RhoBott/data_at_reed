@@ -34,4 +34,4 @@ ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
   geom_histogram(binwidth = 200)
 ```
 
-When creating a histogram of your data, you will likely want to try different binning schemes to see what provides the best visual representation of your data.
+When creating a histogram of your data, you will likely want to try different binning schemes to see what provides the best visual representation of your data. Generally you want to avoid histograms that look like barcodes as well as ones that look like a single block.

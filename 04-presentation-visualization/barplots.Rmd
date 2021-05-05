@@ -16,7 +16,7 @@ library(waffle)
 
 #### Barplots
 
-Barplots demonstrate the distribution of data across categories (categorical variables) and use the `geom_bar()` function. 
+Barplots demonstrate the distribution of data across categories (categorical variables) and use either the `geom_bar()` or `geom_col()` function. 
 
 ```{r}
 ggplot(data = penguins, mapping = aes(x = island)) +

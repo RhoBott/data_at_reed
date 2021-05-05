@@ -20,7 +20,7 @@ Once the package is installed, load it into your environment with `library()`.
 library(readxl)
 ```
 
-The package `readxl` contains a function called `read_excel()`, which is very similar to [`read_csv()`](link to read_csv doc). The main difference between these two tools is that the file is be a `.xls` or `.xlsx`, rather than `.csv`:
+The package `readxl` contains a function called `read_excel()`, which is very similar to [`read_csv()`](https://www.reed.edu/data-at-reed/resources/R/from-a-.csv.html). The main difference between these two tools is that the file is be a `.xls` or `.xlsx`, rather than `.csv`:
 
 ```{r, eval = FALSE}
 cat_data <- read_excel("Desktop/Reed/Bio123/cats.xls")

@@ -21,7 +21,7 @@ To access the server, head to [rstudio.reed.edu](https://rstudio.reed.edu) and l
 
 #### Installing libraries
 
-Most of the libraries that you will need are already installed on the server. If you want to use a package that is not already on the server you can use `install.package("packagename")` to install a library within your own user space on the server. If you run into errors installing or using packages, contact our RStudio administrators at [rstudio-support@reed.edu](mailto:rstudio-support@reed.edu).
+Most of the libraries that you will need are already installed on the server. If you want to use a package that is not already on the server you can run `install.package("packagename")` in the console to install a library within your own user space on the server. If you run into errors installing or using packages, contact our RStudio administrators at [rstudio-support@reed.edu](mailto:rstudio-support@reed.edu).
 
 #### Uploading data to the Reed Rstudio server
 
@@ -33,7 +33,7 @@ You might have some data on your computer that you would like to work with on th
 * click the "Upload" button (with a yellow, up-facing arrow beside it)
 * choose the file on your computer and click "Open"
 
-The data is now uploaded to the server. You can now load the data into R in the same way you would if you were working with data stored on your computer with the desktop version of R. See our [loading data](LINK-HERE) page for more information.
+The data is now uploaded to the server. You can now load the data into R in the same way you would if you were working with data stored on your computer with the desktop version of R. See our [loading data](https://www.reed.edu/data-at-reed/resources/R/index.html) section for more information.
 
 #### Jointly editing documents
 

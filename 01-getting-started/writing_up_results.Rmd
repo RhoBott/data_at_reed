@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #### R Script
 
-R script files (`.R`) are very useful for code organization and documentation, especially for collaborative coding projects. You can easily alternate between code and regular text using comments with a pound sign at the beginning of a line that contains text, not code (`#like this`). Comments are useful both to remind yourself what your code is doing and to explain your code to others so that they can understand what the code is doing. R Scripts are a good starting point for learning to code in R, with simple formatting and the ability to integrate comments with your code.
+R script files (`.R`) are very useful for code organization and documentation, especially for collaborative coding projects. You can easily alternate between code and regular text using comments with a pound sign at the beginning of a line that contains text (`#like this`). Comments are useful both to remind yourself what your code is doing and to explain your code to others so that they can understand it as well. R Scripts are a good starting point for learning to code in R, with simple formatting and the ability to integrate comments with your code.
 
 To learn more about R Scripts, visit the [Workflow: scripts](https://r4ds.had.co.nz/workflow-scripts.html) chapter in [R for Data Science](https://r4ds.had.co.nz/)
 
