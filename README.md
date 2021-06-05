@@ -31,7 +31,7 @@ Learning more & getting connected- cheatsheets, online textbooks, and where to a
 We use `palmerpenguins` as an example dataset to demonstrate important functions instead of `iris`. Here’s some [documentation](https://allisonhorst.github.io/palmerpenguins/articles/intro.html) for `palmerpenguins`, and some info on [why we’re not using iris](https://www.meganstodel.com/posts/no-to-iris/).
 
 ![](https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png)
-*Artwork by @allison\_horst*
+*Artwork by @allison\_horst and @jules32*
 
 ## Credits
 
