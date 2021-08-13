@@ -39,7 +39,7 @@ The data is now uploaded to the server. You can now load the data into R in the 
 
 One of the advantages to working on RStudio server is the ability to easily share projects with collaborators. When working on shared projects, we strongly recommend having **one** active editor for a project, because RStudio Server does not have the same simultaneous editing ability that a tool like Google Docs does. If the server detects that multiple editors are accessing the file, it will temporarily block further editing of that file and may not save your work. If the server gives you a saving error, copy and paste your code into a text editor or Google Doc. You can then close the file, wait for your partner to be done with their edits, and then reopen the file to implement your changes.
 
-If you are want to jointly edit documents, you can look into using [Git and GitHub](https://happygitwithr.com/rstudio-git-github.html).
+If you want to jointly edit documents with collaborators, you can look into using [Git and GitHub](https://happygitwithr.com/rstudio-git-github.html).
 
 #### Help! The server is broken / down / having problems
 
