@@ -10,9 +10,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Desktop R
 
-If you are using R for projects outside of specific class assignments that are accessed and submitted using the Reed RStudio Server, if you are using sensitive data, or if you want to be able to work in R independent of an internet connection, you will want to install and use the desktop version of R and RStudio.
+You may want to install and use the desktop version of R and RStudio if any of the following are true:
 
-There are two things you need to download in order to use R on your computer: R and RStudio. R is the coding language, and RStudio is the Integrated Development Environment (IDE) that makes R easy to use.
+- you are using R for projects outside of specific class assignments that are accessed and submitted using the Reed RStudio Server
+- you are using sensitive data
+- you want to be able to work in R independent of an internet connection
+
+There are two things you need to download in order to use R on your computer: R and RStudio. R is the coding language, and RStudio is the Integrated Development Environment (IDE) that makes R more friendly to use.
 
 #### Downloading + installing for MacOSX
 
