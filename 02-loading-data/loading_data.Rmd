@@ -10,7 +10,7 @@ output: html_document
 
 ### From a package
 
-Many R packages contain their own data. (If you are unfamiliar with packages, see our [Getting Started](LINK-HERE) page.) Most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes datasets from a study of three different species of penguins found in Antarctica.
+Many R packages contain their own data. (If you are unfamiliar with packages, see our [Getting Started](LINK-HERE) page.) Most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes data from a study of three different species of penguins found in Antarctica.
 
 ```{r, echo = FALSE}
 url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"
@@ -24,7 +24,7 @@ To load data from a package, first install the package with the `install.package
 install.packages("palmerpenguins")
 ```
 
-Now that you have the package installed, you need to load the package into your environment with `library()`. You only need to install the package once, but you will need to load the package every time you open R.
+Now that you have the package installed, you need to load the package into your environment with `library()`. You only need to install the package once, but you will need to load the package every time you wish to use it.
 
 ```{r}
 library(palmerpenguins)
@@ -42,7 +42,7 @@ If you are already familiar with the data and functions in a package and you jus
 palmerpenguins::
 ```
 
-Your tooltip should show you all of the datasets included in the package.
+Your tooltip should show you all of the datasets and functions included in the package.
 
 Once you have found the name of the dataset you want, in our case `penguins`,you can use the `data()` function:
 
@@ -68,7 +68,7 @@ Your data is loaded! You're ready to go.
 
 ### From a .csv (with `readr`)
 
-Comma-separated value (`.csv`) files are a very common format of data that can be easily transferred between many different applications, including R. In order to load a `.csv` file into R, you will need the `readr` package.
+Comma-separated value (`.csv`) files are a very common format of data that can be easily transferred among many different applications, including R. In order to load a `.csv` file into R, you will need the `readr` package.
 
 First, install the `readr` package:
 
@@ -157,7 +157,7 @@ library(googlesheets4)
 
 Loading data from Google Sheets is a bit more complicated because of document ownership and privacy around user Google accounts. However, `googlesheets4` navigates this very elegantly. 
 
-When you are using the following function, you will want to make sure you can see your console (in RStudio), because you will need to grant R access to your Google Sheets. If you cannot see your console, click the small double-window icon at the right of the gray bar that says "Console" below your current document. 
+For the next step, you will want to make sure you can see your console (in RStudio), because you will need to grant R access to your Google Sheets. If you cannot see your console, click the small double-window icon at the right of the gray bar that says "Console" below your current document. 
 
 In Google Sheets, navigate to the sheet you would like to read in, and copy the sharing URL for that sheet. To read in the data from that sheet, insert that URL  into to the `read_sheet()` function in `googlesheets4`:
 
