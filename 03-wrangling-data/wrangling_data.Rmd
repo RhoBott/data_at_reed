@@ -21,7 +21,7 @@ url <- "https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-a
 knitr::include_graphics(url)
 ```
 
-One of the core arguments for tidy data is often summarized with an adaptation of the famous Leo Tolstoy quote "Happy families are all alike; every unhappy family is unhappy in its own way." 
+One of the core arguments for tidy data is often summarized with an adaptation of the Leo Tolstoy quote "Happy families are all alike; every unhappy family is unhappy in its own way." 
 
 ```{r, echo = FALSE}
 url <- "https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/tidydata_2.jpg?raw=true"
@@ -37,15 +37,15 @@ url <- "https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-a
 knitr::include_graphics(url)
 ```
 
-The `tidyr` package will prove useful in data restructuring or "tidying". All of the packages in the `tidyverse`, including `ggplot2` and `dplyr`, as well as many community-contributed packages, are designed to work  with data in tidy format.
+The `tidyr` package will prove useful in data restructuring or "tidying". All of the packages in the `tidyverse`, including `ggplot2` and `dplyr`, as well as many community-contributed packages, are designed to work with data in tidy format.
 
 ---
 
 #### Tidying example
 
-The "tidy" format of a data can depend on what you want to use the data for. To get us started in thinking about tidy data, we'll return to the `penguins` data. (For instructions on loading `penguins`, see [Getting Started](LINK-HERE).)
+The "tidy" format of a data can depend on your intended use of the data. To get started in thinking about tidy data, return to the `penguins` data. (For instructions on loading `penguins`, see [Getting Started](LINK-HERE).)
 
-This summarized version of the penguins data, called `penguins_sum`, gives the  mean body mass for all penguins on a given island in a given year.
+This summarized version of the penguins data, called `penguins_sum`, gives the mean body mass for all penguins on a given island in a given year.
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 penguins_sum <- penguins %>%
@@ -55,7 +55,7 @@ penguins_sum <- penguins %>%
 penguins_sum
 ```
 
-The resulting data is tidy; each variable has its own column, each observation (penguin) is a row, and each measurement has its own cell. 
+The resulting data is tidy: each variable has its own column, each observation (penguin) is a row, and each measurement has its own cell. 
 
 Compare that with this representation of the same data:
 
@@ -64,20 +64,20 @@ penguins_sum %>%
   pivot_wider(id_cols = c("island", "year"), names_from = year, values_from = mean_body_mass_g)
 ```
 
-While the above data contains the same information, in this version, the mean body mass is found in three different columns, one for each year. This representation is usually called "wide" data, while the first option is referred to as "long." Per tidy data rules, `year` and `body mass` are both variables and should therefore have their own columns. Similarly, `year` should have its own column. `tidyr` will help us "pivot" from one to the other.
+While the above example contains the same information, in this version the mean body mass is found in three different columns, one for each year. This representation is usually called "wide" data, while the first option is referred to as "long." Per tidy data rules, `year` and `body mass` are both variables and should therefore have their own columns. Similarly, `year` should have its own column. `tidyr` will help us "pivot" from one to the other.
 
 ---
 
 #### Restructuring with `pivot_wider()` and `pivot_longer()`
 
-Let's take a look at how to move from untidy data to tidy data, and the reverse. The functions that allow you to do this, `pivot_wider()` and `pivot_longer()`, exist in the package `tidyr`. This package is included in `tidyverse`, along with many other helpful packages, so you can install and load `tidyverse`:
+Let's take a look at how to move from untidy data to tidy data and back again. The functions that allow you to do this, `pivot_wider()` and `pivot_longer()`, exist in the package `tidyr`. This package is included in `tidyverse`, along with many other helpful packages, so you can install and load `tidyverse`:
 
 ```{r eval = FALSE}
 install.packages("tidyverse")
 library(tidyverse)
 ```
 
-Now you can learn how to restructure data. Begin with the first, tidy version:
+To restructure the data, begin with the first, tidy version:
 
 ```{r, message = FALSE, warning = FALSE}
 penguins_sum
@@ -96,11 +96,11 @@ penguins_wide
 
 Looking more closely at `pivot_wider()`
 
-- `id_cols` (read: ID columns) are the variables that, together, identify what makes a row unique in the original data
+- `id_cols` (read: "ID columns") are the variables that identify what makes a row unique in the original data
 - `names_from` determines what variable from the old data will determine the names of columns in the new data
 - `values_from` is the name of the variable in the old data that will be contained in cells in the new data
 
-If given this untidy table, you can tidy the data by pivoting from "wide" to "long" using `pivot_longer()`.
+Given this untidy table, you can tidy the data by pivoting from "wide" to "long" using `pivot_longer()`.
 
 ```{r}
 penguins_wide %>%
@@ -169,34 +169,36 @@ penguins %>%
   filter(is.na(sex))
 ```
 
-Another way that you can subset your data is by subsetting columns, or variables. A dataset may have more variables than you need, so you can use the `select()` function to subset data to only variables of interest.
+Another way that you can subset your data is by focusing on columns. A dataset may have more variables than you need; if that is the case, use the `select()` function to subset data to only variables (columns) of interest.
 
-To subset only species information from your dataset, you can use the following code:
+For example, to subset only species information from your dataset, use the following code:
 
 ```{r}
 penguins %>%
   select(species)
 ```
 
-You can subset everything _except_ species information from your data:
+You can also use `select()` in the negative, subsetting everything _except_ species information from your data:
 
 ```{r}
 penguins %>%
   select(-species)
 ```
 
-You can also list out which variables you would like to subset, for example `species`, `island`, and `sex`:
+You can subset a number of variables, for example `species`, `island`, and `sex`. 
 
 ```{r}
 penguins %>%
   select(species, island, sex)
 ```
 
+R will order the resulting data in the order you list the variables.
+
 ---
 
 #### Creating new columns with `mutate()`
 
-Another common data wrangling task is to create a new variable using the `mutate()` function. When creating a new variable, you provide a name for the new column and a method for calculating the new value. 
+Another common data wrangling task is to create a new variable using the `mutate()` function. When creating a new variable, provide a name for the new column and a method for calculating the new value. 
 
 Continuing with the penguins data, the below creates a new column for the mean body mass in kilograms:
 
@@ -234,9 +236,9 @@ penguins %>%
 
 #### Summarizing data with `group_by()` and `summarize()`
 
-Often, data contains groupings (by geography, time period, experimental group). The `group_by()` function enables R to first group observations and then perform additional calculations. Function `summarize()` often proves useful with `group_by()`, allowing the calculation of measures across groups (mean, median, variance, etc).
+Often, data contains groupings (e.g. by geography, time period, experimental group). The `group_by()` function tells R to first group observations and then perform additional calculations. Function `summarize()` often proves useful with `group_by()`, allowing the calculation of measures (mean, median, variance, etc) across groups.
 
-Continuing with the penguins data, one goal may be to end up with a variable that shows mean body mass of penguins for each island. First feed the grouping variable into `group_by()`:
+Continuing with the penguins data, you may wish to calculate mean body mass of penguins for each island. First feed the grouping variable into `group_by()`:
 
 ```{r}
 penguins %>%
@@ -312,7 +314,7 @@ penguins %>%
   count(island, sex)
 ```
 
-`count()` is a quick and easy way to produce frequency tables in R.
+`count()` is a quick way to produce frequency tables in R.
 
 ---
 
@@ -333,7 +335,7 @@ palmer_islands <-
 palmer_islands
 ```
 
-`penguins` and `islands` share a column, `island`, that allows you to combine the two datasets. To join these two datasets, we can use the `full_join()` function from `dplyr`.
+`penguins` and `islands` share a column, `island`, that allows you to combine the two datasets. To join these two datasets, use the `full_join()` function from `dplyr`.
 
 ```{r}
 full_join(x = penguins, y = palmer_islands, by = "island") %>%
@@ -349,19 +351,19 @@ Other join types include inner, left, and right joins. These join types differ i
 * `right_join()` includes all rows in `y` (and any from `x` that match)
 * `full_join()` includes all rows in `x` _or_ `y`, even if they do not match something in the other dataset
 
-To read more about combining data, we recommend the [relational data chapter](https://r4ds.had.co.nz/relational-data.html) of R for Data Science.
+To read more about combining data, see the [relational data chapter](https://r4ds.had.co.nz/relational-data.html) of R for Data Science.
 
 ---
 
 ### Working with text data with `stringr`
 
-Many of the previous examples have worked with numeric data; you may also work with text, or "string" data. String data can include numbers, letters, spaces, and special characters. Strings are most often represented as `"text surrounded in quotes"` in R. 
+Many of the previous examples have worked with numeric data. You may also work with text, or "string" data. String data can include numbers, letters, spaces, and special characters. Strings are most often represented as `"text surrounded in quotes"` in R. 
 
 The `stringr` package is a useful tool for working with string data. Instead of going through a step-by-step tutorial for each `stringr` function, the below code presents concrete examples using the `penguins` dataset to demonstrate some of the capabilities of `stringr`.
 
 Most functions you will want to use from the `stringr` function begin with `str_`. If you forget the name of the function you need to use, try typing `str_` and scrolling through the auto-completed list of functions exported from `stringr`.
 
-String manipulations are carried out with the use of _patterns_, specified with a language called _regular expressions_ (or "regex", for short). Regular expressions are shorthand ways of specifying general patterns that you wish to match in data. 
+String manipulations are carried out with the use of _patterns_, specified with a language called _regular expressions_ (or "regex" for short). Regular expressions specify patterns that you wish to match in data. 
 
 Some regex that may be useful for getting started:
 
@@ -428,7 +430,7 @@ penguin %>%
   mutate(island = str_replace(island, "e", "tti"))
 ```
 
-Transforming seabirds into biscuits notwithstanding, knowing how to make replacements such as these will likely be important for your data work.
+Transforming islands into biscuits notwithstanding, knowing how to make replacements such as these will likely be important for your data work.
 
 To replace patterns throughout a dataset, use `str_replace_all()`. The below code replaces all occurrences of vowels with "x".
 
