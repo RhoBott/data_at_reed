@@ -105,7 +105,7 @@ The `thesisdown` package provides an R Markdown template for writing your senior
 
 ### Meet the Palmer Penguins
 
-Throughout these tutorials, we will be making use of a dataset called `penguins` from the `palmerpenguins` package. The dataset contains various different measurements for penguins of three species on three islands in the Palmer Archipelago, Antarctica.
+These tutorials make use of a dataset called `penguins` from the `palmerpenguins` package. The dataset contains various different measurements for penguins of three species on three islands in the Palmer Archipelago, Antarctica.
 
 ```{r, echo = FALSE}
 url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"
@@ -133,12 +133,12 @@ data("penguins")
 
 You might notice that the dataset does not seem to be fully loaded in. Beside `penguins`, there is probably a `<Promise>` symbol. To _really_ load the data in, click on `<Promise>`. `penguins` is now ready to go.
 
-We can now explore `penguins`:
+With the data loaded, explore `penguins`:
 
 ```{r}
 penguins
 ```
 
-In this data, every row is a unique observation (penguin). For each penguin, we have the `species` of the penguin, which `island` it lives on, its `sex`, the `year` the measurements were taken, and some body size measurements.
+In this data, every row is a unique observation (penguin). For each penguin, you know the `species` of the penguin, which `island` it lives on, its `sex`, the `year` the measurements were taken, and some body size measurements.
 
-To learn more about all that we can do with this data, check out the remaining tutorials.
+To learn more about all that you can do with this data, check out the remaining tutorials.

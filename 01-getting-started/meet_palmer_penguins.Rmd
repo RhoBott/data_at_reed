@@ -10,9 +10,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Meet the Palmer Penguins
 
-These tutorials make use of a dataset named `penguins` from the `palmerpenguins` package. The dataset contains various different measurements for three species of penguins on three islands in the Palmer Archipelago, Antarctica.
+These tutorials make use of a dataset named `penguins` from the `palmerpenguins` package. The dataset contains different body measurements for three species of penguins from three islands in the Palmer Archipelago, Antarctica.
 
-The `penguins` dataset is excellent for learning in R, because it contains both categorical and numeric variables, allowing you to practice skills such as calculating statistics and creating data visualizations. More information about the package and its data can be found on its [github repository](https://github.com/allisonhorst/palmerpenguins) or through some additional [documentation](https://allisonhorst.github.io/palmerpenguins/articles/intro.html). You can read about why we are not using `iris`, another common example dataset, in [this blogpost by Megan Stodel](https://www.meganstodel.com/posts/no-to-iris/). 
+The `penguins` dataset is useful for learning R, because it contains both categorical and numeric variables. More information about the package and its data can be found on its [github repository](https://github.com/allisonhorst/palmerpenguins) and  [documentation](https://allisonhorst.github.io/palmerpenguins/articles/intro.html). You can read about why we are not using `iris`, another common example dataset, in [this blogpost by Megan Stodel](https://www.meganstodel.com/posts/no-to-iris/). 
 
 ```{r, echo = FALSE}
 url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"
@@ -47,4 +47,4 @@ You can now explore `penguins`:
 penguins
 ```
 
-In this data, every row is a unique observation (penguin). For each penguin, you have the `species` of the penguin, which `island` it lives on, its `sex`, the `year` the measurements were taken, and some body size measurements.
+In this data, every row is a unique observation (a penguin). For each penguin, you have the `species` of the penguin, which `island` it lives on, its `sex`, the `year` the measurements were taken, and some body size measurements.

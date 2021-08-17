@@ -10,4 +10,4 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Writing your thesis in `thesisdown`
 
-The `thesisdown` package provides an R Markdown template for writing your senior thesis. This is particularly helpful for easily integrating R code and graphics into your thesis manuscript. Instructions for how to install this package and use the template can be found in the [GitHub repository](https://github.com/ismayc/thesisdown).
+The `thesisdown` package provides an R Markdown template for writing your senior thesis. This is particularly helpful for easily integrating data, R code, and graphics into your thesis manuscript. Instructions for how to install this package and use the template can be found in the [GitHub repository](https://github.com/ismayc/thesisdown).
