@@ -11,7 +11,7 @@ library(knitr)
 
 #### Subsetting data with `filter()` and `select()`
 
-Perhaps you wish to subset your data, retaining only observations (rows) that meet given criteria. The below code uses the function `filter()` to subset only female penguins:
+Perhaps you wish to subset your data, retaining only observations (rows) that meet given criteria. To subset Rows, use function `filter()` (both words contain an "r", which may help you remember which function to use). The below code subsets only female penguins:
 
 ```{r}
 penguins %>%
@@ -25,7 +25,7 @@ penguins %>%
   filter(bill_length_mm < 40)
 ```
 
-You can also get very specific, for example subsetting penguins from Torgersen Island that were observed in 2008 with a body mass greater than 3500 grams:
+You can also combine requirements for your data ("arguements" in the function), for example subsetting penguins from Torgersen Island that were observed in 2008 with a body mass greater than 3500 grams:
 
 ```{r}
 penguins %>%
@@ -48,7 +48,7 @@ penguins %>%
   filter(is.na(sex))
 ```
 
-Logical and Boolean operators are used with `filter()`. The two pieces of code below (`?base::Logic` and `?Comparison`) give more information on the different operators and their uses. 
+Both logical and Boolean operators can be used with `filter()`. The two pieces of code below (`?base::Logic` and `?Comparison`) give more information on the different operators and their uses. 
 
 ```{r, eval = FALSE}
 ?base::Logic
@@ -56,9 +56,7 @@ Logical and Boolean operators are used with `filter()`. The two pieces of code b
 ?Comparison
 ```
 
-
-
-Another way that you can subset your data is by subsetting columns, or variables. A dataset may have more variables than you need, so you can use the `select()` function to subset data to only variables of interest.
+Another way to subset data is by subsetting columns, or variables. A dataset may have more variables than you need, so you can use the `select()` function to subset data to only variables of interest. (Both seleCt and columns contain "c"s, which may help you remember which function to use.)
 
 To subset only species information from your dataset, you can use the following code:
 
@@ -67,23 +65,18 @@ penguins %>%
   select(species)
 ```
 
-You can subset everything _except_ species information from your data:
+You can use a negative selection to subset everything _except_ species information from your data:
 
 ```{r}
 penguins %>%
   select(-species)
 ```
 
-You can also list out which variables you would like to subset, for example `species`, `island`, and `sex`:
+You can also list which variables you would like to subset, for example `species`, `island`, and `sex`:
 
 ```{r}
 penguins %>%
   select(species, island, sex)
 ```
 
-
-To recap, subsetting columns is done with `select` and subsetting rows is done with `filter`.
-
-
-
-
+(To recap, subsetting columns is done with `select` and subsetting rows is done with `filter`; both will be useful as you work with data.)

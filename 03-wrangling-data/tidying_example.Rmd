@@ -11,9 +11,9 @@ library(knitr)
 
 #### Tidying example
 
-The "tidy" format of a data can depend on what you want to use the data for. To get us started in thinking about tidy data, we'll return to the `penguins` data. (For instructions on loading `penguins`, see [Getting Started](LINK-HERE).)
+The "tidy" format of a dataset can depend on how you plan to use the data. For examples of tidy data in action, return to the `penguins` dataset. (For instructions on loading `penguins`, see [Getting Started](LINK-HERE).)
 
-This summarized version of the penguins data, called `penguins_sum`, gives the  mean body mass for all penguins on a given island in a given year.
+This summarized version of the penguins data, called `penguins_sum`, gives the mean body mass for all penguins on a given island in a given year.
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 penguins_sum <- penguins %>%
@@ -23,7 +23,7 @@ penguins_sum <- penguins %>%
 penguins_sum
 ```
 
-The resulting data is tidy; each variable has its own column, each observation (penguin) is a row, and each measurement has its own cell. 
+The resulting data is "tidy": each variable has its own column, each observation (penguin) is a row, and each measurement has its own cell. 
 
 Compare that with this representation of the same data:
 

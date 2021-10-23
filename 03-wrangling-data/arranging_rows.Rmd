@@ -11,7 +11,7 @@ library(knitr)
 
 #### Arranging rows with `arrange()`
 
-Sometimes it is helpful to sort data, alphabetically or numerically. You can sort data using the `arrange()` function from `dplyr`.
+Sometimes it is helpful to sort data, alphabetically or numerically, using the `arrange()` function from `dplyr`.
 
 To arrange all penguins, in order of increasing bill length:
 

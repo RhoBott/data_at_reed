@@ -11,9 +11,11 @@ library(knitr)
 
 ### Combining data
 
-During data analysis, you might find that you have two separate datasets that offer complementary information to each other. In this case, you might be interested in combining, or _joining_ them.
+During data analysis, you might have two separate datasets that you need to combine, or _join_.
 
-For example, suppose you also have some data about the islands that these penguins live on that you believe might inform your analyses of penguin characteristics.
+For example, suppose you also have some data about the islands that are home to the Palmer penguins, and you want to include information about the islands in your analyses of penguin characteristics.
+
+The below code builds a dataset (`palmer_islands`) with information about the mean temperature and mean elevation of each island.
 
 ```{r, include = FALSE}
 palmer_islands <-
@@ -26,14 +28,14 @@ palmer_islands <-
 palmer_islands
 ```
 
-`penguins` and `islands` share a column, `island`, that allows you to combine the two datasets. To join these two datasets, we can use the `full_join()` function from `dplyr`.
+`penguins` and `islands` share a column, `island`, that can be used to combine the two datasets. To join these two datasets, use the `full_join()` function from `dplyr`.
 
 ```{r}
 full_join(x = penguins, y = palmer_islands, by = "island") %>%
   select(species, island)
 ```
 
-"Full" joins are one of many types of joins, and keep any rows that are included in both `x` and `y` (the first and second datasets, respectively). Since the `palmer_islands` dataset only has one row per island, its rows are repeated as many times as needed so that each row in `penguins` has the entry it needs.
+"Full" joins are one of many types of joins. In a full join, any rows that are included in both `x` and `y` (the first and second datasets, respectively) remain in the final dataset. Since the `palmer_islands` dataset only has one row per island, its rows are repeated as many times as needed so that each row in `penguins` has the corresponding data (in this case, information on island temperature, elevation).
 
 Other join types include inner, left, and right joins. These join types differ in how they match rows between the two different datasets. If `x` and `y` are the first and second datasets, respectively,
 
@@ -42,4 +44,4 @@ Other join types include inner, left, and right joins. These join types differ i
 * `right_join()` includes all rows in `y` (and any from `x` that match)
 * `full_join()` includes all rows in `x` _or_ `y`, even if they do not match something in the other dataset
 
-To read more about combining data, we recommend the [relational data chapter](https://r4ds.had.co.nz/relational-data.html) of R for Data Science.
+To read more about combining data, see the [relational data chapter](https://r4ds.had.co.nz/relational-data.html) of R for Data Science.

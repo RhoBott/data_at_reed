@@ -17,14 +17,14 @@ penguins_sum <- penguins %>%
 
 #### Restructuring with `pivot_wider()` and `pivot_longer()`
 
-Let's take a look at how to move from untidy data to tidy data, and the reverse. The functions that allow you to do this, `pivot_wider()` and `pivot_longer()`, exist in the package `tidyr`. This package is included in `tidyverse`, along with many other helpful packages, so you can install and load `tidyverse`:
+One useful data skill is being able to move from untidy data to tidy data and back again. The functions that allow you to do this, `pivot_wider()` and `pivot_longer()`, exist in the package `tidyr`. This package is included in `tidyverse`, along with many other helpful packages. To access these tools, install and load `tidyverse`:
 
 ```{r eval = FALSE}
 install.packages("tidyverse")
 library(tidyverse)
 ```
 
-Now you can learn how to restructure data. Begin with the first, tidy version:
+With the tools loaded, you can restructure the summary dataset from above. Begin with the first, tidy version:
 
 ```{r, message = FALSE, warning = FALSE}
 penguins_sum
@@ -47,7 +47,7 @@ Looking more closely at `pivot_wider()`
 - `names_from` determines what variable from the old data will determine the names of columns in the new data
 - `values_from` is the name of the variable in the old data that will be contained in cells in the new data
 
-If given this untidy table, you can tidy the data by pivoting from "wide" to "long" using `pivot_longer()`.
+Given this untidy table, you can tidy the data by pivoting from "wide" to "long" using `pivot_longer()`.
 
 ```{r}
 penguins_wide %>%

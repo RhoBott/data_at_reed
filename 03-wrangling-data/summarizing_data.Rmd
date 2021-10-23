@@ -11,9 +11,9 @@ library(knitr)
 
 #### Summarizing data with `group_by()` and `summarize()`
 
-Often, data contains groupings (by geography, time period, experimental group). The `group_by()` function enables R to first group observations and then perform additional calculations. Function `summarize()` often proves useful with `group_by()`, allowing the calculation of measures across groups (mean, median, variance, etc).
+Often, data contains groupings (e.g. by geography, time period, experimental group). The `group_by()` function enables R to first group observations and then perform additional calculations. Function `summarize()` often proves useful with `group_by()`, allowing the calculation of measures across groups (mean, median, variance, etc).
 
-Continuing with the penguins data, one goal may be to end up with a variable that shows mean body mass of penguins for each island. First feed the grouping variable into `group_by()`:
+Continuing with the penguins data, one goal may be to calculate a variable that shows mean body mass of penguins for each island. First feed the grouping variable into `group_by()`:
 
 ```{r}
 penguins %>%

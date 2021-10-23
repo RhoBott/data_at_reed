@@ -13,7 +13,7 @@ library(knitr)
 
 Many of the previous examples have worked with numeric data; you may also work with text, or "string" data. String data can include numbers, letters, spaces, and special characters. Strings are most often represented as `"text surrounded in quotes"` in R. 
 
-The `stringr` package is a useful tool for working with string data. Instead of going through a step-by-step tutorial for each `stringr` function, the below code presents concrete examples using the `penguins` dataset to demonstrate some of the capabilities of `stringr`.
+The `stringr` package is a useful tool for working with string data. Instead of going through a step-by-step tutorial for each `stringr` function (there are many!), the below code presents concrete examples using the `penguins` dataset to demonstrate some of the capabilities of `stringr`.
 
 Most functions you will want to use from the `stringr` function begin with `str_`. If you forget the name of the function you need to use, try typing `str_` and scrolling through the auto-completed list of functions exported from `stringr`.
 
@@ -84,7 +84,7 @@ penguin %>%
   mutate(island = str_replace(island, "e", "tti"))
 ```
 
-Transforming seabirds into biscuits notwithstanding, knowing how to make replacements such as these will likely be important for your data work.
+Transforming islands into biscuits notwithstanding, knowing how to make replacements such as these will likely be important for your data work.
 
 To replace patterns throughout a dataset, use `str_replace_all()`. The below code replaces all occurrences of vowels with "x".
 

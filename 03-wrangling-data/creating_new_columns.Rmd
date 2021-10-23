@@ -11,7 +11,7 @@ library(knitr)
 
 #### Creating new columns with `mutate()`
 
-Another common data wrangling task is to create a new variable using the `mutate()` function. When creating a new variable, you provide a name for the new column and a method for calculating the new value. 
+Another common data wrangling task is to create a new variable, using function `mutate()`. When creating a new variable, you provide a name for the new column and a method for calculating the new value. 
 
 Continuing with the penguins data from `palmerpenguins`, the code below creates a new column for the mean body mass in kilograms:
 
@@ -21,7 +21,6 @@ penguins %>%
 ```
 
 The syntax for mutating a column follows the pattern of `mutate(new_column_name = expression)`, where `expression` is some sort of instruction for combining values in existing columns. In the above example, `new_column_name` is `body_mass_kg`, and `expression` is `body_mass_g / 1000`.
-
 
 Perhaps you realized that all flipper measurements were 4 mm short of the true length; you could use `mutate()` to adjust the data:
 
@@ -38,7 +37,7 @@ penguins %>%
   mutate(island_penguin_mass = sum(body_mass_g, na.rm = T))
 ```
 
-It may be useful to give R rules for creating new variables. For example, the below code divides all penguins into flipper length categories, based on the mean flipper length of the dataset (201mm), using the `case_when()` function. You can think of `case_when` as being a multilevel `if` statement. Essentially, the `case_when()` function in the code below is saying "for each observation (row), when the variable `flipper_length_mm` meets a certain condition (greater than, equal to, or less than 201mm), the new column should contain the respective category---`"long"`, `"average"`, or `"short"`.
+It may be useful to give R rules for creating new variables. For example, the below code divides all penguins into flipper length categories, based on the mean flipper length of the dataset (201mm), using the `case_when()` function. You can think of `case_when` as being a multilevel `if` statement. Essentially, the `case_when()` function in the code below is saying "for each observation (row), when the variable `flipper_length_mm` meets a certain condition (greater than, equal to, or less than 201mm), the new column should contain the respective category: `"long"`, `"average"`, or `"short"`.
 
 ```{r}
 penguins %>%

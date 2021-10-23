@@ -11,7 +11,9 @@ library(knitr)
 
 #### Frequency tables with `count()`
 
-Frequency tables provide one way of displaying information about your data. For example, how many male and female penguins are in the sample?
+Frequency tables provide one way of displaying information about your data. 
+
+For example, how many male and female penguins are in the sample?
 
 First, use function `count()` by the variable of interest (`sex`):
 
