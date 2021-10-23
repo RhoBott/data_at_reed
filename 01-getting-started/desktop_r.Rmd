@@ -10,28 +10,28 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Desktop R
 
-You may want to install and use the desktop version of R and RStudio if any of the following are true:
+You may wish to install and use the desktop version of R and RStudio if any of the following are true:
 
 - you are using R for projects outside of specific class assignments that are accessed and submitted using the Reed RStudio Server
 - you are using sensitive data
 - you want to be able to work in R independent of an internet connection
 
-There are two things you need to download in order to use R on your computer: R and RStudio. R is the coding language, and RStudio is the Integrated Development Environment (IDE) that makes R more friendly to use.
+There are two things you need to download in order to use R on your computer: R and RStudio. R is underlying program and language, and RStudio is the Integrated Development Environment (IDE) that makes R more friendly to use.
 
 #### Downloading + installing for MacOSX
 
-You can download and install R for MacOSX at the [CRAN downloads site](https://cran.r-project.org/), where you will follow the link to "Download R for (Mac) OS X". Navigate to the appropriate release for your computer's OS. To find your computer's OS, click the top left Apple icon, and click "About this Mac". You will see both a name (e.g. "High Sierra", "Catalina", or "El Capitan") and a number ("Version __.__._"). 
+You can download and install R for MacOSX at the [CRAN downloads site](https://cran.r-project.org/), where you will follow the link to "Download R for (Mac) OS X". Navigate to the appropriate release for your computer's operating system (OS). To find your computer's OS, click the top left Apple icon, and click "About this Mac". You will see both a name (e.g. "Catalina", "El Capitan", or "Big Sur") and a number ("Version __.__._"). 
 
 Back on the R download site, each download will have a description of what OS it requires in order to run. Choose the newest version possible for your OS (your OS should be equal to or higher than the one listed in the description). Click on the link next to the description to download R. Once the file has downloaded, click it to proceed to installation, leaving all default settings as they are.
 
 Next you need to install RStudio. To do this, navigate to the [RStudio downloads page](https://rstudio.com/products/rstudio/download/) and scroll down to "All Installers". Choose the download that matches your OS, most likely "MacOS 10.13+". Click the download link, open the file when it has downloaded, and install with the default settings as you did with R.
 
-With both R and RStudio installed, you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages("packagename")`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install a package once in order to load (`library(packagename)`) and use it in the future, but you need to load a package every time you use it.
+With both R and RStudio installed, you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages("packagename")`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install a package once in order to load (`library(packagename)`) and use it in the future. Remember that you need to load a package every time you use it.
 
 #### Downloading + installing for Windows
 
-You can download and install R for Windows at the [CRAN downloads site](https://cran.r-project.org/), where you'll follow the link to "Download R for Windows". From here click "base", and then "Download R 4.0.3 for Windows". Once the file has downloaded, click it to proceed to installation, leaving all default settings as they are.
+You can download and install R for Windows at the [CRAN downloads site](https://cran.r-project.org/), where you'll follow the link to "Download R for Windows". From here click "base", and then "Download R [version number] for Windows". Once the file has downloaded, click it to proceed to installation, leaving all default settings as they are.
 
 Next you need to install RStudio. To do this, navigate to the [RStudio downloads page](https://rstudio.com/products/rstudio/download/) and scroll down to "All Installers". Choose the download for Windows ("Windows 10/8/7"). Click the download link, open the file when it has downloaded, and install with the default settings as you did with R. 
 
-Now you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages("packagename")`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install a package once in order to load (`library(packagename)`) and use it in the future, but you need to load a package every time you use it.
+Now you should be able to open RStudio and begin working. Remember to install packages as you need them, either using `install.packages("packagename")`, or by navigating to the "Packages" window within RStudio, where you can search for and install packages. You only need to install a package once in order to load (`library(packagename)`) and use it in the future. Remember that you need to load a package every time you use it.

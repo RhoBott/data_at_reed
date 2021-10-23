@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 These tutorials make use of a dataset named `penguins` from the `palmerpenguins` package. The dataset contains different body measurements for three species of penguins from three islands in the Palmer Archipelago, Antarctica.
 
-The `penguins` dataset is useful for learning R, because it contains both categorical and numeric variables. More information about the package and its data can be found on its [github repository](https://github.com/allisonhorst/palmerpenguins) and  [documentation](https://allisonhorst.github.io/palmerpenguins/articles/intro.html). You can read about why we are not using `iris`, another common example dataset, in [this blogpost by Megan Stodel](https://www.meganstodel.com/posts/no-to-iris/). 
+The `penguins` dataset is useful for learning R, because it contains multiple kinds of data (both categorical and numeric variables). More information about the package and its data can be found on its [github repository](https://github.com/allisonhorst/palmerpenguins) and  [documentation](https://allisonhorst.github.io/palmerpenguins/articles/intro.html). You can read about why we are not using `iris`, another common example dataset, in [this blogpost by Megan Stodel](https://www.meganstodel.com/posts/no-to-iris/). 
 
 ```{r, echo = FALSE}
 url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"
@@ -33,18 +33,18 @@ Note that you only need to _install_ the package once. Once you have installed t
 library(palmerpenguins)
 ```
 
-Now you can load the data with the `data()` function:
+Now that the package is loaded, you can access the data with the `data()` function:
 
 ```{r}
 data("penguins")
 ```
 
-You might notice that the dataset does not seem to be fully loaded in. Next to `penguins`, there is probably a `<Promise>` symbol. To _really_ load the data in, click on `<Promise>`. `penguins` is now ready to go.
+You might notice that the dataset does not seem to be fully loaded. Next to `penguins`, there is probably a `<Promise>` symbol. To _really_ load the data, click on `<Promise>`. The `penguins` dataset is now ready to use.
 
-You can now explore `penguins`:
+You can explore the `penguins` data:
 
 ```{r}
 penguins
 ```
 
-In this data, every row is a unique observation (a penguin). For each penguin, you have the `species` of the penguin, which `island` it lives on, its `sex`, the `year` the measurements were taken, and some body size measurements.
+In this data, every row is a unique observation (an individual penguin). For each penguin, you have the `species` of the penguin, which `island` it lives on, its `sex`, the `year` the measurements were taken, and some body size measurements.
