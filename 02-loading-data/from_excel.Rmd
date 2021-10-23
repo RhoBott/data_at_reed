@@ -8,25 +8,25 @@ output: html_document
 
 ### From Excel (with `readxl`)
 
-If you are working with an Excel file, you can read your data into R using the `readxl` package.
+If you are working with an Excel file, you can read your data into R using the `readxl` package. First, install the `readxl` package:
 
 ```{r, eval = FALSE}
 install.packages("readxl")
 ```
 
-Once the package is installed, load it into your environment with `library()`. 
+Once the `readxl` package is installed, load it into your environment with `library()`. 
 
 ```{r, warning = FALSE, message = FALSE}
 library(readxl)
 ```
 
-The package `readxl` contains a function called `read_excel()`, which is very similar to [`read_csv()`](https://www.reed.edu/data-at-reed/resources/R/from-a-.csv.html). The main difference between these two tools is that the file is be a `.xls` or `.xlsx`, rather than `.csv`:
+The package `readxl` contains a function called `read_excel()`, which is very similar to [`read_csv()`](https://www.reed.edu/data-at-reed/resources/R/from-a-.csv.html). The main difference between these two tools is that the file is be a `.xls` or `.xlsx`:
 
 ```{r, eval = FALSE}
 cat_data <- read_excel("Desktop/Reed/Bio123/cats.xls")
 ```
 
-If you have multiple sheets in your Excel file, `read_excel()` can access all of them. Let's say the `cats.xls` data has three sheets: the first sheet is about indoor cats, the second is about outdoor cats, and the third is about stray cats. We can load these in as follows:
+If you have multiple sheets in your Excel file, `read_excel()` can access all of them. Perhaps the `cats.xls` data has three sheets: the first sheet is about indoor cats, the second is about outdoor cats, and the third is about stray cats. You can load these in as follows:
 
 ```{r, eval = FALSE}
 indoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = 1)
@@ -34,7 +34,7 @@ outdoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = 2)
 stray_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = 3)
 ```
 
-We can also call the sheets by their names instead of by numbers:
+You can also call the sheets by their names instead of by numbers:
 
 ```{r, eval = FALSE}
 indoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = "Indoor")

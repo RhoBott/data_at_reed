@@ -10,13 +10,14 @@ output: html_document
 
 ### From a package
 
-Many R packages contain their own data. (If you are unfamiliar with packages, see our [Getting Started](LINK-HERE) page.) Most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes data from a study of three different species of penguins found in Antarctica.
+Many R packages contain their own data. Most of the data used in tutorials on the Data at Reed site comes from a package called `palmerpenguins`. The `palmerpenguins` package includes datasets from a study of three different species of penguins found in Antarctica.
 
 ```{r, echo = FALSE}
 url <- "https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png"
 
 knitr::include_graphics(url)
 ```
+*Artwork by @allison_horst*
 
 To load data from a package, first install the package with the `install.packages()` function:
 
@@ -24,7 +25,7 @@ To load data from a package, first install the package with the `install.package
 install.packages("palmerpenguins")
 ```
 
-Now that you have the package installed, you need to load the package into your environment with `library()`. You only need to install the package once, but you will need to load the package every time you wish to use it.
+Now that you have the package installed, you need to load the package into your environment with `library()`. (You only need to install the package once. You will need to load the package every time you open R.)
 
 ```{r}
 library(palmerpenguins)
@@ -36,21 +37,21 @@ When working with a package, there are a couple of options for finding the data 
 
 For the most complete information, run `help(package = "palmerpenguins")` in your console. This will show you all of the data and functions included in a package, as well as descriptions of what they are.
 
-If you are already familiar with the data and functions in a package and you just need a list of names to jog your memory, you can make use of RStudio's autocomplete. Type the name of your package followed by two colons, like this 
+If you are already familiar with the data and functions in a package and you only need a list of names to jog your memory, you can make use of RStudio's autocomplete. Type the name of your package followed by two colons, like this 
 
 ```{r, eval = FALSE}
 palmerpenguins::
 ```
 
-Your tooltip should show you all of the datasets and functions included in the package.
+Your tooltip should show you all of the datasets included in the package.
 
-Once you have found the name of the dataset you want, in our case `penguins`,you can use the `data()` function:
+Once you have found the name of the dataset you want, in our case `penguins`, you can use the `data()` function:
 
 ```{r}
 data(penguins)
 ```
 
-Depending on how datasets are included in a package, you might run that command and see nothing, or you may see `<Promise>` up in your Environment in the top-right corner of your RStudio window. It might not seem like your data is loaded. One way to confirm your data is loaded is to run the `View()` function in your console:
+Depending on how datasets are included in a package, you might run that command and see nothing, or you may see `<Promise>` in your Environment in the top-right corner of your RStudio window. You may not be sure if your data is loaded. One way to confirm that your data is loaded is to run the `View()` function in your console:
 
 ```{r, eval = FALSE}
 View(penguins)
@@ -62,13 +63,13 @@ Alternatively, you can use the `head()` function to print the first few rows:
 head(penguins)
 ```
 
-Your data is loaded! You're ready to go.
+Your data is loaded! You are ready to go.
 
 ---
 
 ### From a .csv (with `readr`)
 
-Comma-separated value (`.csv`) files are a very common format of data that can be easily transferred among many different applications, including R. In order to load a `.csv` file into R, you will need the `readr` package.
+Comma-separated value (`.csv`) files are a very common format of data that can be easily transferred between many different applications, including R. To load a `.csv` file into R, you can use the `readr` package.
 
 First, install the `readr` package:
 
@@ -82,7 +83,7 @@ Now that you have the package installed, load the package into your environment 
 library(readr)
 ```
 
-Now that you have installed the package, you can load your data.
+Now that you have loaded the package, you can load your data.
 
 First, you will need to know where the data is on your computer. You will need the filepath to the data to show `readr` where to find the file. Since this is a `.csv` file, you will use the `read_csv()` function to read in the file.
 
@@ -92,11 +93,23 @@ Here is an example:
 cat_data <- read_csv("Desktop/Reed/Bio123/cats.csv")
 ```
 
-The above code reads in the file `cats.csv`, located in a folder `Bio123` within a `Reed` folder on the `Desktop`. The filepath `Desktop/Reed/Bio123` gives directions to `read_csv()` on where to find `cats.csv`. 
+The above code reads in the file `cats.csv`, located in a folder `Bio123` within a `Reed` folder on the `Desktop`. The filepath `Desktop/Reed/Bio123` tells `read_csv()` where to find `cats.csv`. 
+
+To find a filepath on computer running MacOSX you can follow these steps:
+  - Locate the desired file
+  - Right-click on the file
+  - Hold down the option key and click "copy 'filename' as Pathname"
+  
+To find a filepath on a computer running Windows follow these steps:
+  - Locate the desired file
+  - Hold shift and right-click on the file
+  - Select "Copy as Path"
+  
+The copied value can now be used as the argument in the `read_csv()` function.
 
 `read_csv()` not only finds this data, but also makes it into a dataset, which is then assigned to the name (`cat_data`) using the `<-` operator. This data is now available for use in R (you can confirm this using `View()`).
 
-If you are using the Reed RStudio Server, you can upload your data file to the server and read it in from the server. This process uses the same `read_csv()` function within the server.
+If you are using the Reed RStudio Server, you can upload your data file to the server ("Files" pane, lower right) and read it in from the server ("Environment" pane, upper left). This process uses the same `read_csv()` function within the server.
 
 If you want to learn more about the `readr` package or the `read_csv()` function, [the Tidyverse documentation for `readr`](https://readr.tidyverse.org/) provides a more extensive overview of the package and its functions.
 
@@ -104,25 +117,25 @@ If you want to learn more about the `readr` package or the `read_csv()` function
 
 ### From Excel (with `readxl`)
 
-If you are working with an Excel file, you can read your data into R using the `readxl` package.
+If you are working with an Excel file, you can read your data into R using the `readxl` package. First, install the `readxl` package:
 
 ```{r, eval = FALSE}
 install.packages("readxl")
 ```
 
-Once the package is installed, load it into your environment with `library()`. 
+Once the `readxl` package is installed, load it into your environment with `library()`. 
 
 ```{r, warning = FALSE, message = FALSE}
 library(readxl)
 ```
 
-The package `readxl` contains a function called `read_excel()`, which is very similar to [`read_csv()`](link to read_csv doc). The main difference between these two tools is that the file is be a `.xls` or `.xlsx`, rather than `.csv`:
+The package `readxl` contains a function called `read_excel()`, which is very similar to [`read_csv()`](https://www.reed.edu/data-at-reed/resources/R/from-a-.csv.html). The main difference between these two tools is that the file is be a `.xls` or `.xlsx`:
 
 ```{r, eval = FALSE}
 cat_data <- read_excel("Desktop/Reed/Bio123/cats.xls")
 ```
 
-If you have multiple sheets in your Excel file, `read_excel()` can access all of them. Let's say the `cats.xls` data has three sheets: the first sheet is about indoor cats, the second is about outdoor cats, and the third is about stray cats. Load these three datasets:
+If you have multiple sheets in your Excel file, `read_excel()` can access all of them. Perhaps the `cats.xls` data has three sheets: the first sheet is about indoor cats, the second is about outdoor cats, and the third is about stray cats. You can load these in as follows:
 
 ```{r, eval = FALSE}
 indoor_cat <- read_excel(path = "Desktop/Reed/Bio123/cats.xls", sheet = 1)
@@ -144,22 +157,29 @@ This code will help you to bring in data directly from Excel sheets. If you want
 
 ### From Google Sheets (with `googlesheets4`)
 
-You can also read in data that you have collected via Google Sheets using the `googlesheets4` package. First install and load the package:
+You can also read in data via Google Sheets using the `googlesheets4` package. First install the package:
 
 ```{r, eval = FALSE}
 install.packages("googlesheets4")
 ```
 
+Once `googlesheets4` is installed, load the package:
 
 ```{r}
 library(googlesheets4)
 ```
 
+__Important side note if you are working in the Reed RStudio Server:__ In addition to loading the `googlesheets4` package, include the following line of code at the top of your document. This is necessary to tell the R that you want to use something called out-of-band authentication (or "oob auth"). If you would like to read more about what this means, check out [this blog post](https://gargle.r-lib.org/articles/auth-from-web.html). Otherwise, just enjoy this silly-seeming line of code at the top of your document:
+
+```{r}
+options(gargle_oob_default = TRUE)
+```
+
 Loading data from Google Sheets is a bit more complicated because of document ownership and privacy around user Google accounts. However, `googlesheets4` navigates this very elegantly. 
 
-For the next step, you will want to make sure you can see your console (in RStudio), because you will need to grant R access to your Google Sheets. If you cannot see your console, click the small double-window icon at the right of the gray bar that says "Console" below your current document. 
+When you are using the following function, you will want to make sure you can see your console (in RStudio), because you will need to grant R access to your Google Sheets. If you cannot see your console, click the small double-window icon at the right of the gray bar that says "Console" below your current document. 
 
-In Google Sheets, navigate to the sheet you would like to read in, and copy the sharing URL for that sheet. To read in the data from that sheet, insert that URL  into to the `read_sheet()` function in `googlesheets4`:
+In Google Sheets, navigate to the sheet you would like to read in, and copy the sharing URL for that sheet. To read in the data from that sheet, insert that URL into to the `read_sheet()` function in `googlesheets4`:
 
 ```{r, eval = FALSE}
 example <- read_sheet("https://docs.google.com/spreadsheets/d/1qSGfs0ogEOQsynzAtoUIgU5NJDqn7bOd14L9qpWA3w8/edit?usp=sharing")
@@ -167,7 +187,7 @@ example <- read_sheet("https://docs.google.com/spreadsheets/d/1qSGfs0ogEOQsynzAt
 
 Keep an eye on your Console, because this code will prompt several interactive steps for you in order to grant R access to your document.
 
-1. In your console, you will be asked if it is okay to "cache OAuth access credentials in the folder" followed by a URL. (This means: "Is it okay for R to gain access to your Google Sheets in the future, or would you like to only grant one-time access?" Type "1" in the console for yes, agreeing to both one-time and future access, and click enter.)
+1. In your console, you will be asked if it is okay to "cache OAuth access credentials in the folder" followed by a URL. (This means: "Is it okay for R to gain access to your Google Sheets in the future, or would you like to only grant one-time access?") Type "1" in the console for "yes", agreeing to both one-time and future access, and click enter.
 
 2. Next, R will open a window in your browser asking for `tidyverse` access to your Google account. This will allow R to access your documents in the future when you want to read in files. Follow the directions in the browser and grant access. 
 
@@ -175,7 +195,7 @@ Keep an eye on your Console, because this code will prompt several interactive s
 
 Once you have completed the above steps, check your "Environment" in the top right corner of your R window. If you were successful, you should see your dataset.
 
-If you select "yes" in the first step of this process, you will have a much easier time importing data from Google Sheets in the future. You can even write files from R into Google Sheets.
+If you select "yes" in the first step of this process, you will have a much easier time importing data from Google Sheets in the future. (You can even write files from R directly into Google Sheets.)
 
 If you want to learn more about `googlesheets4`, [the package's website](https://googlesheets4.tidyverse.org/) contains a more extensive overview of the package and its functions.
 

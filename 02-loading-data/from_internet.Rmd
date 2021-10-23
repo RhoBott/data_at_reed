@@ -8,11 +8,11 @@ output: html_document
 
 ###  From the internet (with `rvest`)
 
-If you find data that you would like to use on a website, package `rvest` can bring that table into R. (This both saves you the process/frustration of copying/pasting data from a webpage, and also makes your work less error-prone and more reproducible.)
+If you find data that you would like to use on a website, package `rvest` can bring that table into R. (Scraping data both saves you the process/frustration of copying/pasting data from a webpage, and also makes your work less error-prone and more reproducible.)
 
 NOTE: Before you take data from a website, make sure you are allowed to scrape and analyze the data.
 
-Luckily there's a package that makes this process fairly straightforward. First we need to install it
+Luckily there is a package that makes this data scraping process fairly straightforward. First, install the `robotstxt` package:
 
 ```{r}
 install.packages("robotstxt")
