@@ -8,7 +8,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 library(palmerpenguins)
 library(tidyverse)
-library(ggplot2)
 library(knitr)
 library(kableExtra)
 library(waffle)
@@ -26,7 +25,7 @@ ggplot(data = penguins,
   geom_line()
 ```
 
-The above graph looks a bit odd; this is because there are multiple data points (body mass, y) at each time point (year, x). Linegraphs work best when your data has one value per x location. In this example, that means you would want one y value for _each_ island in _each_ year. You can achieve this by taking the mean of `body_mass_g` for each combination of `island` and `year`:  
+The above graph looks a bit odd; this is because there are multiple data points (body mass, y) at each time point (year, x). Linegraphs work best when your data has one y value per x value In this example, that means you would want one value of `body_mass_g` for _each_ island in _each_ year. You can achieve this by taking the mean of `body_mass_g` for each combination of `island` and `year`:  
 
 ```{r, message=FALSE, warning=FALSE}
 penguins_sum <- penguins %>%
@@ -47,7 +46,6 @@ ggplot(data = penguins_sum,
   geom_line()
 ```
 
-
-You may come across problems with your linegraphs when your x-variable is categorical. This issue can be resolved by adding `group = 1` into your `aes()` call.
+You may encounter problems with your linegraphs when your x-variable is categorical. This issue can be resolved by adding `group = 1` into your `aes()` call.
 
 

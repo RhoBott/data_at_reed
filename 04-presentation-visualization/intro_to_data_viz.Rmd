@@ -8,7 +8,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 library(palmerpenguins)
 library(tidyverse)
-library(ggplot2)
 library(knitr)
 library(kableExtra)
 library(waffle)
@@ -18,10 +17,11 @@ library(waffle)
 
 `ggplot2` is an R package for data visualization that makes appealing and effective graphs using a standardized syntax.
 
-First, load the package, which is necessary every time you start an R session. For this example, also load `palmerpenguins`, a package that contains a dataset about penguin populations on islands in Antarctica, as well as `tidyverse`, which contains many helpful functions covered in the [Transforming data with `dplyr`](link) section. To learn more about packages and the `palmerpenguins` package, see our [Getting Started](LINK-HERE) page.
+To run these examples on your own, load `palmerpenguins`, a package that contains a dataset about penguin populations on islands in Antarctica. You also need to load the `ggplot2` package, which is contained _within_ the `tidyverse` package. (You used other `tidyverse` libraries in the [Transforming data with `dplyr`](link) section.) You can also load `ggplot2` on its own, using `library(ggplot2)`.
+
+To learn more about packages and the `palmerpenguins` package, see our [Getting Started](LINK-HERE) page.
 
 ```{r, eval = FALSE}
-library(ggplot2)
 library(palmerpenguins)
 library(tidyverse)
 ```
@@ -38,7 +38,7 @@ There are three main pieces that make up a ggplot:
 
               aes(x = ___ , y = ___ , color = ___ , fill = ___ )
 
-Anything that you put inside of `aes()` should be a variable. The aesthetics that you end up using will be specific to your graph type. (For example, a histogram shows the distribution of one variable and will include `x = ___ `, and not all of the aesthetics listed above.)
+Anything that you put inside of `aes()` should be a variable. The aesthetics that you use will vary with graph type. (For example, a histogram shows the distribution of one variable and will include `x = ___ `, and not all of the aesthetics listed above; a bar plot may use `fill = `, but a scatterplot would use `color = `.)
 
 3. Geometry: You can think of the `geom` as specifying what shape your data will take, appearing in `ggplot2` code as variations on:
 

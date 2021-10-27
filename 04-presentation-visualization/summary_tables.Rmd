@@ -8,7 +8,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 library(palmerpenguins)
 library(tidyverse)
-library(ggplot2)
 library(knitr)
 library(kableExtra)
 library(waffle)
@@ -30,7 +29,7 @@ library(knitr)
 
 Using the `palmerpenguins` data, calculate the mean value of penguin body mass (g) across islands over time. (For more information on calculating summary statistics, see the [Data Wrangling](https://www.reed.edu/data-at-reed/resources/R/transforming-data-with-dplyr.html)) section.)  
 
-Here is the code for our summary statistic, which we will save in a new dataset called `penguin_sum`.  
+The below code calculates summary statistics, saved in a new dataset called `penguin_sum`.  
 
 ```{r message = FALSE}
 penguin_sum <- penguins %>%
@@ -53,8 +52,6 @@ kable(x = penguin_sum,
       col.names = c("Island", "Year", "Mean Body Mass (g)"),
       caption = "Mean body mass of penguins on different islands over time")
 ```
-
-
 
 For additional customization options, use the package `kableExtra`. 
 
@@ -103,14 +100,14 @@ install.packages("gt")
 library(gt)
 ```
 
-You can create a basic table just by adding `gt()` on to the end of your code:
+You can create a basic table by adding `gt()` on to the end of your code:
 
 ```{r}
 penguin_sum %>% 
   gt()
 ```
 
-We can also adjust some of our column names and include a title by adding on to our baseline table. Notice that we can use the `md()` wrapper, which stands for "markdown," to use markdown styling in our tables; the `**` on either side will bold the `title` argument. One `*` on either side will italicize the text.
+You can also adjust your column names and include a title by adding on to your baseline table. Notice that you can use the `md()` wrapper, which stands for "markdown," to use markdown styling in your tables; the `**` on either side will bold the `title` argument. One `*` on either side will italicize the text.
 
 ```{r}
 penguin_sum %>% 
@@ -124,9 +121,9 @@ penguin_sum %>%
     ) 
 ```
 
-Finally, we can do some grouping and then color our columns to help the viewer differentiate between the species. There are a couple of steps that need to be done before coloring our table.
+Finally, you can both group and color your columns to help the viewer differentiate between the species. Before adding color to your table, you will need to complete a few additional steps.
 
-First, we need to install a few new packages and then choose a palette from the huge collection of available ones. 
+First, install a few new packages and choose a color palette from the many available: 
 
 ```{r}
 install.packages("paletteer")
@@ -139,7 +136,7 @@ You can run this line of code to look at all the color options:
 info_paletteer(color_pkgs = NULL)
 ```
 
-The syntax is generally `packagename::palette` and you'll usually have to install the package before accessing the palette. Notice that we can specify how many colors we want with the `n = 3` argument.
+The syntax is generally `packagename::palette` and you will usually have to install the package before accessing the palette. Notice that you can specify how many colors we want with the `n = 3` argument.
 
 ```{r}
 install.packages("ggsci")
@@ -167,5 +164,4 @@ penguin_sum %>%
   )
 ```
 
-
-As with kable, there is a lot that you can do to customize your `gt` tables. We've only scratched the surface here, but there are a lot of great resources that go in depth on using the package---[the `gt` website](https://gt.rstudio.com/reference/index.html) is a good place to start.
+As with kable, there is a lot that you can do to customize your `gt` tables. These examples do not provide a full introduction to the options available within `gt`; there are many great resources which provide more deatil. For more on using `gt`, consider starting with that go in depth on using the package---[the `gt` website](https://gt.rstudio.com/reference/index.html).

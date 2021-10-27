@@ -8,7 +8,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 library(palmerpenguins)
 library(tidyverse)
-library(ggplot2)
 library(knitr)
 library(kableExtra)
 library(waffle)
@@ -16,14 +15,14 @@ library(waffle)
 
 #### Histograms
 
-Histograms are one tool to show the distribution of data for a continuous variable, specified with `geom_histogram()`.
+Histograms show the distribution of data for a continuous variable, specified with `geom_histogram()`.
 
 ```{r, message=FALSE, warning=FALSE}
 ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
   geom_histogram()
 ```
 
-Changing either the number of bins, or the width of those bins, can greatly affect the resulting visual. Compare the two below graphs to the initial histogram (notice you can specify `bins` or `binwidth`).
+Changing either the number of bins, or the width of those bins, can greatly affect the resulting visual. Compare the two below graphs to the initial histogram (notice you can specify `bins` _or_ `binwidth`).
 
 ```{r, warning = FALSE}
 ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
@@ -34,4 +33,4 @@ ggplot(data = penguins, mapping = aes(x = body_mass_g)) +
   geom_histogram(binwidth = 200)
 ```
 
-When creating a histogram of your data, you will likely want to try different binning schemes to see what provides the best visual representation of your data. Generally you want to avoid histograms that look like barcodes as well as ones that look like a single block.
+When creating a histogram of your data, you will likely want to try different binning schemes to see what provides the best representation of your data. Generally you want to avoid histograms that look like barcodes as well as ones that look like a single block.

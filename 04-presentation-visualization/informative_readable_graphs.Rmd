@@ -8,7 +8,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 library(palmerpenguins)
 library(tidyverse)
-library(ggplot2)
 library(knitr)
 library(kableExtra)
 library(waffle)
@@ -27,7 +26,7 @@ In addition to `x`, `y`, `color`, and `fill` covered in the [Intro to data visua
 
 #### Aesthetic mappings
 
-The aesthetics `shape` and `linetype` can be used to display a categorical variable, while `size` can show a continuous variable. These are used in the same way as `color` above. For example, you could make the same exact graph that was shown in the [Linegraphs](link) section, with different islands shown by `linetype` instead of `color`:
+The aesthetics `shape` and `linetype` are best used to display a categorical variable, while `size` is best used with continuous variables. These are used in the same way as `color` above. For example, you could make the same graph that was shown in the [Linegraphs](link) section, with different islands shown by `linetype` instead of `color`:
 
 ```{r, message = FALSE, warning = FALSE}
 ggplot(data = penguins_sum, 
@@ -37,11 +36,11 @@ ggplot(data = penguins_sum,
 
 To see more specifics of mapping aesthetics, [this blog post](https://www.datanovia.com/en/blog/ggplot-aes-how-to-assign-aesthetics-in-ggplot2/#group-and-line-type) provides helpful examples and highlights cases where different aesthetic mappings might be particularly appropriate.
 
-There are many good resources available for using `ggplot2` in visualization, including the comprehensive [ggplot2 documentation](https://ggplot2.tidyverse.org/) and the related chapter in [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html).
+There are many resources available for using `ggplot2` in visualization, including the comprehensive [ggplot2 documentation](https://ggplot2.tidyverse.org/) and the related chapter in [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html).
 
 #### Adjusting transparency with alpha
 
-Sometimes, when using `geom_point()`, points can get a bit crowded. (This is called overplotting.) One way to address this is to change the transparency of the points. In this code, `alpha = 0.5` specifies the transparency of the points as 0.5, on a scale from 0 (most transparent) to 1 (least transparent):
+Sometimes, when using `geom_point()`, points can get a bit crowded. (This is called overplotting.) One way to address this is to change the transparency of the points. In the code below, `alpha = 0.5` specifies the transparency of the points as 50%, on a scale from 0 (most transparent) to 1 (least transparent):
 
 ```{r, warning = FALSE}
 ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm, color = sex)) +

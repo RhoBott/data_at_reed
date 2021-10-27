@@ -8,7 +8,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 library(palmerpenguins)
 library(tidyverse)
-library(ggplot2)
 library(knitr)
 library(kableExtra)
 library(waffle)
@@ -16,9 +15,9 @@ library(waffle)
 
 #### Boxplots
 
-Boxplots can be another useful tool for visualizing a dataset, showing both the spread of the data (range of most of the data, presence of outlier) and how the data is concentrated in the middle (mean, median). 
+Boxplots can be another useful tool for visualizing a dataset, showing both the spread of the data (range of most of the data, presence of outliers) and how the data is concentrated in the middle (mean, median). 
 
-Boxplots are often most useful to compare data across categories. For example, we can construct a boxplot for penguin weight (body mass in g) across _all_ islands:
+Boxplots are often most useful to compare data across categories. For example, you can construct a boxplot for penguin weight (body mass in g) across _all_ islands:
 
 ```{r, message=FALSE, warning=FALSE}
 ggplot(data = penguins, mapping  = aes(y = body_mass_g)) +
@@ -41,15 +40,9 @@ ggplot(data = penguins, mapping  = aes(x = island, y = body_mass_g, color = sex)
 
 (The dots you see as part of the boxplots are outliers, which `geom_boxplot` defines as being outside of 150% the value of the interquartile range [IQR], the difference between the 1st [25%] and the 3rd [75%] quartile of your data.)
 
-
 A common problem when creating multiple boxplots on the same graph is that even though you supply an x-variable, your plot only has one boxplot. This usually happens when the x-variable is not being properly treated as a factor. One option for a fix is to encode the variable as a factor within the `ggplot` call:
 
 ```{r}
 ggplot(data = penguins, mapping  = aes(x = factor(island), y = body_mass_g)) +
   geom_boxplot()
 ```
-
-
-
-
-
