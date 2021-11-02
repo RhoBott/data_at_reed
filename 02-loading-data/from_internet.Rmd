@@ -10,15 +10,17 @@ output: html_document
 
 If you find data that you would like to use on a website, package `rvest` can bring that table into R. (Scraping data both saves you the process/frustration of copying/pasting data from a webpage, and also makes your work less error-prone and more reproducible.)
 
-NOTE: Before you take data from a website, make sure you are allowed to scrape and analyze the data.
+#### Checking for Permission
 
-Luckily there is a package that makes this data scraping process fairly straightforward. First, install the `robotstxt` package:
+Before you take data from a website, always make sure you are allowed to scrape and analyze the data. You can sometimes find this information by digging into the webpage, but luckily there's an R-package that will do this for you. It is called `robotstxt` and while it has a great number of functions, the one that we'll be using is called `paths_allowed()`.
+
+First, install the `robotstxt` package:
 
 ```{r}
 install.packages("robotstxt")
 ```
 
-and then we can use the function `paths_allowed()` with the url to the website to check if scraping is allowed.
+and then use the function `paths_allowed()` with the url/link to the website to check if scraping is allowed.
 
 ```{r}
 robotstxt::paths_allowed("url_to_website")
@@ -27,6 +29,10 @@ robotstxt::paths_allowed("url_to_website")
 This will return either TRUE or FALSE.
 
 You can read more about scraping data from the web [here](https://libguides.reed.edu/copyright/images-data#s-lg-box-wrapper-29860611). If you still have questions about the legality of a web-scraping workflow after reading this documentation, you can contact Reed's [data librarian](https://library.reed.edu/about/staff/lebow.html).
+
+#### Scraping the Data
+
+Once we know that we are allowed to scrape data from our webpage, we can use a package called `rvest` to actually do the scraping.
 
 First, install and load the `rvest` package: 
 
