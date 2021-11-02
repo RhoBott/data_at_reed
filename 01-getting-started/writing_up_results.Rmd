@@ -24,8 +24,12 @@ Note: One caveat for R Markdown is that sometimes knitting your document can bri
 
 For more in-depth information on R Markdown see [the RMarkdown pages from RStudio](https://rmarkdown.rstudio.com/articles_intro.html).
 
-##### R Markdown Visual Editor
+#### R Markdown Visual Editor
 
-If writing in markdown formatting presents a challenge, RStudio has a visual editor for R Markdown documents, which feels much more similar to text editors such as Word or Google Docs. The visual editor removes the need for remembering and using markdown formatting expressions, but still supports markdown expressions as well as traditional shortcuts and formatting icons. Visual mode also includes support for integration with Zotero for citation assistance.
+Writing in an R Markdown document can be challenging, since markdown formatting and syntax can be both frustrating and unfamiliar. To help with this, RStudio has a visual editor for R Markdown documents, which feels much more similar to text editors such as Word or Google Docs.
 
-To start using the visual editor as well as learn more about the features available, check out RStudio's official [Visual R Markdown documentation page](https://rstudio.github.io/visual-markdown-editing/).
+The visual editor removes the need for remembering and using markdown formatting expressions, but still supports markdown expressions as well as traditional shortcuts and formatting icons. Visual mode also includes support for integration with Zotero for citation assistance.
+
+To use the visual editor, open a new or existing R Markdown file and click the ![](https://rstudio.github.io/visual-markdown-editing/images/visual_mode_2x.png) button, located in the top right corner of the document toolbar. Alternatively, locate the gear icon next to the Knit button, and select *Use Visual Editor* from the resulting dropdown menu. Both of these methods can be used to switch between the default and visual editors.
+
+For more information on the features available through the visual editor, check out RStudio's official [Visual R Markdown documentation page](https://rstudio.github.io/visual-markdown-editing/).
