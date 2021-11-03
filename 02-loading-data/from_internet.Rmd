@@ -55,10 +55,15 @@ url <- "https://www.reed.edu/ir/success.html"
 In order to access the data, R needs to know not only the URL of the website that contains the table, but also where on that page the table is located. To point R to the data:
 
 1. Right-click on the table you want to bring into R, and click "inspect" in the menu that comes up. This will open a bar on the right of the window.
+**add screenshot here**
+note: if you do not see this option (and you are using Safari), go to the menu bar at the top of your screen click Safari -> preferences. A window will come open with all kinds of preferences. Go to __Advanced__ and make sure the box next to "Show Develop menu in menu bar" is selected. 
+**add screenshot here**
 
 2. Hover your mouse over the lines of code in this bar on the right. You will notice that as you move your mouse, different sections of the webpage will be highlighted. Hover until you find a line of code that highlights the whole table that you want.
+**add screenshot here**
 
 3. Right-click that line, go to copy > copy selector. You will then paste that text in the code below where it says `css = " "`. 
+**add screenshot here**
 
 Once you have the specific location of the table, use the `url` saved earlier, then save the data (example: as `reed_table`) using the `<-` operator.
 
