@@ -20,14 +20,13 @@ You may have a `.csv` file on your computer that you would like to work with on 
   - Back at the "Upload Files" window, select "Choose File." Find and select your `.csv`, then select "Upload" and "OK". 
   - Go to the Files pane, and check that your folder and your file are where you expect them on the server. 
   
-Congratulations! Your `.csv` file is now located on the server. However, it not in your environment yet, meaning it cannot yet be used.
+Congratulations! Your `.csv` file is now located on the server. However, it's not in your environment yet, meaning it cannot yet be used.
 
 ### Importing a `.csv` into the R environment
 
-Whether you are using desktop R or the Rstudio server, the steps below will walk you through importing your `.csv` into your R environment. 
-These steps are the same regardless of how you are accessing RStudio.
+Whether you are using desktop R or the RStudio server, the steps below will walk you through importing your `.csv` into your R environment. 
 
-Before you begin, open Rstudio. If you are using the server, log in and start a new session if you are not already in one. 
+Before you begin, open RStudio. If you are using the server, log in and start a new session if you are not already in one. 
   - In the toolbar at the top of the RStudio window, go to **File** -> **New File**, and choose either an R Script or an R Markdown file. More information on the different file types can be found [here](https://www.reed.edu/data-at-reed/resources/R/writing-up-your-results.html)
   - In the Files pane on the lower right of the screen, locate your `.csv`
   - Click on the file name (it should become underlined when you hover over it), and select "Import Dataset..."
@@ -45,7 +44,7 @@ Instead of copying this code from the "Import files" window, you can also write 
 
 To load a `.csv` file into R, you can use the `readr` package.
 
-First, install the `readr` package:
+First, if you haven't already, install the `readr` package:
 
 ```{r, eval = FALSE}
 install.packages("readr")
@@ -72,7 +71,7 @@ The above code reads in the file `cats.csv`, located in a folder `Bio123` within
 To find a filepath on computer running MacOSX you can follow these steps:
   - Locate the desired file
   - Right-click on the file
-  - Hold down the option key and click "copy 'filename' as Pathname"
+  - Hold down the option key and click       "copy 'filename' as Pathname"
   
 To find a filepath on a computer running Windows follow these steps:
   - Locate the desired file
@@ -81,7 +80,12 @@ To find a filepath on a computer running Windows follow these steps:
   
 The copied value can now be used as the argument in the `read_csv()` function.
 
-`read_csv()` not only finds this data, but also makes it into a dataset, which is then assigned to the name (`cat_data`) using the `<-` operator. This data is now available for use in R (you can confirm this using `View()`).
+`read_csv()` not only finds this data, but also makes it into a dataset, which is then assigned to the name (`cat_data`) using the `<-` operator. This data is now available for use in R (you can confirm this using `View()`, which opens the dataset in a new window).
+
+```{r, eval = FALSE}
+View(cat_data)
+```
+
 
 If you are using the Reed RStudio Server, you can upload your data file to the server ("Files" pane, lower right) and read it in from the server ("Environment" pane, upper left). This process uses the same `read_csv()` function within the server.
 
