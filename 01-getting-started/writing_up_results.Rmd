@@ -20,15 +20,15 @@ To learn more about R Scripts, visit the [Workflow: scripts](https://r4ds.had.co
 
 R Markdown (`.Rmd`) filed provide a way to present final results with R. Markdown documents can integrate text, code, and output; this combination provides flexibility for presenting your work. R Markdown files `Knit` into output documents, which are most commonly `.pdf` (for assignments and "white papers") and `.html` (for web content). When working in a Markdown file in RStudio, you can find the `Knit` button in the tool bar near the top of the file.
 
-Note: One caveat for R Markdown is that sometimes knitting your document can bring up errors that are unrelated to the code itself (in other words, your code might be flawless, but the document still will not knit). This can mean additional troubleshooting, and may be a reason to move your code to an R script while you work.
+Note: One caveat for R Markdown is that sometimes knitting your document can bring up errors that are unrelated to the code itself (in other words, your code might be flawless, and the document still will not knit). This can mean additional troubleshooting, and may be a reason to move your code to an R script while you work.  
 
 For more in-depth information on R Markdown see [the RMarkdown pages from RStudio](https://rmarkdown.rstudio.com/articles_intro.html).
 
 #### R Markdown Visual Editor
 
-Writing in an R Markdown document can be challenging, since markdown formatting and syntax can be both frustrating and unfamiliar. To help with this, RStudio has a visual editor for R Markdown documents, which feels much more similar to text editors such as Word or Google Docs.
+Writing in an R Markdown document can be challenging, since markdown formatting and syntax can be both frustrating and unfamiliar. To help with this, RStudio has a visual editor for R Markdown documents which feels similar to text editors such as Word or Google Docs.
 
-The visual editor removes the need for remembering and using markdown formatting expressions, but still supports markdown expressions as well as traditional shortcuts and formatting icons. Visual mode also includes support for integration with Zotero for citation assistance.
+The visual editor removes the need for remembering and using markdown formatting expressions, and still supports markdown expressions as well as traditional shortcuts and formatting icons. Visual mode also includes support for integration with Zotero for citation assistance.
 
 To use the visual editor, open a new or existing R Markdown file and click the ![](https://rstudio.github.io/visual-markdown-editing/images/visual_mode_2x.png) button, located in the top right corner of the document toolbar. Alternatively, locate the gear icon next to the Knit button, and select *Use Visual Editor* from the resulting dropdown menu. Both of these methods can be used to switch between the default and visual editors.
 
