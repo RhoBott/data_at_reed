@@ -13,36 +13,44 @@ Comma-separated value (`.csv`) files are a very common format of data that can b
 You may have a `.csv` file on your computer that you would like to work with on the server. To do this:
 
   - Begin by locating your `.csv` file on your computer
-  - Open rstudio.reed.edu, and log into the server. If you are not automatically put into an active session, select "New Session."
-  - The lower right corner of the screen is the files pane. Locate the "Upload" button, which has an icon of a yellow circle with a white arrow pointing up, on the corner of a white square. Select "Upload".
-  - On the "Upload Files" popup, the first input is "Target Directory." Next to "Target Directory", select "Browse..."
-  - If you already have a folder you would like to load your data into, select that folder, and click "Choose." If not, select "New Folder" and name your new folder. Select "OK", then "Choose." 
-  - Back at the "Upload Files" window, select "Choose File." Find and select your `.csv`, then select "Upload" and "OK". 
+  - Open rstudio.reed.edu, and log into the server. 
+    - If you are not automatically put into an active session, select "New Session."
+  - The lower right corner of the screen is the files pane. Locate the "Upload" button, which has an icon of a yellow circle with a white arrow pointing up, on the corner of a white square. 
+  - Select "Upload".
+  - On the "Upload Files" popup, the first input is "Target Directory." 
+    - Next to "Target Directory", select "Browse..."
+    - If you already have a folder you would like to load your data into, select that folder, and click "Choose." 
+    - If not, select "New Folder" and name your new folder. Select "OK", then "Choose." 
+  - Back at the "Upload Files" window, select "Choose File." 
+    - Find and select your `.csv`, then select "Upload" and "OK". 
   - Go to the Files pane, and check that your folder and your file are where you expect them on the server. 
   
-Congratulations! Your `.csv` file is now located on the server. However, it's not in your environment yet, meaning it cannot yet be used.
+Congratulations! Your `.csv` file is now located on the server. However, it's not in your environment yet, meaning it is not ready to be used.
 
 ### Importing a `.csv` into the R environment
 
 Whether you are using desktop R or the RStudio server, the steps below will walk you through importing your `.csv` into your R environment. 
 
-Before you begin, open RStudio. If you are using the server, log in and start a new session if you are not already in one. 
-  - In the toolbar at the top of the RStudio window, go to **File** -> **New File**, and choose either an R Script or an R Markdown file. More information on the different file types can be found [here](https://www.reed.edu/data-at-reed/resources/R/writing-up-your-results.html)
-  - In the Files pane on the lower right of the screen, locate your `.csv`
-  - Click on the file name (it should become underlined when you hover over it), and select "Import Dataset..."
-  - On the window that pops up, look at the "Data Preview" and make sure that your data appears as you would expect.
-  - In the lower right of the window, you should see a "Code Preview" section. Copy the code that is there.
-  - Then, select "Import". The data is now loaded into your environment!
+Before you begin, open RStudio. If you are using the server, log in and start a new session if you are not already in one.  
+
+  - In the toolbar at the top of the RStudio window, go to **File** -> **New File**, and choose either an R Script or an R Markdown file.
+    - More information on the different file types can be found [here](https://www.reed.edu/data-at-reed/resources/R/writing-up-your-results.html)  
+  - In the Files pane on the lower right of the screen, locate your `.csv`  
+  - Click on the file name (it should become underlined when you hover over it), and select "Import Dataset..."  
+  - On the window that pops up, look at the "Data Preview" and make sure that your data appears as you would expect.  
+  - In the lower right of the window, you should see a "Code Preview" section. Copy the code that is there.  
+  - Then, select "Import". The data is now loaded into your environment!  
   
-However, reproducibility is important! 
-  - In the file you created, paste the code you just copied. 
-  - Now, if you start a new session in the future or empty your environment, you will need to re-import your `.csv`. Running this code will import your .csv into your environment.
+However, reproducibility is important!  
+
+  - In the file you created, paste the code you just copied.  
+  - Now, if you start a new session in the future or empty your environment, you will need to re-import your `.csv`. Running this code will import your .csv into your environment.  
 
 Instead of copying this code from the "Import files" window, you can also write it yourself. Instructions for doing so are in the section below.
 
-### From a .csv (with `readr`)
+### Loading data from a .csv with `readr`
 
-To load a `.csv` file into R, you can use the `readr` package.
+To load a `.csv` file into your R environment, you can use the `readr` package.
 
 First, if you haven't already, install the `readr` package:
 
@@ -58,7 +66,7 @@ library(readr)
 
 Now that you have loaded the package, you can load your data.
 
-First, you will need to know where the data is on your computer. You will need the filepath to the data to show `readr` where to find the file. Since this is a `.csv` file, you will use the `read_csv()` function to read in the file.
+First, you will need to know where the data is on your computer, or on the RStudio server. You will need the filepath to the data to show `readr` where to find the file. Since this is a `.csv` file, you will use the `read_csv()` function to read in the file.
 
 Here is an example:
 
@@ -68,12 +76,14 @@ cat_data <- read_csv("Desktop/Reed/Bio123/cats.csv")
 
 The above code reads in the file `cats.csv`, located in a folder `Bio123` within a `Reed` folder on the `Desktop`. The filepath `Desktop/Reed/Bio123` tells `read_csv()` where to find `cats.csv`. 
 
-To find a filepath on computer running MacOSX you can follow these steps:
-  - Locate the desired file
-  - Right-click on the file
-  - Hold down the option key and click       "copy 'filename' as Pathname"
+To find a filepath on computer running MacOSX you can follow these steps:  
+
+  - Locate the desired file  
+  - Right-click on the file  
+  - Hold down the option key and click "copy 'filename' as Pathname"  
   
-To find a filepath on a computer running Windows follow these steps:
+To find a filepath on a computer running Windows follow these steps:  
+
   - Locate the desired file
   - Hold shift and right-click on the file
   - Select "Copy as Path"
