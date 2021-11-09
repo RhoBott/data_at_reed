@@ -26,7 +26,7 @@ For more in-depth information on R Markdown see [the RMarkdown pages from RStudi
 
 #### R Markdown Visual Editor
 
-Writing in an R Markdown document can be challenging, since markdown formatting and syntax can be both frustrating and unfamiliar. To help with this, RStudio has a visual editor for R Markdown documents which feels similar to text editors such as Word or Google Docs.
+Writing in an R Markdown document can be challenging, since markdown formatting and syntax can be both frustrating and unfamiliar. To help with this, RStudio has a visual editor for R Markdown documents which feels similar to text editors such as Word or Google Docs. This feature requires RStudio version 1.4 or higher, so you may need to update RStudio if the R Markdown visual editor is not available to you.
 
 The visual editor removes the need for remembering and using markdown formatting expressions, and still supports markdown expressions as well as traditional shortcuts and formatting icons. Visual mode also includes support for integration with Zotero for citation assistance.
 
