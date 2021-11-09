@@ -43,7 +43,7 @@ You might have some data on your computer that you would like to work with on th
 
 -   choose the file on your computer and click "Open"
 
-The data is now uploaded to the server. You can now load the data into R in the same way you would if you were working with data stored on your computer with the desktop version of R. For more information on this topic, as well as specific instructions for loading different types of data, see the pages under the 'Loading Data' section of the [R tutorials page](https://www.reed.edu/data-at-reed/resources/R/index.html).
+The data is now uploaded to the server. To use your data, you will need to import your file into your R environment from the location where you saved it on the server. For instructions on importing a `.csv` into your R environment, see the ['From a .csv' page](https://www.reed.edu/data-at-reed/resources/R/from-a-.csv.html). For more information on this topic, as well as specific instructions for loading different types of data, see the pages under the 'Loading Data' section of the [R tutorials page](https://www.reed.edu/data-at-reed/resources/R/index.html).
 
 #### Jointly editing documents
 
