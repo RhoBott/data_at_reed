@@ -12,28 +12,38 @@ knitr::opts_chunk$set(echo = TRUE)
 
 There are a couple of advantages to using R on the Reed RStudio Server:
 
-- Accessible from any computer with an internet connection
-- No need to install software
-- Provides some storage for files, data, and images
-- Useful for collaborative work (caution: see notes below)
+-   Accessible from any computer with an internet connection
+-   No need to install software
+-   Provides some storage for files, data, and images
+-   Useful for collaborative work (caution: see notes below)
 
 To access the server, head to [rstudio.reed.edu](https://rstudio.reed.edu) and log in using your Kerberos credentials.
 
 #### Installing libraries
 
-Most of the libraries that you will need are already installed on the server. If you want to use a package that is not already on the server you can type `install.package("packagename")` in the console; this will install a library within your own user space on the server. If you run into errors installing or using packages, contact the RStudio server administrators at [rstudio-support@reed.edu](mailto:rstudio-support@reed.edu).
+Most of the libraries that you will need are already installed on the server. If you want to use a package that is not already on the server you can type `install.package("packagename")` in the console; this will install a library within your own user space on the server. If you run into errors installing or using packages, contact the RStudio server administrators at [rstudio-support\@reed.edu](mailto:rstudio-support@reed.edu).
 
 #### Uploading data to the Reed Rstudio server
 
 You might have some data on your computer that you would like to work with on the server. To upload data from your computer:
 
-* log in to the [RStudio server](https://rstudio.reed.edu) to open an RStudio session
-* in the bottom right corner of your screen, locate the "Files" pane
-* within the "Files" pane, navigate to the folder (on the server) where you want to store your data
-* click the "Upload" button (with a yellow, up-facing arrow beside it)
-* choose the file on your computer and click "Open"
+-   log in to the [RStudio server](https://rstudio.reed.edu) to open an RStudio session
 
-The data is now uploaded to the server. You can now load the data into R in the same way you would if you were working with data stored on your computer with the desktop version of R. See our [loading data](https://www.reed.edu/data-at-reed/resources/R/index.html) section for more information.
+-   in the bottom right corner of your screen, locate the "Files" pane
+
+-   If you are working in a new session, then most likely your location within the "Files" pane will be automatically set to your "Home" directory
+
+    -   If you are in your "Home" directory, you should see a house icon in the top left of the "Files" pane, with *only* the word "Home" next to it. If there are other things listed next to "Home", click on the house icon to be redirected to your "Home" directory.
+
+-   navigate to the folder (on the server, within the "Files" pane) where you want to store your data
+
+    -   to create a new folder, select "New Folder" from the left side of the "Files" pane toolbar.
+
+-   click the "Upload" button (with a yellow, up-facing arrow beside it)
+
+-   choose the file on your computer and click "Open"
+
+The data is now uploaded to the server. To use your data, you will need to import your file into your R environment from the location where you saved it on the server. For instructions on importing a `.csv` into your R environment, see the ['From a .csv' page](https://www.reed.edu/data-at-reed/resources/R/from-a-.csv.html). For more information on this topic, as well as specific instructions for loading different types of data, see the pages under the 'Loading Data' section of the [R tutorials page](https://www.reed.edu/data-at-reed/resources/R/index.html).
 
 #### Jointly editing documents
 
@@ -47,4 +57,4 @@ Every five minutes, the RStudio Server checks to make sure it is running smoothl
 
 #### Error occurred during transmission (broken sessions)
 
-At some point, you may encounter an error when you log in: RStudio initialization error, ‘Error occurred during transmission’. Sometimes RStudio user sessions encounter errors of some stripe; while this might be annoying, it is also a problem you can solve. To exit a misbehaving session or create a new session, visit [https://rstudio.reed.edu/home](https://rstudio.reed.edu/home).
+At some point, you may encounter an error when you log in: RStudio initialization error, 'Error occurred during transmission'. Sometimes RStudio user sessions encounter errors of some stripe; while this might be annoying, it is also a problem you can solve. To exit a misbehaving session or create a new session, visit <https://rstudio.reed.edu/home>.
