@@ -36,6 +36,6 @@ If you have worked with time and/or date data, you may have found it trickier th
 #### Working with categories using `forcats`
 In R, data can be classified in a number of ways: logical (true/false), numeric (numbers), or character / string (words). Another data type is a "factor", or categorical data. When visualizing or presenting categorical data, the order of those categories is often important.
 
-By default, R will order characters alphabetically; if you are graphing categorical data, this ordering may not make sense. (Example: we generally consider days of the week in a non-alphabetical order.) You can reorder categories in your data using `forcats`. Our brief tutorial on how to refactor levels within plots can be found [here](LINK) **insert correct link and delete this before publishing!!** . 
+By default, R will order characters alphabetically; if you are graphing categorical data, this ordering may not make sense. (Example: we generally consider days of the week in a non-alphabetical order.) You can reorder categories in your data using `forcats`. Our brief tutorial on how to refactor levels within plots can be found [here](INTERNAL LINK) 
 
 You can learn more about factors, how to make your variables into factors, and how to change the order of factors in the [R for Data Science chapter](https://r4ds.had.co.nz/factors.html). 
