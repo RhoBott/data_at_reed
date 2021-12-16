@@ -19,14 +19,14 @@ library(waffle)
 
 To run these examples on your own, load `palmerpenguins`, a package that contains a dataset about penguin populations on islands in Antarctica. You also need to load the `ggplot2` package, which is contained _within_ the `tidyverse` package. (You used other `tidyverse` libraries in the [Transforming data with `dplyr`](link) section.) You can also load `ggplot2` on its own, using `library(ggplot2)`.
 
-To learn more about packages and the `palmerpenguins` package, see our [Getting Started](LINK-HERE) page.
+To learn more about packages and the `palmerpenguins` package, see our [Meet the Palmer Penguins](LINK-HERE) page.
 
 ```{r, eval = FALSE}
 library(palmerpenguins)
 library(tidyverse)
 ```
 
-Before graphing using `ggplot2`, the data needs to be "tidy". (Read more about tidy data on [our data wrangling page](LINK-HERE) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html). For this example, the `palmerpenguins` data is already tidy.
+Before graphing using `ggplot2`, the data needs to be "tidy". (Read more about tidy data on [our tidy data page](LINK-HERE) or [from the tidyverse team](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html). For this example, the `palmerpenguins` data is already tidy.
 
 There are three main pieces that make up a ggplot:
 

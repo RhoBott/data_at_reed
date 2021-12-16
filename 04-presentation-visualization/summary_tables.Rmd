@@ -95,7 +95,7 @@ To learn more about these and other customizations, see [the kableExtra vignette
 
 Another approach for creating tables is the `gt` package. `gt` stands for "grammar of tables," and feels a lot like working with `ggplot`'s grammar of graphics.
 
-```{r}
+```{r, eval = F}
 install.packages("gt")
 library(gt)
 ```
@@ -125,7 +125,7 @@ Finally, you can both group and color your columns to help the viewer differenti
 
 First, install a few new packages and choose a color palette from the many available: 
 
-```{r}
+```{r, eval = F}
 install.packages("paletteer")
 install.packages("scales")
 ```
@@ -138,14 +138,14 @@ info_paletteer(color_pkgs = NULL)
 
 The syntax is generally `packagename::palette` and you will usually have to install the package before accessing the palette. Notice that you can specify how many colors we want with the `n = 3` argument.
 
-```{r}
+```{r, eval = F}
 install.packages("ggsci")
-
-palette <- paletteer::paletteer_d("ggsci::teal_material", n = 3) %>%
-  as.character()
 ```
 
 ```{r}
+palette <- paletteer::paletteer_d("ggsci::teal_material", n = 3) %>%
+  as.character()
+
 penguin_sum %>% 
   gt() %>% 
   cols_label(
